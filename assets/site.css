@@ -407,3 +407,31 @@
   .nav-right{gap:8px}
   .lang-switch a{min-width:40px;height:36px}
 }
+
+/* Areas we manage (home) */
+#areas{background:var(--surface)}
+.area-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+.area-card{display:flex;flex-direction:column;gap:8px;text-decoration:none;background:var(--sand);border-radius:var(--radius-lg);padding:26px;transition:transform .2s var(--ease-out)}
+.area-card h3{margin:0;font-size:1.25rem}
+.area-card p{margin:0;color:var(--ink-2);font-size:.95rem}
+.area-card .read{margin-top:auto;padding-top:6px;font-weight:600;color:var(--red-dark);display:inline-flex;align-items:center;gap:6px}
+@media (hover:hover){.area-card:hover{transform:translateY(-3px)}}
+.area-more{margin:24px 0 0;color:var(--ink-2)}
+.area-more a{font-weight:600;color:var(--red-dark)}
+/* footer: five columns + business name, address and phone */
+.foot{grid-template-columns:1.4fr repeat(4,1fr)}
+.legal .nap{font-style:normal}
+.legal a{display:inline;padding:0;color:inherit;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:960px){.area-grid{grid-template-columns:1fr 1fr}.foot{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.area-grid{grid-template-columns:1fr}}
+
+/* Landing pages */
+.landing .landing-checks{list-style:none;padding:0;display:grid;gap:10px}
+.landing .landing-checks li{display:flex;gap:12px;align-items:flex-start}
+.landing .landing-checks svg{flex:none;margin-top:5px;color:var(--red)}
+.page-top .lead{max-width:720px}
+/* Copy placeholders (only while a page is unfinished; such pages are noindex) */
+.placeholder{border:2px dashed var(--red);background:#fff7f6;color:var(--ink-2);border-radius:var(--radius);padding:16px 18px;margin:0 0 1.2em;font-size:.95rem;line-height:1.5}
+.placeholder.on-dark{background:rgba(255,255,255,.06);border-color:var(--red-light);color:var(--on-dark);max-width:720px}
+.placeholder code{font-size:.85em;background:rgba(0,0,0,.06);padding:1px 5px;border-radius:4px}
+.placeholder.on-dark code{background:rgba(255,255,255,.12)}

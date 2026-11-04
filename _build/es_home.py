@@ -6,13 +6,13 @@
 HOME_ES = [
  # ---- head ----
  ('<html lang="en">', '<html lang="es">'),
- ('<title>Medellín Concierge | Short-Term Rental & Property Management in Medellín</title>',
-  '<title>Medellín Concierge | Administración de propiedades y rentas cortas en Medellín</title>'),
- ('content="Specialized property management in Medellín, Colombia. Full management on Airbnb, Booking.com, Expedia and VRBO, 24/7 guest support, RNT/SIRE/TRA compliance. Plans from 12% + IVA."',
-  'content="Administración especializada de propiedades en Medellín, Colombia. Gestión completa en Airbnb, Booking.com, Expedia y VRBO, atención al huésped 24/7 y cumplimiento de RNT, SIRE y TRA. Planes desde 12% + IVA."'),
- ('content="Medellín Concierge | Your Medellín Property. Maximized."', 'content="Medellín Concierge | Su propiedad en Medellín, al máximo."'),
- ('content="Fully managed short-term rentals and property management in Medellín, Colombia."',
-  'content="Administración completa de rentas cortas y propiedades en Medellín, Colombia."'),
+ ('<title>Property Management in Medellín | Medellín Concierge</title>',
+  '<title>Administración de propiedades Medellín | Medellín Concierge</title>'),
+ ('content="Property management in Medellín: Airbnb and long-term rentals in El Poblado, Laureles, Envigado and Sabaneta. Plans from 12% + IVA. Free consultation."',
+  'content="Administración de propiedades en Medellín: Airbnb y rentas largas en El Poblado, Laureles, Envigado y Sabaneta. Planes desde 12% + IVA. Consulta gratis."'),
+ ('content="Property Management in Medellín | Medellín Concierge"', 'content="Administración de Propiedades en Medellín | Medellín Concierge"'),
+ ('content="Medellín Concierge logo"', 'content="Logo de Medellín Concierge"'),
+ ('<meta property="og:locale" content="en_US">', '<meta property="og:locale" content="es_CO">'),
 
  # ---- header ----
  ('aria-label="Medellín Concierge home"', 'aria-label="Inicio de Medellín Concierge"'),
@@ -28,7 +28,7 @@ HOME_ES = [
  ('>Get started</a>', '>Empezar</a>'),
 
  # ---- hero ----
- ('<h1>Your Medellín property. <em>Maximized.</em></h1>', '<h1>Su propiedad en Medellín. <em>Al máximo.</em></h1>'),
+ ('<h1>Property management in Medellín. <em>Maximized.</em></h1>', '<h1>Administración de propiedades en Medellín. <em>Al máximo.</em></h1>'),
  ('Short-term rental and property management in Medellín. Fully managed, stress-free rental income: from bookings and guest care to maintenance and legal compliance, we handle it all while you get paid.',
   'Administración de rentas cortas y propiedades en Medellín. Ingresos por renta sin preocupaciones: desde las reservas y la atención al huésped hasta el mantenimiento y el cumplimiento legal, nos encargamos de todo mientras usted recibe sus ganancias.'),
  ('Estimate my income', 'Calcular mis ingresos'),
@@ -58,7 +58,20 @@ HOME_ES = [
  ('From bookings to maintenance to legal compliance, we handle it all.', 'Desde las reservas hasta el mantenimiento y el cumplimiento legal, nos encargamos de todo.'),
 
  # ---- services ----
- ('Specialized in one thing: managing your property', 'Especializados en una sola cosa: administrar su propiedad'),
+ ('<h2>Airbnb and long-term property management in Medellín</h2>', '<h2>Administración de Airbnb y rentas largas en Medellín</h2>'),
+
+ # ---- areas ----
+ ('Property management in El Poblado, Laureles, Envigado and Sabaneta', 'Administración de propiedades en El Poblado, Laureles, Envigado y Sabaneta'),
+ ('We manage apartments across Medellín and the Aburrá Valley, for short stays on Airbnb and long stays of 30 nights or more.',
+  'Administramos apartamentos en Medellín y el Valle de Aburrá, para estancias cortas en Airbnb y estancias largas de 30 noches o más.'),
+ ('Airbnb and long-term property management in El Poblado.', 'Administración de Airbnb y rentas largas en El Poblado.'),
+ ('Airbnb and long-term property management in Laureles.', 'Administración de Airbnb y rentas largas en Laureles.'),
+ ('Airbnb and long-term property management in Envigado.', 'Administración de Airbnb y rentas largas en Envigado.'),
+ ('Airbnb and long-term property management in Sabaneta.', 'Administración de Airbnb y rentas largas en Sabaneta.'),
+ ('Own property in Colombia but live abroad? <a', '¿Tiene una propiedad en Colombia pero vive en el exterior? <a'),
+ ('>Property management in Colombia for foreign owners</a>', '>Administración de propiedades en Colombia para propietarios extranjeros</a>'),
+ ('<h4>Areas</h4>', '<h4>Zonas</h4>'),
+ ('>Foreign owners</a>', '>Propietarios extranjeros</a>'),
  ('Your property is a valuable investment. Our team takes care of everything, so you get the most out of it without the complications.',
   'Su propiedad es una inversión valiosa. Nuestro equipo se encarga de todo para que usted le saque el máximo provecho sin complicaciones.'),
  ('Visibility &amp; positioning', 'Visibilidad y posicionamiento'),
@@ -249,14 +262,14 @@ BLOG_UI = {
  'en': dict(read='Read article', min_read='min read', home='Home', blog='Blog',
             blog_title='The Medellín Concierge blog',
             blog_lead='Straight answers for property owners in Medellín: plans, payouts, compliance, and what to expect from a professional manager.',
-            blog_meta_title='Blog | Medellín Concierge',
+            blog_meta_title='Property Management Blog | Medellín Concierge',
             blog_meta_desc='Articles for property owners in Medellín: management plans, GAAP statements and payouts, and how to choose a property manager.',
             cta_h='Talk to us about your property', cta_p='Get a free consultation and a plan recommendation for your apartment in Medellín.',
             cta_1='Request a free consultation', cta_2='Compare plans', more='More from the blog', more_label='More articles'),
  'es': dict(read='Leer artículo', min_read='min de lectura', home='Inicio', blog='Blog',
             blog_title='El blog de Medellín Concierge',
             blog_lead='Respuestas claras para propietarios en Medellín: planes, pagos, cumplimiento legal y qué esperar de un administrador profesional.',
-            blog_meta_title='Blog | Medellín Concierge',
+            blog_meta_title='Blog de administración de propiedades | Medellín Concierge',
             blog_meta_desc='Artículos para propietarios en Medellín: planes de administración, estados bajo GAAP y pagos, y cómo elegir un administrador de propiedades.',
             cta_h='Hablemos de su propiedad', cta_p='Solicite una consulta gratuita y una recomendación de plan para su apartamento en Medellín.',
             cta_1='Solicitar una consulta gratuita', cta_2='Comparar planes', more='Más del blog', more_label='Más artículos'),
