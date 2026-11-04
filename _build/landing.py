@@ -11,7 +11,35 @@
 AREAS = ['el-poblado', 'laureles', 'envigado', 'sabaneta']
 
 PAGES = [
- dict(key='el-poblado', area='El Poblado',
+ dict(key='airbnb', label=dict(en='Airbnb management', es='Administración de Airbnb'), area='Medellín',
+  en=dict(slug='airbnb-management-medellin',
+          title='Airbnb Management in Medellín | Medellín Concierge',
+          description=None, h1='Airbnb management in Medellín', intro=None,
+          blocks=[('Full-service Airbnb management', None),
+                  ('Listing optimization and dynamic pricing', None),
+                  ('Guest communication, cleaning and check-ins', None)]),
+  es=dict(slug='administracion-de-airbnb-medellin',
+          title='Administración de Airbnb en Medellín | Medellín Concierge',
+          description=None, h1='Administración de Airbnb en Medellín', intro=None,
+          blocks=[('Administración integral de Airbnb', None),
+                  ('Optimización del anuncio y precios dinámicos', None),
+                  ('Comunicación con huéspedes, limpieza y llegadas', None)])),
+
+ dict(key='long-term', label=dict(en='Long-term management', es='Rentas largas'), area='Medellín',
+  en=dict(slug='long-term-property-management-medellin',
+          title='Long-Term Property Management in Medellín',
+          description=None, h1='Long-term property management in Medellín', intro=None,
+          blocks=[('Management for stays of 30 nights or more', None),
+                  ('Payments, maintenance and compliance', None),
+                  ('Why owners choose long stays', None)]),
+  es=dict(slug='administracion-de-rentas-largas-medellin',
+          title='Administración de rentas largas en Medellín',
+          description=None, h1='Administración de rentas largas en Medellín', intro=None,
+          blocks=[('Administración para estancias de 30 noches o más', None),
+                  ('Pagos, mantenimiento y cumplimiento', None),
+                  ('Por qué los propietarios eligen estancias largas', None)])),
+
+ dict(key='el-poblado', label=dict(en='El Poblado', es='El Poblado'), area='El Poblado',
   en=dict(slug='property-management-el-poblado',
           title='Property Management in El Poblado | Medellín Concierge',
           description=None,   # 120–155 characters
@@ -29,7 +57,7 @@ PAGES = [
                   ('Administración de rentas largas en El Poblado', None),
                   ('Por qué los propietarios de El Poblado trabajan con nosotros', None)])),
 
- dict(key='laureles', area='Laureles',
+ dict(key='laureles', label=dict(en='Laureles', es='Laureles'), area='Laureles',
   en=dict(slug='property-management-laureles',
           title='Property Management in Laureles | Medellín Concierge',
           description=None, h1='Property management in Laureles', intro=None,
@@ -43,7 +71,7 @@ PAGES = [
                   ('Administración de rentas largas en Laureles', None),
                   ('Por qué los propietarios de Laureles trabajan con nosotros', None)])),
 
- dict(key='envigado', area='Envigado',
+ dict(key='envigado', label=dict(en='Envigado', es='Envigado'), area='Envigado',
   en=dict(slug='property-management-envigado',
           title='Property Management in Envigado | Medellín Concierge',
           description=None, h1='Property management in Envigado', intro=None,
@@ -57,7 +85,7 @@ PAGES = [
                   ('Administración de rentas largas en Envigado', None),
                   ('Por qué los propietarios de Envigado trabajan con nosotros', None)])),
 
- dict(key='sabaneta', area='Sabaneta',
+ dict(key='sabaneta', label=dict(en='Sabaneta', es='Sabaneta'), area='Sabaneta',
   en=dict(slug='property-management-sabaneta',
           title='Property Management in Sabaneta | Medellín Concierge',
           description=None, h1='Property management in Sabaneta', intro=None,
@@ -71,7 +99,7 @@ PAGES = [
                   ('Administración de rentas largas en Sabaneta', None),
                   ('Por qué los propietarios de Sabaneta trabajan con nosotros', None)])),
 
- dict(key='colombia', area='Colombia',
+ dict(key='colombia', label=dict(en='Foreign owners', es='Propietarios extranjeros'), area='Colombia',
   en=dict(slug='property-management-colombia',
           title='Property Management in Colombia for Foreign Owners',
           description=None, h1='Property management in Colombia for foreign owners', intro=None,

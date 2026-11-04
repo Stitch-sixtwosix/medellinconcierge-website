@@ -334,7 +334,7 @@ L = {
  'en': dict(home='Home', copy_note='Copy coming: Lupa is drafting this block (James’s office → Keywords). Edit <code>_build/landing.py</code> → <code>{key}</code> → <code>en</code> → <code>{field}</code>.',
             inc_h='What we handle for you', plans_h='Plans and fees', cta_h='Talk to us about your property',
             cta_p='Get a free consultation, an income estimate and a management proposal.', cta_1='Request a free consultation',
-            more_h='Other areas we manage', all_plans='Compare plans in detail',
+            more_h='More from Medellín Concierge', all_plans='Compare plans in detail',
             inc=['Listing on Airbnb, Booking.com, Expedia and VRBO, with dynamic pricing and synced calendars',
                  '24/7 guest support, check-ins and check-outs', 'Cleaning and maintenance, coordinated and supervised',
                  'RNT, SIRE and TRA registrations and reporting',
@@ -345,7 +345,7 @@ L = {
  'es': dict(home='Inicio', copy_note='Texto pendiente: Lupa está redactando este bloque (oficina de James → Keywords). Edite <code>_build/landing.py</code> → <code>{key}</code> → <code>es</code> → <code>{field}</code>.',
             inc_h='Lo que gestionamos por usted', plans_h='Planes y tarifas', cta_h='Hablemos de su propiedad',
             cta_p='Solicite una consulta gratuita, una estimación de ingresos y una propuesta de administración.', cta_1='Solicitar una consulta gratuita',
-            more_h='Otras zonas que administramos', all_plans='Comparar los planes en detalle',
+            more_h='Más de Medellín Concierge', all_plans='Comparar los planes en detalle',
             inc=['Publicación en Airbnb, Booking.com, Expedia y VRBO, con precios dinámicos y calendarios sincronizados',
                  'Atención al huésped 24/7, llegadas y salidas', 'Limpieza y mantenimiento, coordinados y supervisados',
                  'Registros y reportes de RNT, SIRE y TRA',
@@ -366,12 +366,12 @@ for pg in PAGES:
         blocks = ''.join(f'\n      <h2>{h}</h2>\n      ' + (b if b else placeholder(lang, pg['key'], f'blocks[{i}]'))
                          for i, (h, b) in enumerate(c['blocks']))
         inc = ''.join(f'<li>{CHECK}{x}</li>' for x in ui['inc'])
-        more = ''.join(f'<a href="../{o[lang]["slug"]}/">{o["area"] if o["key"] != "colombia" else o[lang]["h1"]}</a>'
+        more = ''.join(f'<a href="../{o[lang]["slug"]}/">{o[lang]["h1"]}</a>'
                        for o in PAGES if o is not pg)
         home_href = '../'
         body = f'''<section class="page-top">
   <div class="wrap">
-    <p class="crumbs"><a href="{home_href}">{ui["home"]}</a> / {pg["area"]}</p>
+    <p class="crumbs"><a href="{home_href}">{ui["home"]}</a> / {pg["label"][lang]}</p>
     <h1>{c["h1"]}</h1>
     {intro}
   </div>
@@ -412,7 +412,7 @@ for pg in PAGES:
             {'@type': 'Service', 'name': c['h1'], 'serviceType': ui['service'], 'url': url, 'inLanguage': lang,
              'provider': {'@id': business_id()},
              'areaServed': {'@type': 'Country' if pg['key'] == 'colombia' else 'Place', 'name': pg['area']}},
-            breadcrumbs([(ui['home'], home_url), (pg['area'], url)])]}
+            breadcrumbs([(ui['home'], home_url), (pg['label'][lang], url)])]}
         if lang == 'en':
             en_href, es_href = './', f'../es/{pg["es"]["slug"]}/'
         else:

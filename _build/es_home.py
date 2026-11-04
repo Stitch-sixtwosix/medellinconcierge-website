@@ -60,6 +60,11 @@ HOME_ES = [
  # ---- services ----
  ('<h2>Airbnb and long-term property management in Medellín</h2>', '<h2>Administración de Airbnb y rentas largas en Medellín</h2>'),
 
+ ('Learn more: <a', 'Más información: <a'),
+ ('>Airbnb management in Medellín</a>', '>Administración de Airbnb en Medellín</a>'),
+ ('>Long-term property management in Medellín</a>', '>Administración de rentas largas en Medellín</a>'),
+ ('>Airbnb management</a>', '>Administración de Airbnb</a>'),
+ ('>Long-term management</a>', '>Rentas largas</a>'),
  # ---- areas ----
  ('Property management in El Poblado, Laureles, Envigado and Sabaneta', 'Administración de propiedades en El Poblado, Laureles, Envigado y Sabaneta'),
  ('We manage apartments across Medellín and the Aburrá Valley, for short stays on Airbnb and long stays of 30 nights or more.',
