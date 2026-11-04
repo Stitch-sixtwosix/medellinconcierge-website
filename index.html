@@ -9,6 +9,10 @@
 <meta property="og:description" content="Fully managed short-term rentals and property management in Medellín, Colombia.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.medellinconcierge.net/">
+<link rel="canonical" href="https://www.medellinconcierge.net/">
+<link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/">
+<link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/">
+<link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:image" content="https://www.medellinconcierge.net/assets/mark.png">
@@ -16,7 +20,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>document.documentElement.classList.add('js')</script>
+<script>document.documentElement.classList.add('js');
+// Send Spanish-speaking first-time visitors (or anyone who chose ES before) to the Spanish home page
+try { var l = localStorage.getItem('mc-lang'); if (l === 'es' || (!l && /^es\b/i.test(navigator.language || ''))) location.replace('es/' + location.hash); } catch (e) {}</script>
 <link rel="stylesheet" href="assets/site.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"Medellín Concierge","url":"https://www.medellinconcierge.net/","logo":"https://www.medellinconcierge.net/assets/logo.png","email":"sales@medellinconcierge.net","telephone":"+57 304 277 3864",
@@ -30,6 +36,7 @@
 <header id="top">
   <div class="wrap nav">
     <a href="#top" class="logo" aria-label="Medellín Concierge home"><img class="full" src="assets/logo.png" alt="Medellín Concierge" width="640" height="189"></a>
+    <div class="nav-right">
     <nav class="nav-links" id="navLinks" aria-label="Main">
       <a href="#services">Services</a>
       <a href="#plans">Plans</a>
@@ -39,10 +46,14 @@
       <a href="blog/">Blog</a>
       <a href="#contact" class="btn btn-primary">Get started</a>
     </nav>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+    <div class="lang-switch" role="group" aria-label="Language">
+      <a href="./" lang="en" hreflang="en" aria-label="English" aria-current="true" data-lang="en">EN</a><a href="es/" lang="es" hreflang="es" aria-label="Español" data-lang="es">ES</a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" data-label-open="Open menu" data-label-close="Close menu" aria-expanded="false" aria-controls="navLinks">
       <svg class="i-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       <svg class="i-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
     </button>
+    </div>
   </div>
 </header>
 
