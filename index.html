@@ -191,7 +191,7 @@
             <li>Emergency support</li>
           </ul>
           <p class="plan-platforms">Listed on Airbnb, Booking.com, Expedia and VRBO</p>
-          <a class="btn btn-dark" href="#contact" data-plan="Basic plan">Choose Basic</a>
+          <a class="btn btn-dark" href="#contact">Choose Basic</a>
         </div>
       </article>
       <article class="plan plan-premium reveal">
@@ -211,7 +211,7 @@
             <li><strong>Monthly accounting report</strong></li>
           </ul>
           <p class="plan-platforms">Listed on Airbnb, Booking.com, Expedia and VRBO</p>
-          <a class="btn btn-primary" href="#contact" data-plan="Premium plan">Choose Premium</a>
+          <a class="btn btn-primary" href="#contact">Choose Premium</a>
         </div>
       </article>
     </div>
@@ -411,27 +411,10 @@
         <a href="https://maps.app.goo.gl/Z1Edu7BPoXGiPpqh8" target="_blank" rel="noopener"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>Cl. 10 #42-28, Oficina 15, El Poblado, Medellín</a>
       </div>
     </div>
-    <form class="reveal" id="leadForm">
-      <div class="row2">
-        <label>Name<input name="name" required autocomplete="name"></label>
-        <label>Email<input name="email" type="email" required autocomplete="email"></label>
-      </div>
-      <label><span>Phone / WhatsApp <span class="opt">(optional)</span></span><input name="phone" type="tel" autocomplete="tel"></label>
-      <label>I'm interested in
-        <select name="interest" id="interest">
-          <option>Premium plan</option>
-          <option>Basic plan</option>
-          <option>Channel management only</option>
-          <option>Not sure yet, help me choose</option>
-          <option>Agent referral program</option>
-        </select>
-      </label>
-      <label><span>Property neighborhood &amp; size <span class="opt">(if applicable)</span></span><input name="property" placeholder="e.g. 2-bed apartment in El Poblado"></label>
-      <label>Message<textarea name="message" placeholder="Tell us a bit about what you need"></textarea></label>
-      <button class="btn btn-primary" type="submit">Request my free consultation</button>
-      <p class="form-status" id="formStatus" role="status" hidden></p>
-      <p class="form-note">We usually reply within one business day.</p>
-    </form>
+    <div class="lead-embed reveal">
+      <iframe src="https://hostflow.in/lead?t=49d-bifpnoxA37UexXu3HOgg" title="Request a free consultation" loading="lazy"></iframe>
+      <p class="form-note">Form not loading? <a href="https://hostflow.in/lead?t=49d-bifpnoxA37UexXu3HOgg" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
+    </div>
   </div>
 </section>
 </main>
@@ -518,19 +501,6 @@
   $('rate').addEventListener('input', calc);
   $('occ').addEventListener('input', calc);
   suggestRate(); calc();
-
-  // Contact form → opens an email draft (replace with your form backend)
-  $('leadForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const d = Object.fromEntries(new FormData(e.target));
-    const body = `Name: ${d.name}\nEmail: ${d.email}\nPhone: ${d.phone}\nInterest: ${d.interest}\nProperty: ${d.property}\n\n${d.message}`;
-    location.href = 'mailto:sales@medellinconcierge.net?subject=' + encodeURIComponent('New inquiry: ' + d.interest) + '&body=' + encodeURIComponent(body);
-    const s = $('formStatus');
-    s.innerHTML = 'Your email app should open with your message ready to send. If nothing opened, write to <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> or message us on <a href="https://wa.me/573042773864">WhatsApp</a>.';
-    s.hidden = false;
-  });
-
-  document.querySelectorAll('[data-plan]').forEach(a => a.addEventListener('click', () => { $('interest').value = a.dataset.plan; }));
 
   $('yr').textContent = new Date().getFullYear();
 </script>

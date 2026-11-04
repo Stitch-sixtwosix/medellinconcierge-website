@@ -389,3 +389,10 @@
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 #why .head{max-width:900px}
 @media (max-width:760px){.compare td.them,.compare td.us,.compare tbody th{width:auto}}
+
+/* Hostflow lead form (embedded) */
+.lead-embed{background:#f6f5f2;border-radius:var(--radius-lg);overflow:hidden}
+.lead-embed iframe{display:block;width:100%;height:1160px;border:0;background:#f6f5f2}
+@media (max-width:760px){.lead-embed iframe{height:1300px}}
+.lead-embed .form-note{padding:0 24px 18px;color:var(--muted);text-align:center}
+.lead-embed .form-note a{color:var(--red-dark);font-weight:600}
