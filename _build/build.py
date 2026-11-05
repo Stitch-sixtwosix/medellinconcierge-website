@@ -517,7 +517,7 @@ def listing_card(p, lang, ui, page_url, prefix):
     if p.get('max_guests'): facts.append(ui['guests'].format(n=p['max_guests']))
     amen = ''.join(f'<li>{ui["amen"][a]}</li>' for a in p.get('amenities') or [] if a in ui['amen'])
     if p.get('cover_photo'):
-        photo = f'<img src="{prefix}assets/listings/{p["cover_photo"]}.webp" alt="{title}" loading="lazy" decoding="async" width="800" height="600">'
+        photo = f'<img src="{prefix}assets/listings/{p["cover_photo"]}.webp" alt="{title}" loading="lazy" decoding="async" width="800" height="534">'
     else:
         photo = f'<span class="no-photo">{ui["no_photo"]}</span>'
     if p['_listed']:
