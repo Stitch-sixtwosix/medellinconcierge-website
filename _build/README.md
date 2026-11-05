@@ -58,6 +58,18 @@ and is left out of `sitemap.xml`. Once all slots are filled, the page becomes in
 
 ## For James: placeholders that need you
 
-- `_build/site_config.py` → `TODO_SAME_AS`: Google Business Profile (full URL), Instagram, Facebook, LinkedIn.
+- `_build/site_config.py` → `TODO_SAME_AS`: Google Business Profile (full URL), Facebook, LinkedIn. (Instagram is already in `SAME_AS`.)
   Paste each real URL there and move it into `SAME_AS`; only then is it published in the structured data.
 - Booking.com, Expedia and VRBO listing links (logo tiles on the home page, marked `data-todo`).
+
+## Publishing (and unattended runs)
+
+- Repo `Stitch-sixtwosix/medellinconcierge-website`. GitHub Pages serves branch `main`, folder `/`.
+  **Every push to `main` is a live publish** (about 1 minute).
+- Always start with `git pull --rebase origin main`. GitHub sometimes adds its own "Create CNAME"
+  commits, and a push without pulling first is rejected.
+- Order: edit sources → `python3 _build/build.py` → **stop if it exits non-zero** → commit everything it
+  wrote → push. A scheduled job must never push after a failed build.
+- Set `git config user.name` / `user.email` in this repo so automated commits are identifiable.
+- Recommended for the first week: have the job send James a summary (or open a pull request) instead of
+  pushing directly.
