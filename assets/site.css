@@ -256,6 +256,17 @@
     .foot{grid-template-columns:1fr 1fr}
     .hero-card{max-width:560px}
   }
+  /* Header: below 1040px the links + Get started + EN/ES no longer fit; use the menu button */
+  @media (max-width:1040px){
+    .menu-btn{display:grid}
+    .nav-links{position:fixed;inset:76px 0 auto 0;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:4px 24px 20px;box-shadow:0 16px 24px -16px rgba(0,0,0,.3);display:none;
+      opacity:1;transform:none;transition:opacity .2s ease,transform .25s var(--ease-out),display .25s allow-discrete}
+    .nav-links.open{display:flex}
+    @starting-style{.nav-links.open{opacity:0;transform:translateY(-8px)}}
+    .nav-links a:not(.btn){color:var(--ink);padding:14px 4px;border-bottom:1px solid var(--line);font-size:1rem}
+    .nav-links .btn{margin-top:16px;min-height:48px}
+    .nav-right{gap:10px}
+  }
   @media (max-width:760px){
     section{padding:80px 0}
     .wrap{padding:0 16px}

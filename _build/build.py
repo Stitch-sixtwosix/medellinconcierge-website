@@ -426,6 +426,99 @@ for pg in PAGES:
             print(f'  note: {folder}/ has placeholder copy → noindex, not in sitemap')
 
 
+# ======================= 4b. Old Wix URLs → redirects, and 404.html =======================
+# GitHub Pages has no server-side redirects, so each old path gets a tiny page that redirects instantly
+# (meta refresh + JS) and declares the new URL as canonical. Not listed in sitemap.xml.
+REDIRECTS = {
+    'property-management':            '',            # → home until /long-term-property-management-medellin/ has its copy (it is noindex)
+    'contact':                        '#contact',
+    'es/contact':                     'es/#contact',
+    'airbnb-revenue-calculator':      '#calculator',
+    'es/airbnb-revenue-calculator':   'es/#calculator',
+    'rentals':                        '',
+    'tours-transportation':           '',
+    'diamond-card':                   '',
+    'properties/finca-con-bosque-nativo-privado': '',   # any other /properties/* is sent home by 404.html
+}
+for old, new in REDIRECTS.items():
+    target = SITE + new
+    es_page = old.startswith('es/')
+    write(f'{old}/index.html', f'''<!doctype html>
+<html lang="{'es' if es_page else 'en'}">
+<head>
+<meta charset="utf-8">
+<title>{'Esta página se trasladó' if es_page else 'This page has moved'} | Medellín Concierge</title>
+<link rel="canonical" href="{target}">
+<meta http-equiv="refresh" content="0; url={target}">
+<script>location.replace({json.dumps(target)});</script>
+</head>
+<body>
+<p>{'Esta página se trasladó a' if es_page else 'This page has moved to'} <a href="{target}">{target}</a>.</p>
+</body>
+</html>
+''')
+
+def absolute_links(h):
+    h = h.replace('href="#top"', 'href="/"')
+    h = re.sub(r'href="#(?=[a-z])', 'href="/#', h)
+    return re.sub(r'(src|href)="(?!https?:|mailto:|tel:|#|/|data:)', lambda m: f'{m.group(1)}="/', h)
+
+hdr404 = set_switch(absolute_links(en[en.index('<header id="top">'):en.index('</header>') + len('</header>')]), '/', '/es/', 'en')
+ftr404 = absolute_links(en[en.index('<footer>'):en.index('</footer>') + len('</footer>')])
+page_links = ''.join(f'<a href="/{p["en"]["slug"]}/">{p["en"]["h1"]}</a>' for p in PAGES if p['key'] in ('airbnb', 'long-term', 'colombia'))
+page_links_es = ''.join(f'<a href="/es/{p["es"]["slug"]}/">{p["es"]["h1"]}</a>' for p in PAGES if p['key'] in ('airbnb', 'long-term', 'colombia'))
+write('404.html', f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found | Medellín Concierge</title>
+<meta name="robots" content="noindex">
+<script>
+  // Old Wix property listings (/properties/…) have no equivalent page: send them home.
+  if (/^\\/properties\\//.test(location.pathname)) location.replace('/');
+</script>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+{hdr404}
+
+<main>
+<section class="page-top">
+  <div class="wrap">
+    <h1>Page not found</h1>
+    <p class="lead">This page doesn’t exist, or it moved when we launched our new website. <span lang="es">Esta página no existe o se trasladó con nuestro nuevo sitio web.</span></p>
+    <div class="ref-ctas" style="margin-top:24px"><a class="btn btn-primary" href="/">Home</a><a class="btn btn-ghost" href="/es/" lang="es">Inicio en español</a></div>
+  </div>
+</section>
+<article class="article">
+  <div class="wrap">
+    <nav class="more-posts" aria-label="Popular pages">
+      <h2>Popular pages</h2>
+      <a href="/#plans">Plans and fees</a><a href="/#calculator">Revenue calculator</a>{page_links}<a href="/blog/">Blog</a><a href="/#contact">Request a free consultation</a>
+    </nav>
+    <nav class="more-posts" aria-label="Páginas principales" lang="es">
+      <h2>Páginas principales</h2>
+      <a href="/es/#plans">Planes y tarifas</a><a href="/es/#calculator">Calculadora de ingresos</a>{page_links_es}<a href="/es/blog/">Blog</a><a href="/es/#contact">Solicitar una consulta gratuita</a>
+    </nav>
+  </div>
+</article>
+</main>
+
+{ftr404}
+
+<script src="/assets/nav.js"></script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
+''')
+
+
 # ======================= 5. sitemap.xml + robots.txt =======================
 xml = ['<?xml version="1.0" encoding="UTF-8"?>',
        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
