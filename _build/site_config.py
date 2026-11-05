@@ -27,11 +27,11 @@ SAME_AS = [
     'https://www.airbnb.com/users/show/446836447',
     'https://www.instagram.com/medellin.concierge/',      # verified 2026-11-04: "MEDCON | Property Management"
     'https://maps.app.goo.gl/Z1Edu7BPoXGiPpqh8',         # Google Maps listing (also in hasMap)
+    'https://www.facebook.com/luxmedellinconcierge',      # verified 2026-11-05: "Medellín Concierge", linked from the old Wix site
+    'https://www.linkedin.com/company/medellin-concierge-sas/',   # verified 2026-11-05: "Medellin Concierge, SAS"
 ]
 
 # PLACEHOLDERS for James: paste the real URL to the right of each, then move it into SAME_AS.
 TODO_SAME_AS = {
     'Google Business Profile (full URL, not the maps.app.goo.gl short link)': '',
-    'Facebook': '',
-    'LinkedIn': '',
 }

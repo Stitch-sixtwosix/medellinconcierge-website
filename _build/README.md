@@ -62,7 +62,7 @@ and is left out of `sitemap.xml`. Once all slots are filled, the page becomes in
 
 ## For James: placeholders that need you
 
-- `_build/site_config.py` → `TODO_SAME_AS`: Google Business Profile (full URL), Facebook, LinkedIn. (Instagram is already in `SAME_AS`.)
+- `_build/site_config.py` → `TODO_SAME_AS`: Google Business Profile (full URL). (Instagram, Facebook and LinkedIn are already in `SAME_AS` and in the footer of `index.html`.)
   Paste each real URL there and move it into `SAME_AS`; only then is it published in the structured data.
 - Booking.com, Expedia and VRBO listing links (logo tiles on the home page, marked `data-todo`).
 
