@@ -257,7 +257,7 @@
     .hero-card{max-width:560px}
   }
   /* Header: below 1040px the links + Get started + EN/ES no longer fit; use the menu button */
-  @media (max-width:1040px){
+  @media (max-width:1180px){
     .menu-btn{display:grid}
     .nav-links{position:fixed;inset:76px 0 auto 0;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:4px 24px 20px;box-shadow:0 16px 24px -16px rgba(0,0,0,.3);display:none;
       opacity:1;transform:none;transition:opacity .2s ease,transform .25s var(--ease-out),display .25s allow-discrete}
@@ -459,3 +459,16 @@
 .social{display:flex;gap:10px;margin-top:4px}
 footer .social a{display:grid;place-items:center;width:44px;height:44px;padding:0;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;transition:background-color .2s ease,color .2s ease}
 @media (hover:hover){footer .social a:hover{background:var(--red);color:#fff}}
+
+/* Meet the team (/team/, /es/equipo/) */
+.team{padding:64px 0 96px}
+.team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.member{text-align:center}
+.member-photo{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:var(--radius-lg);background:#fff;box-shadow:0 0 0 1px var(--line);margin-bottom:16px}
+.member-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.member .initials{position:absolute;inset:0;display:grid;place-items:center;font:700 2.4rem Poppins,sans-serif;color:var(--muted)}
+.member h2{font-size:1.15rem;margin:0 0 2px}
+.member p{margin:0;color:var(--red-dark);font-weight:600;font-size:.95rem}
+.team .article-cta{max-width:none;margin-top:64px}
+@media (max-width:1040px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.team-grid{gap:16px}.member h2{font-size:1rem}.member p{font-size:.88rem}}

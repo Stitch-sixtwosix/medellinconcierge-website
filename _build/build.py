@@ -20,6 +20,7 @@ sys.path.insert(0, HERE)
 from es_home import HOME_ES, BLOG_UI
 from site_config import SITE, BUSINESS, SAME_AS
 from landing import PAGES, AREAS
+from team import TEAM
 
 TODAY = datetime.date.today().isoformat()
 LANGS = ('en', 'es')
@@ -167,7 +168,7 @@ if missing:
              + '\n  - '.join(m[:100] for m in missing))
 for a, b in HOME_ES:
     es = es.replace(a, b)
-es = es.replace('href="rentals/"', 'href="arriendos/"')
+es = es.replace('href="rentals/"', 'href="arriendos/"').replace('href="team/"', 'href="equipo/"')
 for pg in PAGES:   # landing page links point to the Spanish versions
     es = es.replace(f'href="{pg["en"]["slug"]}/"', f'href="{pg["es"]["slug"]}/"')
 es = set_teaser(es, 'es')
@@ -494,6 +495,71 @@ for lang in LANGS:
     write(f'{ui["slug"]}/index.html', page(lang, title=ui['title'], desc=ui['desc'], en_url=en_url, es_url=es_url,
           en_href=en_href, es_href=es_href, body=body, schema=schema))
 SITEMAP.append((SITE + 'rentals/', SITE + 'es/arriendos/', TODAY))
+
+
+# ======================= 4d. Meet the team (/team/, /es/equipo/) =======================
+# People and roles are in team.py; photos (on white, 4:5) in assets/team/, made by team_photos.py.
+T = {
+ 'en': dict(slug='team', home='Home', crumb='Team',
+            title='Meet the Team | Medellín Concierge',
+            desc='Meet the Medellín Concierge team: the managers who look after your property, your guests and your monthly statements in Medellín, Colombia.',
+            h1='Meet the team',
+            lead='The people who manage your property and look after your guests in Medellín.',
+            cta_h='Talk to our team', cta_p='Get a free consultation, an income estimate and a management proposal.'),
+ 'es': dict(slug='es/equipo', home='Inicio', crumb='Equipo',
+            title='Nuestro equipo | Medellín Concierge',
+            desc='Conozca al equipo de Medellín Concierge: quienes cuidan su propiedad, atienden a sus huéspedes y preparan sus estados mensuales en Medellín.',
+            h1='Conozca a nuestro equipo',
+            lead='Las personas que administran su propiedad y atienden a sus huéspedes en Medellín.',
+            cta_h='Hable con nuestro equipo', cta_p='Solicite una consulta gratuita, una estimación de ingresos y una propuesta de administración.'),
+}
+
+def initials(name):
+    return ''.join(w[0] for w in name.split()[:2]).upper()
+
+for lang in LANGS:
+    ui = T[lang]
+    en_url, es_url = SITE + T['en']['slug'] + '/', SITE + T['es']['slug'] + '/'
+    url = es_url if lang == 'es' else en_url
+    home_url = SITE + ('es/' if lang == 'es' else '')
+    prefix = '../' if lang == 'en' else '../../'
+    cards_html = ''
+    for m in TEAM:
+        has_photo = os.path.exists(os.path.join(ROOT, 'assets', 'team', m['photo'] + '.webp'))
+        photo = (f'<img src="{prefix}assets/team/{m["photo"]}.webp" alt="{html.escape(m["name"])}" width="640" height="800" loading="lazy" decoding="async">'
+                 if has_photo else f'<span class="initials" aria-hidden="true">{initials(m["name"])}</span>')
+        cards_html += (f'      <article class="member">\n        <div class="member-photo">{photo}</div>\n'
+                       f'        <h2>{html.escape(m["name"])}</h2>\n        <p>{html.escape(m["role"][lang])}</p>\n      </article>\n')
+    body = f'''<section class="page-top">
+  <div class="wrap">
+    <p class="crumbs"><a href="../">{ui["home"]}</a> / {ui["crumb"]}</p>
+    <h1>{ui["h1"]}</h1>
+    <p class="lead">{ui["lead"]}</p>
+  </div>
+</section>
+<section class="team">
+  <div class="wrap">
+    <div class="team-grid">
+{cards_html}    </div>
+    <aside class="article-cta">
+      <h2>{ui["cta_h"]}</h2>
+      <p>{ui["cta_p"]}</p>
+      <div class="ref-ctas"><a class="btn btn-primary" href="../#contact">{L[lang]["cta_1"]}</a><a class="btn btn-outline" href="https://wa.me/573042773864">WhatsApp</a></div>
+    </aside>
+  </div>
+</section>'''
+    schema = {'@context': 'https://schema.org', '@graph': [
+        {'@type': 'AboutPage', 'name': ui['h1'], 'description': ui['desc'], 'url': url, 'inLanguage': lang,
+         'about': {'@id': business_id()},
+         'mainEntity': [{'@type': 'Person', 'name': m['name'], 'jobTitle': m['role'][lang],
+                         'worksFor': {'@id': business_id()},
+                         **({'image': SITE + 'assets/team/' + m['photo'] + '.webp'}
+                            if os.path.exists(os.path.join(ROOT, 'assets', 'team', m['photo'] + '.webp')) else {})} for m in TEAM]},
+        breadcrumbs([(ui['home'], home_url), (ui['crumb'], url)])]}
+    en_href, es_href = (('./', '../es/equipo/') if lang == 'en' else ('../../team/', './'))
+    write(f'{ui["slug"]}/index.html', page(lang, title=ui['title'], desc=ui['desc'], en_url=en_url, es_url=es_url,
+          en_href=en_href, es_href=es_href, body=body, schema=schema))
+SITEMAP.append((SITE + 'team/', SITE + 'es/equipo/', TODAY))
 
 
 # ======================= 4b. Old Wix URLs → redirects, and 404.html =======================

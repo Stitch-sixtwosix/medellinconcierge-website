@@ -17,6 +17,7 @@ change is pushed to the `main` branch on GitHub, and nothing gets pushed without
 | Area / foreign-owner landing pages | `_build/landing.py` | — |
 | Business facts in structured data | `_build/site_config.py` | — |
 | Rental listings (`/rentals/`, `/es/arriendos/`) | nothing: live Hostflow embed | — |
+| Meet the team (`/team/`, `/es/equipo/`) | `_build/team.py` (names, roles) | new photo: put it in `team-photos/`, run `python3 _build/team_photos.py` |
 | Styles | `assets/site.css` | — |
 
 The build writes `es/`, `blog/`, `es/blog/`, the landing page folders, `rentals/`, `es/arriendos/`, `sitemap.xml` and `robots.txt`.
@@ -24,6 +25,13 @@ The build writes `es/`, `blog/`, `es/blog/`, the landing page folders, `rentals/
 **Rental listings** (`/rentals/`, `/es/arriendos/`) embed James's live Hostflow listings page, so they update
 themselves whenever Hostflow changes; nothing to rebuild.
 Never edit those generated files by hand; your change would be overwritten.
+
+## Adding a team member
+
+1. Save the photo in `team-photos/` (in the website folder; it is never published), named like `firstname-lastname.jpg`.
+2. Add the person to `_build/team.py` with the same `photo` name and their role in English and Spanish.
+3. Run `python3 _build/team_photos.py && python3 _build/build.py`. The photo is cut out onto pure white and framed
+   as a 4:5 portrait automatically (macOS only). Until a photo exists, the card shows the person's initials.
 
 ## For Sol: adding a blog post (bilingual)
 
