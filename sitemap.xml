@@ -70,4 +70,18 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/blog/basic-vs-premium.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/blog/basic-vs-premium.html"/>
   </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/rentals/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/arriendos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/rentals/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/es/arriendos/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/arriendos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/rentals/"/>
+  </url>
 </urlset>

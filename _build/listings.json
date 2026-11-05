@@ -1,0 +1,2198 @@
+{
+ "organization": "Medellin Concierge, SAS",
+ "whatsapp": "+573042773864",
+ "email": "sales@medellinconcierge.net",
+ "phone": null,
+ "intro_en": null,
+ "intro_es": null,
+ "has_logo": true,
+ "properties": [
+  {
+   "ref": "#0001",
+   "title_en": "1-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 1 habitación en El Poblado",
+   "area": "El Poblado",
+   "neighbourhood": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 1,
+   "bathrooms": 2,
+   "max_guests": 2,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 7050000,
+    "per": "month",
+    "from": false
+   },
+   "min_nights": 30,
+   "active": true,
+   "available_from": "2026-11-20",
+   "amenities": [
+    "ac",
+    "washer"
+   ],
+   "cover_photo": "60986b0d-d015-4c59-98f1-6680d529ccfd",
+   "photo_count": 20,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1242776299677839065"
+    }
+   ]
+  },
+  {
+   "ref": "#0002",
+   "title_en": "3-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 3 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "neighbourhood": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 4,
+   "max_guests": 6,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 400000,
+    "per": "night",
+    "from": true
+   },
+   "min_nights": 365,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "elevator",
+    "washer"
+   ],
+   "cover_photo": "d05f858a-0e2b-42c6-a5fc-f09b49663340",
+   "photo_count": 35,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1110818240758059750"
+    }
+   ]
+  },
+  {
+   "ref": "#0010",
+   "title_en": "1-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 1 habitación en El Poblado",
+   "area": "El Poblado",
+   "neighbourhood": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 2,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 8550000,
+    "per": "month",
+    "from": false
+   },
+   "min_nights": 365,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "elevator",
+    "ac",
+    "washer"
+   ],
+   "cover_photo": "d5747497-9d15-4d27-aff0-afaa33878bc4",
+   "photo_count": 20,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/568188404839333166"
+    }
+   ]
+  },
+  {
+   "ref": "#0011",
+   "title_en": "1-bedroom apartment in Guatapé",
+   "title_es": "Apartamento de 1 habitación en Guatapé",
+   "area": "Guatapé",
+   "neighbourhood": "Guatapé",
+   "property_type": "Apartment",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 2,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 145000,
+    "per": "night",
+    "from": true
+   },
+   "min_nights": 365,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "c7607309-6b2c-48ad-83a1-adda3b927186",
+   "photo_count": 26,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1071914258082113258"
+    }
+   ]
+  },
+  {
+   "ref": "#0048",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 3,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 7500000,
+    "per": "month",
+    "from": false
+   },
+   "min_nights": null,
+   "active": true,
+   "available_from": "2027-01-09",
+   "amenities": [
+    "elevator",
+    "washer"
+   ],
+   "cover_photo": "b7b22cce-b9c5-4f8a-b551-ac053536e0df",
+   "photo_count": 31,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1286444340795664283"
+    }
+   ]
+  },
+  {
+   "ref": "#0068",
+   "title_en": "3-bedroom house in Envigado",
+   "title_es": "Casa de 3 habitaciones en Envigado",
+   "area": "Envigado",
+   "neighbourhood": "Envigado",
+   "property_type": "House",
+   "bedrooms": 3,
+   "bathrooms": 3,
+   "max_guests": 6,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 13500000,
+    "per": "month",
+    "from": false
+   },
+   "min_nights": null,
+   "active": true,
+   "available_from": "2027-04-30",
+   "amenities": [],
+   "cover_photo": null,
+   "photo_count": 0,
+   "booking_links": []
+  },
+  {
+   "ref": "#0079",
+   "title_en": "2-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 2 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "neighbourhood": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 15000000,
+    "per": "month",
+    "from": false
+   },
+   "min_nights": null,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "elevator",
+    "ac",
+    "washer"
+   ],
+   "cover_photo": "88ea3915-f229-4e39-9192-da1b47215676",
+   "photo_count": 38,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1466050956618043217"
+    }
+   ]
+  },
+  {
+   "ref": "#0082",
+   "title_en": "3-bedroom apartment in Laureles",
+   "title_es": "Apartamento de 3 habitaciones en Laureles",
+   "area": "Laureles",
+   "neighbourhood": "Laureles",
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 2,
+   "max_guests": 5,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 11070000,
+    "per": "month",
+    "from": false
+   },
+   "min_nights": 30,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "85a04f21-c136-446e-a32e-bf4d47978dfb",
+   "photo_count": 16,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1544348525770961839"
+    }
+   ]
+  },
+  {
+   "ref": "#0083",
+   "title_en": "2-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 2 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "neighbourhood": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 3,
+   "max_guests": 4,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 220000,
+    "per": "night",
+    "from": true
+   },
+   "min_nights": 365,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "ac",
+    "washer"
+   ],
+   "cover_photo": "c01f5455-8161-4292-a107-76195cd492bb",
+   "photo_count": 23,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1573104471376137291"
+    }
+   ]
+  },
+  {
+   "ref": "#0084",
+   "title_en": "2-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 2 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "neighbourhood": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 3,
+   "max_guests": 4,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 220000,
+    "per": "night",
+    "from": true
+   },
+   "min_nights": 365,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "ac",
+    "washer"
+   ],
+   "cover_photo": "cf1e98b4-67a8-44ab-bcda-de5669ea1a92",
+   "photo_count": 19,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1557512405304706776"
+    }
+   ]
+  },
+  {
+   "ref": "#0085",
+   "title_en": "1-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 1 habitación en El Poblado",
+   "area": "El Poblado",
+   "neighbourhood": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 2,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 220000,
+    "per": "night",
+    "from": true
+   },
+   "min_nights": 365,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "ac",
+    "washer"
+   ],
+   "cover_photo": "fb66cada-3f44-4f1c-8971-e39cbe3bc6d6",
+   "photo_count": 11,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1557148641859181965"
+    }
+   ]
+  },
+  {
+   "ref": "#0086",
+   "title_en": "1-bedroom apartment in Envigado",
+   "title_es": "Apartamento de 1 habitación en Envigado",
+   "area": "Envigado",
+   "neighbourhood": "Envigado",
+   "property_type": "Apartment",
+   "bedrooms": 1,
+   "bathrooms": 2,
+   "max_guests": 2,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 195000,
+    "per": "night",
+    "from": true
+   },
+   "min_nights": 2,
+   "active": true,
+   "available_from": "2026-11-21",
+   "amenities": [
+    "elevator",
+    "parking",
+    "washer"
+   ],
+   "cover_photo": "80325cc5-2735-48ed-a2af-15849287b290",
+   "photo_count": 5,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1567644876777215413"
+    }
+   ]
+  },
+  {
+   "ref": "#0087",
+   "title_en": "2-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 2 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "neighbourhood": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 3,
+   "max_guests": 6,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 200000,
+    "per": "night",
+    "from": true
+   },
+   "min_nights": 365,
+   "active": true,
+   "available_from": "2026-11-07",
+   "amenities": [
+    "elevator",
+    "ac"
+   ],
+   "cover_photo": "aaa1ae41-b765-491c-8e69-f281eecc8315",
+   "photo_count": 51,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1569669692558214891"
+    }
+   ]
+  },
+  {
+   "ref": "#0088",
+   "title_en": "1-bedroom studio in El Poblado",
+   "title_es": "Apartaestudio de 1 habitación en El Poblado",
+   "area": "El Poblado",
+   "neighbourhood": "El Poblado",
+   "property_type": "Studio",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 2,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 158000,
+    "per": "night",
+    "from": true
+   },
+   "min_nights": 365,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "elevator",
+    "ac"
+   ],
+   "cover_photo": "369d41d9-892e-4b4a-8859-f0292fc5bbef",
+   "photo_count": 18,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1568369073998107926"
+    }
+   ]
+  },
+  {
+   "ref": "#0089",
+   "title_en": "3-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 3 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "neighbourhood": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 4,
+   "max_guests": 8,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 342000,
+    "per": "night",
+    "from": true
+   },
+   "min_nights": 365,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "elevator",
+    "ac"
+   ],
+   "cover_photo": "9ef09dcf-77e5-42be-ab04-310dad67fb10",
+   "photo_count": 52,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1576419134141027115"
+    }
+   ]
+  },
+  {
+   "ref": "#0094",
+   "title_en": "1-bedroom studio in Medellín",
+   "title_es": "Apartaestudio de 1 habitación en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Studio",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 4,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 85000,
+    "per": "night",
+    "from": true
+   },
+   "min_nights": null,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "ec9d7308-2b92-4279-af24-e14d174edc38",
+   "photo_count": 11,
+   "booking_links": []
+  },
+  {
+   "ref": "#0102",
+   "title_en": "3-bedroom house in Barbosa",
+   "title_es": "Casa de 3 habitaciones en Barbosa",
+   "area": "Barbosa",
+   "neighbourhood": "Barbosa",
+   "property_type": "House",
+   "bedrooms": 3,
+   "bathrooms": 3,
+   "max_guests": 10,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 400000,
+    "per": "night",
+    "from": true
+   },
+   "min_nights": 365,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "parking"
+   ],
+   "cover_photo": "0e4afd99-3407-4025-b1e4-20256063b06a",
+   "photo_count": 44,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1696776129508156397"
+    }
+   ]
+  },
+  {
+   "ref": "#0104",
+   "title_en": "2-bedroom apartment in Sabaneta",
+   "title_es": "Apartamento de 2 habitaciones en Sabaneta",
+   "area": "Sabaneta",
+   "neighbourhood": "Sabaneta",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 5,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 200000,
+    "per": "night",
+    "from": true
+   },
+   "min_nights": 365,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "elevator",
+    "washer"
+   ],
+   "cover_photo": "f0d23dc2-5122-4cfe-807b-2bcf1508a819",
+   "photo_count": 18,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1624074599233705731"
+    }
+   ]
+  },
+  {
+   "ref": "#0106",
+   "title_en": "3-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 3 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 15000000,
+    "per": "month",
+    "from": false
+   },
+   "min_nights": 365,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "elevator",
+    "ac",
+    "washer"
+   ],
+   "cover_photo": "a1352866-dc00-4497-8035-4d18c43a21e2",
+   "photo_count": 23,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1679026643607242590"
+    }
+   ]
+  },
+  {
+   "ref": "#0111",
+   "title_en": "2-bedroom apartment in Sabaneta",
+   "title_es": "Apartamento de 2 habitaciones en Sabaneta",
+   "area": "Sabaneta",
+   "neighbourhood": "Sabaneta",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 218000,
+    "per": "night",
+    "from": true
+   },
+   "min_nights": 365,
+   "active": true,
+   "available_from": "2026-12-02",
+   "amenities": [
+    "ac",
+    "parking",
+    "washer"
+   ],
+   "cover_photo": "c435d9e9-e73b-4be3-bf9d-1d853e1d75de",
+   "photo_count": 40,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1729822868621966804"
+    }
+   ]
+  },
+  {
+   "ref": "#0112",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 6900000,
+    "per": "month",
+    "from": false
+   },
+   "min_nights": null,
+   "active": true,
+   "available_from": "2027-09-15",
+   "amenities": [
+    "elevator",
+    "washer"
+   ],
+   "cover_photo": "cac764b4-00b6-4ae2-928e-4f7e24760145",
+   "photo_count": 19,
+   "booking_links": []
+  },
+  {
+   "ref": "#0113",
+   "title_en": "2-bedroom apartment in Envigado",
+   "title_es": "Apartamento de 2 habitaciones en Envigado",
+   "area": "Envigado",
+   "neighbourhood": "Envigado",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 3,
+   "max_guests": 6,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 250000,
+    "per": "night",
+    "from": true
+   },
+   "min_nights": 365,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "elevator",
+    "ac",
+    "washer"
+   ],
+   "cover_photo": "feb85173-fb76-4d84-93fa-77a339f587ee",
+   "photo_count": 25,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1756491972271069783"
+    }
+   ]
+  },
+  {
+   "ref": "#0114",
+   "title_en": "3-bedroom apartment in Guayabal",
+   "title_es": "Apartamento de 3 habitaciones en Guayabal",
+   "area": "Guayabal",
+   "neighbourhood": "Guayabal",
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 9450000,
+    "per": "month",
+    "from": false
+   },
+   "min_nights": 30,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "elevator",
+    "ac",
+    "parking"
+   ],
+   "cover_photo": "2f8b6b20-40c4-456d-9929-4781c9324832",
+   "photo_count": 35,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1775630270426051434"
+    }
+   ]
+  },
+  {
+   "ref": "#0115",
+   "title_en": "3-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 3 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "neighbourhood": "El Poblado",
+   "property_type": "Condo",
+   "bedrooms": 3,
+   "bathrooms": 3,
+   "max_guests": 4,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 15000000,
+    "per": "month",
+    "from": false
+   },
+   "min_nights": 30,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "elevator",
+    "ac",
+    "parking"
+   ],
+   "cover_photo": "c836afd8-caf0-408d-b287-e2b4194630cf",
+   "photo_count": 37,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1782954007991701093"
+    }
+   ]
+  },
+  {
+   "ref": "#0116",
+   "title_en": "3-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 3 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "neighbourhood": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 4,
+   "max_guests": 6,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 20700000,
+    "per": "month",
+    "from": false
+   },
+   "min_nights": 30,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "elevator",
+    "ac",
+    "parking"
+   ],
+   "cover_photo": "cbc6acd3-5e45-420e-86f1-aef0118810d2",
+   "photo_count": 69,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1782759535319084051"
+    }
+   ]
+  },
+  {
+   "ref": "#0117",
+   "title_en": "2-bedroom apartment in Medellin",
+   "title_es": "Apartamento de 2 habitaciones en Medellin",
+   "area": "Medellin",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 6300000,
+    "per": "month",
+    "from": false
+   },
+   "min_nights": 30,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [],
+   "cover_photo": null,
+   "photo_count": 0,
+   "booking_links": []
+  },
+  {
+   "ref": "#0118",
+   "title_en": "2-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 2 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "neighbourhood": "El Poblado",
+   "property_type": "Condo",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 567000,
+    "per": "night",
+    "from": true
+   },
+   "min_nights": 365,
+   "active": true,
+   "available_from": "2026-11-06",
+   "amenities": [
+    "elevator",
+    "ac",
+    "washer",
+    "dryer"
+   ],
+   "cover_photo": "93c323f2-0278-4575-82a9-fcebe4ab17f8",
+   "photo_count": 18,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1784811766914737142"
+    }
+   ]
+  },
+  {
+   "ref": "#0119",
+   "title_en": "1-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 1 habitación en El Poblado",
+   "area": "El Poblado",
+   "neighbourhood": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 3,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 10290000,
+    "per": "month",
+    "from": false
+   },
+   "min_nights": 30,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "elevator",
+    "ac",
+    "washer"
+   ],
+   "cover_photo": "b2aa9dfc-fa77-4d49-9ad3-2038497dd0cf",
+   "photo_count": 24,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1795757660593959544"
+    }
+   ]
+  },
+  {
+   "ref": "#0120",
+   "title_en": "3-bedroom apartment in Laureles",
+   "title_es": "Apartamento de 3 habitaciones en Laureles",
+   "area": "Laureles",
+   "neighbourhood": "Laureles",
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 9240000,
+    "per": "month",
+    "from": false
+   },
+   "min_nights": 90,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "bbq",
+    "playground",
+    "elevator",
+    "ac"
+   ],
+   "cover_photo": "50faac6a-57d3-4453-8605-7e27d2720aad",
+   "photo_count": 46,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1803046630601492620"
+    }
+   ]
+  },
+  {
+   "ref": "#0121",
+   "title_en": "2-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 2 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "neighbourhood": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 3,
+   "stay_type": "long_term",
+   "price": {
+    "amount": null,
+    "per": null,
+    "from": false
+   },
+   "min_nights": 30,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "gym",
+    "parking",
+    "washer",
+    "dryer"
+   ],
+   "cover_photo": "a400f315-c785-4361-a941-9040e84e6f60",
+   "photo_count": 22,
+   "booking_links": []
+  },
+  {
+   "ref": "#0122",
+   "title_en": "3-bedroom apartment in Envigado",
+   "title_es": "Apartamento de 3 habitaciones en Envigado",
+   "area": "Envigado",
+   "neighbourhood": "Envigado",
+   "property_type": "Condo",
+   "bedrooms": 3,
+   "bathrooms": 2,
+   "max_guests": 6,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 8400000,
+    "per": "month",
+    "from": false
+   },
+   "min_nights": 30,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "elevator",
+    "parking",
+    "washer",
+    "dryer"
+   ],
+   "cover_photo": "c104ea84-b654-4396-8829-b576c661169c",
+   "photo_count": 22,
+   "booking_links": [
+    {
+     "platform": "Airbnb",
+     "url": "https://www.airbnb.com.co/rooms/1806704857757113886"
+    }
+   ]
+  },
+  {
+   "ref": "#0123",
+   "title_en": "2-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 2 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "neighbourhood": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 3,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 7800000,
+    "per": "month",
+    "from": false
+   },
+   "min_nights": 30,
+   "active": true,
+   "available_from": "2026-11-04",
+   "amenities": [
+    "elevator",
+    "parking"
+   ],
+   "cover_photo": "ee6ee91a-e326-4b19-aea8-fd9b052f537f",
+   "photo_count": 37,
+   "booking_links": []
+  },
+  {
+   "ref": "#0009",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 1,
+   "max_guests": 4,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "b84e9cad-a523-47ae-8159-b003e3f6fa15",
+   "photo_count": 8,
+   "booking_links": []
+  },
+  {
+   "ref": "#0012",
+   "title_en": "4-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 4 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 4,
+   "bathrooms": 4,
+   "max_guests": 8,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "62c1038b-6299-43bc-8c24-60363bd0cc40",
+   "photo_count": 8,
+   "booking_links": []
+  },
+  {
+   "ref": "#0014",
+   "title_en": "3-bedroom house in Guatape",
+   "title_es": "Casa de 3 habitaciones en Guatape",
+   "area": "Guatape",
+   "neighbourhood": null,
+   "property_type": "House",
+   "bedrooms": 3,
+   "bathrooms": 1,
+   "max_guests": 12,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "608c5eaa-ce4f-4ee5-9369-6818490825f5",
+   "photo_count": 20,
+   "booking_links": []
+  },
+  {
+   "ref": "#0019",
+   "title_en": "2-bedroom apartment in Cartagena",
+   "title_es": "Apartamento de 2 habitaciones en Cartagena",
+   "area": "Cartagena",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 1,
+   "max_guests": 4,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "cb5a3488-007c-4027-ad38-1efc81281fb4",
+   "photo_count": 28,
+   "booking_links": []
+  },
+  {
+   "ref": "#0020",
+   "title_en": "2-bedroom apartment in Cartagena",
+   "title_es": "Apartamento de 2 habitaciones en Cartagena",
+   "area": "Cartagena",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 1,
+   "max_guests": 4,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "1ed68cdb-3fc9-45f1-bd64-758fa3bc94b7",
+   "photo_count": 29,
+   "booking_links": []
+  },
+  {
+   "ref": "#0021",
+   "title_en": "4-bedroom apartment in Cartagena",
+   "title_es": "Apartamento de 4 habitaciones en Cartagena",
+   "area": "Cartagena",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 4,
+   "bathrooms": 1,
+   "max_guests": 6,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "c5addfb5-8db6-483e-b616-16e142efbf54",
+   "photo_count": 24,
+   "booking_links": []
+  },
+  {
+   "ref": "#0022",
+   "title_en": "3-bedroom apartment in Cartagena",
+   "title_es": "Apartamento de 3 habitaciones en Cartagena",
+   "area": "Cartagena",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 1,
+   "max_guests": 6,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "00db6a41-9794-455e-9a55-a7d1e918ec77",
+   "photo_count": 25,
+   "booking_links": []
+  },
+  {
+   "ref": "#0023",
+   "title_en": "2-bedroom apartment in Cartagena",
+   "title_es": "Apartamento de 2 habitaciones en Cartagena",
+   "area": "Cartagena",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 1,
+   "max_guests": 4,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "c0d7e353-145f-4f08-b034-24e1906d0fb8",
+   "photo_count": 29,
+   "booking_links": []
+  },
+  {
+   "ref": "#0024",
+   "title_en": "3-bedroom apartment in Cartagena",
+   "title_es": "Apartamento de 3 habitaciones en Cartagena",
+   "area": "Cartagena",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 2,
+   "max_guests": 6,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "09160fd8-aa2b-40a9-9930-749fa7ab5c94",
+   "photo_count": 17,
+   "booking_links": []
+  },
+  {
+   "ref": "#0025",
+   "title_en": "3-bedroom apartment in Cartagena",
+   "title_es": "Apartamento de 3 habitaciones en Cartagena",
+   "area": "Cartagena",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 2,
+   "max_guests": 6,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "d0bb675e-0799-4b64-8ecb-b5ccb65464b8",
+   "photo_count": 27,
+   "booking_links": []
+  },
+  {
+   "ref": "#0026",
+   "title_en": "2-bedroom apartment in Cartagena",
+   "title_es": "Apartamento de 2 habitaciones en Cartagena",
+   "area": "Cartagena",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 1,
+   "max_guests": 6,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "8aecb1b2-76e6-4274-9357-f4eba2ff38b5",
+   "photo_count": 17,
+   "booking_links": []
+  },
+  {
+   "ref": "#0027",
+   "title_en": "2-bedroom apartment in Cartagena",
+   "title_es": "Apartamento de 2 habitaciones en Cartagena",
+   "area": "Cartagena",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 1,
+   "max_guests": 6,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "54b5da84-fd51-42a5-9336-8508c24216f1",
+   "photo_count": 14,
+   "booking_links": []
+  },
+  {
+   "ref": "#0028",
+   "title_en": "2-bedroom apartment in Cartagena",
+   "title_es": "Apartamento de 2 habitaciones en Cartagena",
+   "area": "Cartagena",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 1,
+   "max_guests": 6,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "ebc4afa2-8a65-4b14-b47d-8145754de9a7",
+   "photo_count": 28,
+   "booking_links": []
+  },
+  {
+   "ref": "#0029",
+   "title_en": "5-bedroom apartment in Cartagena",
+   "title_es": "Apartamento de 5 habitaciones en Cartagena",
+   "area": "Cartagena",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 5,
+   "bathrooms": 1,
+   "max_guests": 8,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "7d4d6520-30f5-4814-a829-3e1b84c3f41f",
+   "photo_count": 29,
+   "booking_links": []
+  },
+  {
+   "ref": "#0030",
+   "title_en": "4-bedroom apartment in Cartagena",
+   "title_es": "Apartamento de 4 habitaciones en Cartagena",
+   "area": "Cartagena",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 4,
+   "bathrooms": 2,
+   "max_guests": 8,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "d02d5be3-46a7-472c-986e-48a5309e3219",
+   "photo_count": 29,
+   "booking_links": []
+  },
+  {
+   "ref": "#0033",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 5,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "380b2ca6-912d-48c4-ba82-ae2bca9d1f2f",
+   "photo_count": 57,
+   "booking_links": []
+  },
+  {
+   "ref": "#0034",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 6,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "2c121cd2-b8f0-4d27-ba57-228af14be9f1",
+   "photo_count": 32,
+   "booking_links": []
+  },
+  {
+   "ref": "#0049",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "a3901ac5-004f-40bb-bad4-083e236da032",
+   "photo_count": 27,
+   "booking_links": []
+  },
+  {
+   "ref": "#0050",
+   "title_en": "1-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 1 habitación en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 2,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "39040a6c-1876-4cec-b5cd-4569279d8ddd",
+   "photo_count": 26,
+   "booking_links": []
+  },
+  {
+   "ref": "#0051",
+   "title_en": "4-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 4 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 4,
+   "bathrooms": 5,
+   "max_guests": 7,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "4644fe35-86cd-4d6f-a0c2-1b3b3e3b3599",
+   "photo_count": 20,
+   "booking_links": []
+  },
+  {
+   "ref": "#0052",
+   "title_en": "3-bedroom apartment in Bogota",
+   "title_es": "Apartamento de 3 habitaciones en Bogota",
+   "area": "Bogota",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 4,
+   "max_guests": 6,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "ecb570d2-bdd1-426a-9d34-605f7a2db9a0",
+   "photo_count": 38,
+   "booking_links": []
+  },
+  {
+   "ref": "#0057",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "88ca1544-3d70-40df-baef-8828697837f7",
+   "photo_count": 16,
+   "booking_links": []
+  },
+  {
+   "ref": "#0058",
+   "title_en": "3-bedroom house in Medellín",
+   "title_es": "Casa de 3 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "House",
+   "bedrooms": 3,
+   "bathrooms": 4,
+   "max_guests": 8,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": null,
+   "photo_count": 0,
+   "booking_links": []
+  },
+  {
+   "ref": "#0059",
+   "title_en": "3-bedroom apartment in Cartagena",
+   "title_es": "Apartamento de 3 habitaciones en Cartagena",
+   "area": "Cartagena",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 3,
+   "max_guests": 8,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "eec2edce-33ff-4dbe-806e-38d03edee1a6",
+   "photo_count": 58,
+   "booking_links": []
+  },
+  {
+   "ref": "#0060",
+   "title_en": "3-bedroom apartment in Cartagena",
+   "title_es": "Apartamento de 3 habitaciones en Cartagena",
+   "area": "Cartagena",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 2,
+   "max_guests": 9,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "37fefef8-ada1-4d68-9a6b-e2f5a94ba916",
+   "photo_count": 62,
+   "booking_links": []
+  },
+  {
+   "ref": "#0061",
+   "title_en": "5-bedroom apartment in Cartagena",
+   "title_es": "Apartamento de 5 habitaciones en Cartagena",
+   "area": "Cartagena",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 5,
+   "bathrooms": 1,
+   "max_guests": 6,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": null,
+   "photo_count": 0,
+   "booking_links": []
+  },
+  {
+   "ref": "#0062",
+   "title_en": "4-bedroom apartment in Cartagena",
+   "title_es": "Apartamento de 4 habitaciones en Cartagena",
+   "area": "Cartagena",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 4,
+   "bathrooms": 2,
+   "max_guests": 6,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": null,
+   "photo_count": 0,
+   "booking_links": []
+  },
+  {
+   "ref": "#0063",
+   "title_en": "5-bedroom apartment in Cartagena",
+   "title_es": "Apartamento de 5 habitaciones en Cartagena",
+   "area": "Cartagena",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 5,
+   "bathrooms": 2,
+   "max_guests": 8,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": null,
+   "photo_count": 0,
+   "booking_links": []
+  },
+  {
+   "ref": "#0066",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 3,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "elevator",
+    "washer"
+   ],
+   "cover_photo": "83f13de4-4766-4ee5-9ccf-25a07ff66ec4",
+   "photo_count": 16,
+   "booking_links": []
+  },
+  {
+   "ref": "#0069",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 3,
+   "max_guests": 4,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": null,
+   "photo_count": 0,
+   "booking_links": []
+  },
+  {
+   "ref": "#0070",
+   "title_en": "1-bedroom cabin in Peñol",
+   "title_es": "Cabaña de 1 habitación en Peñol",
+   "area": "Peñol",
+   "neighbourhood": null,
+   "property_type": "Cabin",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 3,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": null,
+   "photo_count": 0,
+   "booking_links": []
+  },
+  {
+   "ref": "#0073",
+   "title_en": "1-bedroom cabin in Rionegro",
+   "title_es": "Cabaña de 1 habitación en Rionegro",
+   "area": "Rionegro",
+   "neighbourhood": null,
+   "property_type": "Cabin",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 2,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": null,
+   "photo_count": 0,
+   "booking_links": []
+  },
+  {
+   "ref": "#0074",
+   "title_en": "3-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 3 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": null,
+   "photo_count": 0,
+   "booking_links": []
+  },
+  {
+   "ref": "#0075",
+   "title_en": "1-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 1 habitación en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 1,
+   "bathrooms": 2,
+   "max_guests": 2,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "elevator",
+    "washer"
+   ],
+   "cover_photo": "276dc16c-bc6e-4cc8-b5b0-7e587818bd95",
+   "photo_count": 42,
+   "booking_links": []
+  },
+  {
+   "ref": "#0076",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "802baa41-a24e-4400-81aa-61c0bbd0dc66",
+   "photo_count": 53,
+   "booking_links": []
+  },
+  {
+   "ref": "#0076",
+   "title_en": "1-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 1 habitación en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 2,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "6c74db5d-16fc-468f-a902-15abf548ab58",
+   "photo_count": 53,
+   "booking_links": []
+  },
+  {
+   "ref": "#0078",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": "short_term",
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "00b7b9cc-0866-4b61-b8ed-16b7c604ae9c",
+   "photo_count": 23,
+   "booking_links": []
+  },
+  {
+   "ref": "#0080",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 1,
+   "max_guests": 4,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "3fe21cf2-f1b8-412c-b054-01c5b957e06b",
+   "photo_count": 10,
+   "booking_links": []
+  },
+  {
+   "ref": "#0081",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 5,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "d8aa65c2-cd8f-4f08-9f62-6c42580aea0a",
+   "photo_count": 17,
+   "booking_links": []
+  },
+  {
+   "ref": "#0091",
+   "title_en": "1-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 1 habitación en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 2,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": null,
+   "photo_count": 0,
+   "booking_links": []
+  },
+  {
+   "ref": "#0092",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 6,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "c70abc0c-8573-416b-bdba-af9e689fa0a8",
+   "photo_count": 16,
+   "booking_links": []
+  },
+  {
+   "ref": "#0093",
+   "title_en": "1-bedroom studio in Medellín",
+   "title_es": "Apartaestudio de 1 habitación en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Studio",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 4,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "ed1f1168-693b-469c-b054-f4157302726d",
+   "photo_count": 12,
+   "booking_links": []
+  },
+  {
+   "ref": "#0095",
+   "title_en": "1-bedroom studio in Laureles",
+   "title_es": "Apartaestudio de 1 habitación en Laureles",
+   "area": "Laureles",
+   "neighbourhood": "Laureles",
+   "property_type": "Studio",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 4,
+   "stay_type": "long_term",
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "06094281-535a-4b81-88eb-2ac92760d8af",
+   "photo_count": 9,
+   "booking_links": []
+  },
+  {
+   "ref": "#0096",
+   "title_en": "1-bedroom studio in Laureles",
+   "title_es": "Apartaestudio de 1 habitación en Laureles",
+   "area": "Laureles",
+   "neighbourhood": "Laureles",
+   "property_type": "Studio",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 2,
+   "stay_type": "long_term",
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "d916f759-308e-4773-901d-c59adae884bb",
+   "photo_count": 10,
+   "booking_links": []
+  },
+  {
+   "ref": "#0097",
+   "title_en": "1-bedroom studio in Laureles",
+   "title_es": "Apartaestudio de 1 habitación en Laureles",
+   "area": "Laureles",
+   "neighbourhood": "Laureles",
+   "property_type": "Studio",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 2,
+   "stay_type": "long_term",
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "b6c397e9-520d-4480-abaa-815c427111c9",
+   "photo_count": 8,
+   "booking_links": []
+  },
+  {
+   "ref": "#0098",
+   "title_en": "5-bedroom house in Laureles",
+   "title_es": "Casa de 5 habitaciones en Laureles",
+   "area": "Laureles",
+   "neighbourhood": "Laureles",
+   "property_type": "House",
+   "bedrooms": 5,
+   "bathrooms": 5,
+   "max_guests": 15,
+   "stay_type": "long_term",
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "7f75e0a1-99e0-4258-87d4-590085284c02",
+   "photo_count": 46,
+   "booking_links": []
+  },
+  {
+   "ref": "#0101",
+   "title_en": "3-bedroom villa in Medellín",
+   "title_es": "Villa de 3 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Villa",
+   "bedrooms": 3,
+   "bathrooms": 3,
+   "max_guests": 3,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "67ed6606-f869-4569-abc7-798d3361e74f",
+   "photo_count": 20,
+   "booking_links": []
+  },
+  {
+   "ref": "#0107",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 5,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": null,
+   "photo_count": 0,
+   "booking_links": []
+  },
+  {
+   "ref": "#0108",
+   "title_en": "5-bedroom villa in Medellín",
+   "title_es": "Villa de 5 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Villa",
+   "bedrooms": 5,
+   "bathrooms": 2,
+   "max_guests": 7,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": null,
+   "photo_count": 0,
+   "booking_links": []
+  },
+  {
+   "ref": "#0109",
+   "title_en": "5-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 5 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 5,
+   "bathrooms": 2,
+   "max_guests": 7,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "cdcff503-a8cf-4599-b136-74bcdd5e5ca7",
+   "photo_count": 22,
+   "booking_links": []
+  },
+  {
+   "ref": "#0110",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [
+    "washer"
+   ],
+   "cover_photo": "dfd85f23-92c0-45e0-84a5-2b7045c00136",
+   "photo_count": 29,
+   "booking_links": []
+  },
+  {
+   "ref": "#0122",
+   "title_en": "3-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 3 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartamento",
+   "bedrooms": 3,
+   "bathrooms": 2,
+   "max_guests": 10,
+   "stay_type": "short_term",
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [],
+   "cover_photo": null,
+   "photo_count": 0,
+   "booking_links": []
+  },
+  {
+   "ref": "#0123",
+   "title_en": "Studio in Medellin",
+   "title_es": "Apartaestudio en Medellin",
+   "area": "Medellin",
+   "neighbourhood": null,
+   "property_type": "Apartment",
+   "bedrooms": 0,
+   "bathrooms": 0,
+   "max_guests": 0,
+   "stay_type": null,
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [],
+   "cover_photo": null,
+   "photo_count": 0,
+   "booking_links": []
+  },
+  {
+   "ref": "#0124",
+   "title_en": "3-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 3 habitaciones en Medellín",
+   "area": "Medellín",
+   "neighbourhood": null,
+   "property_type": "Apartamento",
+   "bedrooms": 3,
+   "bathrooms": 2,
+   "max_guests": 5,
+   "stay_type": "long_term",
+   "price": null,
+   "min_nights": null,
+   "active": false,
+   "available_from": null,
+   "amenities": [],
+   "cover_photo": null,
+   "photo_count": 0,
+   "booking_links": []
+  }
+ ],
+ "fetched": "2026-11-04"
+}
