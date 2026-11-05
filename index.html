@@ -29,7 +29,7 @@
 <script>document.documentElement.classList.add('js');
 // Send Spanish-speaking first-time visitors (or anyone who chose ES before) to the Spanish home page
 try { var l = localStorage.getItem('mc-lang'); if (l === 'es' || (!l && /^es\b/i.test(navigator.language || ''))) location.replace('es/' + location.hash); } catch (e) {}</script>
-<link rel="stylesheet" href="assets/site.css?v=e3bc01a3">
+<link rel="stylesheet" href="assets/site.css?v=05920ea9">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -160,91 +160,6 @@ try { var l = localStorage.getItem('mc-lang'); if (l === 'es' || (!l && /^es\b/i
    "publisher": {
     "@id": "https://www.medellinconcierge.net/#business"
    }
-  },
-  {
-   "@type": "FAQPage",
-   "mainEntity": [
-    {
-     "@type": "Question",
-     "name": "What services do you offer?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Most owners choose full management: listing optimization, guest communication, booking management, dynamic pricing, professional cleaning, maintenance coordination and 24/7 guest support. Our second option is channel management, where we give live support across the listing channels and handle guest inquiries while you keep full control of cleaning and maintenance. We also offer a brokerage agreement, where we connect you with guests and you handle the stay yourself."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "What are your management fees?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "A commission on your rental income, with no upfront fees. Basic: 12% for long stays (30+ nights) and 17% for short stays. Premium: 15% and 20%, a completely hands-off service where we also pay your property taxes, HOA fees, utilities and internet bills, with a monthly accounting report. All percentages are plus IVA."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Are there any additional or hidden fees?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "No. Any additional cost, such as deep cleaning, minor repairs or restocking supplies, is discussed with you in advance."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "I live outside Colombia. Can you manage everything remotely?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Yes. We handle guests, check-ins and check-outs, cleaning, maintenance, registrations and payments, and you can follow everything in your owner portal. For repairs above a pre-agreed limit, we ask for your approval first."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "What are RNT, SIRE and TRA, and do I need them?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "They are Colombian registrations required for short-term tourist rentals: the National Tourism Registry (RNT), the migration reporting system for foreign guests (SIRE), and the Tourism Registration Card (TRA). We take care of the paperwork and ongoing reporting."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "What happens if a guest damages my property?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "We inspect the property after every stay and document any damage. If there is an issue, we handle the claim through Airbnb’s Host Guarantee and security deposit policies."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Can I use my property for personal stays?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Of course. You keep full control of your property’s availability. Tell us the dates you want and we’ll block them for you."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "How do I receive my earnings?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "We pay out your earnings once a month, within the first 5 business days, for the previous month. Earnings are calculated using GAAP (Generally Accepted Accounting Principles), net of our management fees and expenses."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "What if I want to pause or stop your services?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "You can pause or end our services with advance notice, as set out in our agreement, and we provide a smooth handover if you decide to self-manage or switch providers."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Do you pay agents for referrals?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Yes. Agents who refer a property owner to us receive 10% of our commission on that client, for as long as the client uses our services. Sign up as a referral agent ."
-     }
-    }
-   ]
   }
  ]
 }
@@ -261,7 +176,7 @@ try { var l = localStorage.getItem('mc-lang'); if (l === 'es' || (!l && /^es\b/i
       <a href="#plans">Plans</a>
       <a href="#calculator">Calculator</a>
       <a href="#reviews">Reviews</a>
-      <a href="#faq">FAQ</a>
+      <a href="faq/">FAQ</a>
       <a href="team/">Team</a>
       <a href="rentals/">Rentals</a>
       <a href="blog/">Blog</a>
@@ -376,7 +291,7 @@ try { var l = localStorage.getItem('mc-lang'); if (l === 'es' || (!l && /^es\b/i
         </dl>
       </article>
     </div>
-    <p class="area-more reveal">Learn more: <a href="airbnb-management-medellin/">Airbnb management in Medellín</a> · <a href="long-term-property-management-medellin/">Long-term property management in Medellín</a></p>
+    <p class="area-more reveal">Learn more: <a href="airbnb-management-medellin/" data-landing="airbnb">Airbnb management in Medellín</a><span class="sep-link"> · <a data-landing="long-term">Long-term property management in Medellín</a></span></p>
   </div>
 </section>
 
@@ -388,33 +303,12 @@ try { var l = localStorage.getItem('mc-lang'); if (l === 'es' || (!l && /^es\b/i
       <p class="lead">We manage apartments across Medellín and the Aburrá Valley, for short stays on Airbnb and long stays of 30 nights or more.</p>
     </div>
     <div class="area-grid" data-stagger>
-      <a class="area-card reveal" href="property-management-el-poblado/"><h3>El Poblado</h3><p>Airbnb and long-term property management in El Poblado.</p><span class="read">El Poblado <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-      <a class="area-card reveal" href="property-management-laureles/"><h3>Laureles</h3><p>Airbnb and long-term property management in Laureles.</p><span class="read">Laureles <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-      <a class="area-card reveal" href="property-management-envigado/"><h3>Envigado</h3><p>Airbnb and long-term property management in Envigado.</p><span class="read">Envigado <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-      <a class="area-card reveal" href="property-management-sabaneta/"><h3>Sabaneta</h3><p>Airbnb and long-term property management in Sabaneta.</p><span class="read">Sabaneta <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="area-card reveal" data-landing="el-poblado"><h3>El Poblado</h3><p>Airbnb and long-term property management in El Poblado.</p><span class="read">El Poblado <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="area-card reveal" data-landing="laureles"><h3>Laureles</h3><p>Airbnb and long-term property management in Laureles.</p><span class="read">Laureles <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="area-card reveal" data-landing="envigado"><h3>Envigado</h3><p>Airbnb and long-term property management in Envigado.</p><span class="read">Envigado <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="area-card reveal" data-landing="sabaneta"><h3>Sabaneta</h3><p>Airbnb and long-term property management in Sabaneta.</p><span class="read">Sabaneta <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
-    <p class="area-more reveal">Own property in Colombia but live abroad? <a href="property-management-colombia/">Property management in Colombia for foreign owners</a></p>
-  </div>
-</section>
-
-<!-- WHY US -->
-<section id="why" class="dark">
-  <div class="wrap">
-    <div class="head reveal">
-      <h2>Stop settling for amateur management of your property</h2>
-      <p class="lead">If your manager can&rsquo;t produce a proper financial statement, you can&rsquo;t know how your investment is really doing. We run on our own software, so your property&rsquo;s performance and monthly GAAP statements are in your owner portal, any time you want them.</p>
-    </div>
-    <table class="compare reveal">
-      <caption class="sr-only">Medellín Concierge compared with a typical informal manager</caption>
-      <thead><tr><td></td><th scope="col">Typical informal manager</th><th scope="col" class="us">Medellín Concierge</th></tr></thead>
-      <tbody>
-        <tr><th scope="row">Financial reporting</th><td class="them" data-label="Typical informal manager"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>A screenshot or a WhatsApp message, if anything</td><td class="us" data-label="Medellín Concierge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Monthly financial statements prepared using GAAP</td></tr>
-        <tr><th scope="row">Visibility</th><td class="them" data-label="Typical informal manager"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>You chase them for updates</td><td class="us" data-label="Medellín Concierge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Your own owner portal, built on our software, open whenever you want</td></tr>
-        <tr><th scope="row">Payouts</th><td class="them" data-label="Typical informal manager"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>Whenever they get around to it</td><td class="us" data-label="Medellín Concierge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>The previous month&rsquo;s earnings within the first 5 business days</td></tr>
-        <tr><th scope="row">Property bills</th><td class="them" data-label="Typical informal manager"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>Left for you to sort out</td><td class="us" data-label="Medellín Concierge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>On Premium, we pay your property taxes, HOA fees, utilities and internet</td></tr>
-        <tr><th scope="row">Legal compliance</th><td class="them" data-label="Typical informal manager"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>Hoping RNT, SIRE and TRA are up to date</td><td class="us" data-label="Medellín Concierge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Registrations and reporting managed for you</td></tr>
-      </tbody>
-    </table>
+    <p class="area-more reveal">Own property in Colombia but live abroad? <a href="property-management-colombia/" data-landing="colombia">Property management in Colombia for foreign owners</a></p>
   </div>
 </section>
 
@@ -597,27 +491,6 @@ try { var l = localStorage.getItem('mc-lang'); if (l === 'es' || (!l && /^es\b/i
   </div>
 </section>
 
-<!-- FAQ -->
-<section id="faq">
-  <div class="wrap">
-    <div class="head center reveal">
-      <h2>Questions owners ask us</h2>
-    </div>
-    <div class="faq reveal">
-      <details><summary>What services do you offer?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Most owners choose full management: listing optimization, guest communication, booking management, dynamic pricing, professional cleaning, maintenance coordination and 24/7 guest support. Our second option is channel management, where we give live support across the listing channels and handle guest inquiries while you keep full control of cleaning and maintenance. We also offer a brokerage agreement, where we connect you with guests and you handle the stay yourself.</p></details>
-      <details><summary>What are your management fees?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>A commission on your rental income, with no upfront fees. Basic: 12% for long stays (30+ nights) and 17% for short stays. Premium: 15% and 20%, a completely hands-off service where we also pay your property taxes, HOA fees, utilities and internet bills, with a monthly accounting report. All percentages are plus IVA.</p></details>
-      <details><summary>Are there any additional or hidden fees?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>No. Any additional cost, such as deep cleaning, minor repairs or restocking supplies, is discussed with you in advance.</p></details>
-      <details><summary>I live outside Colombia. Can you manage everything remotely?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Yes. We handle guests, check-ins and check-outs, cleaning, maintenance, registrations and payments, and you can follow everything in your owner portal. For repairs above a pre-agreed limit, we ask for your approval first.</p></details>
-      <details><summary>What are RNT, SIRE and TRA, and do I need them?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>They are Colombian registrations required for short-term tourist rentals: the National Tourism Registry (RNT), the migration reporting system for foreign guests (SIRE), and the Tourism Registration Card (TRA). We take care of the paperwork and ongoing reporting.</p></details>
-      <details><summary>What happens if a guest damages my property?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>We inspect the property after every stay and document any damage. If there is an issue, we handle the claim through Airbnb&rsquo;s Host Guarantee and security deposit policies.</p></details>
-      <details><summary>Can I use my property for personal stays?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Of course. You keep full control of your property&rsquo;s availability. Tell us the dates you want and we&rsquo;ll block them for you.</p></details>
-      <details><summary>How do I receive my earnings?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>We pay out your earnings once a month, within the first 5 business days, for the previous month. Earnings are calculated using GAAP (Generally Accepted Accounting Principles), net of our management fees and expenses.</p></details>
-      <details><summary>What if I want to pause or stop your services?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>You can pause or end our services with advance notice, as set out in our agreement, and we provide a smooth handover if you decide to self-manage or switch providers.</p></details>
-      <details><summary>Do you pay agents for referrals?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary><p>Yes. Agents who refer a property owner to us receive 10% of our commission on that client, for as long as the client uses our services. <a href="https://hostflow.in/agent-signup?t=13NWsZp1idciJPYo5o1Cou22" target="_blank" rel="noopener">Sign up as a referral agent</a>.</p></details>
-    </div>
-  </div>
-</section>
-
 <!-- BLOG -->
 <section id="blog">
   <div class="wrap">
@@ -697,9 +570,9 @@ try { var l = localStorage.getItem('mc-lang'); if (l === 'es' || (!l && /^es\b/i
           <a href="https://www.linkedin.com/company/medellin-concierge-sas/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.9 8.8H3.8V20h3.1V8.8zM5.4 4a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6zM20.2 13.6c0-3-1.6-5-4.3-5-1.4 0-2.4.8-2.8 1.5V8.8H10V20h3.1v-5.9c0-1.5.6-2.5 1.9-2.5 1.3 0 1.9.9 1.9 2.5V20h3.1v-6.4z"/></svg></a>
         </div>
       </div>
-      <div><h4>Owners</h4><a href="#services">Services</a><a href="airbnb-management-medellin/">Airbnb management</a><a href="long-term-property-management-medellin/">Long-term management</a><a href="#plans">Plans &amp; fees</a><a href="#how">How it works</a><a href="#calculator">Revenue calculator</a><a href="#faq">FAQ</a></div>
+      <div><h4>Owners</h4><a href="#services">Services</a><a href="airbnb-management-medellin/" data-landing="airbnb">Airbnb management</a><a data-landing="long-term">Long-term management</a><a href="#plans">Plans &amp; fees</a><a href="#how">How it works</a><a href="#calculator">Revenue calculator</a><a href="faq/">FAQ</a></div>
       <div><h4>Company</h4><a href="team/">Meet the team</a><a href="rentals/">Furnished rentals</a><a href="blog/">Blog</a><a href="#referrals">Agent referrals</a><a href="#reviews">Google reviews</a><a href="https://www.airbnb.com/users/show/446836447" target="_blank" rel="noopener">Airbnb host profile</a></div>
-      <div><h4>Areas</h4><a href="property-management-el-poblado/">El Poblado</a><a href="property-management-laureles/">Laureles</a><a href="property-management-envigado/">Envigado</a><a href="property-management-sabaneta/">Sabaneta</a><a href="property-management-colombia/">Foreign owners</a></div>
+      <div><h4>Areas</h4><a data-landing="el-poblado">El Poblado</a><a data-landing="laureles">Laureles</a><a data-landing="envigado">Envigado</a><a data-landing="sabaneta">Sabaneta</a><a href="property-management-colombia/" data-landing="colombia">Foreign owners</a></div>
       <div><h4>Contact</h4><a href="#contact">Get started</a><a href="mailto:sales@medellinconcierge.net">Email</a><a href="https://wa.me/573042773864">WhatsApp</a></div>
     </div>
     <div class="legal"><span>© <span id="yr">2026</span> Medellín Concierge S.A.S. All rights reserved.</span><address class="nap">Medellín Concierge S.A.S. · Cl. 10 #42-28, Oficina 15, El Poblado, Medellín, Antioquia, Colombia · <a href="tel:+573042773864">+57 304 277 3864</a> · <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a></address></div>

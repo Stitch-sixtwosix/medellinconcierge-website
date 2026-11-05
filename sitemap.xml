@@ -85,6 +85,34 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/blog/basic-vs-premium.html"/>
   </url>
   <url>
+    <loc>https://www.medellinconcierge.net/airbnb-management-medellin/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/airbnb-management-medellin/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/administracion-de-airbnb-medellin/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/airbnb-management-medellin/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/es/administracion-de-airbnb-medellin/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/airbnb-management-medellin/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/administracion-de-airbnb-medellin/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/airbnb-management-medellin/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/property-management-colombia/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/property-management-colombia/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/administracion-de-propiedades-colombia/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/property-management-colombia/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/es/administracion-de-propiedades-colombia/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/property-management-colombia/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/administracion-de-propiedades-colombia/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/property-management-colombia/"/>
+  </url>
+  <url>
     <loc>https://www.medellinconcierge.net/rentals/</loc>
     <lastmod>2026-11-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/rentals/"/>
@@ -111,5 +139,19 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/team/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/equipo/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/team/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/faq/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/faq/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/preguntas-frecuentes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/faq/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/es/preguntas-frecuentes/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/faq/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/preguntas-frecuentes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/faq/"/>
   </url>
 </urlset>

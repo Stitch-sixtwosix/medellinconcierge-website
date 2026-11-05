@@ -490,3 +490,14 @@ footer .nl-row .btn{flex:none;width:auto;margin-top:0}
 .nl-msg{margin:0;min-height:1.4em;font-size:.9rem}
 .nl-msg.ok{color:#7fd69a}.nl-msg.err{color:var(--red-light)}
 @media (max-width:760px){.newsletter{grid-template-columns:1fr}.nl-row{flex-direction:column}footer .nl-row .btn{width:100%}}
+
+/* FAQ page (/faq/, /es/preguntas-frecuentes/) */
+.faq-page{padding:56px 0 96px}
+.faq-page .faq{max-width:820px;margin:0 auto}
+.faq-page .article-cta{margin-top:56px}
+
+/* Links to landing pages whose copy isn't finished have no href (see set_landing_links in build.py) */
+footer a:not([href]),.area-more a:not([href]),.sep-link:has(a:not([href])){display:none}
+a.area-card:not([href]){cursor:default}
+a.area-card:not([href]) .read{display:none}
+@media (hover:hover){a.area-card:not([href]):hover{transform:none}}

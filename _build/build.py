@@ -21,6 +21,7 @@ from es_home import HOME_ES, BLOG_UI
 from site_config import SITE, BUSINESS, SAME_AS, NEWSLETTER_ENDPOINT
 from landing import PAGES, AREAS
 from team import TEAM
+from faq import FAQ
 
 TODAY = datetime.date.today().isoformat()
 LANGS = ('en', 'es')
@@ -55,6 +56,24 @@ def jsonld(obj):
 
 def strip_tags(h):
     return html.unescape(re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', h))).strip()
+
+
+# ---------------- landing pages: complete or not ----------------
+def lang_complete(c):
+    return not (c['description'] is None or c['intro'] is None or any(t is None for _, t in c['blocks']))
+COMPLETE = {pg['key']: lang_complete(pg['en']) and lang_complete(pg['es']) for pg in PAGES}
+# Where an unfinished page sends visitors instead (home-page section)
+PENDING_TARGET = {'long-term': '#services', 'colombia': '#areas', 'airbnb': '#services'}
+
+def set_landing_links(s):
+    """Links to landing pages carry data-landing="<key>". Finished pages get their href; unfinished ones lose it
+    (CSS hides them, or shows area cards as plain text). Reversible: the source keeps data-landing."""
+    slug = {pg['key']: pg['en']['slug'] for pg in PAGES}
+    def fix(m):
+        attrs = re.sub(r'\s*href="[^"]*"', '', m.group(1))
+        key = re.search(r'data-landing="([^"]+)"', attrs).group(1)
+        return '<a' + (f' href="{slug[key]}/"' if COMPLETE[key] else '') + attrs + '>'
+    return re.sub(r'<a((?:\s+[\w-]+="[^"]*")*?\s+data-landing="[^"]+"(?:\s+[\w-]+="[^"]*")*)>', fix, s)
 
 
 # ---------------- shared pieces ----------------
@@ -113,8 +132,7 @@ def set_home_jsonld(s, lang):
     graph = {'@context': 'https://schema.org', '@graph': [
         business(lang),
         {'@type': 'WebSite', '@id': SITE + '#website', 'url': SITE, 'name': BUSINESS['name'],
-         'inLanguage': ['en', 'es'], 'publisher': {'@id': business_id()}},
-        faq_schema(s)]}
+         'inLanguage': ['en', 'es'], 'publisher': {'@id': business_id()}}]}
     s, n = re.subn(r'<script type="application/ld\+json">.*?</script>', lambda m: jsonld(graph), s, count=1, flags=re.S)
     assert n == 1, 'JSON-LD block not found in home page'
     return s
@@ -155,6 +173,7 @@ def set_teaser(s, lang):
 # ======================= 1. English home =======================
 print('Building…')
 en = read('index.html')
+en = set_landing_links(en)
 en, _n = re.subn(r'<div class="newsletter" data-newsletter data-endpoint="[^"]*"(?: hidden)?>',
                 lambda m: f'<div class="newsletter" data-newsletter data-endpoint="{html.escape(NEWSLETTER_ENDPOINT, quote=True)}"' + ('' if NEWSLETTER_ENDPOINT else ' hidden') + '>', en)
 assert _n == 1, 'newsletter block not found in index.html footer'
@@ -171,7 +190,7 @@ if missing:
              + '\n  - '.join(m[:100] for m in missing))
 for a, b in HOME_ES:
     es = es.replace(a, b)
-es = es.replace('href="rentals/"', 'href="arriendos/"').replace('href="team/"', 'href="equipo/"')
+es = es.replace('href="rentals/"', 'href="arriendos/"').replace('href="team/"', 'href="equipo/"').replace('href="faq/"', 'href="preguntas-frecuentes/"')
 for pg in PAGES:   # landing page links point to the Spanish versions
     es = es.replace(f'href="{pg["en"]["slug"]}/"', f'href="{pg["es"]["slug"]}/"')
 es = set_teaser(es, 'es')
@@ -373,15 +392,34 @@ def placeholder(lang, key, field, dark=False):
     return f'<div class="placeholder{" on-dark" if dark else ""}">{L[lang]["copy_note"].format(key=key, field=field)}</div>'
 
 for pg in PAGES:
+    if not COMPLETE[pg['key']]:
+        # Unfinished: never show placeholder copy to visitors. Send them to the matching home-page section.
+        for lang in LANGS:
+            folder = pg['en']['slug'] if lang == 'en' else 'es/' + pg['es']['slug']
+            target = SITE + ('es/' if lang == 'es' else '') + PENDING_TARGET.get(pg['key'], '#areas')
+            write(f'{folder}/index.html', f'''<!doctype html>
+<html lang="{lang}">
+<head>
+<meta charset="utf-8">
+<title>Medellín Concierge</title>
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url={target}">
+<script>location.replace({json.dumps(target)});</script>
+</head>
+<body><p><a href="{target}">Medellín Concierge</a></p></body>
+</html>
+''')
+        print(f'  note: {pg["en"]["slug"]}/ copy not finished → redirects to the home page, not linked, not in sitemap')
+        continue
     for lang in LANGS:
         c = pg[lang]; ui = L[lang]
-        incomplete = c['description'] is None or c['intro'] is None or any(b is None for _, b in c['blocks'])
+        incomplete = False
         intro = f'<div class="lead">{c["intro"]}</div>' if c['intro'] else placeholder(lang, pg['key'], 'intro', dark=True)
         blocks = ''.join(f'\n      <h2>{h}</h2>\n      ' + (b if b else placeholder(lang, pg['key'], f'blocks[{i}]'))
                          for i, (h, b) in enumerate(c['blocks']))
         inc = ''.join(f'<li>{CHECK}{x}</li>' for x in ui['inc'])
         more = ''.join(f'<a href="../{o[lang]["slug"]}/">{o[lang]["h1"]}</a>'
-                       for o in PAGES if o is not pg)
+                       for o in PAGES if o is not pg and COMPLETE[o['key']])
         home_href = '../'
         body = f'''<section class="page-top">
   <div class="wrap">
@@ -565,6 +603,55 @@ for lang in LANGS:
 SITEMAP.append((SITE + 'team/', SITE + 'es/equipo/', TODAY))
 
 
+# ======================= 4f. FAQ (/faq/, /es/preguntas-frecuentes/) =======================
+# Questions and answers live in faq.py (brochure FAQs + the former home-page FAQ). FAQPage structured data here.
+F = {
+ 'en': dict(slug='faq', home='Home', crumb='FAQ', title='Property Management FAQ | Medellín Concierge',
+            desc='Answers to owners’ questions about our Airbnb and long-term property management in Medellín: services, fees, payouts, guests, cleaning and RNT.',
+            h1='Frequently asked questions', lead='Straight answers about how we manage your property in Medellín.',
+            cta_h='Still have a question?', cta_p='Write to us or book a free consultation. We reply in English or Spanish.'),
+ 'es': dict(slug='es/preguntas-frecuentes', home='Inicio', crumb='Preguntas frecuentes',
+            title='Preguntas frecuentes | Medellín Concierge',
+            desc='Respuestas a las preguntas de los propietarios sobre nuestra administración de Airbnb y rentas largas en Medellín: servicios, tarifas, pagos y RNT.',
+            h1='Preguntas frecuentes', lead='Respuestas claras sobre cómo administramos su propiedad en Medellín.',
+            cta_h='¿Tiene otra pregunta?', cta_p='Escríbanos o solicite una consulta gratuita. Respondemos en español o en inglés.'),
+}
+PLUS = '<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>'
+for lang in LANGS:
+    ui = F[lang]
+    en_url, es_url = SITE + F['en']['slug'] + '/', SITE + F['es']['slug'] + '/'
+    url = es_url if lang == 'es' else en_url
+    home_url = SITE + ('es/' if lang == 'es' else '')
+    qa = [(item[lang][0], item[lang][1].replace('{home}', '../')) for item in FAQ]
+    items = ''.join(f'      <details><summary>{html.escape(q, quote=False)}{PLUS}</summary><p>{a}</p></details>\n' for q, a in qa)
+    body = f'''<section class="page-top">
+  <div class="wrap">
+    <p class="crumbs"><a href="../">{ui["home"]}</a> / {ui["crumb"]}</p>
+    <h1>{ui["h1"]}</h1>
+    <p class="lead">{ui["lead"]}</p>
+  </div>
+</section>
+<section class="faq-page">
+  <div class="wrap">
+    <div class="faq">
+{items}    </div>
+    <aside class="article-cta">
+      <h2>{ui["cta_h"]}</h2>
+      <p>{ui["cta_p"]}</p>
+      <div class="ref-ctas"><a class="btn btn-primary" href="../#contact">{L[lang]["cta_1"]}</a><a class="btn btn-outline" href="https://wa.me/573042773864">WhatsApp</a></div>
+    </aside>
+  </div>
+</section>'''
+    schema = {'@context': 'https://schema.org', '@graph': [
+        {'@type': 'FAQPage', 'url': url, 'inLanguage': lang, 'mainEntity': [
+            {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}} for q, a in qa]},
+        breadcrumbs([(ui['home'], home_url), (ui['crumb'], url)])]}
+    en_href, es_href = (('./', '../es/preguntas-frecuentes/') if lang == 'en' else ('../../faq/', './'))
+    write(f'{ui["slug"]}/index.html', page(lang, title=ui['title'], desc=ui['desc'], en_url=en_url, es_url=es_url,
+          en_href=en_href, es_href=es_href, body=body, schema=schema))
+SITEMAP.append((SITE + 'faq/', SITE + 'es/preguntas-frecuentes/', TODAY))
+
+
 # ======================= 4b. Old Wix URLs → redirects, and 404.html =======================
 # GitHub Pages has no server-side redirects, so each old path gets a tiny page that redirects instantly
 # (meta refresh + JS) and declares the new URL as canonical. Not listed in sitemap.xml.
@@ -603,8 +690,8 @@ def absolute_links(h):
 
 hdr404 = set_switch(absolute_links(en[en.index('<header id="top">'):en.index('</header>') + len('</header>')]), '/', '/es/', 'en')
 ftr404 = absolute_links(en[en.index('<footer>'):en.index('</footer>') + len('</footer>')])
-page_links = ''.join(f'<a href="/{p["en"]["slug"]}/">{p["en"]["h1"]}</a>' for p in PAGES if p['key'] in ('airbnb', 'long-term', 'colombia'))
-page_links_es = ''.join(f'<a href="/es/{p["es"]["slug"]}/">{p["es"]["h1"]}</a>' for p in PAGES if p['key'] in ('airbnb', 'long-term', 'colombia'))
+page_links = ''.join(f'<a href="/{p["en"]["slug"]}/">{p["en"]["h1"]}</a>' for p in PAGES if p['key'] in ('airbnb', 'long-term', 'colombia') and COMPLETE[p['key']])
+page_links_es = ''.join(f'<a href="/es/{p["es"]["slug"]}/">{p["es"]["h1"]}</a>' for p in PAGES if p['key'] in ('airbnb', 'long-term', 'colombia') and COMPLETE[p['key']])
 write('404.html', f'''<!doctype html>
 <html lang="en">
 <head>
