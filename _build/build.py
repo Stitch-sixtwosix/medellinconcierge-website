@@ -12,7 +12,7 @@ index.html (English home page) is the hand-edited source. This script then:
   5. writes sitemap.xml and robots.txt
 It stops with a clear message if an English string in es_home.py no longer exists in index.html.
 """
-import datetime, glob, html, json, os, re, sys, urllib.parse
+import datetime, glob, hashlib, html, json, os, re, sys, urllib.parse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -31,7 +31,15 @@ SITEMAP = []   # (en_url, es_url, lastmod) for every indexable page pair
 
 
 def read(p): return open(os.path.join(ROOT, p), encoding='utf-8').read()
+
+# Cache busting: every page links site.css / nav.js as "?v=<fingerprint of the file>", so after a style or script
+# change browsers fetch the new file at once instead of using a cached copy for up to 10 minutes (GitHub Pages).
+ASSET_V = {f: hashlib.sha1(open(os.path.join(ROOT, 'assets', f), 'rb').read()).hexdigest()[:8] for f in ('site.css', 'nav.js')}
+def stamp(s):
+    return re.sub(r'assets/(site\.css|nav\.js)(?:\?v=[0-9a-f]+)?"', lambda m: f'assets/{m.group(1)}?v={ASSET_V[m.group(1)]}"', s)
+
 def write(p, s):
+    if p.endswith('.html'): s = stamp(s)
     full = os.path.join(ROOT, p); os.makedirs(os.path.dirname(full) or ROOT, exist_ok=True)
     old = open(full, encoding='utf-8').read() if os.path.exists(full) else None
     if old != s:
