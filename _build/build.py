@@ -8,11 +8,11 @@ index.html (English home page) is the hand-edited source. This script then:
   2. writes es/index.html from index.html + the Spanish strings in es_home.py
   3. writes the blog in both languages from _build/posts/*.json (one file per post)
   4. writes the area / foreign-owner landing pages from landing.py, and the rental listings
-     (/rentals/, /es/arriendos/) from listings.json (refresh it with fetch_listings.py)
+     pages (/rentals/, /es/arriendos/) that embed the live Hostflow listings
   5. writes sitemap.xml and robots.txt
 It stops with a clear message if an English string in es_home.py no longer exists in index.html.
 """
-import datetime, glob, hashlib, html, json, os, re, sys, urllib.parse
+import datetime, glob, hashlib, html, json, os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -437,128 +437,34 @@ for pg in PAGES:
 
 
 # ======================= 4c. Rental listings (/rentals/, /es/arriendos/) =======================
-# Data comes from _build/listings.json, written by fetch_listings.py (Hostflow's public listings feed).
-# Hostflow's feed and photos cannot be read from another website in the browser, so the page is static:
-# re-run fetch_listings.py + build.py to refresh it. Availability labels are re-checked against today's
-# date in the visitor's browser, so "Available from 20 Nov" turns into "Available now" on its own.
+# James's live Hostflow listings page, embedded. It always shows Hostflow's current properties, prices and
+# availability. Hostflow picks Spanish or English from the visitor's browser (it has its own EN/ES switch) and
+# tells this page its height, so the embed grows to fit without a scrollbar of its own.
+HOSTFLOW_LISTINGS = 'https://hostflow.in/listings?t=fv0tM03REiayJ2NegmXX-5RK'
 R = {
  'en': dict(slug='rentals', home='Home', crumb='Rentals',
             title='Furnished Rentals in Medellín | Medellín Concierge',
             desc='Furnished apartments and homes for short and monthly stays in El Poblado, Laureles, Envigado, Sabaneta and across Medellín, with photos and prices.',
             h1='Furnished rentals in Medellín',
-            lead='Apartments and homes we manage, for short and monthly stays. Tap “I’m interested” and we’ll answer you on WhatsApp.',
-            updated='Listings updated {date}. Dates and prices can change; we confirm availability when you message us.',
-            live='See live availability', f_label='Filter properties', all='All', now='Available now', short='Short stays', month='Monthly stays',
-            area_label='Location', any_area='All locations', count1='property', countn='properties', none='No properties match these filters.',
-            avail_now='Available now', avail_from='Available from {d}', ask_h='More homes we manage',
-            ask_p='These properties have no dates or prices published right now. Ask us about availability.',
-            ask_badge='Ask about availability', no_photo='Photos coming soon', interested='I’m interested', book='Book on Airbnb',
-            per={'night': 'night', 'month': 'month'}, frm='From', stay={'short_term': 'Short stays', 'long_term': 'Monthly stays'},
-            bed=('bedroom', 'bedrooms'), bath=('bath', 'baths'), guests='up to {n} guests', studio='Studio',
-            wa='Hi! I’m interested in property {ref} ({title}). Is it available?\n{url}',
-            wa_ask='Hi! I’d like to know when property {ref} ({title}) is available.\n{url}',
-            amen=dict(ac='Air conditioning', washer='Washer', dryer='Dryer', elevator='Elevator', parking='Parking',
-                      gym='Gym', bbq='BBQ', playground='Playground'),
+            lead='Apartments and homes we manage, for short and monthly stays, with live availability. Tap “I’m interested” and we’ll answer you on WhatsApp.',
+            frame_title='Medellín Concierge properties', fallback='Not loading?', fallback_link='Open our listings in a new tab',
             owners_h='Own a property in Medellín?', owners_p='We manage homes like these for their owners, from listing to monthly GAAP statements.',
             owners_cta='See our management plans'),
  'es': dict(slug='es/arriendos', home='Inicio', crumb='Arriendos',
             title='Arriendos amoblados en Medellín | Medellín Concierge',
             desc='Apartamentos y casas amoblados para estancias cortas y mensuales en El Poblado, Laureles, Envigado, Sabaneta y todo Medellín, con fotos y precios.',
             h1='Arriendos amoblados en Medellín',
-            lead='Apartamentos y casas que administramos, para estancias cortas y mensuales. Toque «Me interesa» y le respondemos por WhatsApp.',
-            updated='Propiedades actualizadas el {date}. Fechas y precios pueden cambiar; confirmamos la disponibilidad cuando nos escriba.',
-            live='Ver disponibilidad en vivo', f_label='Filtrar propiedades', all='Todas', now='Disponibles ya', short='Estancias cortas', month='Estancias mensuales',
-            area_label='Ubicación', any_area='Todas las ubicaciones', count1='propiedad', countn='propiedades', none='Ninguna propiedad coincide con estos filtros.',
-            avail_now='Disponible ya', avail_from='Disponible desde el {d}', ask_h='Más propiedades que administramos',
-            ask_p='Estas propiedades no tienen fechas ni precios publicados en este momento. Pregúntenos por su disponibilidad.',
-            ask_badge='Consultar disponibilidad', no_photo='Fotos próximamente', interested='Me interesa', book='Ver en Airbnb',
-            per={'night': 'noche', 'month': 'mes'}, frm='Desde', stay={'short_term': 'Estancias cortas', 'long_term': 'Estancias mensuales'},
-            bed=('habitación', 'habitaciones'), bath=('baño', 'baños'), guests='hasta {n} huéspedes', studio='Estudio',
-            wa='¡Hola! Me interesa la propiedad {ref} ({title}). ¿Está disponible?\n{url}',
-            wa_ask='¡Hola! Quisiera saber cuándo está disponible la propiedad {ref} ({title}).\n{url}',
-            amen=dict(ac='Aire acondicionado', washer='Lavadora', dryer='Secadora', elevator='Ascensor', parking='Parqueadero',
-                      gym='Gimnasio', bbq='BBQ', playground='Parque infantil'),
+            lead='Apartamentos y casas que administramos, para estancias cortas y mensuales, con disponibilidad en vivo. Toque «Me interesa» y le respondemos por WhatsApp.',
+            frame_title='Propiedades de Medellín Concierge', fallback='¿No carga?', fallback_link='Abra nuestras propiedades en una pestaña nueva',
             owners_h='¿Tiene una propiedad en Medellín?', owners_p='Administramos propiedades como estas para sus dueños, desde la publicación hasta los estados financieros mensuales bajo GAAP.',
             owners_cta='Ver nuestros planes de administración'),
 }
-HOSTFLOW_LISTINGS = 'https://hostflow.in/listings?t=fv0tM03REiayJ2NegmXX-5RK'
-AREA_FIX = {'Medellin': 'Medellín', 'Guatape': 'Guatapé', 'Bogota': 'Bogotá'}
-SHORT_MONTHS = {'en': 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(),
-                'es': 'ene feb mar abr may jun jul ago sep oct nov dic'.split()}
-
-feed = json.load(open(os.path.join(HERE, 'listings.json'), encoding='utf-8'))
-props = feed['properties']
-seen = {}
-for p in props:
-    p['area'] = AREA_FIX.get(p.get('area') or '', p.get('area') or '')
-    base = 'p' + re.sub(r'\D', '', p['ref'] or '') or 'p'
-    seen[base] = seen.get(base, 0) + 1
-    p['_id'] = base if seen[base] == 1 else f'{base}-{seen[base]}'   # the feed has one duplicated ref
-    p['_listed'] = bool(p.get('active') and p.get('price') and p['price'].get('amount'))
-listed = sorted([p for p in props if p['_listed']], key=lambda p: (max(p.get('available_from') or TODAY, TODAY), p['ref']))
-asking = sorted([p for p in props if not p['_listed']], key=lambda p: (not p.get('cover_photo'), p['ref']))   # photos first
-areas = sorted({p['area'] for p in listed if p['area']}, key=lambda a: (-sum(1 for p in listed if p['area'] == a), a))
-
-def short_date(iso, lang):
-    y, m, d = map(int, iso.split('-'))
-    return f'{d} {SHORT_MONTHS[lang][m-1]}' if lang == 'es' else f'{SHORT_MONTHS[lang][m-1]} {d}'
-
-def cop(n): return '$' + f'{int(n):,}'.replace(',', '.') + ' COP'
-
-def plural(n, pair): return f'{n} {pair[0] if n == 1 else pair[1]}'
-
-def listing_card(p, lang, ui, page_url, prefix):
-    title = html.escape(p.get(f'title_{lang}') or p.get('title_en') or p['ref'])
-    url = f'{page_url}#{p["_id"]}'
-    facts = []
-    if p.get('bedrooms') == 0: facts.append(ui['studio'])
-    elif p.get('bedrooms'): facts.append(plural(p['bedrooms'], ui['bed']))
-    if p.get('bathrooms'): facts.append(plural(p['bathrooms'], ui['bath']))
-    if p.get('max_guests'): facts.append(ui['guests'].format(n=p['max_guests']))
-    amen = ''.join(f'<li>{ui["amen"][a]}</li>' for a in p.get('amenities') or [] if a in ui['amen'])
-    if p.get('cover_photo'):
-        photo = f'<img src="{prefix}assets/listings/{p["cover_photo"]}.webp" alt="{title}" loading="lazy" decoding="async" width="800" height="534">'
-    else:
-        photo = f'<span class="no-photo">{ui["no_photo"]}</span>'
-    if p['_listed']:
-        frm = p.get('available_from') or TODAY
-        badge_txt = ui['avail_now'] if frm <= TODAY else ui['avail_from'].format(d=short_date(frm, lang))
-        badge = f'<span class="avail{" now" if frm <= TODAY else ""}" data-from="{frm}">{badge_txt}</span>'
-        pr = p['price']
-        price = (f'<p class="price">{ui["frm"] + " " if pr.get("from") else ""}<strong>{cop(pr["amount"])}</strong> / {ui["per"].get(pr.get("per"), pr.get("per") or "")}</p>')
-        wa_text = ui['wa'].format(ref=p['ref'], title=html.unescape(title), url=url)
-    else:
-        badge = f'<span class="avail ask">{ui["ask_badge"]}</span>'
-        price = ''
-        wa_text = ui['wa_ask'].format(ref=p['ref'], title=html.unescape(title), url=url)
-    wa = 'https://wa.me/573042773864?text=' + urllib.parse.quote(wa_text)
-    airbnb = next((b['url'] for b in p.get('booking_links') or [] if b.get('platform') == 'Airbnb' and b.get('url', '').startswith('https://')), None)
-    book = f'<a class="btn btn-outline" href="{html.escape(airbnb)}" target="_blank" rel="noopener">{ui["book"]}</a>' if airbnb else ''
-    stay = ui['stay'].get(p.get('stay_type') or '')
-    meta = ' · '.join(x for x in (p['ref'], stay) if x)
-    return f'''      <article class="listing" id="{p["_id"]}" data-stay="{p.get("stay_type") or ""}" data-area="{html.escape(p["area"])}">
-        <div class="listing-photo">{photo}{badge}</div>
-        <div class="listing-body">
-          <p class="listing-meta">{meta}</p>
-          <h3>{title}</h3>
-          <p class="listing-area">{html.escape(p["area"])}</p>
-          {price}<p class="facts">{" · ".join(facts)}</p>
-          {f'<ul class="amen">{amen}</ul>' if amen else ''}
-          <div class="listing-ctas"><a class="btn btn-primary" href="{wa}" target="_blank" rel="noopener">{ui["interested"]}</a>{book}</div>
-        </div>
-      </article>
-'''
 
 for lang in LANGS:
     ui = R[lang]
     en_url, es_url = SITE + R['en']['slug'] + '/', SITE + R['es']['slug'] + '/'
     url = es_url if lang == 'es' else en_url
-    prefix = '../' if lang == 'en' else '../../'
     home_url = SITE + ('es/' if lang == 'es' else '')
-    opts = ''.join(f'<option value="{html.escape(a)}">{html.escape(a)}</option>' for a in areas)
-    grid = ''.join(listing_card(p, lang, ui, url, prefix) for p in listed)
-    ask_grid = ''.join(listing_card(p, lang, ui, url, prefix) for p in asking)
-    n = len(listed)
     body = f'''<section class="page-top">
   <div class="wrap">
     <p class="crumbs"><a href="../">{ui["home"]}</a> / {ui["crumb"]}</p>
@@ -568,25 +474,10 @@ for lang in LANGS:
 </section>
 <section class="rentals">
   <div class="wrap">
-    <div class="rent-filters" role="group" aria-label="{ui["f_label"]}" hidden>
-      <div class="chips">
-        <button type="button" class="chip" data-f="all" aria-pressed="true">{ui["all"]}</button><button type="button" class="chip" data-f="now" aria-pressed="false">{ui["now"]}</button><button type="button" class="chip" data-f="short_term" aria-pressed="false">{ui["short"]}</button><button type="button" class="chip" data-f="long_term" aria-pressed="false">{ui["month"]}</button>
-      </div>
-      <label class="area-pick"><span class="sr-only">{ui["area_label"]}</span><select id="areaPick"><option value="">{ui["any_area"]}</option>{opts}</select></label>
+    <div class="listings-embed">
+      <iframe id="mc-listings" src="{HOSTFLOW_LISTINGS}" title="{ui["frame_title"]}" loading="lazy" style="width:100%;min-height:900px;border:0;display:block" allow="clipboard-write"></iframe>
     </div>
-    <p class="rent-count" aria-live="polite" data-one="{ui["count1"]}" data-many="{ui["countn"]}">{n} {ui["countn"] if n != 1 else ui["count1"]}</p>
-    <div class="listing-grid" id="listingGrid">
-{grid}    </div>
-    <p class="rent-none" id="rentNone" hidden>{ui["none"]}</p>
-    <p class="rent-updated">{ui["updated"].format(date=human_date(feed.get("fetched", TODAY), lang))} <a href="{HOSTFLOW_LISTINGS}" target="_blank" rel="noopener">{ui["live"]}</a></p>
-  </div>
-</section>
-<section class="rentals rentals-ask">
-  <div class="wrap">
-    <h2>{ui["ask_h"]}</h2>
-    <p class="lead">{ui["ask_p"]}</p>
-    <div class="listing-grid compact">
-{ask_grid}    </div>
+    <p class="rent-updated">{ui["fallback"]} <a href="{HOSTFLOW_LISTINGS}" target="_blank" rel="noopener">{ui["fallback_link"]}</a></p>
     <aside class="article-cta">
       <h2>{ui["owners_h"]}</h2>
       <p>{ui["owners_p"]}</p>
@@ -594,37 +485,7 @@ for lang in LANGS:
     </aside>
   </div>
 </section>
-<script>
-(() => {{
-  // Availability labels follow today's date; filters work on the listed (dated, priced) properties
-  const today = new Date().toISOString().slice(0, 10), lang = document.documentElement.lang;
-  const mon = {json.dumps(SHORT_MONTHS[lang])}, nowTxt = {json.dumps(ui["avail_now"])}, fromTxt = {json.dumps(ui["avail_from"])};
-  document.querySelectorAll('.avail[data-from]').forEach(b => {{
-    const f = b.dataset.from, now = f <= today;
-    b.classList.toggle('now', now);
-    const [y, m, d] = f.split('-').map(Number);
-    b.textContent = now ? nowTxt : fromTxt.replace('{{d}}', lang === 'es' ? d + ' ' + mon[m-1] : mon[m-1] + ' ' + d);
-  }});
-  const box = document.querySelector('.rent-filters'), grid = document.getElementById('listingGrid'), pick = document.getElementById('areaPick');
-  const count = document.querySelector('.rent-count'), none = document.getElementById('rentNone');
-  let f = 'all'; box.hidden = false;
-  const apply = () => {{
-    let n = 0;
-    grid.querySelectorAll('.listing').forEach(c => {{
-      const badge = c.querySelector('.avail');
-      const ok = (f === 'all' || (f === 'now' ? badge.classList.contains('now') : c.dataset.stay === f)) && (!pick.value || c.dataset.area === pick.value);
-      c.hidden = !ok; if (ok) n++;
-    }});
-    count.textContent = n + ' ' + (n === 1 ? count.dataset.one : count.dataset.many);
-    none.hidden = n > 0;
-  }};
-  box.querySelectorAll('.chip').forEach(b => b.addEventListener('click', () => {{
-    f = b.dataset.f; box.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x === b));
-    apply();
-  }}));
-  pick.addEventListener('change', apply);
-}})();
-</script>'''
+<script>window.addEventListener("message",function(e){{if(!e.data||e.data.type!=="hostflow-listings")return;var f=document.getElementById("mc-listings");if(!f||e.source!==f.contentWindow)return;if(e.data.height)f.style.height=e.data.height+"px";if(e.data.scrollTop)f.scrollIntoView({{behavior:"smooth",block:"start"}});}});</script>'''
     schema = {'@context': 'https://schema.org', '@graph': [
         {'@type': 'CollectionPage', 'name': ui['h1'], 'description': ui['desc'], 'url': url, 'inLanguage': lang,
          'publisher': {'@id': business_id()}},
@@ -632,8 +493,7 @@ for lang in LANGS:
     en_href, es_href = (('./', '../es/arriendos/') if lang == 'en' else ('../../rentals/', './'))
     write(f'{ui["slug"]}/index.html', page(lang, title=ui['title'], desc=ui['desc'], en_url=en_url, es_url=es_url,
           en_href=en_href, es_href=es_href, body=body, schema=schema))
-SITEMAP.append((SITE + 'rentals/', SITE + 'es/arriendos/', feed.get('fetched', TODAY)))
-print(f'  rentals: {len(listed)} listed, {len(asking)} "ask about availability" (data from {feed.get("fetched")})')
+SITEMAP.append((SITE + 'rentals/', SITE + 'es/arriendos/', TODAY))
 
 
 # ======================= 4b. Old Wix URLs → redirects, and 404.html =======================

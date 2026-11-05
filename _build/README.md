@@ -16,21 +16,13 @@ change is pushed to the `main` branch on GitHub, and nothing gets pushed without
 | A blog post (add or edit) | `_build/posts/YYYY-MM-DD-slug.json` | — |
 | Area / foreign-owner landing pages | `_build/landing.py` | — |
 | Business facts in structured data | `_build/site_config.py` | — |
-| Rental listings (`/rentals/`, `/es/arriendos/`) | nothing: they come from Hostflow | run `python3 _build/fetch_listings.py` first |
+| Rental listings (`/rentals/`, `/es/arriendos/`) | nothing: live Hostflow embed | — |
 | Styles | `assets/site.css` | — |
 
 The build writes `es/`, `blog/`, `es/blog/`, the landing page folders, `rentals/`, `es/arriendos/`, `sitemap.xml` and `robots.txt`.
 
-**Rental listings** are a snapshot of James's Hostflow listings page (Hostflow does not allow its feed or photos
-to be loaded from another website). To refresh prices, dates and new properties:
-
-```
-python3 _build/fetch_listings.py && python3 _build/build.py
-```
-
-It saves the feed to `_build/listings.json` and cover photos to `assets/listings/` (needs `cwebp`: `brew install webp`).
-The "Available from …" labels update themselves in the visitor's browser as dates pass; the page also links to
-the live Hostflow page.
+**Rental listings** (`/rentals/`, `/es/arriendos/`) embed James's live Hostflow listings page, so they update
+themselves whenever Hostflow changes; nothing to rebuild.
 Never edit those generated files by hand; your change would be overwritten.
 
 ## For Sol: adding a blog post (bilingual)
