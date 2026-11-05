@@ -29,7 +29,7 @@
 <script>document.documentElement.classList.add('js');
 // Send Spanish-speaking first-time visitors (or anyone who chose ES before) to the Spanish home page
 try { var l = localStorage.getItem('mc-lang'); if (l === 'es' || (!l && /^es\b/i.test(navigator.language || ''))) location.replace('es/' + location.hash); } catch (e) {}</script>
-<link rel="stylesheet" href="assets/site.css?v=09e8354f">
+<link rel="stylesheet" href="assets/site.css?v=e3bc01a3">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -671,6 +671,22 @@ try { var l = localStorage.getItem('mc-lang'); if (l === 'es' || (!l && /^es\b/i
 
 <footer>
   <div class="wrap">
+    <!-- Newsletter: stays hidden until _build/site_config.py NEWSLETTER_ENDPOINT is set (the build fills data-endpoint) -->
+    <div class="newsletter" data-newsletter data-endpoint="" hidden>
+      <div class="nl-copy">
+        <h3>Owner insights by email</h3>
+        <p>Each new guide from our blog on managing property in Medellín, sent to your inbox. Unsubscribe anytime.</p>
+      </div>
+      <form class="nl-form" novalidate>
+        <div class="nl-row">
+          <label class="sr-only" for="nlEmail">Email address</label>
+          <input id="nlEmail" type="email" name="email" required autocomplete="email" placeholder="Your email address">
+          <button class="btn btn-primary" type="submit">Subscribe</button>
+        </div>
+        <label class="nl-consent"><input type="checkbox" name="consent" required> I agree to receive emails from Medellín Concierge S.A.S. and to the use of my email address to send them.</label>
+        <p class="nl-msg" role="status" aria-live="polite" data-ok="Thanks! You're subscribed." data-err="That didn't work. Please try again, or write to sales@medellinconcierge.net." data-bad="Please enter a valid email address and tick the box."></p>
+      </form>
+    </div>
     <div class="foot">
       <div>
         <a href="#top" class="foot-brand"><img src="assets/mark.webp" alt="" width="40" height="40">Medellín Concierge</a>
@@ -694,7 +710,7 @@ try { var l = localStorage.getItem('mc-lang'); if (l === 'es' || (!l && /^es\b/i
   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>
 </a>
 
-<script src="assets/nav.js?v=88f19ef5"></script>
+<script src="assets/nav.js?v=edf8ca69"></script>
 <script>
   // Hero sun: rise + logo wipe the first time it is on screen
   const sunEl = document.querySelector('.sun');

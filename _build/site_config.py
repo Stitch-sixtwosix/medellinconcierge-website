@@ -35,3 +35,7 @@ SAME_AS = [
 TODO_SAME_AS = {
     'Google Business Profile (full URL, not the maps.app.goo.gl short link)': '',
 }
+
+# Newsletter signup (footer of every page). Leave '' to keep the form hidden.
+# When set, the form POSTs JSON {email, consent, lang, source} to this URL; see _build/NEWSLETTER.md.
+NEWSLETTER_ENDPOINT = ''

@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=09e8354f">
+<link rel="stylesheet" href="/assets/site.css?v=e3bc01a3">
 </head>
 <body>
 
@@ -67,6 +67,22 @@
 
 <footer>
   <div class="wrap">
+    <!-- Newsletter: stays hidden until _build/site_config.py NEWSLETTER_ENDPOINT is set (the build fills data-endpoint) -->
+    <div class="newsletter" data-newsletter data-endpoint="" hidden>
+      <div class="nl-copy">
+        <h3>Owner insights by email</h3>
+        <p>Each new guide from our blog on managing property in Medellín, sent to your inbox. Unsubscribe anytime.</p>
+      </div>
+      <form class="nl-form" novalidate>
+        <div class="nl-row">
+          <label class="sr-only" for="nlEmail">Email address</label>
+          <input id="nlEmail" type="email" name="email" required autocomplete="email" placeholder="Your email address">
+          <button class="btn btn-primary" type="submit">Subscribe</button>
+        </div>
+        <label class="nl-consent"><input type="checkbox" name="consent" required> I agree to receive emails from Medellín Concierge S.A.S. and to the use of my email address to send them.</label>
+        <p class="nl-msg" role="status" aria-live="polite" data-ok="Thanks! You're subscribed." data-err="That didn't work. Please try again, or write to sales@medellinconcierge.net." data-bad="Please enter a valid email address and tick the box."></p>
+      </form>
+    </div>
     <div class="foot">
       <div>
         <a href="/" class="foot-brand"><img src="/assets/mark.webp" alt="" width="40" height="40">Medellín Concierge</a>
@@ -86,7 +102,7 @@
   </div>
 </footer>
 
-<script src="/assets/nav.js?v=88f19ef5"></script>
+<script src="/assets/nav.js?v=edf8ca69"></script>
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>

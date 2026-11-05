@@ -18,7 +18,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 from es_home import HOME_ES, BLOG_UI
-from site_config import SITE, BUSINESS, SAME_AS
+from site_config import SITE, BUSINESS, SAME_AS, NEWSLETTER_ENDPOINT
 from landing import PAGES, AREAS
 from team import TEAM
 
@@ -155,6 +155,9 @@ def set_teaser(s, lang):
 # ======================= 1. English home =======================
 print('Building…')
 en = read('index.html')
+en, _n = re.subn(r'<div class="newsletter" data-newsletter data-endpoint="[^"]*"(?: hidden)?>',
+                lambda m: f'<div class="newsletter" data-newsletter data-endpoint="{html.escape(NEWSLETTER_ENDPOINT, quote=True)}"' + ('' if NEWSLETTER_ENDPOINT else ' hidden') + '>', en)
+assert _n == 1, 'newsletter block not found in index.html footer'
 en = set_teaser(en, 'en')
 en = set_home_jsonld(en, 'en')
 write('index.html', en)
@@ -652,6 +655,34 @@ write('404.html', f'''<!doctype html>
 </body>
 </html>
 ''')
+
+
+# ======================= 4e. Blog feeds (/blog/feed.xml, /es/blog/feed.xml) =======================
+# RSS 2.0 with each post's full text, so an email service can send every new post to newsletter subscribers
+# ("RSS-to-email"). Links inside the post are made absolute so they work in an inbox.
+def rss_date(iso):
+    d = datetime.date.fromisoformat(iso)
+    return d.strftime('%a, %d %b %Y 12:00:00 -0500')
+
+def absolute_in_email(h, lang):
+    base = SITE + ('es/blog/' if lang == 'es' else 'blog/')
+    h = re.sub(r'href="/', f'href="{SITE}', h)
+    return re.sub(r'href="(?!https?:|mailto:|tel:|#)([^"]+)"', lambda m: f'href="{base}{m.group(1)}"', h)
+
+for lang in LANGS:
+    ui = BLOG_UI[lang]
+    blog_url = SITE + ('es/blog/' if lang == 'es' else 'blog/')
+    items = ''
+    for p in POSTS[:20]:
+        t = p[lang]; link = blog_url + p['slug'] + '.html'
+        items += (f'  <item>\n    <title>{html.escape(t["title"])}</title>\n    <link>{link}</link>\n    <guid isPermaLink="true">{link}</guid>\n'
+                  f'    <pubDate>{rss_date(p["date"])}</pubDate>\n    <description>{html.escape(t["description"])}</description>\n'
+                  f'    <content:encoded><![CDATA[{absolute_in_email(t["body"], lang)}]]></content:encoded>\n  </item>\n')
+    write(('es/blog' if lang == 'es' else 'blog') + '/feed.xml',
+          f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n'
+          f'  <title>{html.escape(ui["blog_title"])}</title>\n  <link>{blog_url}</link>\n  <description>{html.escape(ui["blog_lead"])}</description>\n'
+          f'  <language>{"es-co" if lang == "es" else "en"}</language>\n  <atom:link href="{blog_url}feed.xml" rel="self" type="application/rss+xml"/>\n'
+          f'  <lastBuildDate>{rss_date(POSTS[0]["date"] if POSTS else TODAY)}</lastBuildDate>\n{items}</channel>\n</rss>\n')
 
 
 # ======================= 5. sitemap.xml + robots.txt =======================

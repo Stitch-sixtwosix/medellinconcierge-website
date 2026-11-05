@@ -27,3 +27,24 @@
     if (location.hash && !a.href.includes('#')) a.href += location.hash;
   }));
 })();
+
+// Newsletter signup (footer). Shown only when the build sets data-endpoint (see _build/NEWSLETTER.md).
+(() => {
+  const box = document.querySelector('[data-newsletter]');
+  if (!box || !box.dataset.endpoint) return;
+  box.hidden = false;
+  const form = box.querySelector('form'), msg = box.querySelector('.nl-msg'), btn = form.querySelector('button');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const email = form.email.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !form.consent.checked) { msg.textContent = msg.dataset.bad; msg.className = 'nl-msg err'; return; }
+    btn.disabled = true;
+    try {
+      const r = await fetch(box.dataset.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, consent: true, lang: document.documentElement.lang || 'en', source: location.pathname }) });
+      if (!r.ok) throw new Error(r.status);
+      form.reset(); msg.textContent = msg.dataset.ok; msg.className = 'nl-msg ok';
+    } catch (err) { msg.textContent = msg.dataset.err; msg.className = 'nl-msg err'; }
+    btn.disabled = false;
+  });
+})();

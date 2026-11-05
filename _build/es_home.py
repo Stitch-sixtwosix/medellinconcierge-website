@@ -248,6 +248,15 @@ HOME_ES = [
 
  # ---- footer ----
  ('Specialized short-term and long-stay property management in Medellín, Colombia.', 'Administración especializada de propiedades para estancias cortas y largas en Medellín, Colombia.'),
+ ('<h3>Owner insights by email</h3>', '<h3>Novedades para propietarios por correo</h3>'),
+ ('<p>Each new guide from our blog on managing property in Medellín, sent to your inbox. Unsubscribe anytime.</p>', '<p>Cada nueva guía de nuestro blog sobre administración de propiedades en Medellín, directo a su correo. Puede darse de baja cuando quiera.</p>'),
+ ('<label class="sr-only" for="nlEmail">Email address</label>', '<label class="sr-only" for="nlEmail">Correo electrónico</label>'),
+ ('placeholder="Your email address"', 'placeholder="Su correo electrónico"'),
+ ('type="submit">Subscribe</button>', 'type="submit">Suscribirme</button>'),
+ ('I agree to receive emails from Medellín Concierge S.A.S. and to the use of my email address to send them.', 'Acepto recibir correos de Medellín Concierge S.A.S. y el tratamiento de mi correo electrónico para enviarlos.'),
+ ('data-ok="Thanks! You\'re subscribed."', 'data-ok="¡Gracias! Ya está suscrito."'),
+ ('data-err="That didn\'t work. Please try again, or write to sales@medellinconcierge.net."', 'data-err="No se pudo completar. Inténtelo de nuevo o escríbanos a sales@medellinconcierge.net."'),
+ ('data-bad="Please enter a valid email address and tick the box."', 'data-bad="Escriba un correo válido y marque la casilla."'),
  ('<h4>Owners</h4>', '<h4>Propietarios</h4>'),
  ('>Plans &amp; fees</a>', '>Planes y tarifas</a>'),
  ('>How it works</a>', '>Cómo funciona</a>'),
