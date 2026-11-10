@@ -164,16 +164,7 @@ def cards(lang, prefix, posts, reveal=True, tag='h3'):
                 f'      </a>\n')
     return out
 
-def teaser_items(lang, posts):
-    return ''.join(f'        <li><a href="blog/{p["slug"]}.html">{p[lang]["title"]}</a>'
-                   f'<time datetime="{p["date"]}">{human_date(p["date"], lang)}</time></li>\n' for p in posts)
-
-def set_teaser(s, lang):
-    """Home page: compact list of the three newest post titles."""
-    s, n = re.subn(r'(<ul class="post-list" data-teaser>\n).*?(      </ul>)',
-                   lambda m: m.group(1) + teaser_items(lang, POSTS[:3]) + m.group(2), s, count=1, flags=re.S)
-    assert n == 1, 'blog teaser list not found'
-    return s
+# (The home page no longer shows a blog teaser; the blog is linked from the menu and footer.)
 
 
 # ======================= 1. English home =======================
@@ -183,7 +174,6 @@ en = set_landing_links(en)
 en, _n = re.subn(r'<div class="newsletter" data-newsletter data-endpoint="[^"]*"(?: hidden)?>',
                 lambda m: f'<div class="newsletter" data-newsletter data-endpoint="{html.escape(NEWSLETTER_ENDPOINT, quote=True)}"' + ('' if NEWSLETTER_ENDPOINT else ' hidden') + '>', en)
 assert _n == 1, 'newsletter block not found in index.html footer'
-en = set_teaser(en, 'en')
 en = set_home_jsonld(en, 'en')
 write('index.html', en)
 SITEMAP.append((SITE, SITE + 'es/', TODAY))
@@ -199,7 +189,6 @@ for a, b in HOME_ES:
 es = es.replace('href="rentals/"', 'href="arriendos/"').replace('href="team/"', 'href="equipo/"').replace('href="faq/"', 'href="preguntas-frecuentes/"')
 for pg in PAGES:   # landing page links point to the Spanish versions
     es = es.replace(f'href="{pg["en"]["slug"]}/"', f'href="{pg["es"]["slug"]}/"')
-es = set_teaser(es, 'es')
 es = set_home_jsonld(es, 'es')
 es = re.sub(r"<script>document\.documentElement\.classList\.add\('js'\);.*?</script>",
             "<script>document.documentElement.classList.add('js')</script>", es, count=1, flags=re.S)

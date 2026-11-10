@@ -147,8 +147,6 @@ HOME_ES = [
  # ---- FAQ ----
 
  # ---- blog teaser (card titles and excerpts come from posts_*.py) ----
- ('<h2>From the blog</h2>', '<h2>Del blog</h2>'),
- ('>See all articles</a>', '>Ver todos los artículos</a>'),
 
  # ---- contact ----
  ("Let's maximize your property", 'Saquémosle el máximo a su propiedad'),
