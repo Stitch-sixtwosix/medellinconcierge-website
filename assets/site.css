@@ -516,8 +516,3 @@ a.area-card:not([href]) .read{display:none}
 .blog-strip .blog-more{margin:0;white-space:nowrap}
 .blog-strip .blog-more a{font-weight:600;color:var(--red-dark)}
 @media (max-width:900px){.blog-strip-inner{grid-template-columns:1fr}.post-list li{flex-direction:column;gap:2px}}
-
-/* Services is now a short intro (heading, sentence, links): less vertical space */
-#services{padding:80px 0 72px}
-#services .area-more{margin-top:20px}
-@media (max-width:760px){#services{padding:56px 0 48px}}

@@ -63,7 +63,7 @@ def lang_complete(c):
     return not (c['description'] is None or c['intro'] is None or any(t is None for _, t in c['blocks']))
 COMPLETE = {pg['key']: lang_complete(pg['en']) and lang_complete(pg['es']) for pg in PAGES}
 # Where an unfinished page sends visitors instead (home-page section)
-PENDING_TARGET = {}   # all unfinished landing pages go to the home Services section
+PENDING_TARGET = {}   # all unfinished landing pages go to the top of the home page
 
 def set_landing_links(s):
     """Links to landing pages carry data-landing="<key>". Finished pages get their href; unfinished ones lose it
@@ -402,7 +402,7 @@ for pg in PAGES:
         # Unfinished: never show placeholder copy to visitors. Send them to the matching home-page section.
         for lang in LANGS:
             folder = pg['en']['slug'] if lang == 'en' else 'es/' + pg['es']['slug']
-            target = SITE + ('es/' if lang == 'es' else '') + PENDING_TARGET.get(pg['key'], '#services')
+            target = SITE + ('es/' if lang == 'es' else '') + PENDING_TARGET.get(pg['key'], '')
             write(f'{folder}/index.html', f'''<!doctype html>
 <html lang="{lang}">
 <head>

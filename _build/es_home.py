@@ -20,7 +20,6 @@ HOME_ES = [
  ('aria-label="Language"', 'aria-label="Idioma"'),
  ('aria-label="Open menu" data-label-open="Open menu" data-label-close="Close menu"',
   'aria-label="Abrir menú" data-label-open="Abrir menú" data-label-close="Cerrar menú"'),
- ('>Services</a>', '>Servicios</a>'),
  ('<a href="#plans">Plans</a>', '<a href="#plans">Planes</a>'),
  ('<a href="#calculator">Calculator</a>', '<a href="#calculator">Calculadora</a>'),
  ('<a href="#reviews">Reviews</a>', '<a href="#reviews">Reseñas</a>'),
@@ -28,8 +27,8 @@ HOME_ES = [
 
  # ---- hero ----
  ('<h1>Property management in Medellín. <em>Maximized.</em></h1>', '<h1>Administración de propiedades en Medellín. <em>Al máximo.</em></h1>'),
- ('Short-term rental and property management in Medellín. Fully managed, stress-free rental income: from bookings and guest care to maintenance and legal compliance, we handle it all while you get paid.',
-  'Administración de rentas cortas y propiedades en Medellín. Ingresos por renta sin preocupaciones: desde las reservas y la atención al huésped hasta el mantenimiento y el cumplimiento legal, nos encargamos de todo mientras usted recibe sus ganancias.'),
+ ('Short-term and long-term rental management in El Poblado, Laureles, Envigado, Sabaneta and across Medellín. Fully managed, stress-free rental income: from bookings and guest care to maintenance and legal compliance, we handle it all while you get paid.',
+  'Administración de rentas cortas y largas en El Poblado, Laureles, Envigado, Sabaneta y todo Medellín. Ingresos por renta sin preocupaciones: desde las reservas y la atención al huésped hasta el mantenimiento y el cumplimiento legal, nos encargamos de todo mientras usted recibe sus ganancias.'),
  ('Estimate my income', 'Calcular mis ingresos'),
  ('Talk to our team', 'Hablar con nuestro equipo'),
  ('Listed &amp; optimized on <strong>Airbnb</strong>, <strong>Booking.com</strong>, <strong>Expedia</strong>, <strong>VRBO</strong> and more',
@@ -57,19 +56,12 @@ HOME_ES = [
  ('From bookings to maintenance to legal compliance, we handle it all.', 'Desde las reservas hasta el mantenimiento y el cumplimiento legal, nos encargamos de todo.'),
 
  # ---- services ----
- ('<h2>Airbnb and long-term property management in Medellín</h2>', '<h2>Administración de Airbnb y rentas largas en Medellín</h2>'),
 
- ('Learn more: <a', 'Más información: <a'),
- ('>Airbnb management in Medellín</a>', '>Administración de Airbnb en Medellín</a>'),
- ('>Long-term property management in Medellín</a>', '>Administración de rentas largas en Medellín</a>'),
  ('>Airbnb management</a>', '>Administración de Airbnb</a>'),
  ('>Long-term management</a>', '>Rentas largas</a>'),
  # ---- areas ----
- ('>Property management in Colombia for foreign owners</a>', '>Administración de propiedades en Colombia para propietarios extranjeros</a>'),
  ('<h4>Areas</h4>', '<h4>Zonas</h4>'),
  ('>Foreign owners</a>', '>Propietarios extranjeros</a>'),
- ('Your property is a valuable investment. We manage apartments in El Poblado, Laureles, Envigado, Sabaneta and across Medellín, for short stays on Airbnb and long stays of 30 nights or more. Our team takes care of everything, so you get the most out of it without the complications.',
-  'Su propiedad es una inversión valiosa. Administramos apartamentos en El Poblado, Laureles, Envigado, Sabaneta y en todo Medellín, para estancias cortas en Airbnb y estancias largas de 30 noches o más. Nuestro equipo se encarga de todo para que usted le saque el máximo provecho sin complicaciones.'),
 
  # ---- why us ----
 
