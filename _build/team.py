@@ -12,4 +12,6 @@ TEAM = [
          role=dict(en='Guest Manager', es='Gerente de huéspedes')),
     dict(name='Juliana Marin', photo='juliana-marin',
          role=dict(en='Accounting & Finance Coordinator', es='Coordinadora de contabilidad y finanzas')),
+    dict(name='Claudia Saenz', photo='claudia-saenz',
+         role=dict(en='Head of the Legal Department', es='Directora del departamento legal')),
 ]

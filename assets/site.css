@@ -463,7 +463,7 @@ footer .social a{display:grid;place-items:center;width:44px;height:44px;padding:
 /* Meet the team (/team/, /es/equipo/) */
 .team{padding:64px 0 96px}
 .team-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:24px}
-.team-grid .member{flex:0 1 calc((100% - 4 * 24px) / 5)}
+.team-grid .member{flex:0 1 calc((100% - 2 * 24px) / 3);max-width:300px}
 .member{text-align:center}
 .member-photo{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:var(--radius-lg);background:#fff;box-shadow:0 0 0 1px var(--line);margin-bottom:16px}
 .member-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -471,8 +471,7 @@ footer .social a{display:grid;place-items:center;width:44px;height:44px;padding:
 .member h2{font-size:1.15rem;margin:0 0 2px}
 .member p{margin:0;color:var(--red-dark);font-weight:600;font-size:.95rem}
 .team .article-cta{max-width:none;margin-top:64px}
-@media (max-width:1040px){.team-grid .member{flex-basis:calc((100% - 2 * 24px) / 3)}}
-@media (max-width:640px){.team-grid{gap:16px}.team-grid .member{flex-basis:calc((100% - 16px) / 2)}}
+@media (max-width:640px){.team-grid{gap:16px}.team-grid .member{flex-basis:calc((100% - 16px) / 2);max-width:none}}
 @media (max-width:420px){.team-grid{gap:16px}.member h2{font-size:1rem}.member p{font-size:.88rem}}
 
 /* Newsletter signup (footer) */
