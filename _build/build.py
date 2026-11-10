@@ -164,10 +164,15 @@ def cards(lang, prefix, posts, reveal=True, tag='h3'):
                 f'      </a>\n')
     return out
 
+def teaser_items(lang, posts):
+    return ''.join(f'        <li><a href="blog/{p["slug"]}.html">{p[lang]["title"]}</a>'
+                   f'<time datetime="{p["date"]}">{human_date(p["date"], lang)}</time></li>\n' for p in posts)
+
 def set_teaser(s, lang):
-    s, n = re.subn(r'(<div class="post-grid" data-stagger>\n).*?(    </div>\n    <p class="blog-more)',
-                   lambda m: m.group(1) + cards(lang, 'blog/', POSTS[:3]) + m.group(2), s, count=1, flags=re.S)
-    assert n == 1, 'blog teaser grid not found'
+    """Home page: compact list of the three newest post titles."""
+    s, n = re.subn(r'(<ul class="post-list" data-teaser>\n).*?(      </ul>)',
+                   lambda m: m.group(1) + teaser_items(lang, POSTS[:3]) + m.group(2), s, count=1, flags=re.S)
+    assert n == 1, 'blog teaser list not found'
     return s
 
 

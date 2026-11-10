@@ -502,3 +502,17 @@ footer a:not([href]),.area-more a:not([href]),.sep-link:has(a:not([href])){displ
 a.area-card:not([href]){cursor:default}
 a.area-card:not([href]) .read{display:none}
 @media (hover:hover){a.area-card:not([href]):hover{transform:none}}
+
+/* Home: compact "From the blog" strip (three newest titles) */
+#blog.blog-strip{padding:64px 0}
+.blog-strip-inner{display:grid;grid-template-columns:minmax(0,.55fr) minmax(0,1.6fr) auto;gap:16px 48px;align-items:start;border-top:1px solid var(--line);padding-top:40px}
+.blog-strip h2{font-size:clamp(1.4rem,2.2vw,1.75rem);margin:0}
+.post-list{list-style:none;margin:0;padding:0}
+.post-list li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.post-list li:first-child{padding-top:0}
+.post-list a{font-weight:600;color:var(--ink);text-decoration:none;text-wrap:pretty}
+@media (hover:hover){.post-list a:hover{color:var(--red-dark);text-decoration:underline}}
+.post-list time{flex:none;color:var(--muted);font-size:.88rem;white-space:nowrap}
+.blog-strip .blog-more{margin:0;white-space:nowrap}
+.blog-strip .blog-more a{font-weight:600;color:var(--red-dark)}
+@media (max-width:900px){.blog-strip-inner{grid-template-columns:1fr}.post-list li{flex-direction:column;gap:2px}}

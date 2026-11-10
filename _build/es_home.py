@@ -174,8 +174,6 @@ HOME_ES = [
 
  # ---- blog teaser (card titles and excerpts come from posts_*.py) ----
  ('<h2>From the blog</h2>', '<h2>Del blog</h2>'),
- ('Straight answers for owners: plans, payouts, and what to expect from a professional manager.',
-  'Respuestas claras para propietarios: planes, pagos y qué esperar de un administrador profesional.'),
  ('>See all articles</a>', '>Ver todos los artículos</a>'),
 
  # ---- contact ----
