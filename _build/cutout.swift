@@ -45,8 +45,23 @@ let headTop = CGFloat(minRow) / CGFloat(mh) * ext.height          // from the to
 var cropH = min(ext.height, (ext.height - headTop) / 0.92)
 var cropW = cropH * 0.8
 if cropW > ext.width { cropW = ext.width; cropH = cropW / 0.8 }
-let top = max(0, min(ext.height - cropH, headTop - cropH * 0.08))   // distance from the top of the photo
-let x0 = max(0, min(ext.width - cropW, cx - cropW / 2))
+var top = max(0, min(ext.height - cropH, headTop - cropH * 0.08))   // distance from the top of the photo
+var centerX = cx
+
+// Wide shots (waist-up): if the face would fill less than 27% of the frame height, zoom in so it fills ~32%
+// with its top ~21% from the frame top, like the head-and-shoulders portraits. Tighter photos are untouched.
+let faceReq = VNDetectFaceRectanglesRequest()
+try handler.perform([faceReq])
+if let face = faceReq.results?.max(by: { $0.boundingBox.height < $1.boundingBox.height })?.boundingBox {
+    let faceH = face.height * ext.height, faceTop = (1 - face.maxY) * ext.height
+    if faceH / cropH < 0.27 {
+        cropH = min(ext.height, faceH / 0.32); cropW = cropH * 0.8
+        if cropW > ext.width { cropW = ext.width; cropH = cropW / 0.8 }
+        top = max(0, min(ext.height - cropH, faceTop - cropH * 0.21))
+        centerX = face.midX * ext.width
+    }
+}
+let x0 = max(0, min(ext.width - cropW, centerX - cropW / 2))
 let rect = CGRect(x: ext.minX + x0, y: ext.minY + ext.height - top - cropH, width: cropW, height: cropH)   // CI origin is bottom-left
 let framed = onWhite.cropped(to: rect).transformed(by: CGAffineTransform(translationX: -rect.minX, y: -rect.minY))
 let scale = 640 / cropW
