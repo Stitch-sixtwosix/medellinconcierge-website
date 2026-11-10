@@ -80,9 +80,10 @@ def set_landing_links(s):
 def lang_switch(en_href, es_href, current):
     cur = lambda l: ' aria-current="true"' if l == current else ''
     label = 'Idioma' if current == 'es' else 'Language'
+    # ES first, matching the switch inside the Hostflow forms and listings
     return (f'<div class="lang-switch" role="group" aria-label="{label}">\n'
-            f'      <a href="{en_href}" lang="en" hreflang="en" aria-label="English"{cur("en")} data-lang="en">EN</a>'
-            f'<a href="{es_href}" lang="es" hreflang="es" aria-label="Español"{cur("es")} data-lang="es">ES</a>\n    </div>')
+            f'      <a href="{es_href}" lang="es" hreflang="es" aria-label="Español"{cur("es")} data-lang="es">ES</a>'
+            f'<a href="{en_href}" lang="en" hreflang="en" aria-label="English"{cur("en")} data-lang="en">EN</a>\n    </div>')
 
 def set_switch(s, en_href, es_href, current):
     s, n = re.subn(r'<div class="lang-switch".*?</div>', lambda m: lang_switch(en_href, es_href, current), s, count=1, flags=re.S)
