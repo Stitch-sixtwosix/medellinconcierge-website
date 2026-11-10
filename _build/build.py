@@ -658,6 +658,60 @@ for lang in LANGS:
 SITEMAP.append((SITE + 'faq/', SITE + 'es/preguntas-frecuentes/', TODAY))
 
 
+# ======================= 4g. Tours (/tours/, /es/tours/) =======================
+# Viator partner widget (tours and activities). Viator renders it in its own iframe, so its cards and
+# buttons follow the settings in the Viator partner dashboard; everything around it uses our branding.
+VIATOR = ('<div data-vi-partner-id="U00208834" data-vi-widget-ref="W-5fd2b915-458a-4723-9670-97c7a88fdf7b"></div>\n'
+          '      <script async src="https://www.viator.com/orion/partner/widget.js"></script>')
+TOURS = {
+ 'en': dict(slug='tours', home='Home', crumb='Tours', title='Tours in Medellín | Medellín Concierge',
+            desc='Tours and day trips in and around Medellín: Guatapé, Comuna 13, coffee farms and more, booked online through our partner Viator.',
+            h1='Tours in Medellín', lead='Day trips and experiences in and around Medellín, booked online through our partner Viator.',
+            note='Tours are run by independent local operators and booked and paid on Viator. Medellín Concierge may earn a commission on bookings.',
+            cta_h='Own a property in Medellín?', cta_p='We manage homes for their owners, from listing to monthly GAAP statements.',
+            cta='See our management plans'),
+ 'es': dict(slug='es/tours', home='Inicio', crumb='Tours', title='Tours en Medellín | Medellín Concierge',
+            desc='Tours y paseos de un día en Medellín y alrededores: Guatapé, Comuna 13, fincas cafeteras y más, reservados en línea con nuestro aliado Viator.',
+            h1='Tours en Medellín', lead='Paseos de un día y experiencias en Medellín y sus alrededores, reservados en línea con nuestro aliado Viator.',
+            note='Los tours los operan empresas locales independientes y se reservan y pagan en Viator. Medellín Concierge puede recibir una comisión por las reservas.',
+            cta_h='¿Tiene una propiedad en Medellín?', cta_p='Administramos propiedades para sus dueños, desde la publicación hasta los estados financieros mensuales bajo GAAP.',
+            cta='Ver nuestros planes de administración'),
+}
+for lang in LANGS:
+    ui = TOURS[lang]
+    en_url, es_url = SITE + 'tours/', SITE + 'es/tours/'
+    url = es_url if lang == 'es' else en_url
+    home_url = SITE + ('es/' if lang == 'es' else '')
+    body = f'''<section class="page-top">
+  <div class="wrap">
+    <p class="crumbs"><a href="../">{ui["home"]}</a> / {ui["crumb"]}</p>
+    <h1>{ui["h1"]}</h1>
+    <p class="lead">{ui["lead"]}</p>
+  </div>
+</section>
+<section class="tours">
+  <div class="wrap">
+    <div class="tours-embed">
+      {VIATOR}
+    </div>
+    <p class="tours-note">{ui["note"]}</p>
+    <aside class="article-cta">
+      <h2>{ui["cta_h"]}</h2>
+      <p>{ui["cta_p"]}</p>
+      <div class="ref-ctas"><a class="btn btn-primary" href="../#plans">{ui["cta"]}</a><a class="btn btn-outline" href="../#contact">{L[lang]["cta_1"]}</a></div>
+    </aside>
+  </div>
+</section>'''
+    schema = {'@context': 'https://schema.org', '@graph': [
+        {'@type': 'CollectionPage', 'name': ui['h1'], 'description': ui['desc'], 'url': url, 'inLanguage': lang,
+         'publisher': {'@id': business_id()}},
+        breadcrumbs([(ui['home'], home_url), (ui['crumb'], url)])]}
+    en_href, es_href = (('./', '../es/tours/') if lang == 'en' else ('../../tours/', './'))
+    write(f'{ui["slug"]}/index.html', page(lang, title=ui['title'], desc=ui['desc'], en_url=en_url, es_url=es_url,
+          en_href=en_href, es_href=es_href, body=body, schema=schema))
+SITEMAP.append((SITE + 'tours/', SITE + 'es/tours/', TODAY))
+
+
 # ======================= 4b. Old Wix URLs → redirects, and 404.html =======================
 # GitHub Pages has no server-side redirects, so each old path gets a tiny page that redirects instantly
 # (meta refresh + JS) and declares the new URL as canonical. Not listed in sitemap.xml.
@@ -667,7 +721,7 @@ REDIRECTS = {
     'es/contact':                     'es/#contact',
     'airbnb-revenue-calculator':      '#calculator',
     'es/airbnb-revenue-calculator':   'es/#calculator',
-    'tours-transportation':           '',
+    'tours-transportation':           'tours/',
     'diamond-card':                   '',
     'properties/finca-con-bosque-nativo-privado': 'rentals/',   # any other /properties/* is sent to /rentals/ by 404.html
 }

@@ -168,4 +168,18 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/preguntas-frecuentes/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/faq/"/>
   </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/tours/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/tours/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/tours/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/tours/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/es/tours/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/tours/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/tours/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/tours/"/>
+  </url>
 </urlset>

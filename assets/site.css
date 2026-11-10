@@ -516,3 +516,11 @@ a.area-card:not([href]) .read{display:none}
 .blog-strip .blog-more{margin:0;white-space:nowrap}
 .blog-strip .blog-more a{font-weight:600;color:var(--red-dark)}
 @media (max-width:900px){.blog-strip-inner{grid-template-columns:1fr}.post-list li{flex-direction:column;gap:2px}}
+
+/* Tours page (/tours/, /es/tours/): Viator widget in a branded panel */
+.tours{padding:48px 0 96px}
+.tours-embed{background:var(--surface);border-radius:var(--radius-lg);box-shadow:0 0 0 1px var(--line);padding:24px;min-height:420px}
+.tours-embed iframe{display:block;width:100%;border:0}
+.tours-note{margin:16px 0 0;color:var(--muted);font-size:.9rem;max-width:760px}
+.tours .article-cta{max-width:none;margin-top:48px}
+@media (max-width:640px){.tours{padding:24px 0 72px}.tours .wrap{padding:0 8px}.tours-embed{padding:8px;border-radius:var(--radius)}}

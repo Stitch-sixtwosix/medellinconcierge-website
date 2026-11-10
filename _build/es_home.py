@@ -171,6 +171,7 @@ HOME_ES = [
  ('data-bad="Please enter a valid email address and tick the box."', 'data-bad="Escriba un correo válido y marque la casilla."'),
  ('>FAQ</a>', '>Preguntas</a>'),
  ('lead?t=49d-bifpnoxA37UexXu3HOgg&amp;lang=en"', 'lead?t=49d-bifpnoxA37UexXu3HOgg&amp;lang=es"'),
+ ('>Tours in Medellín</a>', '>Tours en Medellín</a>'),
  ('<h4>Owners</h4>', '<h4>Propietarios</h4>'),
  ('>Plans &amp; fees</a>', '>Planes y tarifas</a>'),
  ('>How it works</a>', '>Cómo funciona</a>'),
