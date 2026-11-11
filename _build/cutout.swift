@@ -134,5 +134,32 @@ if args.contains("--mirror-left"), let face = faceReq.results?.max(by: { $0.boun
     cg = bctx.makeImage()!
     print("mirrored the left shoulder across x=\(Int(axis)) from y=\(y0)")
 }
+// --widen <factor>: widen the body below the chin (face untouched) so the shoulders reach the frame edges like a
+// normal portrait. The stretch eases in over the neck, so there is no visible seam.
+if let wi = args.firstIndex(of: "--widen"), wi + 1 < args.count, let S = Double(args[wi + 1]),
+   let face = faceReq.results?.max(by: { $0.boundingBox.height < $1.boundingBox.height })?.boundingBox {
+    let W = 640, H = 800
+    let buf = UnsafeMutablePointer<UInt8>.allocate(capacity: W * H * 4); buf.initialize(repeating: 0, count: W * H * 4)
+    let wctx = CGContext(data: buf, width: W, height: H, bitsPerComponent: 8, bytesPerRow: W * 4,
+                         space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
+    wctx.draw(cg, in: CGRect(x: 0, y: 0, width: W, height: H))
+    let src = Array(UnsafeBufferPointer(start: buf, count: W * H * 4))
+    let axis = Double((face.midX * ext.width - x0) * scale)
+    let chin = Double(((1 - face.minY) * ext.height - top) * scale)
+    let ramp = 110.0
+    for y in max(0, Int(chin))..<H {
+        let u = min(1, (Double(y) - chin) / ramp), e = u * u * (3 - 2 * u)      // smoothstep
+        let f = 1 + (S - 1) * e
+        for x in 0..<W {
+            let sx = axis + (Double(x) - axis) / f
+            let x1 = max(0, min(W - 1, Int(sx.rounded(.down)))), x2 = min(W - 1, x1 + 1), w = sx - Double(x1)
+            let i = (y * W + x) * 4, a = (y * W + x1) * 4, b = (y * W + x2) * 4
+            for k in 0..<3 { buf[i + k] = UInt8((Double(src[a + k]) * (1 - w) + Double(src[b + k]) * w).rounded()) }
+            buf[i + 3] = 255
+        }
+    }
+    cg = wctx.makeImage()!
+    print("widened below y=\(Int(chin)) by \(S)")
+}
 try NSBitmapImageRep(cgImage: cg).representation(using: .png, properties: [:])!.write(to: URL(fileURLWithPath: args[2]))
 print("ok")
