@@ -540,13 +540,13 @@ T = {
             title='Meet the Team | Medellín Concierge',
             desc='Meet the Medellín Concierge team: the managers who look after your property, your guests and your monthly statements in Medellín, Colombia.',
             h1='Meet the team',
-            lead='The people who manage your property and look after your guests in Medellín.',
+            lead='The people who manage your property, look after your guests and keep your accounts in order in Medellín.',
             cta_h='Talk to our team', cta_p='Get a free consultation, an income estimate and a management proposal.'),
  'es': dict(slug='es/equipo', home='Inicio', crumb='Equipo',
             title='Nuestro equipo | Medellín Concierge',
             desc='Conozca al equipo de Medellín Concierge: quienes cuidan su propiedad, atienden a sus huéspedes y preparan sus estados mensuales en Medellín.',
             h1='Conozca a nuestro equipo',
-            lead='Las personas que administran su propiedad y atienden a sus huéspedes en Medellín.',
+            lead='Las personas que administran su propiedad, atienden a sus huéspedes y llevan sus cuentas en orden en Medellín.',
             cta_h='Hable con nuestro equipo', cta_p='Solicite una consulta gratuita, una estimación de ingresos y una propuesta de administración.'),
 }
 
@@ -564,8 +564,10 @@ for lang in LANGS:
         has_photo = os.path.exists(os.path.join(ROOT, 'assets', 'team', m['photo'] + '.webp'))
         photo = (f'<img src="{prefix}assets/team/{m["photo"]}.webp" alt="{html.escape(m["name"])}" width="640" height="800" loading="lazy" decoding="async">'
                  if has_photo else f'<span class="initials" aria-hidden="true">{initials(m["name"])}</span>')
+        bio = f'\n          <p class="member-bio">{html.escape(m["bio"][lang])}</p>' if m.get('bio') else ''
         cards_html += (f'      <article class="member">\n        <div class="member-photo">{photo}</div>\n'
-                       f'        <h2>{html.escape(m["name"])}</h2>\n        <p>{html.escape(m["role"][lang])}</p>\n      </article>\n')
+                       f'        <div class="member-text">\n          <h2>{html.escape(m["name"])}</h2>\n'
+                       f'          <p class="member-role">{html.escape(m["role"][lang])}</p>{bio}\n        </div>\n      </article>\n')
     body = f'''<section class="page-top">
   <div class="wrap">
     <p class="crumbs"><a href="../">{ui["home"]}</a> / {ui["crumb"]}</p>
@@ -588,6 +590,7 @@ for lang in LANGS:
         {'@type': 'AboutPage', 'name': ui['h1'], 'description': ui['desc'], 'url': url, 'inLanguage': lang,
          'about': {'@id': business_id()},
          'mainEntity': [{'@type': 'Person', 'name': m['name'], 'jobTitle': m['role'][lang],
+                         **({'description': m['bio'][lang]} if m.get('bio') else {}),
                          'worksFor': {'@id': business_id()},
                          **({'image': SITE + 'assets/team/' + m['photo'] + '.webp'}
                             if os.path.exists(os.path.join(ROOT, 'assets', 'team', m['photo'] + '.webp')) else {})} for m in TEAM]},

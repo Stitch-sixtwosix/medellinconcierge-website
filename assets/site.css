@@ -469,10 +469,20 @@ footer .social a{display:grid;place-items:center;width:44px;height:44px;padding:
 .member-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .member .initials{position:absolute;inset:0;display:grid;place-items:center;font:700 2.4rem Poppins,sans-serif;color:var(--muted)}
 .member h2{font-size:1.15rem;margin:0 0 2px}
-.member p{margin:0;color:var(--red-dark);font-weight:600;font-size:.95rem}
+.member .member-role{margin:0;color:var(--red-dark);font-weight:600;font-size:.95rem}
+.member .member-bio{margin:12px 0 0;color:var(--ink-2);font-size:.92rem;line-height:1.6;text-wrap:pretty}
+.team-grid{gap:40px 24px}
 .team .article-cta{max-width:none;margin-top:64px}
-@media (max-width:640px){.team-grid{gap:16px}.team-grid .member{flex-basis:calc((100% - 16px) / 2);max-width:none}}
-@media (max-width:420px){.team-grid{gap:16px}.member h2{font-size:1rem}.member p{font-size:.88rem}}
+/* Phones: one person per row, photo beside the text, so the bios stay readable */
+@media (max-width:640px){
+  .team-grid{flex-direction:column;gap:0}
+  .team-grid .member{flex:none;max-width:none;display:grid;grid-template-columns:104px 1fr;gap:16px;align-items:start;text-align:left;padding:20px 0;border-top:1px solid var(--line)}
+  .team-grid .member:first-child{border-top:0;padding-top:0}
+  .member-photo{margin:0}
+  .member h2{font-size:1.05rem}
+  .member .member-role{font-size:.9rem}
+  .member .member-bio{margin-top:8px;font-size:.9rem}
+}
 
 /* Newsletter signup (footer) */
 .newsletter{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:20px 48px;align-items:center;padding:0 0 48px;margin-bottom:48px;border-bottom:1px solid rgba(255,255,255,.1)}
