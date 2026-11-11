@@ -241,12 +241,12 @@
   .partners-label{flex:none;margin:0;font-family:Inter,system-ui,sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
   .marquee{flex:1;min-width:0;overflow:hidden;
     -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-  .marquee-track{display:flex;width:max-content;animation:marquee 28s linear infinite}
+  .marquee-track{display:flex;width:max-content;animation:marquee 90s linear infinite}
   .marquee-group{display:flex;flex-shrink:0;align-items:center;margin:0;padding:0;list-style:none}
   .marquee-group li{display:flex;align-items:center;white-space:nowrap;padding:0 0 0 56px}
   .marquee-group img{display:block;width:auto;max-width:none}
   .partner{display:flex;flex-direction:column;align-items:center;gap:8px}
-  .partner-logo{height:46px;display:flex;align-items:center}
+  .partner-logo{height:52px;display:flex;align-items:center}
   .partner span{font-family:Poppins,Inter,sans-serif;font-weight:600;font-size:.88rem;letter-spacing:-.005em;color:var(--ink-2)}
   .marquee-group li::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--red);margin-left:56px}
   @keyframes marquee{to{transform:translateX(-50%)}}
