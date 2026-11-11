@@ -158,6 +158,39 @@ if let wi = args.firstIndex(of: "--widen"), wi + 1 < args.count, let S = Double(
             buf[i + 3] = 255
         }
     }
+    // Fill gaps at the lower corners: once the shoulder reaches a side edge, every row below it is extended to
+    // that edge with the shirt's average tone next to the gap, smoothed between rows (no streaks), so no white
+    // wedge shows where the original photo ended.
+    let isBg = { (i: Int) -> Bool in buf[i] > 246 && buf[i + 1] > 246 && buf[i + 2] > 246 }
+    for side in 0..<2 {
+        var reached = false
+        var gap = [Int](repeating: 0, count: H)                       // width of the white gap per row
+        var tone = [[Double]](repeating: [255, 255, 255], count: H)   // average shirt colour beside it
+        for y in max(0, Int(chin))..<H {
+            var g = 0
+            while g < W / 3 && isBg((y * W + (side == 0 ? g : W - 1 - g)) * 4) { g += 1 }
+            if g <= 2 { reached = true; continue }
+            guard reached && g < W / 3 else { continue }
+            gap[y] = g
+            var sum = [0.0, 0.0, 0.0]
+            for d in 6..<36 {
+                let x = side == 0 ? min(W - 1, g + d) : max(0, W - 1 - g - d)
+                for k in 0..<3 { sum[k] += Double(buf[(y * W + x) * 4 + k]) }
+            }
+            tone[y] = sum.map { $0 / 30 }
+        }
+        for y in 0..<H where gap[y] > 0 {
+            var c = [0.0, 0.0, 0.0], n = 0.0
+            for yy in max(0, y - 20)...min(H - 1, y + 20) where gap[yy] > 0 { for k in 0..<3 { c[k] += tone[yy][k] }; n += 1 }
+            let g = gap[y] + 4                                         // overlap the soft edge a little
+            for j in 0..<min(W, g) {
+                let x = side == 0 ? j : W - 1 - j
+                let i = (y * W + x) * 4
+                let t = min(1.0, Double(g - j) / 6)                      // blend into the shirt at the seam
+                for k in 0..<3 { buf[i + k] = UInt8((Double(buf[i + k]) * (1 - t) + c[k] / n * t).rounded()) }
+            }
+        }
+    }
     cg = wctx.makeImage()!
     print("widened below y=\(Int(chin)) by \(S)")
 }
