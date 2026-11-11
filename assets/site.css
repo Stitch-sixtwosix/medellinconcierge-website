@@ -54,7 +54,7 @@
   .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
   .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
   .logo img.full{height:46px;width:auto;display:block}
-  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links{display:flex;gap:20px;align-items:center}
   .nav-links a:not(.btn){text-decoration:none;color:var(--ink-2);font-weight:500;font-size:.95rem;padding:10px 0;transition:color .15s ease}
   @media (hover:hover){.nav-links a:not(.btn):hover{color:var(--red)}}
   .nav-links .btn{min-height:42px;padding:10px 20px;font-size:.95rem}
@@ -256,8 +256,8 @@
     .foot{grid-template-columns:1fr 1fr}
     .hero-card{max-width:560px}
   }
-  /* Header: below 1040px the links + Get started + EN/ES no longer fit; use the menu button */
-  @media (max-width:1180px){
+  /* Header: below 1260px the links + Get started + EN/ES no longer fit; use the menu button */
+  @media (max-width:1260px){
     .menu-btn{display:grid}
     .nav-links{position:fixed;inset:76px 0 auto 0;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:4px 24px 20px;box-shadow:0 16px 24px -16px rgba(0,0,0,.3);display:none;
       opacity:1;transform:none;transition:opacity .2s ease,transform .25s var(--ease-out),display .25s allow-discrete}
@@ -510,3 +510,11 @@ a.area-card:not([href]) .read{display:none}
 .tours-note{margin:16px 0 0;color:var(--muted);font-size:.9rem;max-width:760px}
 .tours .article-cta{max-width:none;margin-top:48px}
 @media (max-width:640px){.tours{padding:24px 0 72px}.tours .wrap{padding:0 8px}.tours-embed{padding:8px;border-radius:var(--radius)}}
+
+/* Commercial management page */
+.pains-3{grid-template-columns:repeat(3,1fr)}
+.commercial-run .checks{display:grid;grid-template-columns:1fr 1fr;column-gap:48px;margin-top:40px}
+.commercial-run .checks li + li{border-top:0}
+.commercial-run .checks li{border-bottom:1px solid rgba(255,255,255,.09)}
+@media (max-width:900px){.pains-3{grid-template-columns:1fr}}
+@media (max-width:760px){.commercial-run .checks{grid-template-columns:1fr}}

@@ -182,4 +182,18 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/tours/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/tours/"/>
   </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/commercial/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/commercial/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/comercial/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/commercial/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/es/comercial/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/commercial/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/comercial/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/commercial/"/>
+  </url>
 </urlset>

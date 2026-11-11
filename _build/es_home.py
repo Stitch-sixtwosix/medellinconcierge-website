@@ -170,6 +170,8 @@ HOME_ES = [
  ('>FAQ</a>', '>Preguntas</a>'),
  ('lead?t=49d-bifpnoxA37UexXu3HOgg&amp;lang=en"', 'lead?t=49d-bifpnoxA37UexXu3HOgg&amp;lang=es"'),
  ('>Tours in Medellín</a>', '>Tours en Medellín</a>'),
+ ('>Commercial</a>', '>Comercial</a>'),
+ ('>Hotels &amp; buildings</a>', '>Hoteles y edificios</a>'),
  ('<h4>Owners</h4>', '<h4>Propietarios</h4>'),
  ('>Plans &amp; fees</a>', '>Planes y tarifas</a>'),
  ('>How it works</a>', '>Cómo funciona</a>'),

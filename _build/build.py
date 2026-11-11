@@ -186,7 +186,7 @@ if missing:
              + '\n  - '.join(m[:100] for m in missing))
 for a, b in HOME_ES:
     es = es.replace(a, b)
-es = es.replace('href="rentals/"', 'href="arriendos/"').replace('href="team/"', 'href="equipo/"').replace('href="faq/"', 'href="preguntas-frecuentes/"')
+es = es.replace('href="rentals/"', 'href="arriendos/"').replace('href="team/"', 'href="equipo/"').replace('href="faq/"', 'href="preguntas-frecuentes/"').replace('href="commercial/"', 'href="comercial/"')
 for pg in PAGES:   # landing page links point to the Spanish versions
     es = es.replace(f'href="{pg["en"]["slug"]}/"', f'href="{pg["es"]["slug"]}/"')
 es = set_home_jsonld(es, 'es')
@@ -699,6 +699,131 @@ for lang in LANGS:
     write(f'{ui["slug"]}/index.html', page(lang, title=ui['title'], desc=ui['desc'], en_url=en_url, es_url=es_url,
           en_href=en_href, es_href=es_href, body=body, schema=schema))
 SITEMAP.append((SITE + 'tours/', SITE + 'es/tours/', TODAY))
+
+
+# ======================= 4h. Commercial management (/commercial/, /es/comercial/) =======================
+# Hotels, full buildings and community hospitality operations. Same Hostflow lead form as the home page.
+LEAD_FORM = 'https://hostflow.in/lead?t=49d-bifpnoxA37UexXu3HOgg&amp;lang='
+COMMERCIAL_ICONS = [
+    '<path d="M3 20V8m0 6h18v6M3 14h18M7 11.5a1.5 1.5 0 1 0 0-.01M11 11h7a3 3 0 0 1 3 3"/>',                       # bed
+    '<rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M11 21v-3h2v3"/>',  # building
+    '<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 5.5a3 3 0 0 1 0 5M18 20a6 6 0 0 0-3-5.2"/>',     # people
+]
+CHECK = ('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" '
+         'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>')
+COMMERCIAL = {
+ 'en': dict(slug='commercial', home='Home', crumb='Commercial',
+            title='Hotel & Building Management in Medellín | Medellín Concierge',
+            desc='Commercial hospitality management in Medellín: we run hotels, full buildings and community hospitality operations for their owners, from distribution and pricing to guests, compliance and monthly reporting.',
+            h1='Commercial hospitality management',
+            lead='Hotels, full buildings and community hospitality operations in Medellín, run for their owners by the same team and systems that manage our apartments.',
+            who_h='Who we work with',
+            who=[('Hotels and boutique hotels', 'Independent hotels that want stronger online distribution, smarter pricing and dependable guest service, without giving up their own identity.'),
+                 ('Full buildings', 'Aparthotels and buildings of furnished units run as one operation: every unit priced, cleaned, maintained and reported together.'),
+                 ('Community hospitality', 'Coliving, residential communities and buildings that mix short and long stays, where guests and residents share the same spaces.')],
+            run_h='What we run for you',
+            run_lead='One operator for the whole property, with one point of contact for owners and investors.',
+            run=['Distribution on Airbnb, Booking.com, Expedia and VRBO, with synced calendars and dynamic pricing',
+                 '24/7 guest support: reservations, check-ins and guest communication',
+                 'Housekeeping and maintenance, coordinated and supervised',
+                 'Common areas, house rules and resident relations in shared buildings',
+                 'RNT, SIRE and TRA registrations and reporting',
+                 'Owner portal with monthly GAAP financial statements'],
+            how_h='How we take over an operation',
+            how=[('Operational review', 'We visit the property and review how it runs today: occupancy, rates, staffing, costs and registrations. Then we tell you where we see room to improve.'),
+                 ('Proposal', 'You receive a management proposal with the scope, the transition plan and a fee structure that fits the size of the operation.'),
+                 ('Transition and operation', 'We set up registrations, listings and systems, then run day-to-day operations and report to you every month.')],
+            form_h='Tell us about your property',
+            form_p='Share the type of property, the number of units and where it is. We\'ll get back to you to arrange an operational review.',
+            form_title='Request a free consultation', form_note='Form not loading?', form_open='Open it in a new tab'),
+ 'es': dict(slug='es/comercial', home='Inicio', crumb='Comercial',
+            title='Administración de hoteles y edificios en Medellín | Medellín Concierge',
+            desc='Administración hotelera comercial en Medellín: operamos hoteles, edificios completos y proyectos de hospitalidad comunitaria para sus dueños, desde la distribución y los precios hasta los huéspedes, el cumplimiento legal y los informes mensuales.',
+            h1='Administración hotelera comercial',
+            lead='Hoteles, edificios completos y proyectos de hospitalidad comunitaria en Medellín, operados para sus dueños por el mismo equipo y los mismos sistemas que administran nuestros apartamentos.',
+            who_h='Con quién trabajamos',
+            who=[('Hoteles y hoteles boutique', 'Hoteles independientes que quieren mejor distribución en línea, precios más inteligentes y un servicio al huésped confiable, sin perder su propia identidad.'),
+                 ('Edificios completos', 'Aparthoteles y edificios de unidades amobladas operados como una sola operación: cada unidad con su precio, su aseo, su mantenimiento y sus informes, todo junto.'),
+                 ('Hospitalidad comunitaria', 'Coliving, comunidades residenciales y edificios que combinan estadías cortas y largas, donde huéspedes y residentes comparten los mismos espacios.')],
+            run_h='Lo que operamos por usted',
+            run_lead='Un solo operador para toda la propiedad, con un solo punto de contacto para dueños e inversionistas.',
+            run=['Distribución en Airbnb, Booking.com, Expedia y VRBO, con calendarios sincronizados y precios dinámicos',
+                 'Atención al huésped 24/7: reservas, check-ins y comunicación con los huéspedes',
+                 'Aseo y mantenimiento, coordinados y supervisados',
+                 'Zonas comunes, normas de convivencia y relación con los residentes en edificios compartidos',
+                 'Registros y reportes de RNT, SIRE y TRA',
+                 'Portal del propietario con estados financieros mensuales bajo GAAP'],
+            how_h='Cómo asumimos una operación',
+            how=[('Revisión operativa', 'Visitamos la propiedad y revisamos cómo funciona hoy: ocupación, tarifas, personal, costos y registros. Luego le decimos dónde vemos oportunidades de mejora.'),
+                 ('Propuesta', 'Recibe una propuesta de administración con el alcance, el plan de transición y una estructura de tarifas acorde al tamaño de la operación.'),
+                 ('Transición y operación', 'Configuramos registros, anuncios y sistemas, y luego operamos el día a día y le reportamos cada mes.')],
+            form_h='Cuéntenos sobre su propiedad',
+            form_p='Indíquenos el tipo de propiedad, el número de unidades y dónde está. Nos pondremos en contacto para coordinar una revisión operativa.',
+            form_title='Solicite una consulta gratuita', form_note='¿No carga el formulario?', form_open='Ábralo en una pestaña nueva'),
+}
+for lang in LANGS:
+    ui = COMMERCIAL[lang]
+    en_url, es_url = SITE + 'commercial/', SITE + 'es/comercial/'
+    url = es_url if lang == 'es' else en_url
+    home_url = SITE + ('es/' if lang == 'es' else '')
+    who = ''.join(f'''
+      <div class="pain">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{icon}</svg>
+        <h3>{h}</h3><p>{p}</p></div>''' for icon, (h, p) in zip(COMMERCIAL_ICONS, ui['who']))
+    run = ''.join(f'\n        <li>{CHECK}{x}</li>' for x in ui['run'])
+    how = ''.join(f'\n      <li><h3>{h}</h3><p>{p}</p></li>' for h, p in ui['how'])
+    form = LEAD_FORM + lang
+    h = HOME[lang]; i = h.index('<div class="contact-list">')
+    contact_list = h[i:h.index('</div>', i) + 6]   # WhatsApp, email and office address, as on the home page
+    body = f'''<section class="page-top">
+  <div class="wrap">
+    <p class="crumbs"><a href="../">{ui["home"]}</a> / {ui["crumb"]}</p>
+    <h1>{ui["h1"]}</h1>
+    <p class="lead">{ui["lead"]}</p>
+  </div>
+</section>
+<section class="commercial-who">
+  <div class="wrap">
+    <div class="head"><h2>{ui["who_h"]}</h2></div>
+    <div class="pains pains-3">{who}
+    </div>
+  </div>
+</section>
+<section class="dark commercial-run">
+  <div class="wrap">
+    <div class="head"><h2>{ui["run_h"]}</h2><p class="lead">{ui["run_lead"]}</p></div>
+    <ul class="checks">{run}
+    </ul>
+  </div>
+</section>
+<section class="commercial-how">
+  <div class="wrap">
+    <div class="head"><h2>{ui["how_h"]}</h2></div>
+    <ol class="steps">{how}
+    </ol>
+  </div>
+</section>
+<section id="contact" class="dark">
+  <div class="wrap contact">
+    <div>
+      <h2>{ui["form_h"]}</h2>
+      <p class="lead">{ui["form_p"]}</p>
+      {contact_list}
+    </div>
+    <div class="lead-embed">
+      <iframe src="{form}" title="{ui["form_title"]}" loading="lazy"></iframe>
+      <p class="form-note">{ui["form_note"]} <a href="{form}" target="_blank" rel="noopener">{ui["form_open"]}</a>.</p>
+    </div>
+  </div>
+</section>'''
+    schema = {'@context': 'https://schema.org', '@graph': [
+        {'@type': 'Service', 'name': ui['h1'], 'description': ui['desc'], 'url': url, 'inLanguage': lang,
+         'serviceType': ui['h1'], 'areaServed': 'Medellín, Colombia', 'provider': {'@id': business_id()}},
+        breadcrumbs([(ui['home'], home_url), (ui['crumb'], url)])]}
+    en_href, es_href = (('./', '../es/comercial/') if lang == 'en' else ('../../commercial/', './'))
+    write(f'{ui["slug"]}/index.html', page(lang, title=ui['title'], desc=ui['desc'], en_url=en_url, es_url=es_url,
+          en_href=en_href, es_href=es_href, body=body, schema=schema))
+SITEMAP.append((SITE + 'commercial/', SITE + 'es/comercial/', TODAY))
 
 
 # ======================= 4b. Old Wix URLs → redirects, and 404.html =======================
