@@ -109,7 +109,7 @@ def business(lang):
     services = b['services_es'] if lang == 'es' else b['services_en']
     return {
         '@type': ['RealEstateAgent', 'LocalBusiness'], '@id': business_id(),
-        'name': b['name'], 'legalName': b['legal_name'],
+        'name': b['name'], 'legalName': b['legal_name'], 'taxID': b['tax_id'],
         'url': SITE + ('es/' if lang == 'es' else ''),
         'logo': SITE + 'assets/logo.png', 'image': SITE + 'assets/mark.png',
         'telephone': b['telephone'], 'email': b['email'],

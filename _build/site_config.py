@@ -7,6 +7,7 @@ SITE = 'https://www.medellinconcierge.net/'
 BUSINESS = {
     'name': 'Medellín Concierge',
     'legal_name': 'Medellín Concierge S.A.S.',          # as on the 2026 brochure / Hostflow
+    'tax_id': '901564260-7',                             # NIT, confirmed by James 2026-11-11
     'telephone': '+57 304 277 3864',
     'email': 'sales@medellinconcierge.net',
     'street': 'Cl. 10 #42-28, Oficina 15, El Poblado',
