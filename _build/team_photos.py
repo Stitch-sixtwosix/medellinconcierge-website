@@ -15,6 +15,7 @@ ROOT = os.path.dirname(HERE)
 SRC, OUT = os.path.join(ROOT, 'team-photos'), os.path.join(ROOT, 'assets', 'team')
 BIN = os.path.join(tempfile.gettempdir(), 'mc-cutout')
 LEVEL = {'angie-pineda'}   # tilted (selfie) photos: rotate so the eyes are level
+MIRROR_LEFT = {'angie-pineda'}   # raised selfie arm on the frame's right: mirror the natural left shoulder
 
 if not shutil.which('cwebp'):
     sys.exit('cwebp not found: brew install webp')
@@ -31,7 +32,7 @@ if not photos:
 for f in photos:
     name = os.path.splitext(f)[0]
     png = os.path.join(tempfile.gettempdir(), name + '-white.png')
-    r = subprocess.run([BIN, os.path.join(SRC, f), png] + (['--level'] if name in LEVEL else []), capture_output=True, text=True)
+    r = subprocess.run([BIN, os.path.join(SRC, f), png] + (['--level'] if name in LEVEL else []) + (['--mirror-left'] if name in MIRROR_LEFT else []), capture_output=True, text=True)
     if r.returncode:
         sys.exit(f'{f}: {r.stdout.strip() or r.stderr.strip()}')
     subprocess.run(['cwebp', '-quiet', '-q', '82', png, '-o', os.path.join(OUT, name + '.webp')], check=True)

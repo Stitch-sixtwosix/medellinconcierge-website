@@ -90,6 +90,49 @@ let rect = CGRect(x: ext.minX + x0, y: ext.minY + ext.height - top - cropH, widt
 let framed = onWhite.cropped(to: rect).transformed(by: CGAffineTransform(translationX: -rect.minX, y: -rect.minY))
 let scale = 640 / cropW
 let out = framed.transformed(by: CGAffineTransform(scaleX: scale, y: scale))
-let cg = ctx.createCGImage(out, from: CGRect(x: 0, y: 0, width: 640, height: 800))!
+var cg = ctx.createCGImage(out, from: CGRect(x: 0, y: 0, width: 640, height: 800))!
+
+// --mirror-left: for selfies where one arm is raised, rebuild the person's left side (frame right) as a mirror
+// of the natural shoulder on the frame's left, across the centre of the face. Only the area beside the hair,
+// below the chin, is replaced, so the face and hair stay untouched.
+if args.contains("--mirror-left"), let face = faceReq.results?.max(by: { $0.boundingBox.height < $1.boundingBox.height })?.boundingBox {
+    let W = 640, H = 800
+    let buf = UnsafeMutablePointer<UInt8>.allocate(capacity: W * H * 4); buf.initialize(repeating: 0, count: W * H * 4)
+    let bctx = CGContext(data: buf, width: W, height: H, bitsPerComponent: 8, bytesPerRow: W * 4,
+                         space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
+    bctx.draw(cg, in: CGRect(x: 0, y: 0, width: W, height: H))      // row 0 of buf = top of the image
+    let axis = (face.midX * ext.width - x0) * scale                  // face centre, frame pixels
+    let chin = Int(((1 - face.minY) * ext.height - top) * scale)     // bottom of the face box, from the top
+    let src = Array(UnsafeBufferPointer(start: buf, count: W * H * 4))
+    let luma = { (i: Int) -> Int in (Int(src[i]) * 3 + Int(src[i + 1]) * 6 + Int(src[i + 2])) / 10 }
+    let eyeY = ((1 - face.midY) * ext.height - top) * scale, chinY = ((1 - face.minY) * ext.height - top) * scale
+    let y0 = max(0, Int((eyeY + chinY) / 2))          // from mid-face down (catches a raised sleeve), faded in over 24 rows
+    // the right hair strand's outer edge per row: first dark pixel scanning in from the right edge
+    var edges = [Int](repeating: Int(axis), count: H)
+    for y in y0..<H {
+        for x in stride(from: W - 1, to: Int(axis), by: -1) where luma((y * W + x) * 4) < 110 { edges[y] = x; break }
+    }
+    for y in y0..<H {
+        // work from 30 px inside the hair outwards; the face and neck further in are never touched
+        let inner = max(Int(axis), edges[max(y0, y - 8)...min(H - 1, y + 8)].min()! - 30)
+        let fade = min(1.0, Double(y - y0) / 24)
+        for x in (inner + 1)..<W {
+            let mx = Int((2 * axis - CGFloat(x)).rounded())
+            let i = (y * W + x) * 4
+            let m = mx >= 0 && mx < W ? (y * W + mx) * 4 : -1
+            // hair (dark) stays on top; light pixels (sleeve, background) come from the mirrored left side
+            let hair = max(0.0, min(1.0, Double(165 - luma(i)) / 60))
+            let ramp = min(1.0, Double(x - inner) / 10)
+            let t = (1 - hair) * fade * ramp
+            for k in 0..<3 {
+                let mv = m >= 0 ? Double(src[m + k]) : 255
+                buf[i + k] = UInt8((Double(src[i + k]) * (1 - t) + mv * t).rounded())
+            }
+            buf[i + 3] = 255
+        }
+    }
+    cg = bctx.makeImage()!
+    print("mirrored the left shoulder across x=\(Int(axis)) from y=\(y0)")
+}
 try NSBitmapImageRep(cgImage: cg).representation(using: .png, properties: [:])!.write(to: URL(fileURLWithPath: args[2]))
 print("ok")
