@@ -131,6 +131,39 @@ if args.contains("--mirror-left"), let face = faceReq.results?.max(by: { $0.boun
             buf[i + 3] = 255
         }
     }
+    // The edge of the original photo can cut the hair in a straight line once the photo is levelled. Above the
+    // eyes, mirror the hair outline across the centre of the head (the middle of the hair at the crown) and add
+    // hair only onto white background, so the outline follows the natural curve of the other side. Skin, glasses
+    // and existing hair are never changed.
+    var crownY = 0, crownX = Double(axis)
+    outer: for y in 0..<H { for x in 0..<W where luma((y * W + x) * 4) < 110 {
+        var r = W - 1; while r > x && luma((y * W + r) * 4) >= 110 { r -= 1 }
+        crownY = y; crownX = Double(x + r) / 2; break outer } }
+    let headAxis = Double(crownY + 12 < H ? {
+        // average the hair's centre over the first rows below the crown for a stable axis
+        var sum = 0.0, n = 0.0
+        for y in (crownY + 6)..<(crownY + 30) {
+            var l = 0; while l < W - 1 && luma((y * W + l) * 4) >= 110 { l += 1 }
+            var r = W - 1; while r > l && luma((y * W + r) * 4) >= 110 { r -= 1 }
+            if r > l { sum += Double(l + r) / 2; n += 1 }
+        }
+        return n > 0 ? sum / n : crownX }() : crownX)
+    let eyeD = Double(eyeY)
+    for y in crownY..<min(H, Int(eyeD)) {
+        let fadeY = min(1.0, (eyeD - Double(y)) / 30)
+        // the original outer hair edges on this row; only a band from 8 px inside them outwards is touched
+        var l = 0; while l < W - 1 && luma((y * W + l) * 4) >= 110 { l += 1 }
+        var r = W - 1; while r > l && luma((y * W + r) * 4) >= 110 { r -= 1 }
+        for x in 0..<W where x <= l + 8 || x >= r - 8 {
+            let mx = Int((2 * headAxis - Double(x)).rounded()); guard mx >= 0 && mx < W else { continue }
+            let i = (y * W + x) * 4, m = (y * W + mx) * 4
+            let bg = max(0.0, min(1.0, Double(luma(i) - 150) / 60))       // light pixels: background and edge halo
+            let hair = max(0.0, min(1.0, Double(190 - luma(m)) / 80))     // the mirrored pixel must be real hair
+            guard bg > 0, hair > 0, luma(m) < luma(i) else { continue }
+            let t = bg * hair * fadeY
+            for k in 0..<3 { buf[i + k] = UInt8((Double(buf[i + k]) * (1 - t) + Double(src[m + k]) * t).rounded()) }
+        }
+    }
     cg = bctx.makeImage()!
     print("mirrored the left shoulder across x=\(Int(axis)) from y=\(y0)")
 }
