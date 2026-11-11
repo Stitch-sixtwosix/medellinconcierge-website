@@ -122,6 +122,7 @@ HOME_ES = [
  # ---- platforms ----
  ('Listed on the platforms guests already use', 'Presentes en las plataformas que los huéspedes ya usan'),
  ('Airbnb, Booking.com, Expedia, VRBO and more, all on one synced calendar.', 'Airbnb, Booking.com, Expedia, VRBO y más, todo en un solo calendario sincronizado.'),
+ ('>Our partners</h2>', '>Nuestros aliados</h2>'),
  ('Plus other channels where they fit your property. Ask us which ones.', 'Además de otros canales cuando le convienen a su propiedad. Pregúntenos cuáles.'),
 
  # ---- reviews + office ----

@@ -29,7 +29,7 @@
 <script>document.documentElement.classList.add('js');
 // Send Spanish-speaking first-time visitors (or anyone who chose ES before) to the Spanish home page
 try { var l = localStorage.getItem('mc-lang'); if (l === 'es' || (!l && /^es\b/i.test(navigator.language || ''))) location.replace('es/' + location.hash); } catch (e) {}</script>
-<link rel="stylesheet" href="assets/site.css?v=e9bd016f">
+<link rel="stylesheet" href="assets/site.css?v=fe0d2197">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -233,6 +233,19 @@ try { var l = localStorage.getItem('mc-lang'); if (l === 'es' || (!l && /^es\b/i
     </g>
     <path d="M0 200 C300 180 520 205 760 192 C1000 180 1200 200 1440 188 V220 H0Z" fill="#fafafa"/>
   </svg>
+</section>
+
+<!-- PARTNERS: names scroll in a loop; the second list is a visual copy for the seamless loop -->
+<section class="partners" aria-labelledby="partners-title">
+  <div class="wrap partners-inner">
+    <h2 id="partners-title" class="partners-label">Our partners</h2>
+    <div class="marquee">
+      <div class="marquee-track">
+        <ul class="marquee-group"><li>RE/MAX</li><li>Primavera Realty</li><li>Everplace.co</li><li>Hospy.co</li></ul>
+        <ul class="marquee-group" aria-hidden="true"><li>RE/MAX</li><li>Primavera Realty</li><li>Everplace.co</li><li>Hospy.co</li></ul>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- PAIN POINTS -->
