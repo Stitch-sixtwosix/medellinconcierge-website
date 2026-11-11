@@ -39,3 +39,4 @@ TODO_SAME_AS = {
 # Newsletter signup (footer of every page). Leave '' to keep the form hidden.
 # When set, the form POSTs JSON {email, consent, lang, source} to this URL; see _build/NEWSLETTER.md.
 NEWSLETTER_ENDPOINT = ''
+INDEXNOW_KEY = '4ba685f5507100f199dd44c2a2c1c263'   # IndexNow key; the file /4ba685f5507100f199dd44c2a2c1c263.txt on the site proves we own it

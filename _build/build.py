@@ -12,7 +12,7 @@ index.html (English home page) is the hand-edited source. This script then:
   5. writes sitemap.xml and robots.txt
 It stops with a clear message if an English string in es_home.py no longer exists in index.html.
 """
-import datetime, glob, hashlib, html, json, os, re, sys
+import datetime, glob, hashlib, html, json, os, re, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -709,8 +709,6 @@ COMMERCIAL_ICONS = [
     '<rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M11 21v-3h2v3"/>',  # building
     '<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 5.5a3 3 0 0 1 0 5M18 20a6 6 0 0 0-3-5.2"/>',     # people
 ]
-CHECK = ('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" '
-         'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>')
 COMMERCIAL = {
  'en': dict(slug='commercial', home='Home', crumb='Commercial',
             title='Hotel & Building Management in Medellín | Medellín Concierge',
@@ -949,13 +947,40 @@ for lang in LANGS:
 # ======================= 5. sitemap.xml + robots.txt =======================
 xml = ['<?xml version="1.0" encoding="UTF-8"?>',
        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
-for en_url, es_url, lastmod in SITEMAP:
+# <lastmod> is the date a page's content last changed, so search engines can trust it and recrawl only what
+# changed. _build/lastmod.json keeps a fingerprint and date per URL; a date moves only when the page's HTML
+# changes (asset ?v= stamps ignored). Blog posts keep their own published/modified date if that is later.
+LASTMOD_FILE = os.path.join(HERE, 'lastmod.json')
+lastmods = json.load(open(LASTMOD_FILE)) if os.path.exists(LASTMOD_FILE) else {}
+def url_file(u):
+    rel = u[len(SITE):]
+    return os.path.join(ROOT, rel + 'index.html' if rel == '' or rel.endswith('/') else rel)
+def git_date(path):
+    r = subprocess.run(['git', 'log', '-1', '--format=%ad', '--date=short', '--', path], cwd=ROOT, capture_output=True, text=True)
+    return r.stdout.strip() or TODAY
+def content_lastmod(u, given):
+    f = url_file(u)
+    h = open(f, encoding='utf-8').read()
+    # Fingerprint the page's own content (title, description, <main>), not the shared menu and footer, so a
+    # menu change does not mark every page as changed.
+    parts = re.findall(r'<title>.*?</title>|<meta name="description"[^>]*>|<main\b.*?</main>', h, flags=re.S)
+    fp = hashlib.sha1(re.sub(r'\?v=[0-9a-f]+', '', ''.join(parts)).encode()).hexdigest()[:12]
+    prev = lastmods.get(u)
+    if prev and prev[0] == fp: d = prev[1]
+    elif prev: d = TODAY                                        # content changed since the last build
+    else: d = given if given != TODAY else git_date(f)          # first time this URL is seen
+    lastmods[u] = [fp, d]
+    return max(d, given) if given != TODAY else d
+for en_url, es_url, given in SITEMAP:
     for loc in (en_url, es_url):
+        lastmod = content_lastmod(loc, given)
         xml += ['  <url>', f'    <loc>{loc}</loc>', f'    <lastmod>{lastmod}</lastmod>',
                 f'    <xhtml:link rel="alternate" hreflang="en" href="{en_url}"/>',
                 f'    <xhtml:link rel="alternate" hreflang="es" href="{es_url}"/>',
                 f'    <xhtml:link rel="alternate" hreflang="x-default" href="{en_url}"/>', '  </url>']
 xml.append('</urlset>')
 write('sitemap.xml', '\n'.join(xml) + '\n')
+live = {u for e, x, _ in SITEMAP for u in (e, x)}
+json.dump({u: v for u, v in sorted(lastmods.items()) if u in live}, open(LASTMOD_FILE, 'w'), indent=1)
 write('robots.txt', f'User-agent: *\nAllow: /\nDisallow: /_build/\n\nSitemap: {SITE}sitemap.xml\n')
 print(f'Done. {len(SITEMAP) * 2} URLs in sitemap.xml')

@@ -82,6 +82,14 @@ and is left out of `sitemap.xml`. Once all slots are filled, the page becomes in
   commits, and a push without pulling first is rejected.
 - Order: edit sources → `python3 _build/build.py` → **stop if it exits non-zero** → commit everything it
   wrote → push. A scheduled job must never push after a failed build.
+- **After every publish**, once the GitHub Pages deploy has finished: `python3 _build/after_deploy.py`.
+  It checks that every page in the live sitemap can be indexed (HTTP 200, no noindex, canonical to itself,
+  EN/ES hreflang, robots.txt allows crawling) and then sends the pages changed today to IndexNow (Bing,
+  Yandex, Seznam, Naver). If it reports a problem, fix it before anything else. Google takes no pings: it
+  rereads `sitemap.xml`, so the `<lastmod>` dates must be true. The build keeps them true by itself
+  (`_build/lastmod.json` remembers each page's content fingerprint; a date moves only when the page's own
+  content changes). Never edit `lastmod.json` by hand, and never delete the IndexNow key file
+  (`<key>.txt` at the site root, key in `site_config.py`).
 - Set `git config user.name` / `user.email` in this repo so automated commits are identifiable.
 - Recommended for the first week: have the job send James a summary (or open a pull request) instead of
   pushing directly.
