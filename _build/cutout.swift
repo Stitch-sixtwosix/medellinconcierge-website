@@ -34,6 +34,24 @@ if args.contains("--level") {
         print(String(format: "levelled by %.1f degrees", angle * 180 / .pi))
     }
 }
+// --touchup: a light, natural retouch. Tames shine and lifts shadows a little across the photo, and softens skin
+// texture on the face only (edges such as eyes, brows and lips are kept sharp). Features are not reshaped.
+if args.contains("--touchup") {
+    let e = input.extent
+    input = input.applyingFilter("CIHighlightShadowAdjust", parameters: ["inputHighlightAmount": 0.55, "inputShadowAmount": 0.3]).cropped(to: e)
+    let fr = VNDetectFaceRectanglesRequest()
+    try VNImageRequestHandler(ciImage: input).perform([fr])
+    if let f = fr.results?.max(by: { $0.boundingBox.height < $1.boundingBox.height })?.boundingBox {
+        let c = CIVector(x: f.midX * e.width, y: f.midY * e.height)
+        let r = max(f.width * e.width, f.height * e.height) * 0.6
+        let smooth = input.applyingFilter("CINoiseReduction", parameters: ["inputNoiseLevel": 0.14, "inputSharpness": 0.45]).cropped(to: e)
+        let mask = CIFilter(name: "CIRadialGradient", parameters: [
+            "inputCenter": c, "inputRadius0": r * 0.75, "inputRadius1": r * 1.15,
+            "inputColor0": CIColor(red: 0.85, green: 0.85, blue: 0.85), "inputColor1": CIColor(red: 0, green: 0, blue: 0)])!.outputImage!.cropped(to: e)
+        input = smooth.applyingFilter("CIBlendWithMask", parameters: [kCIInputBackgroundImageKey: input, kCIInputMaskImageKey: mask]).cropped(to: e)
+        print("touched up")
+    }
+}
 let handler = VNImageRequestHandler(ciImage: input)
 let req = VNGenerateForegroundInstanceMaskRequest()
 try handler.perform([req])

@@ -7,9 +7,13 @@
 # personal or work email addresses (all contact goes through sales@ and WhatsApp).
 TEAM = [
     dict(name='James Duerr', photo='james-duerr',
-         role=dict(en='Owner & General Manager', es='Propietario y gerente general'),
-         bio=dict(en='James leads Medellín Concierge and its team, overseeing operations, service standards and the relationship with property owners, from short-term apartments to hotels and full buildings.',
-                  es='James dirige Medellín Concierge y su equipo. Supervisa la operación, los estándares de servicio y la relación con los propietarios, desde apartamentos de estadía corta hasta hoteles y edificios completos.')),
+         role=dict(en='Founder', es='Fundador'),
+         bio=dict(en='James founded Medellín Concierge and sets its direction, from managing apartments for their owners to commercial hospitality for hotels and full buildings.',
+                  es='James fundó Medellín Concierge y define su rumbo, desde la administración de apartamentos para sus propietarios hasta la hospitalidad comercial para hoteles y edificios completos.')),
+    dict(name='Susan Munévar', photo='susan-munevar',
+         role=dict(en='General Manager', es='Gerente general'),
+         bio=dict(en='Susan oversees company-wide operations at Medellín Concierge, including finance, legal, operations and sales.',
+                  es='Susan supervisa la operación de toda la empresa en Medellín Concierge, incluidas las áreas de finanzas, legal, operaciones y ventas.')),
     dict(name='Angie Pineda', photo='angie-pineda',
          role=dict(en='Operations Manager', es='Gerente de operaciones'),
          bio=dict(en='Angie oversees the success of the company\'s daily operations, creates and maintains our listings on the booking platforms and keeps control of our pricing strategy.',
