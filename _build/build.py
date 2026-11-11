@@ -193,6 +193,7 @@ es = set_home_jsonld(es, 'es')
 es = re.sub(r"<script>document\.documentElement\.classList\.add\('js'\);.*?</script>",
             "<script>document.documentElement.classList.add('js')</script>", es, count=1, flags=re.S)
 es = es.replace(f'<meta property="og:url" content="{SITE}">', f'<meta property="og:url" content="{SITE}es/">')
+es = es.replace('assets/share-en.jpg', 'assets/share-es.jpg')
 es = set_alternates(es, SITE, SITE + 'es/', 'es')
 es = set_switch(es, '../', './', 'es')
 es = es.replace('src="assets/', 'src="../assets/').replace('href="assets/', 'href="../assets/')
@@ -240,11 +241,16 @@ def page(lang, *, title, desc, en_url, es_url, en_href, es_href, body, schema, o
 <meta property="og:url" content="{url}">
 <meta property="og:title" content="{t}">
 <meta property="og:description" content="{d}">
-<meta property="og:image" content="{SITE}assets/mark.png">
-<meta property="og:image:alt" content="{'Logo de Medellín Concierge' if lang == 'es' else 'Medellín Concierge logo'}">
+<meta property="og:image" content="{SITE}assets/share-{lang}.jpg">
+<meta property="og:image:secure_url" content="{SITE}assets/share-{lang}.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{'Medellín Concierge: administración de propiedades en Medellín' if lang == 'es' else 'Medellín Concierge: property management in Medellín'}">
 <meta property="og:site_name" content="Medellín Concierge">
 <meta property="og:locale" content="{'es_CO' if lang == 'es' else 'en_US'}">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{SITE}assets/share-{lang}.jpg">
 <meta name="twitter:title" content="{t}">
 <meta name="twitter:description" content="{d}">
 <link rel="icon" type="image/png" href="{assets}favicon.png">

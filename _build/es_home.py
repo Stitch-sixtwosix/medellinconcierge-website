@@ -11,7 +11,7 @@ HOME_ES = [
  ('content="Property management in Medellín: Airbnb and long-term rentals in El Poblado, Laureles, Envigado and Sabaneta. Plans from 12% + IVA. Free consultation."',
   'content="Administración de propiedades en Medellín: Airbnb y rentas largas en El Poblado, Laureles, Envigado y Sabaneta. Planes desde 12% + IVA. Consulta gratis."'),
  ('content="Property Management in Medellín | Medellín Concierge"', 'content="Administración de Propiedades en Medellín | Medellín Concierge"'),
- ('content="Medellín Concierge logo"', 'content="Logo de Medellín Concierge"'),
+ ('content="Medellín Concierge: property management in Medellín"', 'content="Medellín Concierge: administración de propiedades en Medellín"'),
  ('<meta property="og:locale" content="en_US">', '<meta property="og:locale" content="es_CO">'),
 
  # ---- header ----
