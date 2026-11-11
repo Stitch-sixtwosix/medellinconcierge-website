@@ -1,7 +1,10 @@
 // Team photo cutout: puts the person on pure white and frames a 4:5 portrait (640x800).
 // Uses Apple's built-in subject detection (Vision, macOS 14+). Called by _build/team_photos.py.
 //
-//   cutout <input image> <output.png>
+//   cutout <input image> <output.png> [--level]
+//
+// --level straightens a tilted head (e.g. a selfie): the photo is rotated so the eyes are level before the
+// cutout and framing. team_photos.py passes it for names listed in LEVEL.
 import Foundation
 import Vision
 import CoreImage
@@ -9,8 +12,27 @@ import CoreImage.CIFilterBuiltins
 import AppKit
 
 let args = CommandLine.arguments
-guard args.count == 3, let input = CIImage(contentsOf: URL(fileURLWithPath: args[1])) else {
-    print("usage: cutout <input> <output.png>"); exit(2)
+guard args.count >= 3, var input = CIImage(contentsOf: URL(fileURLWithPath: args[1]), options: [.applyOrientationProperty: true]) else {
+    print("usage: cutout <input> <output.png> [--level]"); exit(2)
+}
+if args.contains("--level") {
+    let lm = VNDetectFaceLandmarksRequest()
+    try VNImageRequestHandler(ciImage: input).perform([lm])
+    if let f = lm.results?.max(by: { $0.boundingBox.height < $1.boundingBox.height }),
+       let l = f.landmarks?.leftPupil?.normalizedPoints.first, let r = f.landmarks?.rightPupil?.normalizedPoints.first {
+        // pupil points are relative to the face box; convert to image pixels (CI origin bottom-left)
+        let e = input.extent, b = f.boundingBox
+        let p1 = CGPoint(x: (b.minX + l.x * b.width) * e.width, y: (b.minY + l.y * b.height) * e.height)
+        let p2 = CGPoint(x: (b.minX + r.x * b.width) * e.width, y: (b.minY + r.y * b.height) * e.height)
+        let (a, c) = p1.x < p2.x ? (p1, p2) : (p2, p1)
+        let angle = atan2(c.y - a.y, c.x - a.x)              // tilt of the eye line
+        let mid = CGPoint(x: e.midX, y: e.midY)
+        let t = CGAffineTransform(translationX: mid.x, y: mid.y).rotated(by: -angle).translatedBy(x: -mid.x, y: -mid.y)
+        let rotated = input.transformed(by: t)
+        input = rotated.composited(over: CIImage(color: .white).cropped(to: rotated.extent))
+            .transformed(by: CGAffineTransform(translationX: -rotated.extent.minX, y: -rotated.extent.minY))
+        print(String(format: "levelled by %.1f degrees", angle * 180 / .pi))
+    }
 }
 let handler = VNImageRequestHandler(ciImage: input)
 let req = VNGenerateForegroundInstanceMaskRequest()
@@ -54,8 +76,10 @@ let faceReq = VNDetectFaceRectanglesRequest()
 try handler.perform([faceReq])
 if let face = faceReq.results?.max(by: { $0.boundingBox.height < $1.boundingBox.height })?.boundingBox {
     let faceH = face.height * ext.height, faceTop = (1 - face.maxY) * ext.height
-    if faceH / cropH < 0.27 {
-        cropH = min(ext.height, faceH / 0.32); cropW = cropH * 0.8
+    // Levelled selfies are always framed head-and-shoulders (a bit tighter), which also leaves out the arms.
+    let level = args.contains("--level")
+    if faceH / cropH < 0.27 || level {
+        cropH = min(ext.height, faceH / (level ? 0.35 : 0.32)); cropW = cropH * 0.8
         if cropW > ext.width { cropW = ext.width; cropH = cropW / 0.8 }
         top = max(0, min(ext.height - cropH, faceTop - cropH * 0.21))
         centerX = face.midX * ext.width
