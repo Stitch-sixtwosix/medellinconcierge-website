@@ -27,13 +27,8 @@ Goal (James, Nov 11 2026): #1 on Google, and named by AI answers (Google AI Over
 - Every page in both English and Spanish. Spanish is written natively for Colombian owners, not translated word for word.
 
 ## Todo
-0. **Airbnb management page, EN + ES (Bing gap, Nov 12):** make `/airbnb-management-medellin/` and `/es/administracion-de-airbnb-medellin/` the most complete answer for "Airbnb management Medellín" / "administración de Airbnb Medellín".
-   - Exact keyword in title, H1 and first sentence; answer-first 2–3 sentence summary with the price from X% + IVA.
-   - Sections: what's included (listing, pricing, guests, cleaning, maintenance, RNT/SIRE/TRA), what the owner must do, fees (link the fees page), how payouts and reports work, neighborhoods we cover, how to start.
-   - FAQPage schema, 5–6 questions. Link from every blog post about Airbnb and from the home page.
-   - Site facts only; never name competitors.
 1. **Spanish money pages:**
-   - Strengthen `/es/administracion-de-airbnb-medellin/` and `/es/` (administración de propiedades Medellín).
+   - Strengthen `/es/` (administración de propiedades Medellín). (`/es/administracion-de-airbnb-medellin/` got keyword-first intro, owner sections and FAQ on Nov 12; remaining for it: links from Spanish blog bodies are Sol's lane.)
    - Use the exact keyword in the title, H1 and first sentence.
    - Add 300–500 words of native Spanish copy for owners: RNT, building rules, payouts in pesos or dollars, reports. Only use facts the site already states.
    - Add an FAQ block with FAQPage schema.
@@ -65,6 +60,8 @@ Goal (James, Nov 11 2026): #1 on Google, and named by AI answers (Google AI Over
 - 2026-11-11: `llms.txt` added, generated each build (commit b4f22a9).
 - 2026-11-11: Search Console re-verified under contact@ with the HTML file `googlee590b9a9202680db.html`. Never remove it.
 - 2026-11-12: Fees page shipped, EN `/property-management-fees-medellin/` + ES `/es/tarifas-administracion-de-propiedades-medellin/` (answer-first, plan tables, COP example with IVA, fee-model guide, FAQPage schema); linked from home plans note (EN/ES) and FAQ fees answer.
+- 2026-11-12: Airbnb management page EN `/airbnb-management-medellin/` + ES `/es/administracion-de-airbnb-medellin/`: answer-first intro with 17%/20% + IVA, 5 new sections (owner checklist incl. RNT/reglamento, fees, payouts/reports, neighborhoods, how to start), 6-question FAQ + FAQPage schema; linked from home plans note (EN/ES) and every blog post that mentions Airbnb (build adds a "Related" link).
 
 ## Needs James
 - Fees page: is our commission calculated on rental income before or after the platform's (Airbnb/Booking) service fee, and is the guest cleaning fee part of that base? Once confirmed, add one sentence to `_build/fees.py` (EN + ES); it is a top question owners ask.
+- Payout currency: do owners abroad get paid in COP, USD, or their choice, and by what method (bank transfer, Wise, etc.)? The Airbnb and foreign-owner pages can't answer "how are payouts sent abroad" until this is confirmed.

@@ -59,6 +59,9 @@ def strip_tags(h):
     return html.unescape(re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', h))).strip()
 
 
+# FAQ accordion icon (landing, FAQ and fees pages)
+PLUS = '<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>'
+
 # ---------------- landing pages: complete or not ----------------
 def lang_complete(c):
     return not (c['description'] is None or c['intro'] is None or any(t is None for _, t in c['blocks']))
@@ -322,6 +325,12 @@ for lang in LANGS:
     for p in POSTS:
         t = p[lang]; slug = p['slug'] + '.html'
         others = ''.join(f'<a href="{o["slug"]}.html">{o[lang]["title"]}</a>' for o in POSTS[:6] if o is not p)
+        # Posts about Airbnb link to the Airbnb management money page (unless the post already does).
+        airbnb_pg = next(o for o in PAGES if o['key'] == 'airbnb')[lang]
+        related = ''
+        if COMPLETE['airbnb'] and 'airbnb' in t['body'].lower() and airbnb_pg['slug'] not in t['body']:
+            related = (f'\n      <p>{"Related" if lang == "en" else "Relacionado"}: '
+                       f'<a href="../{airbnb_pg["slug"]}/">{airbnb_pg["h1"]}</a></p>')
         body = f'''<section class="page-top">
   <div class="wrap">
     <p class="crumbs"><a href="../">{ui["home"]}</a> / <a href="./">{ui["blog"]}</a></p>
@@ -340,7 +349,7 @@ for lang in LANGS:
       <div class="ref-ctas">
         <a class="btn btn-primary" href="../#contact">{ui["cta_1"]}</a>
         <a class="btn btn-outline" href="../#plans">{ui["cta_2"]}</a>
-      </div>
+      </div>{related}
     </aside>
     <nav class="more-posts" aria-label="{ui["more_label"]}">
       <h2>{ui["more"]}</h2>
@@ -370,7 +379,7 @@ L = {
  'en': dict(home='Home', copy_note='Copy coming: Lupa is drafting this block (James’s office → Keywords). Edit <code>_build/landing.py</code> → <code>{key}</code> → <code>en</code> → <code>{field}</code>.',
             inc_h='What we handle for you', plans_h='Plans and fees', cta_h='Talk to us about your property',
             cta_p='Get a free consultation, an income estimate and a management proposal.', cta_1='Request a free consultation',
-            more_h='More from Medellín Concierge', all_plans='Compare plans in detail',
+            more_h='More from Medellín Concierge', all_plans='Compare plans in detail', faq_h='Frequently asked questions',
             inc=['Listing on Airbnb, Booking.com, Expedia and VRBO, with dynamic pricing and synced calendars',
                  '24/7 guest support, check-ins and check-outs', 'Cleaning and maintenance, coordinated and supervised',
                  'RNT, SIRE and TRA registrations and reporting',
@@ -381,7 +390,7 @@ L = {
  'es': dict(home='Inicio', copy_note='Texto pendiente: Lupa está redactando este bloque (oficina de James → Keywords). Edite <code>_build/landing.py</code> → <code>{key}</code> → <code>es</code> → <code>{field}</code>.',
             inc_h='Lo que gestionamos por usted', plans_h='Planes y tarifas', cta_h='Hablemos de su propiedad',
             cta_p='Solicite una consulta gratuita, una estimación de ingresos y una propuesta de administración.', cta_1='Solicitar una consulta gratuita',
-            more_h='Más de Medellín Concierge', all_plans='Comparar los planes en detalle',
+            more_h='Más de Medellín Concierge', all_plans='Comparar los planes en detalle', faq_h='Preguntas frecuentes',
             inc=['Publicación en Airbnb, Booking.com, Expedia y VRBO, con precios dinámicos y calendarios sincronizados',
                  'Atención al huésped 24/7, llegadas y salidas', 'Limpieza y mantenimiento, coordinados y supervisados',
                  'Registros y reportes de RNT, SIRE y TRA',
@@ -424,6 +433,10 @@ for pg in PAGES:
         more = ''.join(f'<a href="../{o[lang]["slug"]}/">{o[lang]["h1"]}</a>'
                        for o in PAGES if o is not pg and COMPLETE[o['key']])
         home_href = '../'
+        faq = c.get('faq') or []
+        faq_html = (f'\n      <h2>{ui["faq_h"]}</h2>\n      <div class="faq">\n'
+                    + ''.join(f'        <details><summary>{html.escape(q, quote=False)}{PLUS}</summary><p>{a}</p></details>\n' for q, a in faq)
+                    + '      </div>') if faq else ''
         body = f'''<section class="page-top">
   <div class="wrap">
     <p class="crumbs"><a href="{home_href}">{ui["home"]}</a> / {pg["label"][lang]}</p>
@@ -444,7 +457,7 @@ for pg in PAGES:
           <tr><th>{ui["premium"]}</th><td>15% + IVA</td><td>20% + IVA</td></tr>
         </tbody>
       </table>
-      <p>{ui["plans_note"]} <a href="{home_href}#plans">{ui["all_plans"]}</a></p>
+      <p>{ui["plans_note"]} <a href="{home_href}#plans">{ui["all_plans"]}</a></p>{faq_html}
     </div>
     <aside class="article-cta">
       <h2>{ui["cta_h"]}</h2>
@@ -468,6 +481,9 @@ for pg in PAGES:
              'provider': {'@id': business_id()},
              'areaServed': {'@type': 'Country' if pg['key'] == 'colombia' else 'Place', 'name': pg['area']}},
             breadcrumbs([(ui['home'], home_url), (pg['label'][lang], url)])]}
+        if faq:
+            schema['@graph'].insert(1, {'@type': 'FAQPage', 'url': url, 'inLanguage': lang, 'mainEntity': [
+                {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}} for q, a in faq]})
         if lang == 'en':
             en_href, es_href = './', f'../es/{pg["es"]["slug"]}/'
         else:
@@ -622,7 +638,6 @@ F = {
             h1='Preguntas frecuentes', lead='Respuestas claras sobre cómo administramos su propiedad en Medellín.',
             cta_h='¿Tiene otra pregunta?', cta_p='Escríbanos o solicite una consulta gratuita. Respondemos en español o en inglés.'),
 }
-PLUS = '<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>'
 for lang in LANGS:
     ui = F[lang]
     en_url, es_url = SITE + F['en']['slug'] + '/', SITE + F['es']['slug'] + '/'

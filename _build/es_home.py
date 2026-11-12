@@ -85,8 +85,8 @@ HOME_ES = [
  ('Listed on Airbnb, Booking.com, Expedia and VRBO', 'Publicado en Airbnb, Booking.com, Expedia y VRBO'),
  ('>Choose Basic</a>', '>Elegir Básico</a>'),
  ('>Choose Premium</a>', '>Elegir Premium</a>'),
- ('Percentages are commissions on rental income and do not include IVA (Colombian VAT). Prefer to keep cleaning and maintenance yourself? Ask about channel management only. <a href="property-management-fees-medellin/">See a full breakdown of our fees</a>.',
-  'Los porcentajes son comisiones sobre los ingresos por renta y no incluyen IVA. ¿Prefiere encargarse usted de la limpieza y el mantenimiento? Pregunte por la gestión de canales. <a href="property-management-fees-medellin/">Vea el detalle de nuestras tarifas</a>.'),
+ ('Percentages are commissions on rental income and do not include IVA (Colombian VAT). Prefer to keep cleaning and maintenance yourself? Ask about channel management only. <a href="property-management-fees-medellin/">See a full breakdown of our fees</a> or how our <a href="airbnb-management-medellin/">Airbnb management in Medellín</a> works.',
+  'Los porcentajes son comisiones sobre los ingresos por renta y no incluyen IVA. ¿Prefiere encargarse usted de la limpieza y el mantenimiento? Pregunte por la gestión de canales. <a href="property-management-fees-medellin/">Vea el detalle de nuestras tarifas</a> o cómo funciona nuestra <a href="airbnb-management-medellin/">administración de Airbnb en Medellín</a>.'),
 
  # ---- how it works ----
  ('Live in three simple steps', 'En línea en tres pasos'),
