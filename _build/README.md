@@ -7,7 +7,7 @@ python3 _build/build.py
 ```
 
 Run it after any change below, check the result locally, then commit. **Nothing is published until the
-change is pushed to the `main` branch on GitHub, and nothing gets pushed without James's OK.**
+change is pushed to the `main` branch on GitHub.** Standing approvals from James: Sol publishes one blog post a day (Nov 11, 2026), and Lupa ships SEO and AI-search improvements from `_build/SEO_BACKLOG.md` (Nov 11, 2026). Anything else needs James's OK.
 
 | What you want to change | Edit this | Then |
 |---|---|---|
