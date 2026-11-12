@@ -312,6 +312,7 @@
     .nav-links .btn{margin-top:16px;min-height:48px}
     .hero{padding:112px 0 clamp(190px,52vw,260px);min-height:0}
     .sun{width:34vw;margin-left:-17vw;bottom:7vw}
+    .hero svg.valley{height:clamp(150px,40vw,190px)}   /* keeps the valley readable: crops the sides (xMidYMax slice) instead of shrinking */
     .hero-ctas .btn{flex:1 1 200px}
     .platforms{margin-top:28px}
     .pains{grid-template-columns:1fr;gap:28px}
