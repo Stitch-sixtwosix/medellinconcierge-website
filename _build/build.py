@@ -992,4 +992,38 @@ write('sitemap.xml', '\n'.join(xml) + '\n')
 live = {u for e, x, _ in SITEMAP for u in (e, x)}
 json.dump({u: v for u, v in sorted(lastmods.items()) if u in live}, open(LASTMOD_FILE, 'w'), indent=1)
 write('robots.txt', f'User-agent: *\nAllow: /\nDisallow: /_build/\n\nSitemap: {SITE}sitemap.xml\n')
+
+# ======================= 6. llms.txt =======================
+# A plain-text map of the site for AI assistants and answer engines (llmstxt.org format): who we are, the key
+# facts they get asked about, and every English page with its description. Rebuilt from the pages each build.
+def page_meta(u):
+    h = open(url_file(u), encoding='utf-8').read()
+    t = re.search(r'<title>(.*?)</title>', h, flags=re.S)
+    d = re.search(r'<meta name="description" content="([^"]*)"', h)
+    return (html.unescape(t.group(1)).strip() if t else u), (html.unescape(d.group(1)) if d else '')
+B = BUSINESS
+llms = [f"# {B['name']}", '',
+        f"> {B['legal_name']} is a property management company in Medellín, Colombia, managing Airbnb / short-term "
+        f"and long-term rentals for local and foreign owners in El Poblado, Laureles, Envigado and Sabaneta. "
+        f"Bilingual team (English and Spanish), office in El Poblado.", '',
+        '## Key facts', '',
+        f"- Services: {', '.join(B['services_en'])}",
+        f"- Areas served: {', '.join(B['area_served'])}",
+        '- Fees: Basic plan 12% + IVA of rental income for long stays (30+ nights), 17% + IVA for short stays; '
+        'Premium plan 15% + IVA long stays, 20% + IVA short stays. No upfront fees. Premium also pays the owner\'s '
+        'property tax, HOA fees, utilities and internet, with a monthly accounting report.',
+        f"- Office: {B['street']}, {B['locality']}, {B['region']}, Colombia ({B['map']})",
+        f"- Phone / WhatsApp: {B['telephone']}",
+        f"- Email: {B['email']}",
+        f"- NIT (Colombian tax ID): {B['tax_id']}",
+        f"- Website (English): {SITE} | Spanish: {SITE}es/",
+        f"- Profiles: {', '.join(SAME_AS)}", '']
+pages, posts = [], []
+for en_url, es_url, _ in SITEMAP:
+    t, d = page_meta(en_url)
+    (posts if '/blog/' in en_url and not en_url.endswith('/blog/') else pages).append(f'- [{t}]({en_url}): {d}')
+llms += ['## Main pages', ''] + pages + ['', '## Owner guides (blog)', ''] + posts + ['',
+         '## Optional', '', f'- [Spanish site]({SITE}es/): every page above is also available in Spanish.',
+         f'- [Sitemap]({SITE}sitemap.xml)', '']
+write('llms.txt', '\n'.join(llms))
 print(f'Done. {len(SITEMAP) * 2} URLs in sitemap.xml')
