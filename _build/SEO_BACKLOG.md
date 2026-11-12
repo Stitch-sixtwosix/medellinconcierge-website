@@ -6,6 +6,7 @@ Goal (James, Nov 11 2026): #1 on Google, and named by AI answers (Google AI Over
 
 ## What we know (Nov 11–12, 2026)
 - **Bing Webmaster Tools** (signed in as contact@, Nov 12): 106 impressions and 6 clicks in 3 months. Copilot cited us 27 times in Aug 2026 and 0 times since. Bing recommends more links from quality sites and fixing thin pages (item below). Bing is now in scope; it feeds ChatGPT search.
+- **Bing live ranks (Nov 12, US English / CO Spanish):** "property management medellin" #2 (behind medellinadvisors.com); "administración de propiedades medellín" #3; "airbnb management medellin" not in top 16 (medellinadvisors.com "Airbnb Management in Medellín: Best Complete 2026 Guide" is #1, then medellin.group, wehostcolombia.com, samba.com.co, everyplace.co, Casacol); "administración airbnb medellín" not in top 8 (oasisliving.co, jefersoncortes.com, findhomecolombia.com, renteo.com.co); "property management colombia" not in top 4 (gutierrezgroup.com.co, ensun, everyplace.co). IndexNow accepted all 176 URLs on Nov 12; Bing reports lag ~4 days.
 - **Google, English:**
   - Airbnb management medellin: #5
   - vacation rental management: #2
@@ -26,6 +27,11 @@ Goal (James, Nov 11 2026): #1 on Google, and named by AI answers (Google AI Over
 - Every page in both English and Spanish. Spanish is written natively for Colombian owners, not translated word for word.
 
 ## Todo
+0. **Airbnb management page, EN + ES (Bing gap, Nov 12):** make `/airbnb-management-medellin/` and `/es/administracion-de-airbnb-medellin/` the most complete answer for "Airbnb management Medellín" / "administración de Airbnb Medellín".
+   - Exact keyword in title, H1 and first sentence; answer-first 2–3 sentence summary with the price from X% + IVA.
+   - Sections: what's included (listing, pricing, guests, cleaning, maintenance, RNT/SIRE/TRA), what the owner must do, fees (link the fees page), how payouts and reports work, neighborhoods we cover, how to start.
+   - FAQPage schema, 5–6 questions. Link from every blog post about Airbnb and from the home page.
+   - Site facts only; never name competitors.
 1. **Spanish money pages:**
    - Strengthen `/es/administracion-de-airbnb-medellin/` and `/es/` (administración de propiedades Medellín).
    - Use the exact keyword in the title, H1 and first sentence.
