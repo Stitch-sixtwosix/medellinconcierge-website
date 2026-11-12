@@ -5,6 +5,7 @@ The **Lupa · ship** cloud routine works through this list on its own. On each r
 Goal (James, Nov 11 2026): #1 on Google, and named by AI answers (Google AI Overviews, ChatGPT, Perplexity, Gemini, Copilot), for property management / Airbnb management in Medellín and Colombia, in English and Spanish.
 
 ## What we know (Nov 11–12, 2026)
+- **Bing Webmaster Tools** (signed in as contact@, Nov 12): 106 impressions and 6 clicks in 3 months. Copilot cited us 27 times in Aug 2026 and 0 times since. Bing recommends more links from quality sites and fixing thin pages (item below). Bing is now in scope; it feeds ChatGPT search.
 - **Google, English:**
   - Airbnb management medellin: #5
   - vacation rental management: #2
@@ -51,6 +52,8 @@ Goal (James, Nov 11 2026): #1 on Google, and named by AI answers (Google AI Over
    - No broken internal links (check every built page).
    - Each page has exactly one H1, and titles are 60 characters or fewer.
 9. **Long-term rentals page, Spanish keywords:** "administración de arriendos Medellín", "inmobiliaria para arrendar apartamento Medellín", "empresas de arrendamiento Medellín". Strengthen `/es/administracion-de-rentas-largas-medellin/`.
+
+10. **Thin pages flagged by Bing (Nov 12, 2026):** /rentals/ (with /es/arriendos/) and /airbnb-revenue-calculator/ (with /es/airbnb-revenue-calculator/). Bing also flags the old URLs /es/rentals and /tours-transportation; check they redirect properly. Add 200–400 words of useful, answer-first copy around the Hostflow embed and the calculator: what's listed, neighborhoods, how booking works, how the calculator estimates and its limits. Add an FAQ block. Don't touch the embeds.
 
 ## Done
 - 2026-11-11: `llms.txt` added, generated each build (commit b4f22a9).
