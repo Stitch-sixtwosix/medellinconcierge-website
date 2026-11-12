@@ -27,7 +27,7 @@ Goal (James, Nov 11 2026): #1 on Google, and named by AI answers (Google AI Over
 - Every page in both English and Spanish. Spanish is written natively for Colombian owners, not translated word for word.
 
 ## Todo
-0. **Unpublished landing pages (found Nov 12):** `/long-term-property-management-medellin/` (+ ES `/es/administracion-de-rentas-largas-medellin/`) and the El Poblado, Laureles, Envigado and Sabaneta area pages still have `None` copy slots in `_build/landing.py`, so they redirect to the home page and are not indexed. Office report `mc-2026-11-11-build` has proposed EN/ES copy for long-term and El Poblado: verify every fact against the site/`site_config.py` (drop any `[James: …]` sentence), fill the slots, add FAQ like the Airbnb page. Long-term first (covers backlog item 9), then El Poblado.
+0. **Unpublished area pages (found Nov 12):** the El Poblado, Laureles, Envigado and Sabaneta pages still have `None` copy slots in `_build/landing.py`, so they redirect to the home page and are not indexed. Office report `mc-2026-11-11-build` has proposed EN/ES copy for El Poblado: verify every fact against the site/`site_config.py` (drop any `[James: …]` sentence; its Ley 142, Comuna 14, Metro and Feria facts need a source you can actually open and cite), fill the slots, add FAQ like the Airbnb page. El Poblado first. (Long-term page shipped Nov 12.)
 1. **Spanish money pages:**
    - Strengthen `/es/` (administración de propiedades Medellín). (`/es/administracion-de-airbnb-medellin/` got keyword-first intro, owner sections and FAQ on Nov 12; remaining for it: links from Spanish blog bodies are Sol's lane.)
    - Use the exact keyword in the title, H1 and first sentence.
@@ -58,6 +58,7 @@ Goal (James, Nov 11 2026): #1 on Google, and named by AI answers (Google AI Over
 10. **Thin pages flagged by Bing (Nov 12, 2026):** /rentals/ (with /es/arriendos/) and /airbnb-revenue-calculator/ (with /es/airbnb-revenue-calculator/). Bing also flags the old URLs /es/rentals and /tours-transportation; check they redirect properly. Add 200–400 words of useful, answer-first copy around the Hostflow embed and the calculator: what's listed, neighborhoods, how booking works, how the calculator estimates and its limits. Add an FAQ block. Don't touch the embeds.
 
 ## Done
+- 2026-11-12: Long-term page live, EN `/long-term-property-management-medellin/` + ES `/es/administracion-de-rentas-largas-medellin/` (ES title targets "arriendos amoblados"): answer-first 12%/15% + IVA intro, short vs long comparison table, payouts/Premium/RNT (as of Nov 2026), how to start, 5-question FAQ + FAQPage schema; now in sitemap and footer links site-wide.
 - 2026-11-12: Google rating shown as text ("★ 4.7 on Google · 63 reviews", linked to the Maps profile) in the EN/ES home hero and under the answer-first intro of every live landing page (Airbnb, Colombia) and the fees page; key fact in `llms.txt`. Numbers in `site_config.BUSINESS` (`google_rating`, `google_reviews`, `rating_checked`); no rating schema. Long-term page not live yet (see item 0).
 - 2026-11-11: `llms.txt` added, generated each build (commit b4f22a9).
 - 2026-11-11: Search Console re-verified under contact@ with the HTML file `googlee590b9a9202680db.html`. Never remove it.
@@ -67,3 +68,5 @@ Goal (James, Nov 11 2026): #1 on Google, and named by AI answers (Google AI Over
 ## Needs James
 - Fees page: is our commission calculated on rental income before or after the platform's (Airbnb/Booking) service fee, and is the guest cleaning fee part of that base? Once confirmed, add one sentence to `_build/fees.py` (EN + ES); it is a top question owners ask.
 - Payout currency: do owners abroad get paid in COP, USD, or their choice, and by what method (bank transfer, Wise, etc.)? The Airbnb and foreign-owner pages can't answer "how are payouts sent abroad" until this is confirmed.
+- Long-term page: do you also manage unfurnished 12-month leases (Ley 820 de 2003 contracts), and how are long-stay guests or tenants screened? Both are common owner questions; once confirmed, add a sentence and FAQ to the long-term page in `_build/landing.py` (EN + ES).
+- Old Wix URL `/property-management/` still redirects to the home page; the comment in `build.py` planned to point it at the long-term page once live. Left on the home page (closer match for a general 'property management' URL) unless you prefer otherwise.
