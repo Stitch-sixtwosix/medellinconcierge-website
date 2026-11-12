@@ -38,9 +38,9 @@ FAQ = [
       'Inspeccionamos la propiedad después de cada estadía y documentamos cualquier daño. Si hay un problema, gestionamos la reclamación a través de la Garantía para anfitriones de Airbnb y las políticas de depósito de seguridad.')),
  dict(
   en=('What are your management fees?',
-      'A commission on your rental income, with no upfront fees. Basic: 12% for long stays (30+ nights) and 17% for short stays. Premium: 15% and 20%, a completely hands-off service where we also pay your property taxes, HOA fees, utilities and internet bills, with a monthly accounting report. All percentages are plus IVA. <a href="{home}#plans">Compare the plans</a>.'),
+      'A commission on your rental income, with no upfront fees. Basic: 12% for long stays (30+ nights) and 17% for short stays. Premium: 15% and 20%, a completely hands-off service where we also pay your property taxes, HOA fees, utilities and internet bills, with a monthly accounting report. All percentages are plus IVA. <a href="{home}#plans">Compare the plans</a> or see <a href="{home}property-management-fees-medellin/">a full breakdown of our fees</a>.'),
   es=('¿Cuáles son sus tarifas de administración?',
-      'Una comisión sobre sus ingresos por renta, sin costos iniciales. Básico: 12% para estancias largas (30+ noches) y 17% para estancias cortas. Premium: 15% y 20%, un servicio totalmente sin preocupaciones en el que además pagamos su impuesto predial, cuota de administración, servicios públicos e internet, con un reporte contable mensual. Todos los porcentajes son más IVA. <a href="{home}#plans">Comparar los planes</a>.')),
+      'Una comisión sobre sus ingresos por renta, sin costos iniciales. Básico: 12% para estancias largas (30+ noches) y 17% para estancias cortas. Premium: 15% y 20%, un servicio totalmente sin preocupaciones en el que además pagamos su impuesto predial, cuota de administración, servicios públicos e internet, con un reporte contable mensual. Todos los porcentajes son más IVA. <a href="{home}#plans">Comparar los planes</a> o ver <a href="{home}tarifas-administracion-de-propiedades-medellin/">el detalle de nuestras tarifas</a>.')),
  dict(
   en=('Are there any additional or hidden fees?',
       'No, we operate transparently. Any additional cost, such as deep cleaning, minor repairs or restocking supplies, is discussed with you in advance.'),

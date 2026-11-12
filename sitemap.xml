@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.medellinconcierge.net/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/"/>
   </url>
   <url>
     <loc>https://www.medellinconcierge.net/es/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/"/>
@@ -226,17 +226,31 @@
   </url>
   <url>
     <loc>https://www.medellinconcierge.net/faq/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/faq/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/preguntas-frecuentes/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/faq/"/>
   </url>
   <url>
     <loc>https://www.medellinconcierge.net/es/preguntas-frecuentes/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/faq/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/preguntas-frecuentes/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/faq/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/property-management-fees-medellin/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/property-management-fees-medellin/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/tarifas-administracion-de-propiedades-medellin/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/property-management-fees-medellin/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/es/tarifas-administracion-de-propiedades-medellin/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/property-management-fees-medellin/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/tarifas-administracion-de-propiedades-medellin/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/property-management-fees-medellin/"/>
   </url>
   <url>
     <loc>https://www.medellinconcierge.net/tours/</loc>

@@ -22,6 +22,7 @@ from site_config import SITE, BUSINESS, SAME_AS, NEWSLETTER_ENDPOINT
 from landing import PAGES, AREAS
 from team import TEAM
 from faq import FAQ
+from fees import FEES
 
 TODAY = datetime.date.today().isoformat()
 LANGS = ('en', 'es')
@@ -186,6 +187,7 @@ if missing:
              + '\n  - '.join(m[:100] for m in missing))
 for a, b in HOME_ES:
     es = es.replace(a, b)
+es = es.replace(f'href="{FEES["en"]["slug"]}/"', f'href="{FEES["es"]["slug"]}/"')
 es = es.replace('href="rentals/"', 'href="arriendos/"').replace('href="team/"', 'href="equipo/"').replace('href="faq/"', 'href="preguntas-frecuentes/"').replace('href="commercial/"', 'href="comercial/"')
 for pg in PAGES:   # landing page links point to the Spanish versions
     es = es.replace(f'href="{pg["en"]["slug"]}/"', f'href="{pg["es"]["slug"]}/"')
@@ -654,6 +656,59 @@ for lang in LANGS:
     write(f'{ui["slug"]}/index.html', page(lang, title=ui['title'], desc=ui['desc'], en_url=en_url, es_url=es_url,
           en_href=en_href, es_href=es_href, body=body, schema=schema))
 SITEMAP.append((SITE + 'faq/', SITE + 'es/preguntas-frecuentes/', TODAY))
+
+
+# ======================= 4h. Fees (/property-management-fees-medellin/, /es/tarifas-administracion-de-propiedades-medellin/) =======================
+# Answer-first fees page for "how much does property management cost in Medellín". Copy lives in fees.py.
+for lang in LANGS:
+    ui = FEES[lang]
+    en_url, es_url = SITE + FEES['en']['slug'] + '/', SITE + 'es/' + FEES['es']['slug'] + '/'
+    url = es_url if lang == 'es' else en_url
+    home_url = SITE + ('es/' if lang == 'es' else '')
+    secs = ''.join(f'\n      <h2>{h}</h2>\n      {b}' for h, b in ui['sections'])
+    items = ''.join(f'        <details><summary>{html.escape(q, quote=False)}{PLUS}</summary><p>{a}</p></details>\n' for q, a in ui['faq'])
+    more = ''.join(f'<a href="{h}">{t}</a>' for h, t in ui['more'])
+    body = f'''<section class="page-top">
+  <div class="wrap">
+    <p class="crumbs"><a href="../">{ui["home"]}</a> / {ui["crumb"]}</p>
+    <h1>{ui["h1"]}</h1>
+    <div class="lead">{ui["lead"]}</div>
+  </div>
+</section>
+<article class="article landing">
+  <div class="wrap">
+    <div class="prose">{secs}
+      <h2>{ui["faq_h"]}</h2>
+      <div class="faq">
+{items}      </div>
+    </div>
+    <aside class="article-cta">
+      <h2>{ui["cta_h"]}</h2>
+      <p>{ui["cta_p"]}</p>
+      <div class="ref-ctas"><a class="btn btn-primary" href="../#contact">{L[lang]["cta_1"]}</a><a class="btn btn-outline" href="https://wa.me/573042773864">WhatsApp</a></div>
+    </aside>
+    <nav class="more-posts" aria-label="{ui["more_h"]}">
+      <h2>{ui["more_h"]}</h2>
+      {more}
+    </nav>
+  </div>
+</article>'''
+    schema = {'@context': 'https://schema.org', '@graph': [
+        {'@type': 'WebPage', 'name': ui['h1'], 'url': url, 'inLanguage': lang, 'description': ui['desc'],
+         'about': {'@id': business_id()}},
+        {'@type': 'Service', 'name': ui['h1'], 'serviceType': L[lang]['service'], 'url': url, 'inLanguage': lang,
+         'provider': {'@id': business_id()}, 'areaServed': {'@type': 'Place', 'name': 'Medellín'}},
+        {'@type': 'FAQPage', 'url': url, 'inLanguage': lang, 'mainEntity': [
+            {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}} for q, a in ui['faq']]},
+        breadcrumbs([(ui['home'], home_url), (ui['crumb'], url)])]}
+    if lang == 'en':
+        en_href, es_href = './', f'../es/{FEES["es"]["slug"]}/'
+    else:
+        en_href, es_href = f'../../{FEES["en"]["slug"]}/', './'
+    folder = FEES['en']['slug'] if lang == 'en' else 'es/' + FEES['es']['slug']
+    write(f'{folder}/index.html', page(lang, title=ui['title'], desc=ui['desc'], en_url=en_url, es_url=es_url,
+          en_href=en_href, es_href=es_href, body=body, schema=schema))
+SITEMAP.append((SITE + FEES['en']['slug'] + '/', SITE + 'es/' + FEES['es']['slug'] + '/', TODAY))
 
 
 # ======================= 4g. Tours (/tours/, /es/tours/) =======================
