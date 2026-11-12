@@ -559,3 +559,19 @@ a.area-card:not([href]) .read{display:none}
 .commercial-run .checks li{border-bottom:1px solid rgba(255,255,255,.09)}
 @media (max-width:900px){.pains-3{grid-template-columns:1fr}}
 @media (max-width:760px){.commercial-run .checks{grid-template-columns:1fr}}
+
+/* Technology (HostFlow) */
+.tech-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:center}
+.tech-kicker{margin:0 0 12px;font-family:Poppins,Inter,sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red-light)}
+.tech .lead{margin-bottom:18px}
+.tech-note{color:var(--on-dark);margin:0 0 22px}
+.tech-link{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-weight:600;color:#fff;border-bottom:1.5px solid var(--red-light)}
+.tech-link svg{transition:transform .2s var(--ease-out)}
+@media (hover:hover){.tech-link:hover svg{transform:translate(2px,-2px)}}
+.tech-features{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tech-features li{background:var(--charcoal-2);border-radius:var(--radius);padding:24px 22px}
+.tech-features svg{color:var(--red-light);margin-bottom:12px}
+.tech-features h3{color:#fff;font-size:1.05rem;margin-bottom:6px}
+.tech-features p{color:var(--on-dark);font-size:.95rem;margin:0}
+@media (max-width:960px){.tech-grid{grid-template-columns:1fr;gap:40px}}
+@media (max-width:560px){.tech-features{grid-template-columns:1fr}}

@@ -189,6 +189,23 @@ HOME_ES = [
  ('>Email</a>', '>Correo</a>'),
  ('All rights reserved.', 'Todos los derechos reservados.'),
  ('aria-label="Chat on WhatsApp"', 'aria-label="Escríbanos por WhatsApp"'),
+
+ # Technology (HostFlow)
+ ('<p class="tech-kicker">Our technology</p>', '<p class="tech-kicker">Nuestra tecnología</p>'),
+ ('<h2>A tech company that operates property</h2>', '<h2>Una empresa de tecnología que opera propiedades</h2>'),
+ ('We didn&rsquo;t just pick software, we built it. Together with Proplexa.ai we developed HostFlow, the platform every property we manage runs on: revenue automation, owner portals, cleaner scheduling and compliance, all in one place.',
+  'No solo escogimos un software: lo construimos. Junto con Proplexa.ai desarrollamos HostFlow, la plataforma con la que opera cada propiedad que administramos: automatización de ingresos, portales para propietarios, programación del aseo y cumplimiento legal, todo en un solo lugar.'),
+ ('Because we build HostFlow ourselves, it&rsquo;s shaped by how we run properties in Medellín every day.',
+  'Como desarrollamos HostFlow nosotros mismos, está hecho a la medida de cómo administramos propiedades en Medellín todos los días.'),
+ ('>Visit hostflow.in <svg', '>Visite hostflow.in <svg'),
+ ('<h3>Revenue automation</h3><p>Dynamic pricing adjusts your rates to demand, and one synced calendar keeps Airbnb, Booking.com, Expedia and VRBO free of double bookings.</p>',
+  '<h3>Automatización de ingresos</h3><p>Los precios dinámicos ajustan sus tarifas a la demanda, y un solo calendario sincronizado evita reservas dobles entre Airbnb, Booking.com, Expedia y VRBO.</p>'),
+ ('<h3>Your owner portal</h3><p>Your bookings and earnings in one login, with monthly GAAP financial statements. Payouts arrive within the first 5 business days of each month.</p>',
+  '<h3>Su portal de propietario</h3><p>Sus reservas e ingresos en un solo acceso, con estados financieros mensuales bajo GAAP. Los pagos llegan dentro de los primeros 5 días hábiles de cada mes.</p>'),
+ ('<h3>Cleaner scheduling</h3><p>Cleanings are scheduled in the same system as the bookings, so every turnover is planned before the next guest arrives.</p>',
+  '<h3>Programación del aseo</h3><p>El aseo se programa en el mismo sistema que las reservas, así cada cambio de huésped queda planeado antes de que llegue el siguiente.</p>'),
+ ('<h3>Compliance in one place</h3><p>Your RNT, SIRE and TRA registrations are managed alongside the rest of your property&rsquo;s operations.</p>',
+  '<h3>Cumplimiento en un solo lugar</h3><p>Sus registros de RNT, SIRE y TRA se gestionan junto con el resto de la operación de su propiedad.</p>'),
 ]
 
 # Words used on blog pages (cards, article pages, blog index)
