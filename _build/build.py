@@ -915,6 +915,8 @@ REDIRECTS = {
     'tours-transportation':           'tours/',
     'diamond-card':                   '',
     'properties/finca-con-bosque-nativo-privado': 'rentals/',   # any other /properties/* is sent to /rentals/ by 404.html
+    'about-us':                       'team/',       # old Wix URL, still used by Google Ads sitelinks
+    'real-estate-portfolio':          'rentals/',    # old Wix URL, still used by Google Ads sitelinks
 }
 for old, new in REDIRECTS.items():
     target = SITE + new
