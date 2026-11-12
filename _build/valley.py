@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Draws the hero's Aburrá Valley (the svg.valley in index.html): steep mountains on both sides dipping into a V
-where the sun rises, hillside neighbourhoods with lit windows, a Metrocable line and the downtown skyline led by
-the Coltejer tower's needle top. Deterministic (fixed seed), so rerunning gives the same picture.
+where the sun rises, hillside neighbourhoods with lit windows, a Metrocable line and Medellín's flat-topped brick
+residential towers. Deterministic (fixed seed), so rerunning gives the same picture.
 
     python3 _build/valley.py    # rewrites the <svg class="valley"> block in index.html, then run build.py
 """
@@ -70,25 +70,37 @@ for t in (.14, .45, .8):
                  f'<rect x="{tx - 5:.0f}" y="{ty + 5:.0f}" width="10" height="8" rx="2" fill="#de0001"/>')
 out.append('    <g>' + ''.join(cable) + '</g>')
 
-# downtown skyline on the valley floor; (x, width, top) plus the Coltejer needle
-towers = [(430, 16, 204), (448, 22, 182), (472, 14, 196), (488, 26, 160), (516, 20, 142), (580, 18, 176),
-          (600, 22, 204), (624, 16, 212), (642, 26, 200), (670, 18, 214), (690, 30, 198), (722, 20, 210), (744, 26, 202),
-          (772, 18, 214), (792, 24, 200), (818, 18, 210), (838, 20, 196), (860, 26, 150), (888, 18, 128), (908, 28, 164),
-          (938, 20, 184), (960, 24, 196), (986, 16, 206)]
-bld, win = [], []
-for x, w, top in towers:
-    bld.append(f'<rect x="{x}" y="{top}" width="{w}" height="{H - top}"/>')
-    for wy in range(top + 8, 232, 9):
-        for wx in range(x + 4, x + w - 3, 6):
-            if rnd.random() < .16:
+# Medellín's skyline: flat-topped brick residential towers (15-37 floors, no spires) filling the valley floor and
+# climbing the lower slopes. Back row in a lighter brick, front row darker; low in front of the sun so the M stays clear.
+def tower(x, w, top, base, row):
+    row.append(f'<rect x="{x:.0f}" y="{top:.0f}" width="{w}" height="{base - top:.0f}"/>')
+    if rnd.random() < .45:                                   # rooftop machine room
+        row.append(f'<rect x="{x + rnd.randint(3, w - 11):.0f}" y="{top - 5:.0f}" width="8" height="5"/>')
+    for wy in range(int(top) + 6, int(base) - 4, 7):
+        for wx in range(int(x) + 3, int(x) + w - 3, 5):
+            if rnd.random() < .13:
                 win.append(f'<rect x="{wx}" y="{wy}" width="2" height="3"/>')
-# Edificio Coltejer: slim tower with the tapering needle top
-bld.append('<path d="M544 260 V92 L558 28 L572 92 V260Z"/><rect x="540" y="108" width="36" height="152"/>')
-for wy in range(116, 232, 9):
-    for wx in range(545, 572, 6):
-        if rnd.random() < .16:
-            win.append(f'<rect x="{wx}" y="{wy}" width="2" height="3"/>')
-out.append(f'    <g fill="#191919">{"".join(bld)}</g>')
+
+back, front, win = [], [], []
+# back row: towers on the lower slopes either side (base sits on the slope)
+for x0, x1 in ((250, 600), (840, 1190)):
+    x = x0
+    while x < x1:
+        w = rnd.randint(16, 26)
+        base = at(MID, x + w / 2) + 10
+        tower(x, w, base - rnd.randint(36, 80), base, back)
+        x += w + rnd.randint(2, 10)
+# front row on the valley floor: tall slabs on the flanks, low blocks in front of the sun
+x = 420
+while x < 1010:
+    w = rnd.randint(20, 34)
+    mid = x + w / 2
+    top = rnd.randint(198, 214) if 590 < mid < 850 else rnd.randint(70, 150) if 450 < mid < 580 or 860 < mid < 990 \
+        else rnd.randint(150, 196)
+    tower(x, w, top, H, front)
+    x += w + rnd.randint(1, 6)
+out.append(f'    <g fill="#3b2620">{"".join(back)}</g>')
+out.append(f'    <g fill="#4a2a20">{"".join(front)}</g>')
 out.append(f'    <g fill="#f2c46d" opacity=".75">{"".join(lights + win)}</g>')
 
 out.append(f'    <path d="M0 238 C300 222 520 246 760 234 C1000 224 1200 242 1440 230 V{H} H0Z" fill="#fafafa"/>')
