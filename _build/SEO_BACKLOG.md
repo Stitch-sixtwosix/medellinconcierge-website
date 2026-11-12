@@ -27,6 +27,10 @@ Goal (James, Nov 11 2026): #1 on Google, and named by AI answers (Google AI Over
 - Every page in both English and Spanish. Spanish is written natively for Colombian owners, not translated word for word.
 
 ## Todo
+0. **Show our Google reviews (James, Nov 12):** our Business Profile is **4.7★ from 63 Google reviews** (seen Nov 12, 2026), more than Oasis Living (23) and Casacol (20), which AI answers currently name first.
+   - Add `google_rating: 4.7`, `google_reviews: 63`, `rating_checked: 'Nov 2026'` to `_build/site_config.py`.
+   - Show "4.7★ on Google · 63 reviews", linked to `CONFIG['map']`, near the top of the home page (EN/ES), the Airbnb, long-term, Colombia and fees landing pages, and in the answer-first summaries. Put it in `llms.txt` key facts too.
+   - Do NOT add AggregateRating/Review schema (Google treats self-hosted business ratings as self-serving), and never quote or invent review text.
 1. **Spanish money pages:**
    - Strengthen `/es/` (administración de propiedades Medellín). (`/es/administracion-de-airbnb-medellin/` got keyword-first intro, owner sections and FAQ on Nov 12; remaining for it: links from Spanish blog bodies are Sol's lane.)
    - Use the exact keyword in the title, H1 and first sentence.
