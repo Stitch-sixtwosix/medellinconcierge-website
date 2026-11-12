@@ -31,6 +31,7 @@ HOME_ES = [
   'Administración de rentas cortas y largas en El Poblado, Laureles, Envigado, Sabaneta y todo Medellín. Ingresos por renta sin preocupaciones: desde las reservas y la atención al huésped hasta el mantenimiento y el cumplimiento legal, nos encargamos de todo mientras usted recibe sus ganancias.'),
  ('Estimate my income', 'Calcular mis ingresos'),
  ('Talk to our team', 'Hablar con nuestro equipo'),
+ ('<strong>4.7</strong> on Google · 63 reviews</a>', '<strong>4,7</strong> en Google · 63 reseñas</a>'),
  ('Listed &amp; optimized on <strong>Airbnb</strong>, <strong>Booking.com</strong>, <strong>Expedia</strong>, <strong>VRBO</strong> and more',
   'Publicada y optimizada en <strong>Airbnb</strong>, <strong>Booking.com</strong>, <strong>Expedia</strong>, <strong>VRBO</strong> y más'),
  ('Full management, handled for you', 'Gestión completa, nosotros nos encargamos'),

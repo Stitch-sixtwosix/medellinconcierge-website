@@ -27,10 +27,7 @@ Goal (James, Nov 11 2026): #1 on Google, and named by AI answers (Google AI Over
 - Every page in both English and Spanish. Spanish is written natively for Colombian owners, not translated word for word.
 
 ## Todo
-0. **Show our Google reviews (James, Nov 12):** our Business Profile is **4.7★ from 63 Google reviews** (seen Nov 12, 2026), more than Oasis Living (23) and Casacol (20), which AI answers currently name first.
-   - Add `google_rating: 4.7`, `google_reviews: 63`, `rating_checked: 'Nov 2026'` to `_build/site_config.py`.
-   - Show "4.7★ on Google · 63 reviews", linked to `CONFIG['map']`, near the top of the home page (EN/ES), the Airbnb, long-term, Colombia and fees landing pages, and in the answer-first summaries. Put it in `llms.txt` key facts too.
-   - Do NOT add AggregateRating/Review schema (Google treats self-hosted business ratings as self-serving), and never quote or invent review text.
+0. **Unpublished landing pages (found Nov 12):** `/long-term-property-management-medellin/` (+ ES `/es/administracion-de-rentas-largas-medellin/`) and the El Poblado, Laureles, Envigado and Sabaneta area pages still have `None` copy slots in `_build/landing.py`, so they redirect to the home page and are not indexed. Office report `mc-2026-11-11-build` has proposed EN/ES copy for long-term and El Poblado: verify every fact against the site/`site_config.py` (drop any `[James: …]` sentence), fill the slots, add FAQ like the Airbnb page. Long-term first (covers backlog item 9), then El Poblado.
 1. **Spanish money pages:**
    - Strengthen `/es/` (administración de propiedades Medellín). (`/es/administracion-de-airbnb-medellin/` got keyword-first intro, owner sections and FAQ on Nov 12; remaining for it: links from Spanish blog bodies are Sol's lane.)
    - Use the exact keyword in the title, H1 and first sentence.
@@ -61,6 +58,7 @@ Goal (James, Nov 11 2026): #1 on Google, and named by AI answers (Google AI Over
 10. **Thin pages flagged by Bing (Nov 12, 2026):** /rentals/ (with /es/arriendos/) and /airbnb-revenue-calculator/ (with /es/airbnb-revenue-calculator/). Bing also flags the old URLs /es/rentals and /tours-transportation; check they redirect properly. Add 200–400 words of useful, answer-first copy around the Hostflow embed and the calculator: what's listed, neighborhoods, how booking works, how the calculator estimates and its limits. Add an FAQ block. Don't touch the embeds.
 
 ## Done
+- 2026-11-12: Google rating shown as text ("★ 4.7 on Google · 63 reviews", linked to the Maps profile) in the EN/ES home hero and under the answer-first intro of every live landing page (Airbnb, Colombia) and the fees page; key fact in `llms.txt`. Numbers in `site_config.BUSINESS` (`google_rating`, `google_reviews`, `rating_checked`); no rating schema. Long-term page not live yet (see item 0).
 - 2026-11-11: `llms.txt` added, generated each build (commit b4f22a9).
 - 2026-11-11: Search Console re-verified under contact@ with the HTML file `googlee590b9a9202680db.html`. Never remove it.
 - 2026-11-12: Fees page shipped, EN `/property-management-fees-medellin/` + ES `/es/tarifas-administracion-de-propiedades-medellin/` (answer-first, plan tables, COP example with IVA, fee-model guide, FAQPage schema); linked from home plans note (EN/ES) and FAQ fees answer.

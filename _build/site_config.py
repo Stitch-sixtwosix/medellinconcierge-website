@@ -16,6 +16,9 @@ BUSINESS = {
     'country': 'CO',
     'lat': 6.2104748, 'lng': -75.569858,                 # Google Maps pin of the office
     'map': 'https://maps.app.goo.gl/Z1Edu7BPoXGiPpqh8',
+    # Google Business Profile rating, as seen by James on the profile (Nov 12, 2026). Shown as text linked to
+    # the profile; never as AggregateRating/Review schema (self-serving for a business's own site).
+    'google_rating': 4.7, 'google_reviews': 63, 'rating_checked': 'Nov 2026',
     'area_served': ['Medellín', 'El Poblado', 'Laureles', 'Envigado', 'Sabaneta', 'Colombia'],
     'services_en': ['Property management', 'Airbnb management', 'Short-term rental management',
                     'Long-term rental management', 'Channel management', 'Vacation rental management'],

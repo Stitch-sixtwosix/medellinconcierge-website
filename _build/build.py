@@ -59,6 +59,21 @@ def strip_tags(h):
     return html.unescape(re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', h))).strip()
 
 
+# Google rating line (top of landing and fees pages). Numbers live in site_config.BUSINESS; shown as plain text
+# linked to the Google profile, never as AggregateRating schema.
+def rating_text(lang):
+    r, n, d = BUSINESS['google_rating'], BUSINESS['google_reviews'], BUSINESS['rating_checked']
+    if lang == 'es':
+        return f'{str(r).replace(".", ",")} de 5 en Google con {n} reseñas ({d.replace("Nov", "nov.")})'
+    return f'rated {r} out of 5 on Google from {n} reviews ({d})'
+def rating_line(lang):
+    r, n = BUSINESS['google_rating'], BUSINESS['google_reviews']
+    num = str(r).replace('.', ',') if lang == 'es' else str(r)
+    label = (f'<strong>{num}</strong> en Google · {n} reseñas · Ver reseñas' if lang == 'es'
+             else f'<strong>{num}</strong> on Google · {n} reviews · Read reviews')
+    return (f'<p class="rating-line"><a href="{BUSINESS["map"]}" target="_blank" rel="noopener" '
+            f'aria-label="{html.escape(rating_text(lang)[:1].upper() + rating_text(lang)[1:])}"><span class="star" aria-hidden="true">★</span> {label}</a></p>')
+
 # FAQ accordion icon (landing, FAQ and fees pages)
 PLUS = '<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>'
 
@@ -174,6 +189,8 @@ def cards(lang, prefix, posts, reveal=True, tag='h3'):
 # ======================= 1. English home =======================
 print('Building…')
 en = read('index.html')
+assert f"<strong>{BUSINESS['google_rating']}</strong> on Google · {BUSINESS['google_reviews']} reviews" in en, \
+    'index.html hero rating no longer matches google_rating / google_reviews in site_config.py: update the hero line'
 en = set_landing_links(en)
 en, _n = re.subn(r'<div class="newsletter" data-newsletter data-endpoint="[^"]*"(?: hidden)?>',
                 lambda m: f'<div class="newsletter" data-newsletter data-endpoint="{html.escape(NEWSLETTER_ENDPOINT, quote=True)}"' + ('' if NEWSLETTER_ENDPOINT else ' hidden') + '>', en)
@@ -442,6 +459,7 @@ for pg in PAGES:
     <p class="crumbs"><a href="{home_href}">{ui["home"]}</a> / {pg["label"][lang]}</p>
     <h1>{c["h1"]}</h1>
     {intro}
+    {rating_line(lang)}
   </div>
 </section>
 <article class="article landing">
@@ -688,6 +706,7 @@ for lang in LANGS:
     <p class="crumbs"><a href="../">{ui["home"]}</a> / {ui["crumb"]}</p>
     <h1>{ui["h1"]}</h1>
     <div class="lead">{ui["lead"]}</div>
+    {rating_line(lang)}
   </div>
 </section>
 <article class="article landing">
@@ -1084,6 +1103,8 @@ llms = [f"# {B['name']}", '',
         '- Fees: Basic plan 12% + IVA of rental income for long stays (30+ nights), 17% + IVA for short stays; '
         'Premium plan 15% + IVA long stays, 20% + IVA short stays. No upfront fees. Premium also pays the owner\'s '
         'property tax, HOA fees, utilities and internet, with a monthly accounting report.',
+        f"- Google rating: {B['google_rating']} out of 5 from {B['google_reviews']} Google reviews (checked {B['rating_checked']}; "
+        f"profile: {B['map']})",
         f"- Office: {B['street']}, {B['locality']}, {B['region']}, Colombia ({B['map']})",
         f"- Phone / WhatsApp: {B['telephone']}",
         f"- Email: {B['email']}",
