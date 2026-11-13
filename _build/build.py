@@ -927,6 +927,7 @@ SITEMAP.append((SITE + 'commercial/', SITE + 'es/comercial/', TODAY))
 # Guests reach it from the "Membership benefits" button / back-field link on the Diamond Card. noindex, not in the
 # sitemap, not linked from the menu. Venue data and the confirmed deals live in _build/diamond_card.py.
 LINK_ICON = {
+    'map': '<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
     'web': '<path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
     'book': '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
     'instagram': '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>',
