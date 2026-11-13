@@ -61,7 +61,7 @@ DIAMOND = {
                kicker='Guest benefit', h1='Diamond Card',
                lead='Show your Diamond Card at these bars and restaurants to get each one’s deal. Valid during your stay with Medellín Concierge.',
                deal='Your deal', soon='Deal coming soon',
-               link=dict(map='Google Maps', web='Website', book='Book a table', instagram='Instagram'),
+               link=dict(map='Map', web='Website', book='Book', instagram='Instagram'),
                note='Deals are offered by each venue and may change. Questions or help with a reservation?',
                wa='Message us on WhatsApp', wa_text='Hi! I have a question about my Diamond Card.'),
     'es': dict(slug='es/tarjeta-diamante', title='Tarjeta Diamante: bares y restaurantes aliados | Medellín Concierge',
@@ -69,7 +69,7 @@ DIAMOND = {
                kicker='Beneficio para huéspedes', h1='Tarjeta Diamante',
                lead='Muestre su Tarjeta Diamante en estos bares y restaurantes para recibir el beneficio de cada uno. Válida durante su estadía con Medellín Concierge.',
                deal='Su beneficio', soon='Beneficio muy pronto',
-               link=dict(map='Google Maps', web='Sitio web', book='Reservar mesa', instagram='Instagram'),
+               link=dict(map='Mapa', web='Web', book='Reservar', instagram='Instagram'),
                note='Cada lugar ofrece su propio beneficio y puede cambiar. ¿Preguntas o ayuda con una reserva?',
                wa='Escríbanos por WhatsApp', wa_text='¡Hola! Tengo una pregunta sobre mi Tarjeta Diamante.'),
 }

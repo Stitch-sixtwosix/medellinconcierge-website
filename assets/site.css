@@ -595,12 +595,13 @@ a.area-card:not([href]) .read{display:none}
 .dc-logo img{width:auto;max-width:100%}
 .dc-venue h2{font-size:1.12rem;margin:0 0 6px}
 .dc-about{color:var(--muted);font-size:.94rem;margin:0 0 16px}
-.dc-deal{margin:auto 0 14px;padding:12px 14px;border-radius:12px;background:#fdecea;color:var(--red-dark);font-weight:600;font-size:1rem}
+.dc-deal{margin:auto 0 16px;padding:12px 14px;border-radius:12px;background:#fdecea;color:var(--red-dark);font-weight:600;font-size:1rem}
 .dc-deal span{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;opacity:.8;margin-bottom:2px}
 .dc-deal.dc-soon{background:var(--sand);color:var(--muted);font-weight:500}
-.dc-links{display:flex;flex-wrap:wrap;gap:4px 18px;margin:0}
-.dc-links a{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-weight:600;font-size:.92rem;color:var(--ink)}
-@media (hover:hover){.dc-links a:hover{color:var(--red-dark)}}
+.dc-links{display:flex;gap:8px;margin:0}
+.dc-links a{flex:1 1 0;min-width:0;display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:44px;padding:0 6px;border:1px solid var(--line);border-radius:12px;font-weight:600;font-size:.86rem;color:var(--ink);text-decoration:none;white-space:nowrap;transition:border-color .2s var(--ease-out),color .2s var(--ease-out)}
+.dc-links a svg{flex:none}
+@media (hover:hover){.dc-links a:hover{color:var(--red-dark);border-color:var(--red-dark)}}
 .dc-note{margin:32px 0 0;color:var(--muted);text-align:center}
 .dc-note a{color:var(--red-dark);font-weight:600}
 @media (max-width:960px){.dc-venues{grid-template-columns:1fr 1fr}}
