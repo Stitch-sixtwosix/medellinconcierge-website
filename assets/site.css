@@ -582,3 +582,26 @@ a.area-card:not([href]) .read{display:none}
 .tech-features p{color:var(--on-dark);font-size:.95rem;margin:0}
 @media (max-width:960px){.tech-grid{grid-template-columns:1fr;gap:40px}}
 @media (max-width:560px){.tech-features{grid-template-columns:1fr}}
+
+/* Diamond Card venues (/diamond-card/) */
+.dc-hero{padding:136px 0 64px;background:linear-gradient(90deg,#1c1c1c 35%,rgba(28,28,28,.55) 60%,rgba(28,28,28,0)),#1c1c1c url(diamond-pattern.webp) right center/auto 100% no-repeat}
+.dc-kicker{margin:0 0 10px;font-family:Poppins,Inter,sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red-light)}
+.dc-hero h1{color:#fff}
+.dc-hero .lead{max-width:560px}
+.dc-list{padding:56px 0 96px}
+.dc-venues{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.dc-venue{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px 22px 18px;display:flex;flex-direction:column}
+.dc-logo{height:52px;display:flex;align-items:center;margin-bottom:14px}
+.dc-logo img{width:auto;max-width:100%}
+.dc-venue h2{font-size:1.12rem;margin:0 0 6px}
+.dc-about{color:var(--muted);font-size:.94rem;margin:0 0 16px}
+.dc-deal{margin:auto 0 14px;padding:12px 14px;border-radius:12px;background:#fdecea;color:var(--red-dark);font-weight:600;font-size:1rem}
+.dc-deal span{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;opacity:.8;margin-bottom:2px}
+.dc-deal.dc-soon{background:var(--sand);color:var(--muted);font-weight:500}
+.dc-links{display:flex;flex-wrap:wrap;gap:4px 18px;margin:0}
+.dc-links a{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-weight:600;font-size:.92rem;color:var(--ink)}
+@media (hover:hover){.dc-links a:hover{color:var(--red-dark)}}
+.dc-note{margin:32px 0 0;color:var(--muted);text-align:center}
+.dc-note a{color:var(--red-dark);font-weight:600}
+@media (max-width:960px){.dc-venues{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.dc-hero{padding:112px 0 64px;background:linear-gradient(180deg,#1c1c1c 62%,rgba(28,28,28,.35)),#1c1c1c url(diamond-pattern.webp) right bottom/auto 46% no-repeat}.dc-venues{grid-template-columns:1fr}.dc-list{padding:32px 0 72px}}

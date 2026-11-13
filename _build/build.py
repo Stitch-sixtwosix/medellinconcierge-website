@@ -12,7 +12,7 @@ index.html (English home page) is the hand-edited source. This script then:
   5. writes sitemap.xml and robots.txt
 It stops with a clear message if an English string in es_home.py no longer exists in index.html.
 """
-import datetime, glob, hashlib, html, json, os, re, subprocess, sys
+import datetime, glob, hashlib, html, json, os, re, subprocess, sys, urllib.parse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -23,6 +23,7 @@ from landing import PAGES, AREAS
 from team import TEAM
 from faq import FAQ
 from fees import FEES
+from diamond_card import VENUES, DIAMOND
 
 TODAY = datetime.date.today().isoformat()
 LANGS = ('en', 'es')
@@ -922,6 +923,57 @@ for lang in LANGS:
 SITEMAP.append((SITE + 'commercial/', SITE + 'es/comercial/', TODAY))
 
 
+# ======================= 4a. Diamond Card venues (opened from the Wallet pass) =======================
+# Guests reach it from the "Membership benefits" button / back-field link on the Diamond Card. noindex, not in the
+# sitemap, not linked from the menu. Venue data and the confirmed deals live in _build/diamond_card.py.
+LINK_ICON = {
+    'web': '<path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+    'book': '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+    'instagram': '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>',
+}
+for lang in LANGS:
+    ui = DIAMOND[lang]
+    en_url, es_url = SITE + 'diamond-card/', SITE + 'es/tarjeta-diamante/'
+    url = es_url if lang == 'es' else en_url
+    assets = '../assets/' if lang == 'en' else '../../assets/'
+    items = []
+    for v in VENUES:
+        deal = (f'<p class="dc-deal"><span>{ui["deal"]}</span>{html.escape(v["deal"][lang])}</p>' if v['deal']
+                else f'<p class="dc-deal dc-soon">{ui["soon"]}</p>')
+        links = ''.join(
+            f'<a href="{href}" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" '
+            f'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{LINK_ICON[k]}</svg>'
+            f'{ui["link"][k]}</a>' for k, href in v['links'])
+        items.append(f'''      <li class="dc-venue reveal">
+        <div class="dc-logo"><img src="{assets}partners/{v["logo"]}" alt="" style="height:{v["h"]}px" decoding="async"></div>
+        <h2>{html.escape(v["name"])}</h2>
+        <p class="dc-about">{html.escape(v["about"][lang])}</p>
+        {deal}
+        <p class="dc-links">{links}</p>
+      </li>''')
+    wa = 'https://wa.me/573042773864?text=' + urllib.parse.quote(ui['wa_text'])
+    body = f'''<section class="dc-hero dark">
+  <div class="wrap">
+    <p class="dc-kicker">{ui["kicker"]}</p>
+    <h1>{ui["h1"]}</h1>
+    <p class="lead">{ui["lead"]}</p>
+  </div>
+</section>
+<section class="dc-list">
+  <div class="wrap">
+    <ul class="dc-venues" data-stagger>
+{chr(10).join(items)}
+    </ul>
+    <p class="dc-note">{ui["note"]} <a href="{wa}" target="_blank" rel="noopener">{ui["wa"]}</a></p>
+  </div>
+</section>'''
+    schema = {'@context': 'https://schema.org', '@graph': [
+        {'@type': 'WebPage', 'name': ui['h1'], 'description': ui['desc'], 'url': url, 'inLanguage': lang,
+         'publisher': {'@id': business_id()}}]}
+    en_href, es_href = (('./', '../es/tarjeta-diamante/') if lang == 'en' else ('../../diamond-card/', './'))
+    write(f'{ui["slug"]}/index.html', page(lang, title=ui['title'], desc=ui['desc'], en_url=en_url, es_url=es_url,
+          en_href=en_href, es_href=es_href, body=body, schema=schema, noindex=True))
+
 # ======================= 4b. Old Wix URLs → redirects, and 404.html =======================
 # GitHub Pages has no server-side redirects, so each old path gets a tiny page that redirects instantly
 # (meta refresh + JS) and declares the new URL as canonical. Not listed in sitemap.xml.
@@ -932,7 +984,6 @@ REDIRECTS = {
     'airbnb-revenue-calculator':      '#calculator',
     'es/airbnb-revenue-calculator':   'es/#calculator',
     'tours-transportation':           'tours/',
-    'diamond-card':                   '',
     'properties/finca-con-bosque-nativo-privado': 'rentals/',   # any other /properties/* is sent to /rentals/ by 404.html
     'about-us':                       'team/',       # old Wix URL, still used by Google Ads sitelinks
     'real-estate-portfolio':          'rentals/',    # old Wix URL, still used by Google Ads sitelinks
