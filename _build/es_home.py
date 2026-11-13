@@ -7,9 +7,9 @@ HOME_ES = [
  # ---- head ----
  ('<html lang="en">', '<html lang="es">'),
  ('<title>Property Management in Medellín | Medellín Concierge</title>',
-  '<title>Administración de propiedades Medellín | Medellín Concierge</title>'),
+  '<title>Administración de propiedades Medellín | Airbnb y arriendos</title>'),
  ('content="Property management in Medellín: Airbnb and long-term rentals in El Poblado, Laureles, Envigado and Sabaneta. Plans from 12% + IVA. Free consultation."',
-  'content="Administración de propiedades en Medellín: Airbnb y rentas largas en El Poblado, Laureles, Envigado y Sabaneta. Planes desde 12% + IVA. Consulta gratis."'),
+  'content="Administración de propiedades en Medellín para Airbnb y rentas largas: huéspedes, aseo, RNT y pagos mensuales. Desde 12% + IVA, sin costos iniciales."'),
  ('content="Property Management in Medellín | Medellín Concierge"', 'content="Administración de Propiedades en Medellín | Medellín Concierge"'),
  ('content="Medellín Concierge: property management in Medellín"', 'content="Medellín Concierge: administración de propiedades en Medellín"'),
  ('<meta property="og:locale" content="en_US">', '<meta property="og:locale" content="es_CO">'),
@@ -28,7 +28,7 @@ HOME_ES = [
  # ---- hero ----
  ('<h1>Property management in Medellín. <em>Maximized.</em></h1>', '<h1>Administración de propiedades en Medellín. <em>Al máximo.</em></h1>'),
  ('Short-term and long-term rental management in El Poblado, Laureles, Envigado, Sabaneta and across Medellín. Fully managed, stress-free rental income: from bookings and guest care to maintenance and legal compliance, we handle it all while you get paid.',
-  'Administración de rentas cortas y largas en El Poblado, Laureles, Envigado, Sabaneta y todo Medellín. Ingresos por renta sin preocupaciones: desde las reservas y la atención al huésped hasta el mantenimiento y el cumplimiento legal, nos encargamos de todo mientras usted recibe sus ganancias.'),
+  'Medellín Concierge es una empresa de administración de propiedades en Medellín con oficina en El Poblado. Administramos rentas cortas (Airbnb, Booking.com) y largas en El Poblado, Laureles, Envigado y Sabaneta, desde 12% + IVA y sin costos iniciales: reservas, atención al huésped, aseo, mantenimiento y registros de RNT, SIRE y TRA. Usted recibe sus ganancias en los primeros 5 días hábiles de cada mes.'),
  ('Estimate my income', 'Calcular mis ingresos'),
  ('Talk to our team', 'Hablar con nuestro equipo'),
  ('<strong>4.7</strong> on Google · 63 reviews</a>', '<strong>4,7</strong> en Google · 63 reseñas</a>'),
@@ -65,6 +65,23 @@ HOME_ES = [
  ('>Foreign owners</a>', '>Propietarios extranjeros</a>'),
 
  # ---- why us ----
+
+ # ---- owners (answer-first overview) ----
+ ('<h2>Property management in Medellín, from start to finish</h2>', '<h2>Administración de propiedades en Medellín, de principio a fin</h2>'),
+ ('Medellín Concierge is a local property management company with an office in El Poblado. We manage apartments and houses for short stays on Airbnb, Booking.com, Expedia and VRBO, and for long stays of 30 nights or more, in El Poblado, Laureles, Envigado, Sabaneta and across Medellín. We work with owners who live in the city and with owners who invest in Colombia from abroad.',
+  'Medellín Concierge es una empresa local de administración de propiedades con oficina en El Poblado. Administramos apartamentos y casas para renta corta, en Airbnb, Booking.com, Expedia y VRBO, y para estancias de 30 noches o más, en El Poblado, Laureles, Envigado, Sabaneta y el resto de Medellín. Trabajamos tanto con propietarios que viven en la ciudad como con quienes tienen su inversión en Colombia y viven en el exterior.'),
+ ('<h3>Before you rent: building rules and RNT</h3>', '<h3>Antes de rentar: reglamento del edificio y RNT</h3>'),
+ ('To host guests by the night, your building&rsquo;s reglamento de propiedad horizontal has to allow short stays, and the property needs an active Registro Nacional de Turismo (RNT). We check both with you before launch, then manage the RNT, SIRE reporting of foreign guests and TRA. If your building does not allow short stays, <a href="long-term-property-management-medellin/">long-term management for stays of 30 nights or more</a> is usually the better fit. Rules can change: this is how things stand as of November 2026, and we manage registrations, not tax or legal advice, so confirm your own obligations with a qualified professional.',
+  'Para recibir huéspedes por noches, el reglamento de propiedad horizontal de su edificio debe permitir la renta corta y el inmueble necesita un Registro Nacional de Turismo (RNT) activo. Revisamos ambos puntos con usted antes de publicar y luego gestionamos el RNT, el reporte de huéspedes extranjeros en el SIRE y la TRA. Si su edificio no permite la renta corta, la <a href="long-term-property-management-medellin/">administración de rentas largas de 30 noches o más</a> suele ser la mejor alternativa. Las normas pueden cambiar: así están las cosas a noviembre de 2026, y nosotros gestionamos registros, no damos asesoría tributaria ni legal, así que confirme sus obligaciones con un profesional calificado.'),
+ ('<h3>Day-to-day operations are on us</h3>', '<h3>La operación diaria corre por nuestra cuenta</h3>'),
+ ('We create or take over your listings, keep calendars synced to avoid double bookings and adjust nightly rates with dynamic pricing. We support guests 24/7, coordinate check-ins, check-outs, cleaning and maintenance, and ask for your approval first on any repair above the limit we agree. See how our <a href="airbnb-management-medellin/">Airbnb management in Medellín</a> works.',
+  'Creamos o asumimos sus anuncios, sincronizamos calendarios para evitar dobles reservas y ajustamos la tarifa por noche con precios dinámicos. Atendemos a los huéspedes 24/7, coordinamos llegadas, salidas, aseo y mantenimiento, y para cualquier reparación que supere el límite acordado le pedimos su aprobación primero. Vea cómo funciona nuestra <a href="airbnb-management-medellin/">administración de Airbnb en Medellín</a>.'),
+ ('<h3>Clear payouts and reports</h3>', '<h3>Pagos y reportes claros</h3>'),
+ ('We pay out the previous month&rsquo;s earnings within the first 5 business days of each month. Your owner portal shows bookings, earnings and monthly GAAP financial statements, with our fees and expenses deducted transparently. On the Premium plan we also pay your property taxes, HOA fees, utilities and internet for you.',
+  'Le pagamos las ganancias del mes anterior dentro de los primeros 5 días hábiles de cada mes. En su portal de propietario ve reservas, ingresos y estados financieros mensuales bajo GAAP, con nuestras comisiones y los gastos descontados de forma transparente. Con el plan Premium, además, pagamos por usted el impuesto predial, la cuota de administración, los servicios públicos y el internet.'),
+ ('<h3>What it costs</h3>', '<h3>Cuánto cuesta</h3>'),
+ ('No upfront fees: we charge a commission on your rental income. Basic is 12% for long stays and 17% for short stays; Premium is 15% and 20%. IVA (Colombian VAT) is added to the commission, not to your rent. See worked examples in pesos on <a href="property-management-fees-medellin/">our property management fees</a> page. Own from abroad? Read <a href="property-management-colombia/">property management in Colombia for foreign owners</a>.',
+  'No hay costos iniciales: cobramos una comisión sobre los ingresos por renta. Básico, 12% para estancias largas y 17% para cortas; Premium, 15% y 20%. El IVA se suma a nuestra comisión, no a su renta. Encuentre ejemplos en pesos en <a href="property-management-fees-medellin/">nuestras tarifas de administración</a>. Si es dueño desde el exterior, lea también <a href="property-management-colombia/">administración de propiedades en Colombia para propietarios extranjeros</a>.'),
 
  # ---- plans ----
  ('Two plans, up to completely hands-off', 'Dos planes, hasta despreocuparse por completo'),
@@ -147,6 +164,25 @@ HOME_ES = [
  ('of our commission on every client you refer, for as long as they stay with us.', 'de nuestra comisión por cada cliente que nos refiera, mientras siga con nosotros.'),
 
  # ---- FAQ ----
+ ('<h2>Property management in Medellín: frequently asked questions</h2>', '<h2>Preguntas frecuentes sobre la administración de propiedades en Medellín</h2>'),
+ ('How much does property management in Medellín cost with Medellín Concierge?', '¿Cuánto cuesta la administración de propiedades en Medellín con Medellín Concierge?'),
+ ('A commission on your rental income, with no upfront fees. Basic: 12% for stays of 30 nights or more and 17% for short stays. Premium: 15% and 20%, and we also pay your property taxes, HOA fees, utilities and internet. All percentages are plus IVA.',
+  'Cobramos una comisión sobre los ingresos por renta, sin costos iniciales. Plan Básico: 12% para estancias de 30 noches o más y 17% para estancias cortas. Plan Premium: 15% y 20%, y además pagamos su impuesto predial, cuota de administración, servicios públicos e internet. Todos los porcentajes son más IVA.'),
+ ('What do I need before listing my apartment on Airbnb in Medellín?', '¿Qué necesito antes de poner mi apartamento en Airbnb en Medellín?'),
+ ('Two things: your building&rsquo;s reglamento de propiedad horizontal must allow short stays, and the property needs an active Registro Nacional de Turismo (RNT), as of November 2026. We check the reglamento with you and manage RNT, SIRE and TRA; confirm your own legal and tax obligations with a qualified professional.',
+  'Dos cosas: que el reglamento de propiedad horizontal de su edificio permita la renta corta y un Registro Nacional de Turismo (RNT) activo para el inmueble, a noviembre de 2026. Revisamos el reglamento con usted y gestionamos el RNT, el SIRE y la TRA; confirme sus obligaciones legales y tributarias con un profesional calificado.'),
+ ('When and how do I receive my earnings?', '¿Cuándo y cómo recibo mis ganancias?'),
+ ('Once a month, within the first 5 business days, for the previous month. Earnings are calculated using GAAP, net of our fees and expenses, and you see the detail in your owner portal.',
+  'Una vez al mes, dentro de los primeros 5 días hábiles, por el mes anterior. Las ganancias se calculan bajo GAAP, descontando nuestras comisiones y los gastos, y usted ve el detalle en su portal de propietario.'),
+ ('Can you manage my property if I live outside Colombia?', '¿Pueden administrar mi propiedad si vivo fuera de Colombia?'),
+ ('Yes. We handle guests, check-ins and check-outs, cleaning, maintenance, registrations and payments, and you follow everything in your owner portal. For repairs above a pre-agreed limit, we ask for your approval first.',
+  'Sí. Nos encargamos de los huéspedes, las llegadas y salidas, la limpieza, el mantenimiento, los registros y los pagos, y usted sigue todo desde su portal. Para reparaciones que superen un límite acordado, le pedimos su aprobación primero.'),
+ ('Which neighborhoods do you cover?', '¿En qué barrios administran propiedades?'),
+ ('El Poblado, Laureles, Envigado, Sabaneta and the rest of Medellín. Our office is in El Poblado (Cl. 10 #42-28, Oficina 15).',
+  'En El Poblado, Laureles, Envigado, Sabaneta y el resto de Medellín. Nuestra oficina está en El Poblado (Cl. 10 #42-28, Oficina 15).'),
+ ('Can I end the contract if I change my mind?', '¿Puedo terminar el contrato si cambio de opinión?'),
+ ('Yes. You can pause or end our services with advance notice, as set out in our agreement, and we provide a smooth handover.',
+  'Sí. Puede pausar o terminar nuestros servicios con aviso previo, según lo establecido en el contrato, y le facilitamos una transición ordenada.'),
 
  # ---- blog teaser (card titles and excerpts come from posts_*.py) ----
 

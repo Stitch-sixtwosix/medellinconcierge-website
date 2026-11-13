@@ -154,6 +154,8 @@ def set_home_jsonld(s, lang):
         business(lang),
         {'@type': 'WebSite', '@id': SITE + '#website', 'url': SITE, 'name': BUSINESS['name'],
          'inLanguage': ['en', 'es'], 'publisher': {'@id': business_id()}}]}
+    if '<section id="faq">' in s:   # home FAQ block (index.html) → FAQPage, text identical to the visible answers
+        graph['@graph'].append(faq_schema(s[s.index('<section id="faq">'):]))
     s, n = re.subn(r'<script type="application/ld\+json">.*?</script>', lambda m: jsonld(graph), s, count=1, flags=re.S)
     assert n == 1, 'JSON-LD block not found in home page'
     return s
