@@ -2,6 +2,7 @@
 # Wallet pass opens. In page order. noindex and not in the sitemap; reached from the card.
 #
 # "deal": ONLY what James has confirmed with the venue. None shows "Deal coming soon".
+# 2026-11-12: James confirmed 10% off at every venue except Medellín Soundbar (welcome cocktail).
 # "about": from the venue's own website (Sinmente brands), Hotel Selvario36's page (Ensō) or Instagram bio (Soundbar).
 # "logo": file in assets/partners/ (same charcoal logos as the home page partners banner).
 VENUES = [
@@ -13,42 +14,42 @@ VENUES = [
     dict(name='Mal de Ojo', logo='mal-de-ojo.webp', h=36,
          about=dict(en='Rooftop in Astorga, El Poblado: panoramic views, fusion cuisine and signature cocktails.',
                     es='Rooftop en Astorga, El Poblado: vista panorámica, cocina de fusión y coctelería de autor.'),
-         deal=None,
+         deal=dict(en='10% off', es='10% de descuento'),
          links=[('web', 'https://maldeojo.co/'), ('book', 'https://mal-de-ojo.cluvi.co/bookings/18574')]),
     dict(name='Envy Rooftop', logo='envy-rooftop.webp', h=32,
          about=dict(en='360° views from the top of The Charlee hotel: signature cocktails, Nikkei sushi and live music.',
                     es='Vista 360° desde lo alto del hotel The Charlee: coctelería de autor, sushi nikkei y música en vivo.'),
-         deal=None,
+         deal=dict(en='10% off', es='10% de descuento'),
          links=[('web', 'https://envyrooftop.com/'), ('book', 'https://envy.cluvi.co/')]),
     dict(name='Ensō Rooftop', logo='enso-rooftop.webp', h=28,
          about=dict(en='Rooftop of Hotel Selvario36 in El Poblado, with views over the Aburrá Valley.',
                     es='Rooftop del Hotel Selvario36 en El Poblado, con vista al valle de Aburrá.'),
-         deal=None,
+         deal=dict(en='10% off', es='10% de descuento'),
          links=[('web', 'https://selvario36hotel.com/en/enso-medellin-el-rooftop/'), ('instagram', 'https://www.instagram.com/enso.mde/')]),
     dict(name='Mala Audio Bar', logo='mala-audio-bar.webp', h=26,
          about=dict(en='A bar where sound comes first: vinyl, high-fidelity audio and signature cocktails in El Poblado.',
                     es='Un bar donde el sonido manda: vinilo, alta fidelidad y coctelería de autor en El Poblado.'),
-         deal=None,
+         deal=dict(en='10% off', es='10% de descuento'),
          links=[('web', 'https://malaaudiobar.co/'), ('book', 'https://mala-audio-bar.cluvi.co/bookings/18573')]),
     dict(name='Oni Nikkei', logo='oni-nikkei.webp', h=34,
          about=dict(en='Sushi where Japan meets Peru: signature cuts, ceviches and cocktails in El Poblado.',
                     es='Sushi donde Japón se encuentra con Perú: cortes de autor, ceviches y coctelería en El Poblado.'),
-         deal=None,
+         deal=dict(en='10% off', es='10% de descuento'),
          links=[('web', 'https://oninikkei.co/'), ('book', 'https://oni.cluvi.co/bookings/18568')]),
     dict(name='Egeo', logo='egeo.webp', h=28,
          about=dict(en='Mediterranean cooking to share, with Greek flavors, at the Click Clack hotel in El Poblado.',
                     es='Cocina mediterránea para compartir, con sabores griegos, en el hotel Click Clack de El Poblado.'),
-         deal=None,
+         deal=dict(en='10% off', es='10% de descuento'),
          links=[('web', 'https://egeorestaurante.co/'), ('book', 'https://egeo.cluvi.co/bookings/18569')]),
     dict(name='Burdo', logo='burdo.webp', h=18,
          about=dict(en='American food and drinks on a terrace in Provenza.',
                     es='Comida americana y tragos en una terraza en Provenza.'),
-         deal=None,
+         deal=dict(en='10% off', es='10% de descuento'),
          links=[('web', 'https://burdorestaurante.co/'), ('book', 'https://burdo.cluvi.co/bookings/18720')]),
     dict(name='General', logo='general.webp', h=18,
          about=dict(en='All-day brunch and specialty coffee in El Poblado, with space to work or meet.',
                     es='Brunch todo el día y café de especialidad en El Poblado, con espacio para trabajar o compartir.'),
-         deal=None,
+         deal=dict(en='10% off', es='10% de descuento'),
          links=[('web', 'https://generalcafe.co/'), ('book', 'https://cafe-general.cluvi.co/bookings/18710')]),
 ]
 
