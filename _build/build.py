@@ -1106,6 +1106,7 @@ xml = ['<?xml version="1.0" encoding="UTF-8"?>',
 # changes (asset ?v= stamps ignored). Blog posts keep their own published/modified date if that is later.
 LASTMOD_FILE = os.path.join(HERE, 'lastmod.json')
 lastmods = json.load(open(LASTMOD_FILE)) if os.path.exists(LASTMOD_FILE) else {}
+BOOTSTRAP = not lastmods   # no history yet; otherwise a URL seen for the first time is new today
 def url_file(u):
     rel = u[len(SITE):]
     return os.path.join(ROOT, rel + 'index.html' if rel == '' or rel.endswith('/') else rel)
@@ -1122,7 +1123,8 @@ def content_lastmod(u, given):
     prev = lastmods.get(u)
     if prev and prev[0] == fp: d = prev[1]
     elif prev: d = TODAY                                        # content changed since the last build
-    else: d = given if given != TODAY else git_date(f)          # first time this URL is seen
+    elif BOOTSTRAP: d = given if given != TODAY else git_date(f)  # first build ever: best guess from git
+    else: d = given if given != TODAY else TODAY               # page just went live (e.g. copy finished)
     lastmods[u] = [fp, d]
     return max(d, given) if given != TODAY else d
 for en_url, es_url, given in SITEMAP:
