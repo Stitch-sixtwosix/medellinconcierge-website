@@ -6,11 +6,11 @@
 HOME_ES = [
  # ---- head ----
  ('<html lang="en">', '<html lang="es">'),
- ('<title>Property Management in Medellín | Medellín Concierge</title>',
+ ('<title>Property Management Medellín, Colombia | Airbnb &amp; Rentals</title>',
   '<title>Administración de propiedades Medellín | Airbnb y arriendos</title>'),
- ('content="Property management in Medellín: Airbnb and long-term rentals in El Poblado, Laureles, Envigado and Sabaneta. Plans from 12% + IVA. Free consultation."',
+ ('content="Property management in Medellín, Colombia: Airbnb and long-term rentals in El Poblado, Laureles, Envigado and Sabaneta. From 12% + IVA. Free consultation."',
   'content="Administración de propiedades en Medellín para Airbnb y rentas largas: huéspedes, aseo, RNT y pagos mensuales. Desde 12% + IVA, sin costos iniciales."'),
- ('content="Property Management in Medellín | Medellín Concierge"', 'content="Administración de Propiedades en Medellín | Medellín Concierge"'),
+ ('content="Property Management Medellín, Colombia | Airbnb &amp; Rentals"', 'content="Administración de Propiedades en Medellín | Medellín Concierge"'),
  ('content="Medellín Concierge: property management in Medellín"', 'content="Medellín Concierge: administración de propiedades en Medellín"'),
  ('<meta property="og:locale" content="en_US">', '<meta property="og:locale" content="es_CO">'),
 
@@ -27,14 +27,14 @@ HOME_ES = [
 
  # ---- hero ----
  ('<h1>Property management in Medellín. <em>Maximized.</em></h1>', '<h1>Administración de propiedades en Medellín. <em>Al máximo.</em></h1>'),
- ('Short-term and long-term rental management in El Poblado, Laureles, Envigado, Sabaneta and across Medellín. Fully managed, stress-free rental income: from bookings and guest care to maintenance and legal compliance, we handle it all while you get paid.',
-  'Medellín Concierge es una empresa de administración de propiedades en Medellín con oficina en El Poblado. Administramos rentas cortas (Airbnb, Booking.com) y largas en El Poblado, Laureles, Envigado y Sabaneta, desde 12% + IVA y sin costos iniciales: reservas, atención al huésped, aseo, mantenimiento y registros de RNT, SIRE y TRA. Usted recibe sus ganancias en los primeros 5 días hábiles de cada mes.'),
+ ('<strong>Medellín Concierge is a local property management company in El Poblado that runs Airbnb and long-term rentals across Medellín, Laureles, Envigado and Sabaneta for owners in Colombia and abroad.</strong> Plans start at 12% of rental income + IVA for long stays and 17% + IVA for <a href="airbnb-management-medellin/">Airbnb management</a>, with no upfront fees. You get the previous month&rsquo;s earnings within the first 5 business days, with GAAP statements in your owner portal.',
+  '<strong>Medellín Concierge es una empresa de administración de propiedades en Medellín con oficina en El Poblado.</strong> Administramos rentas cortas (Airbnb, Booking.com) y largas en El Poblado, Laureles, Envigado y Sabaneta, desde 12% + IVA y sin costos iniciales: reservas, atención al huésped, aseo, mantenimiento y registros de RNT, SIRE y TRA. Vea nuestra <a href="airbnb-management-medellin/">administración de Airbnb en Medellín</a>. Usted recibe sus ganancias en los primeros 5 días hábiles de cada mes.'),
  ('Estimate my income', 'Calcular mis ingresos'),
  ('Talk to our team', 'Hablar con nuestro equipo'),
  ('<strong>4.7</strong> on Google · 63 reviews</a>', '<strong>4,7</strong> en Google · 63 reseñas</a>'),
  ('Listed &amp; optimized on <strong>Airbnb</strong>, <strong>Booking.com</strong>, <strong>Expedia</strong>, <strong>VRBO</strong> and more',
   'Publicada y optimizada en <strong>Airbnb</strong>, <strong>Booking.com</strong>, <strong>Expedia</strong>, <strong>VRBO</strong> y más'),
- ('Full management, handled for you', 'Gestión completa, nosotros nos encargamos'),
+ ('Airbnb and long-term property management, handled for you', 'Administración de Airbnb y arriendos, nosotros nos encargamos'),
  ('24/7 guest support</li>', 'Atención al huésped 24/7</li>'),
  ('Dynamic pricing &amp; synced calendars, no double bookings', 'Precios dinámicos y calendarios sincronizados, sin reservas dobles'),
  ('RNT, SIRE &amp; TRA legal compliance managed', 'Cumplimiento legal de RNT, SIRE y TRA gestionado'),
@@ -168,6 +168,9 @@ HOME_ES = [
  ('How much does property management in Medellín cost with Medellín Concierge?', '¿Cuánto cuesta la administración de propiedades en Medellín con Medellín Concierge?'),
  ('A commission on your rental income, with no upfront fees. Basic: 12% for stays of 30 nights or more and 17% for short stays. Premium: 15% and 20%, and we also pay your property taxes, HOA fees, utilities and internet. All percentages are plus IVA.',
   'Cobramos una comisión sobre los ingresos por renta, sin costos iniciales. Plan Básico: 12% para estancias de 30 noches o más y 17% para estancias cortas. Plan Premium: 15% y 20%, y además pagamos su impuesto predial, cuota de administración, servicios públicos e internet. Todos los porcentajes son más IVA.'),
+ ('Do you manage Airbnb apartments in Medellín?', '¿Administran apartamentos en Airbnb en Medellín?'),
+ ('Yes. We manage short stays on Airbnb, Booking.com, Expedia and VRBO for 17% of rental income + IVA on Basic or 20% + IVA on Premium: listing, dynamic pricing, 24/7 guest support, check-ins, cleaning, maintenance and RNT, SIRE and TRA compliance. See how our <a href="airbnb-management-medellin/">Airbnb management in Medellín</a> works.',
+  'Sí. Administramos rentas cortas en Airbnb, Booking.com, Expedia y VRBO por el 17% de los ingresos por renta + IVA en el plan Básico o el 20% + IVA en el Premium: anuncio, precios dinámicos, atención al huésped 24/7, llegadas, aseo, mantenimiento y cumplimiento de RNT, SIRE y TRA. Vea cómo funciona nuestra <a href="airbnb-management-medellin/">administración de Airbnb en Medellín</a>.'),
  ('What do I need before listing my apartment on Airbnb in Medellín?', '¿Qué necesito antes de poner mi apartamento en Airbnb en Medellín?'),
  ('Two things: your building&rsquo;s reglamento de propiedad horizontal must allow short stays, and the property needs an active Registro Nacional de Turismo (RNT), as of November 2026. We check the reglamento with you and manage RNT, SIRE and TRA; confirm your own legal and tax obligations with a qualified professional.',
   'Dos cosas: que el reglamento de propiedad horizontal de su edificio permita la renta corta y un Registro Nacional de Turismo (RNT) activo para el inmueble, a noviembre de 2026. Revisamos el reglamento con usted y gestionamos el RNT, el SIRE y la TRA; confirme sus obligaciones legales y tributarias con un profesional calificado.'),

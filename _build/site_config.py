@@ -20,6 +20,9 @@ BUSINESS = {
     # the profile; never as AggregateRating/Review schema (self-serving for a business's own site).
     'google_rating': 4.7, 'google_reviews': 63, 'rating_checked': 'Nov 2026',
     'area_served': ['Medellín', 'El Poblado', 'Laureles', 'Envigado', 'Sabaneta', 'Colombia'],
+    # Same fees as the home page plans (commission on rental income, IVA added to the commission).
+    'price_range_en': '12%–20% of rental income + IVA',
+    'price_range_es': '12%–20% de los ingresos por renta + IVA',
     'services_en': ['Property management', 'Airbnb management', 'Short-term rental management',
                     'Long-term rental management', 'Channel management', 'Vacation rental management'],
     'services_es': ['Administración de propiedades', 'Administración de Airbnb', 'Administración de rentas cortas',

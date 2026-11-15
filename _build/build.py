@@ -139,6 +139,8 @@ def business(lang):
         'hasMap': b['map'],
         'areaServed': [{'@type': 'Country' if a == 'Colombia' else 'Place', 'name': a} for a in b['area_served']],
         'knowsLanguage': ['en', 'es'],
+        'priceRange': b['price_range_es'] if lang == 'es' else b['price_range_en'],
+        'knowsAbout': services + ['Registro Nacional de Turismo (RNT)', 'SIRE', 'TRA'],
         'makesOffer': [{'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'serviceType': s, 'areaServed': 'Medellín'}} for s in services],
         'sameAs': SAME_AS,
     }
