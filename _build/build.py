@@ -587,13 +587,13 @@ T = {
             title='Meet the Team | Medellín Concierge',
             desc='Meet the Medellín Concierge team: the managers who look after your property, your guests and your monthly statements in Medellín, Colombia.',
             h1='Meet the team',
-            lead='The people who manage your property, look after your guests and keep your accounts in order in Medellín.',
+            lead='The people who manage your property, look after your guests and keep your accounts in order in Medellín. Together we run <a href="../">property management in Medellín</a>, from <a href="../airbnb-management-medellin/">Airbnb management</a> to <a href="../long-term-property-management-medellin/">long-term rentals</a>.',
             cta_h='Talk to our team', cta_p='Get a free consultation, an income estimate and a management proposal.'),
  'es': dict(slug='es/equipo', home='Inicio', crumb='Equipo',
             title='Nuestro equipo | Medellín Concierge',
             desc='Conozca al equipo de Medellín Concierge: quienes cuidan su propiedad, atienden a sus huéspedes y preparan sus estados mensuales en Medellín.',
             h1='Conozca a nuestro equipo',
-            lead='Las personas que administran su propiedad, atienden a sus huéspedes y llevan sus cuentas en orden en Medellín.',
+            lead='Las personas que administran su propiedad, atienden a sus huéspedes y llevan sus cuentas en orden en Medellín. Juntos hacemos la <a href="../">administración de propiedades en Medellín</a>, desde la <a href="../administracion-de-airbnb-medellin/">administración de Airbnb</a> hasta las <a href="../administracion-de-rentas-largas-medellin/">rentas largas</a>.',
             cta_h='Hable con nuestro equipo', cta_p='Solicite una consulta gratuita, una estimación de ingresos y una propuesta de administración.'),
 }
 
@@ -653,12 +653,12 @@ SITEMAP.append((SITE + 'team/', SITE + 'es/equipo/', TODAY))
 F = {
  'en': dict(slug='faq', home='Home', crumb='FAQ', title='Property Management FAQ | Medellín Concierge',
             desc='Answers to owners’ questions about our Airbnb and long-term property management in Medellín: services, fees, payouts, guests, cleaning and RNT.',
-            h1='Frequently asked questions', lead='Straight answers about how we manage your property in Medellín.',
+            h1='Frequently asked questions', lead='Straight answers about how we manage your property in Medellín. For the full picture, see <a href="../">property management in Medellín</a>, <a href="../airbnb-management-medellin/">Airbnb management</a>, <a href="../long-term-property-management-medellin/">long-term rentals</a> and <a href="../property-management-fees-medellin/">our fees</a>.',
             cta_h='Still have a question?', cta_p='Write to us or book a free consultation. We reply in English or Spanish.'),
  'es': dict(slug='es/preguntas-frecuentes', home='Inicio', crumb='Preguntas frecuentes',
-            title='Preguntas frecuentes | Medellín Concierge',
+            title='Administración de propiedades: preguntas frecuentes',
             desc='Respuestas a las preguntas de los propietarios sobre nuestra administración de Airbnb y rentas largas en Medellín: servicios, tarifas, pagos y RNT.',
-            h1='Preguntas frecuentes', lead='Respuestas claras sobre cómo administramos su propiedad en Medellín.',
+            h1='Preguntas frecuentes', lead='Respuestas claras sobre cómo administramos su propiedad en Medellín. Para ver el panorama completo, consulte <a href="../">administración de propiedades en Medellín</a>, <a href="../administracion-de-airbnb-medellin/">administración de Airbnb</a>, <a href="../administracion-de-rentas-largas-medellin/">rentas largas</a> y <a href="../tarifas-administracion-de-propiedades-medellin/">nuestras tarifas</a>.',
             cta_h='¿Tiene otra pregunta?', cta_p='Escríbanos o solicite una consulta gratuita. Respondemos en español o en inglés.'),
 }
 for lang in LANGS:
