@@ -23,7 +23,7 @@ from landing import PAGES, AREAS
 from team import TEAM
 from faq import FAQ
 from fees import FEES
-from diamond_card import VENUES, DIAMOND
+from diamond_card import VENUES, DIAMOND, SINMENTE_SIGNUP
 
 TODAY = datetime.date.today().isoformat()
 LANGS = ('en', 'es')
@@ -1006,7 +1006,9 @@ for lang in LANGS:
     assets = '../assets/' if lang == 'en' else '../../assets/'
     items = []
     for v in VENUES:
-        deal = (f'<p class="dc-deal"><span>{ui["deal"]}</span>{html.escape(v["deal"][lang])}</p>' if v['deal']
+        need = (f'<small class="dc-need dc-need-sin"><a href="{SINMENTE_SIGNUP}" target="_blank" rel="noopener">{ui["sin_line"]}</a></small>'
+                if v.get('sinmente') else f'<small class="dc-need">{ui["own_line"]}</small>')
+        deal = (f'<p class="dc-deal"><span>{ui["deal"]}</span>{html.escape(v["deal"][lang])}{need}</p>' if v['deal']
                 else f'<p class="dc-deal dc-soon">{ui["soon"]}</p>')
         links = ''.join(
             f'<a href="{href}" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" '
@@ -1029,6 +1031,14 @@ for lang in LANGS:
 </section>
 <section class="dc-list">
   <div class="wrap">
+    <aside class="dc-sin reveal">
+      <div>
+        <p class="dc-sin-kicker">{ui["sin_kicker"]}</p>
+        <h2>{ui["sin_h"]}</h2>
+        <p>{ui["sin_p"]}</p>
+      </div>
+      <a class="btn btn-primary" href="{SINMENTE_SIGNUP}" target="_blank" rel="noopener">{ui["sin_btn"]}</a>
+    </aside>
     <ul class="dc-venues" data-stagger>
 {chr(10).join(items)}
     </ul>

@@ -606,3 +606,11 @@ a.area-card:not([href]) .read{display:none}
 .dc-note a{color:var(--red-dark);font-weight:600}
 @media (max-width:960px){.dc-venues{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){.dc-hero{padding:112px 0 64px;background:linear-gradient(180deg,#1c1c1c 62%,rgba(28,28,28,.35)),#1c1c1c url(diamond-pattern.webp) right bottom/auto 46% no-repeat}.dc-venues{grid-template-columns:1fr}.dc-list{padding:32px 0 72px}}
+.dc-sin{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:0 0 28px;padding:24px 26px;border-radius:var(--radius);background:#111;color:#fff}
+.dc-sin-kicker{margin:0 0 6px;font-family:Poppins,Inter,sans-serif;font-weight:600;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red-light)}
+.dc-sin h2{color:#fff;font-size:1.25rem;margin:0 0 6px}
+.dc-sin p{color:var(--on-dark);margin:0;max-width:640px;font-size:.95rem}
+.dc-sin .btn{flex:none}
+.dc-need{display:block;margin-top:6px;font-size:.8rem;font-weight:500;color:var(--muted)}
+.dc-need-sin a{color:var(--red-dark);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+@media (max-width:760px){.dc-sin{flex-direction:column;align-items:flex-start}.dc-sin .btn{width:100%}}
