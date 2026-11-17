@@ -57,7 +57,8 @@ def jsonld(obj):
     return '<script type="application/ld+json">\n' + json.dumps(obj, ensure_ascii=False, indent=1) + '\n</script>'
 
 def strip_tags(h):
-    return html.unescape(re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', h))).strip()
+    t = html.unescape(re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', h))).strip()
+    return re.sub(r'\s+([.,;:!?)])', r'\1', re.sub(r'([(])\s+', r'\1', t))
 
 
 # Google rating line (top of landing and fees pages). Numbers live in site_config.BUSINESS; shown as plain text
@@ -527,18 +528,64 @@ for pg in PAGES:
 HOSTFLOW_LISTINGS = 'https://hostflow.in/listings?t=fv0tM03REiayJ2NegmXX-5RK'
 R = {
  'en': dict(slug='rentals', home='Home', crumb='Rentals',
-            title='Furnished Rentals in Medellín | Medellín Concierge',
-            desc='Furnished apartments and homes for short and monthly stays in El Poblado, Laureles, Envigado, Sabaneta and across Medellín, with photos and prices.',
-            h1='Furnished rentals in Medellín',
-            lead='Apartments and homes we manage, for short and monthly stays, with live availability. Tap “I’m interested” and we’ll answer you on WhatsApp.',
+            title='Furnished Apartments for Rent in Medellín | Book Direct',
+            desc='Furnished apartments and homes for short and monthly stays in El Poblado, Laureles, Envigado, Sabaneta and across Medellín. Book direct on WhatsApp.',
+            h1='Furnished apartments for rent in Medellín',
+            lead='<strong>Medellín Concierge rents furnished apartments and homes in Medellín for short stays and monthly stays, booked directly with the local team that manages them.</strong> The listings below show live photos, prices and availability from our booking system. Tap “I’m interested” and we’ll answer you on WhatsApp, in English or Spanish.',
+            prose='''
+      <h2>How booking direct works</h2>
+      <ol><li><strong>Browse the listings.</strong> Photos, prices and availability come live from HostFlow, the platform every property we manage runs on, so what you see is current.</li><li><strong>Tap “I’m interested”.</strong> We answer you on WhatsApp and help with your questions about the apartment, the building and the area.</li><li><strong>Confirm your stay.</strong> We agree your dates and the details of the stay with you. Our local team, based in El Poblado, coordinates your check-in, and guests can reach us 24/7 during the stay.</li></ol>
+      <h2>Short stays and monthly stays</h2>
+      <p>Our apartments are offered for short stays (a few nights) and for monthly stays of 30 nights or more. Short stays are tourist rentals: in Colombia they need a Registro Nacional de Turismo (RNT), and foreign guests are reported to Migración Colombia through SIRE, which we handle as the property manager (as of November 2026). For a monthly stay, make sure you get a clear written agreement; our guide to <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">renting a furnished apartment in Medellín without a fiador</a> explains what to check. Staying several months? See <a href="../blog/colombia-digital-nomad-visa-medellin.html">how long you can stay in Medellín</a>.</p>
+      <h2>Where our furnished apartments are</h2>
+      <ul><li><strong>El Poblado:</strong> the area with the most restaurants, cafés, coworking spaces and nightlife, and an easy first base in the city.</li><li><strong>Laureles:</strong> flat, tree-lined and residential, with a local feel and plenty of cafés and parks (<a href="https://medellinguru.com/guide-to-laureles/">Medellin Guru</a>).</li><li><strong>Envigado:</strong> a separate municipality just south of Medellín in the Valle de Aburrá (<a href="https://www.lafm.com.co/colombia/envigado-dijo-si-al-area-metropolitana">La FM</a>), quieter and good for everyday life.</li><li><strong>Sabaneta:</strong> the smallest municipality in Colombia by area (<a href="https://www.bluradio.com/turismo/el-municipio-mas-pequeno-de-colombia-esta-en-antioquia-y-tiene-planes-imperdibles-so35">Blu Radio</a>), with its own station on Metro Line A (<a href="https://en.wikipedia.org/wiki/Sabaneta_station">Wikipedia</a>).</li></ul>
+      <p>The listings above show which areas have availability right now. Not sure which neighborhood fits you? Read <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado vs Laureles vs Envigado for a month-long stay</a>.</p>
+      <h2>Before you book a furnished apartment in Medellín: a quick checklist</h2>
+      <ul><li><strong>For short stays, check the RNT.</strong> Ask for the listing’s RNT number and look it up on the <a href="https://rnt.confecamaras.co/">public RNT system</a>.</li><li><strong>Know the total price.</strong> Ask what the price includes (for example utilities, internet and cleaning) and whether anything is charged on top.</li><li><strong>Agree the dates and rules in writing.</strong> Check-in and check-out times, building rules and, for monthly stays, the length of the agreement.</li><li><strong>Know who to call.</strong> Make sure someone answers 24/7 if something goes wrong during your stay.</li></ul>
+      <p>Rules for tourist rentals can change; this reflects how things stand as of November 2026.</p>''',
+            faq=[('How do I book a furnished apartment with Medellín Concierge?',
+                  'Choose an apartment in the listings on this page and tap “I’m interested”. We answer you on WhatsApp (<a href="https://wa.me/573042773864">+57 304 277 3864</a>), in English or Spanish, and confirm your dates and the details of the stay with you.'),
+                 ('Can I rent a furnished apartment in Medellín for a month or longer?',
+                  'Yes. Our apartments are offered for short stays and for monthly stays of 30 nights or more. The listings show current prices and availability for your dates.'),
+                 ('Which neighborhoods are your rentals in?',
+                  'El Poblado, Laureles, Envigado, Sabaneta and other parts of Medellín. The listings on this page show which areas have availability right now.'),
+                 ('Are the prices and availability up to date?',
+                  'Yes. The listings come live from HostFlow, the booking system every property we manage runs on, so they show current photos, prices and availability.'),
+                 ('Do you have an RNT for your short-term rentals?',
+                  'Short stays in Colombia need a Registro Nacional de Turismo (RNT), and as the property manager we handle RNT, SIRE and TRA for the properties we manage (as of November 2026). Ask us for the RNT number of the apartment you like and check it on the public RNT system.'),
+                 ('I own an apartment in Medellín. Can you rent it out like these?',
+                  'Yes. We manage apartments for their owners from 12% of rental income + IVA for stays of 30 nights or more and 17% + IVA for short stays, with no upfront fees. See <a href="../airbnb-management-medellin/">Airbnb management in Medellín</a> and <a href="../long-term-property-management-medellin/">long-term property management</a>.')],
             frame_title='Medellín Concierge properties', fallback='Not loading?', fallback_link='Open our listings in a new tab',
             owners_h='Own a property in Medellín?', owners_p='We manage homes like these for their owners, from listing to monthly GAAP statements.',
             owners_cta='See our management plans'),
  'es': dict(slug='es/arriendos', home='Inicio', crumb='Arriendos',
-            title='Arriendos amoblados en Medellín | Medellín Concierge',
-            desc='Apartamentos y casas amoblados para estancias cortas y mensuales en El Poblado, Laureles, Envigado, Sabaneta y todo Medellín, con fotos y precios.',
-            h1='Arriendos amoblados en Medellín',
-            lead='Apartamentos y casas que administramos, para estancias cortas y mensuales, con disponibilidad en vivo. Toque «Me interesa» y le respondemos por WhatsApp.',
+            title='Apartamentos amoblados en Medellín | Arriendo directo',
+            desc='Apartamentos y casas amoblados por noches o por meses en El Poblado, Laureles, Envigado, Sabaneta y todo Medellín. Reserve directo por WhatsApp.',
+            h1='Apartamentos amoblados en arriendo en Medellín',
+            lead='<strong>En Medellín Concierge arrendamos apartamentos y casas amoblados en Medellín por noches o por meses, y usted reserva directo con el equipo local que los administra.</strong> Las propiedades de abajo muestran fotos, precios y disponibilidad en vivo desde nuestro sistema de reservas. Toque «Me interesa» y le respondemos por WhatsApp, en español o en inglés.',
+            prose='''
+      <h2>Cómo funciona la reserva directa</h2>
+      <ol><li><strong>Mire las propiedades.</strong> Las fotos, los precios y la disponibilidad salen en vivo de HostFlow, la plataforma con la que operamos todas las propiedades que administramos, así que lo que ve está al día.</li><li><strong>Toque «Me interesa».</strong> Le respondemos por WhatsApp y le resolvemos las dudas sobre el apartamento, el edificio y el sector.</li><li><strong>Confirme su estadía.</strong> Acordamos con usted las fechas y los detalles de la estadía. Nuestro equipo local, con oficina en El Poblado, coordina su llegada, y durante la estadía nos encuentra 24/7.</li></ol>
+      <h2>Por noches o por meses</h2>
+      <p>Nuestros apartamentos se arriendan por estancias cortas (unas cuantas noches) y por meses, desde 30 noches. La estancia corta es vivienda turística: en Colombia exige el Registro Nacional de Turismo (RNT), y los huéspedes extranjeros se reportan a Migración Colombia por SIRE, algo que nosotros gestionamos como administradores (a noviembre de 2026). Si arrienda por meses, pida siempre un acuerdo claro por escrito; nuestra guía de <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">arriendo amoblado en Medellín sin fiador</a> explica qué revisar. ¿Se queda varios meses? Vea <a href="../blog/colombia-digital-nomad-visa-medellin.html">cuánto tiempo puede quedarse en Medellín</a>.</p>
+      <h2>Dónde están nuestros apartamentos amoblados</h2>
+      <ul><li><strong>El Poblado:</strong> la zona con más restaurantes, cafés, espacios de coworking y vida nocturna, y una base cómoda para conocer la ciudad.</li><li><strong>Laureles:</strong> plano, arborizado y residencial, con ambiente de barrio y muchos cafés y parques (<a href="https://medellinguru.com/guide-to-laureles/">Medellin Guru</a>).</li><li><strong>Envigado:</strong> un municipio aparte, al sur de Medellín, en el Valle de Aburrá (<a href="https://www.lafm.com.co/colombia/envigado-dijo-si-al-area-metropolitana">La FM</a>), más tranquilo y bueno para la vida diaria.</li><li><strong>Sabaneta:</strong> el municipio más pequeño de Colombia por extensión (<a href="https://www.bluradio.com/turismo/el-municipio-mas-pequeno-de-colombia-esta-en-antioquia-y-tiene-planes-imperdibles-so35">Blu Radio</a>), con estación propia en la Línea A del Metro (<a href="https://en.wikipedia.org/wiki/Sabaneta_station">Wikipedia</a>).</li></ul>
+      <p>Las propiedades de arriba muestran en qué zonas hay disponibilidad hoy. ¿No sabe qué barrio le conviene? Lea <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado, Laureles o Envigado para quedarse un mes</a>.</p>
+      <h2>Antes de arrendar un apartamento amoblado en Medellín: lista rápida</h2>
+      <ul><li><strong>Si es por noches, verifique el RNT.</strong> Pida el número de RNT del anuncio y consúltelo en el <a href="https://rnt.confecamaras.co/">sistema público del RNT</a>.</li><li><strong>Tenga claro el precio total.</strong> Pregunte qué incluye (por ejemplo servicios públicos, internet y aseo) y si se cobra algo aparte.</li><li><strong>Deje por escrito fechas y reglas.</strong> Horarios de llegada y salida, normas del edificio y, si es por meses, la duración del acuerdo.</li><li><strong>Sepa a quién llamar.</strong> Asegúrese de que alguien responda 24/7 si algo pasa durante su estadía.</li></ul>
+      <p>Las normas de la vivienda turística pueden cambiar; esto refleja cómo están las cosas a noviembre de 2026.</p>''',
+            faq=[('¿Cómo reservo un apartamento amoblado con Medellín Concierge?',
+                  'Escoja un apartamento entre las propiedades de esta página y toque «Me interesa». Le respondemos por WhatsApp (<a href="https://wa.me/573042773864">+57 304 277 3864</a>), en español o en inglés, y acordamos con usted las fechas y los detalles de la estadía.'),
+                 ('¿Puedo arrendar un apartamento amoblado en Medellín por un mes o más?',
+                  'Sí. Nuestros apartamentos se arriendan por noches y por meses, desde 30 noches. Las propiedades muestran los precios y la disponibilidad actuales para sus fechas.'),
+                 ('¿En qué barrios están sus arriendos?',
+                  'En El Poblado, Laureles, Envigado, Sabaneta y otras zonas de Medellín. Las propiedades de esta página muestran en qué zonas hay disponibilidad hoy.'),
+                 ('¿Los precios y la disponibilidad están al día?',
+                  'Sí. Las propiedades salen en vivo de HostFlow, el sistema de reservas con el que operamos todas las propiedades que administramos, así que muestran fotos, precios y disponibilidad actuales.'),
+                 ('¿Sus arriendos por noches tienen RNT?',
+                  'La renta corta en Colombia exige el Registro Nacional de Turismo (RNT), y como administradores gestionamos el RNT, el SIRE y la TRA de las propiedades que administramos (a noviembre de 2026). Pídanos el número de RNT del apartamento que le guste y consúltelo en el sistema público del RNT.'),
+                 ('Tengo un apartamento en Medellín. ¿Me lo pueden arrendar así?',
+                  'Sí. Administramos apartamentos para sus dueños desde el 12% de los ingresos por renta + IVA para estancias de 30 noches o más, y el 17% + IVA para estancias cortas, sin costos iniciales. Vea la <a href="../administracion-de-airbnb-medellin/">administración de Airbnb en Medellín</a> y la <a href="../administracion-de-rentas-largas-medellin/">administración de rentas largas</a>.')],
             frame_title='Propiedades de Medellín Concierge', fallback='¿No carga?', fallback_link='Abra nuestras propiedades en una pestaña nueva',
             owners_h='¿Tiene una propiedad en Medellín?', owners_p='Administramos propiedades como estas para sus dueños, desde la publicación hasta los estados financieros mensuales bajo GAAP.',
             owners_cta='Ver nuestros planes de administración'),
@@ -549,11 +596,12 @@ for lang in LANGS:
     en_url, es_url = SITE + R['en']['slug'] + '/', SITE + R['es']['slug'] + '/'
     url = es_url if lang == 'es' else en_url
     home_url = SITE + ('es/' if lang == 'es' else '')
+    faq_html = ''.join(f'        <details><summary>{html.escape(q, quote=False)}{PLUS}</summary><p>{a}</p></details>\n' for q, a in ui['faq'])
     body = f'''<section class="page-top">
   <div class="wrap">
     <p class="crumbs"><a href="../">{ui["home"]}</a> / {ui["crumb"]}</p>
     <h1>{ui["h1"]}</h1>
-    <p class="lead">{ui["lead"]}</p>
+    <div class="lead">{ui["lead"]}</div>
   </div>
 </section>
 <section class="rentals">
@@ -562,6 +610,11 @@ for lang in LANGS:
       <iframe id="mc-listings" src="{HOSTFLOW_LISTINGS}" title="{ui["frame_title"]}" loading="lazy" style="width:100%;min-height:900px;border:0;display:block" allow="clipboard-write"></iframe>
     </div>
     <p class="rent-updated">{ui["fallback"]} <a href="{HOSTFLOW_LISTINGS}" target="_blank" rel="noopener">{ui["fallback_link"]}</a></p>
+    <div class="prose">{ui["prose"]}
+      <h2>{L[lang]["faq_h"]}</h2>
+      <div class="faq">
+{faq_html}      </div>
+    </div>
     <aside class="article-cta">
       <h2>{ui["owners_h"]}</h2>
       <p>{ui["owners_p"]}</p>
@@ -573,6 +626,8 @@ for lang in LANGS:
     schema = {'@context': 'https://schema.org', '@graph': [
         {'@type': 'CollectionPage', 'name': ui['h1'], 'description': ui['desc'], 'url': url, 'inLanguage': lang,
          'publisher': {'@id': business_id()}},
+        {'@type': 'FAQPage', 'url': url, 'inLanguage': lang, 'mainEntity': [
+            {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}} for q, a in ui['faq']]},
         breadcrumbs([(ui['home'], home_url), (ui['crumb'], url)])]}
     en_href, es_href = (('./', '../es/arriendos/') if lang == 'en' else ('../../rentals/', './'))
     write(f'{ui["slug"]}/index.html', page(lang, title=ui['title'], desc=ui['desc'], en_url=en_url, es_url=es_url,
@@ -988,6 +1043,7 @@ REDIRECTS = {
     'es/contact':                     'es/#contact',
     'airbnb-revenue-calculator':      '#calculator',
     'es/airbnb-revenue-calculator':   'es/#calculator',
+    'es/rentals':                     'es/arriendos/',   # old URL flagged by Bing (Nov 12, 2026)
     'tours-transportation':           'tours/',
     'properties/finca-con-bosque-nativo-privado': 'rentals/',   # any other /properties/* is sent to /rentals/ by 404.html
     'about-us':                       'team/',       # old Wix URL, still used by Google Ads sitelinks
