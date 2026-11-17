@@ -4,6 +4,8 @@
 # "deal": ONLY what James has confirmed with the venue. None shows "Deal coming soon".
 # 2026-11-12: James confirmed a discount at every venue except Medellín Soundbar (welcome cocktail);
 # 2026-11-14: James corrected it to 15% off (it was listed as 10%).
+# 2026-11-17: James added Glu Glu, TEST Kitchen Lab and Krudo (all at Wake, Cl. 10B #35-27) at 20% off; about lines from
+#   their Instagram names, medellin.co's Wake guide and Azure Road; Maps listings link to their Instagram.
 # "about": from the venue's own website (Sinmente brands), Hotel Selvario36's page (Ensō) or Instagram bio (Soundbar).
 # Each venue's first link opens its Google Maps business listing by place id (cid), each checked 2026-11-12 to be the right
 # business (listing links to the venue's own site or booking page, or matches its address).
@@ -58,7 +60,23 @@ VENUES = [
                     es='Brunch todo el día y café de especialidad en El Poblado, con espacio para trabajar o compartir.'),
          deal=dict(en='15% off', es='15% de descuento'),
          links=[('map', 'https://maps.google.com/?cid=4226588920039407470'), ('web', 'https://generalcafe.co/'), ('book', 'https://cafe-general.cluvi.co/bookings/18710')]),
+    dict(name='Glu Glu', logo='glu-glu.webp', h=46,
+         about=dict(en='Wine bar and wine shop in the Wake complex, El Poblado.',
+                    es='Bar de vinos y tienda de vinos en el complejo Wake, El Poblado.'),
+         deal=dict(en='20% off', es='20% de descuento'),
+         links=[('map', 'https://maps.google.com/?cid=16207558861699760620'), ('instagram', 'https://www.instagram.com/gluglubardevinos/')]),
+    dict(name='TEST Kitchen Lab', logo='test-kitchen-lab.webp', h=26,
+         about=dict(en='Chef Adolfo Cavalie\'s chef\'s-counter kitchen at Wake, cooking only with Colombian ingredients.',
+                    es='La cocina de barra del chef Adolfo Cavalie en Wake, solo con ingredientes colombianos.'),
+         deal=dict(en='20% off', es='20% de descuento'),
+         links=[('map', 'https://maps.google.com/?cid=510294160514237982'), ('instagram', 'https://www.instagram.com/test.klab/')]),
+    dict(name='Krudo Viches & Vinilos', logo='krudo.webp', h=50,
+         about=dict(en='Raw bar and seafood with vinyl records, now at Wake in El Poblado.',
+                    es='Barra de crudos y mariscos con discos de vinilo, ahora en Wake, El Poblado.'),
+         deal=dict(en='20% off', es='20% de descuento'),
+         links=[('map', 'https://maps.google.com/?cid=7382530811463103952'), ('instagram', 'https://www.instagram.com/krudovichesyvinilos/')]),
 ]
+
 
 DIAMOND = {
     'en': dict(slug='diamond-card', title='Diamond Card: partner bars and restaurants | Medellín Concierge',
