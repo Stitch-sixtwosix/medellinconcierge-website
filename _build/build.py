@@ -125,6 +125,14 @@ def set_alternates(s, en_url, es_url, lang):
 
 def business_id(): return SITE + '#business'
 
+def provider_ref():
+    """Compact business node for Service.provider: crawlers don't join @ids across pages, so repeat the NAP."""
+    b = BUSINESS
+    return {'@type': ['RealEstateAgent', 'LocalBusiness'], '@id': business_id(), 'name': b['name'], 'url': SITE,
+            'telephone': b['telephone'],
+            'address': {'@type': 'PostalAddress', 'streetAddress': b['street'], 'addressLocality': b['locality'],
+                        'addressRegion': b['region'], 'addressCountry': b['country']}}
+
 def business(lang):
     b = BUSINESS
     services = b['services_es'] if lang == 'es' else b['services_en']
@@ -502,7 +510,7 @@ for pg in PAGES:
         url = es_url if lang == 'es' else en_url
         schema = {'@context': 'https://schema.org', '@graph': [
             {'@type': 'Service', 'name': c['h1'], 'serviceType': ui['service'], 'url': url, 'inLanguage': lang,
-             'provider': {'@id': business_id()},
+             'provider': provider_ref(),
              'areaServed': {'@type': 'Country' if pg['key'] == 'colombia' else 'Place', 'name': pg['area']}},
             breadcrumbs([(ui['home'], home_url), (pg['label'][lang], url)])]}
         if faq:
@@ -791,7 +799,7 @@ for lang in LANGS:
         {'@type': 'WebPage', 'name': ui['h1'], 'url': url, 'inLanguage': lang, 'description': ui['desc'],
          'about': {'@id': business_id()}},
         {'@type': 'Service', 'name': ui['h1'], 'serviceType': L[lang]['service'], 'url': url, 'inLanguage': lang,
-         'provider': {'@id': business_id()}, 'areaServed': {'@type': 'Place', 'name': 'Medellín'}},
+         'provider': provider_ref(), 'areaServed': {'@type': 'Place', 'name': 'Medellín'}},
         {'@type': 'FAQPage', 'url': url, 'inLanguage': lang, 'mainEntity': [
             {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}} for q, a in ui['faq']]},
         breadcrumbs([(ui['home'], home_url), (ui['crumb'], url)])]}
@@ -974,7 +982,7 @@ for lang in LANGS:
 </section>'''
     schema = {'@context': 'https://schema.org', '@graph': [
         {'@type': 'Service', 'name': ui['h1'], 'description': ui['desc'], 'url': url, 'inLanguage': lang,
-         'serviceType': ui['h1'], 'areaServed': 'Medellín, Colombia', 'provider': {'@id': business_id()}},
+         'serviceType': ui['h1'], 'areaServed': 'Medellín, Colombia', 'provider': provider_ref()},
         breadcrumbs([(ui['home'], home_url), (ui['crumb'], url)])]}
     en_href, es_href = (('./', '../es/comercial/') if lang == 'en' else ('../../commercial/', './'))
     write(f'{ui["slug"]}/index.html', page(lang, title=ui['title'], desc=ui['desc'], en_url=en_url, es_url=es_url,
