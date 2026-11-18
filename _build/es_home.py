@@ -224,6 +224,7 @@ HOME_ES = [
  ('<h4>Company</h4>', '<h4>Empresa</h4>'),
  ('>Rentals</a>', '>Arriendos</a>'),
  ('>Furnished rentals</a>', '>Arriendos amoblados</a>'),
+ ('>Monthly rentals</a>', '>Arriendos por meses</a>'),
  ('>Meet the team</a>', '>Nuestro equipo</a>'),
  ('>Team</a>', '>Equipo</a>'),
  ('>Agent referrals</a>', '>Referidos para agentes</a>'),

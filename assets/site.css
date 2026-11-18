@@ -506,6 +506,8 @@
 .rl-ask{display:inline-block;margin-top:4px;color:var(--red-dark);font-weight:600;font-size:.9rem;text-decoration:none}
 .rl-ask:hover{text-decoration:underline}
 .rl + .prose{margin-top:8px}
+.rentals-month .rl{margin-top:0}
+.page-top .ref-ctas{margin-top:28px}
 @media (max-width:640px){.rl-item{flex-direction:column;gap:6px}.rl-side{text-align:left}.rl{padding:0 8px}}
 @media (max-width:640px){.rentals{padding:24px 0 72px}.rentals .wrap{padding:0 8px}.listings-embed{border-radius:var(--radius)}}
 

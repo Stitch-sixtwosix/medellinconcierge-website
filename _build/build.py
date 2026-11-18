@@ -223,7 +223,7 @@ if missing:
 for a, b in HOME_ES:
     es = es.replace(a, b)
 es = es.replace(f'href="{FEES["en"]["slug"]}/"', f'href="{FEES["es"]["slug"]}/"')
-es = es.replace('href="rentals/"', 'href="arriendos/"').replace('href="team/"', 'href="equipo/"').replace('href="faq/"', 'href="preguntas-frecuentes/"').replace('href="commercial/"', 'href="comercial/"')
+es = es.replace('href="monthly-rentals-medellin/"', 'href="arriendos-por-meses-medellin/"').replace('href="rentals/"', 'href="arriendos/"').replace('href="team/"', 'href="equipo/"').replace('href="faq/"', 'href="preguntas-frecuentes/"').replace('href="commercial/"', 'href="comercial/"')
 for pg in PAGES:   # landing page links point to the Spanish versions
     es = es.replace(f'href="{pg["en"]["slug"]}/"', f'href="{pg["es"]["slug"]}/"')
 es = set_home_jsonld(es, 'es')
@@ -569,7 +569,7 @@ R = {
       <h2>How booking direct works</h2>
       <ol><li><strong>Browse the listings.</strong> Photos, prices and availability come live from HostFlow, the platform every property we manage runs on, so what you see is current.</li><li><strong>Tap “I’m interested”.</strong> We answer you on WhatsApp and help with your questions about the apartment, the building and the area.</li><li><strong>Confirm your stay.</strong> We agree your dates and the details of the stay with you. Our local team, based in El Poblado, coordinates your check-in, and guests can reach us 24/7 during the stay.</li></ol>
       <h2>Monthly furnished rentals in Medellín</h2>
-      <p>Staying a month or more? As of {AS_OF}, {N_MONTH} of our furnished apartments and homes are offered by the month (30 nights or more), from {MIN_MONTH} COP a month, in {MONTH_AREAS}. Each listing shows the monthly price and a one-time cleaning fee; ask us what else is included, such as utilities, internet and cleaning during the stay. For a monthly stay, make sure you get a clear written agreement; our guide to <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">renting a furnished apartment in Medellín without a fiador</a> explains what to check. Staying several months? See <a href="../blog/colombia-digital-nomad-visa-medellin.html">how long you can stay in Medellín</a>.</p>
+      <p>Staying a month or more? As of {AS_OF}, {N_MONTH} of our furnished apartments and homes are offered by the month (30 nights or more), from {MIN_MONTH} COP a month, in {MONTH_AREAS}. Each listing shows the monthly price and a one-time cleaning fee; ask us what else is included, such as utilities, internet and cleaning during the stay. See all of them on our <a href="../monthly-rentals-medellin/">monthly rentals in Medellín</a> page. For a monthly stay, make sure you get a clear written agreement; our guide to <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">renting a furnished apartment in Medellín without a fiador</a> explains what to check. Staying several months? See <a href="../blog/colombia-digital-nomad-visa-medellin.html">how long you can stay in Medellín</a>.</p>
       <h2>Short-term rentals: furnished apartments by the night</h2>
       <p>For a few nights or a couple of weeks, {N_SHORT} furnished apartments and homes are offered by the night, from {MIN_NIGHT} COP a night. Short stays are tourist rentals: in Colombia they need a Registro Nacional de Turismo (RNT), and foreign guests are reported to Migración Colombia through SIRE, which we handle as the property manager (as of November 2026).</p>
       <h2>Where our furnished apartments are</h2>
@@ -604,7 +604,7 @@ R = {
       <h2>Cómo funciona la reserva directa</h2>
       <ol><li><strong>Mire las propiedades.</strong> Las fotos, los precios y la disponibilidad salen en vivo de HostFlow, la plataforma con la que operamos todas las propiedades que administramos, así que lo que ve está al día.</li><li><strong>Toque «Me interesa».</strong> Le respondemos por WhatsApp y le resolvemos las dudas sobre el apartamento, el edificio y el sector.</li><li><strong>Confirme su estadía.</strong> Acordamos con usted las fechas y los detalles de la estadía. Nuestro equipo local, con oficina en El Poblado, coordina su llegada, y durante la estadía nos encuentra 24/7.</li></ol>
       <h2>Apartamentos amoblados por meses en Medellín</h2>
-      <p>¿Se queda un mes o más? Al {AS_OF}, {N_MONTH} de nuestros apartamentos y casas amoblados se arriendan por meses (desde 30 noches), desde {MIN_MONTH} COP al mes, en {MONTH_AREAS}. Cada propiedad muestra el precio mensual y una tarifa de aseo única; pregúntenos qué más incluye, como servicios públicos, internet y aseo durante la estadía. Si arrienda por meses, pida siempre un acuerdo claro por escrito; nuestra guía de <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">arriendo amoblado en Medellín sin fiador</a> explica qué revisar. ¿Se queda varios meses? Vea <a href="../blog/colombia-digital-nomad-visa-medellin.html">cuánto tiempo puede quedarse en Medellín</a>.</p>
+      <p>¿Se queda un mes o más? Al {AS_OF}, {N_MONTH} de nuestros apartamentos y casas amoblados se arriendan por meses (desde 30 noches), desde {MIN_MONTH} COP al mes, en {MONTH_AREAS}. Cada propiedad muestra el precio mensual y una tarifa de aseo única; pregúntenos qué más incluye, como servicios públicos, internet y aseo durante la estadía. Véalos todos en nuestra página de <a href="../arriendos-por-meses-medellin/">arriendos por meses en Medellín</a>. Si arrienda por meses, pida siempre un acuerdo claro por escrito; nuestra guía de <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">arriendo amoblado en Medellín sin fiador</a> explica qué revisar. ¿Se queda varios meses? Vea <a href="../blog/colombia-digital-nomad-visa-medellin.html">cuánto tiempo puede quedarse en Medellín</a>.</p>
       <h2>Arriendo por noches: apartamentos amoblados para estancias cortas</h2>
       <p>Para unas noches o un par de semanas, {N_SHORT} apartamentos y casas amoblados se arriendan por noches, desde {MIN_NIGHT} COP la noche. La estancia corta es vivienda turística: en Colombia exige el Registro Nacional de Turismo (RNT), y los huéspedes extranjeros se reportan a Migración Colombia por SIRE, algo que nosotros gestionamos como administradores (a noviembre de 2026).</p>
       <h2>Dónde están nuestros apartamentos amoblados</h2>
@@ -676,7 +676,11 @@ def rl_stats(lang):
     for p in P: areas[rl_area(p)] = areas.get(rl_area(p), 0) + 1
     month_areas = sorted({rl_area(p) for p in P if p['stay_type'] == 'long_term'}, key=lambda a: (-areas[a], a))
     counts = rl_join([f'{a} ({n})' for a, n in sorted(areas.items(), key=lambda x: (-x[1], x[0]))], lang)
-    return {'{AS_OF}': human_date(LISTINGS['as_of'] or TODAY, lang), '{TOTAL}': str(LISTINGS['total']), '{N_AVAIL}': str(len(P)),
+    marea = {}
+    for p in P:
+        if p['stay_type'] == 'long_term': marea[rl_area(p)] = marea.get(rl_area(p), 0) + 1
+    mcounts = rl_join([f'{a} ({n})' for a, n in sorted(marea.items(), key=lambda x: (-x[1], x[0]))], lang) if marea else '—'
+    return {'{MONTH_AREA_COUNTS}': mcounts, '{AS_OF}': human_date(LISTINGS['as_of'] or TODAY, lang), '{TOTAL}': str(LISTINGS['total']), '{N_AVAIL}': str(len(P)),
             '{N_MONTH}': str(sum(p['stay_type'] == 'long_term' for p in P)), '{N_SHORT}': str(sum(p['stay_type'] == 'short_term' for p in P)),
             '{MIN_MONTH}': cop(min(month)) if month else '—', '{MAX_MONTH}': cop(max(month)) if month else '—',
             '{MIN_NIGHT}': cop(min(night)) if night else '—', '{MONTH_AREAS}': rl_join(month_areas[:6], lang), '{AREA_COUNTS}': counts}
@@ -707,17 +711,18 @@ def rl_item(p, lang):
 def rl_sort(p):   # available now first, El Poblado first, then by area and price
     return ((p['available_from'] or '') > TODAY, rl_area(p) != 'El Poblado', rl_area(p), rl_price(p) or 10**12)
 
-def rl_section(lang, st):
+def rl_section(lang, st, only=None, h=None, intro=None):
     u = RL_UI[lang]; P = LISTINGS['properties']
     if not P: return ''
-    out = f'<section class="rl" aria-labelledby="rl-h"><h2 id="rl-h">{u["h"]}</h2><p class="rl-intro">{fill(u["intro"], st)}</p>'
+    out = f'<section class="rl" aria-labelledby="rl-h"><h2 id="rl-h">{h or u["h"]}</h2><p class="rl-intro">{fill(intro or u["intro"], st)}</p>'
     for key, st_type in (('month', 'long_term'), ('short', 'short_term')):
+        if only and st_type != only: continue
         grp = sorted((p for p in P if p['stay_type'] == st_type), key=rl_sort)
-        if grp: out += f'<h3>{u[key]}</h3><ul class="rl-list">' + ''.join(rl_item(p, lang) for p in grp) + '</ul>'
+        if grp: out += (f'<h3>{u[key]}</h3>' if not only else '') + '<ul class="rl-list">' + ''.join(rl_item(p, lang) for p in grp) + '</ul>'
     return out + '</section>'
 
-def rl_schema(lang, url):
-    P = sorted(LISTINGS['properties'], key=lambda p: (p['stay_type'] != 'long_term', rl_sort(p)))
+def rl_schema(lang, url, only=None, name=None):
+    P = sorted((p for p in LISTINGS['properties'] if not only or p['stay_type'] == only), key=lambda p: (p['stay_type'] != 'long_term', rl_sort(p)))
     items = []
     for i, p in enumerate(P, 1):
         typ = {'Apartment': 'Apartment', 'Condo': 'Apartment', 'Studio': 'Apartment', 'House': 'House'}.get(p['property_type'], 'Accommodation')
@@ -728,7 +733,7 @@ def rl_schema(lang, url):
         if p.get('bathrooms'): it['numberOfBathroomsTotal'] = p['bathrooms']
         if p.get('max_guests'): it['occupancy'] = {'@type': 'QuantitativeValue', 'maxValue': p['max_guests']}
         items.append({'@type': 'ListItem', 'position': i, 'item': it})
-    return {'@type': 'ItemList', 'name': RL_UI[lang]['h'], 'numberOfItems': len(items), 'itemListElement': items}
+    return {'@type': 'ItemList', 'name': name or RL_UI[lang]['h'], 'numberOfItems': len(items), 'itemListElement': items}
 
 for lang in LANGS:
     ui = R[lang]
@@ -777,6 +782,120 @@ for lang in LANGS:
     write(f'{ui["slug"]}/index.html', page(lang, title=ui['title'], desc=ui['desc'], en_url=en_url, es_url=es_url,
           en_href=en_href, es_href=es_href, body=body, schema=schema))
 SITEMAP.append((SITE + 'rentals/', SITE + 'es/arriendos/', TODAY))
+
+
+# ======================= 4c2. Monthly rentals (/monthly-rentals-medellin/, /es/arriendos-por-meses-medellin/) =======================
+# Mid-term guests (30+ nights): only the monthly listings from the HostFlow feed, plus a guide for renting by the month.
+# Targets "monthly rentals Medellín", "mid-term rentals", "furnished apartment for a month"; /rentals/ stays the page
+# for all stays (and links here). Facts only from the feed, the rentals page and our blog guides.
+M = {
+ 'en': dict(slug='monthly-rentals-medellin', home='Home', rentals='Rentals', rentals_url='rentals/', crumb='Monthly rentals',
+            title='Monthly Rentals in Medellín | Furnished Apartments, 30+ Nights',
+            desc='Furnished apartments for rent by the month in Medellín, for remote work, relocation and long visits. Live prices from {MIN_MONTH} COP a month. Book direct on WhatsApp.',
+            h1='Monthly furnished apartment rentals in Medellín',
+            lead='<strong>Need a furnished apartment in Medellín for a month or more? We rent furnished apartments and homes by the month, from 30 nights, and you book directly with the local team that manages them.</strong> As of {AS_OF}, {N_MONTH} monthly rentals are listed with a price, from {MIN_MONTH} COP a month. Pick one below and ask us on WhatsApp, in English or Spanish.',
+            cta_wa='Ask about a monthly rental', wa_text='Hi! I’m looking for a furnished apartment in Medellín by the month.', cta_all='See all rentals with live availability',
+            list_h='Monthly rentals available now',
+            list_intro='As of {AS_OF}, prices in Colombian pesos per month, plus a one-time cleaning fee. Tap “Ask about” and tell us your dates; for live availability, see <a href="../rentals/">all our furnished rentals</a>.',
+            prose="""
+      <h2>Mid-term rentals for remote work, relocation and long visits</h2>
+      <p>A mid-term rental sits between a few nights on Airbnb and a 12-month lease: a furnished apartment for one month or several, ready to live in from the day you arrive. It suits remote workers and digital nomads, people relocating to Medellín while they look for something permanent, work assignments, and families on a long visit. Each of our monthly listings shows the price per month and a one-time cleaning fee.</p>
+      <h2>Why rent by the month directly with us</h2>
+      <ul><li><strong>Current prices and availability.</strong> Our listings come live from HostFlow, the booking system every property we manage runs on.</li><li><strong>A local team that knows each apartment.</strong> We manage these apartments ourselves, so we can tell you about the building, the street and what is included before you commit.</li><li><strong>Answers on WhatsApp, in English or Spanish.</strong> Our team is based in El Poblado, and guests can reach us 24/7 during the stay.</li></ul>
+      <h2>Where to rent for a month in Medellín</h2>
+      <p>Our monthly apartments are in {MONTH_AREAS}. El Poblado has the most restaurants, cafés and coworking spaces; Laureles is flat, residential and local; Envigado is quieter and good for everyday life. For a side-by-side comparison, read <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado vs Laureles vs Envigado for a month-long stay</a>.</p>
+      <h2>How to rent a furnished apartment by the month</h2>
+      <ol><li><strong>Choose an apartment</strong> from the list above, or tell us what you need: area, bedrooms and dates.</li><li><strong>Ask us on WhatsApp.</strong> We confirm availability for your dates and answer your questions about the apartment.</li><li><strong>Agree the stay in writing.</strong> Dates, price, what is included and the house rules.</li><li><strong>Move in.</strong> Our local team coordinates your check-in.</li></ol>
+      <h2>Before you sign: a monthly rental checklist</h2>
+      <ul><li><strong>Know what the monthly price includes,</strong> for example utilities, internet and cleaning, and whether anything is charged on top.</li><li><strong>Ask what you need to rent.</strong> Many Colombian landlords ask for a <em>fiador</em> (guarantor); our guide to <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">renting a furnished apartment in Medellín without a fiador</a> explains the alternatives.</li><li><strong>Check how long you can stay in Colombia.</strong> See <a href="../blog/colombia-digital-nomad-visa-medellin.html">visitor stays and the digital nomad visa</a>.</li><li><strong>Get the agreement in writing,</strong> with the dates and what happens if you want to extend or leave early.</li></ul>""",
+            faq=[('How much does a monthly rental in Medellín cost?',
+                  'In our listings, as of {AS_OF}, furnished monthly rentals run from {MIN_MONTH} to {MAX_MONTH} COP a month, depending on the area, the size and the building, plus a one-time cleaning fee. Each listing on this page shows its price.'),
+                 ('What is the minimum stay for a monthly rental?',
+                  '30 nights. For shorter stays, see our <a href="../rentals/">furnished rentals by the night</a>.'),
+                 ('Which neighborhoods are your monthly rentals in?',
+                  'As of {AS_OF}: {MONTH_AREA_COUNTS}. The list on this page shows the current ones.'),
+                 ('Do I need a fiador (guarantor) to rent by the month?',
+                  'Ask us what each apartment requires before you book. Our guide to <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">renting without a fiador</a> explains how foreigners usually rent furnished apartments in Medellín.'),
+                 ('How do I book a monthly rental?',
+                  'Tap “Ask about” on the apartment you like, or message us on WhatsApp (<a href="https://wa.me/573042773864">+57 304 277 3864</a>) with your dates. We confirm availability and agree the details of the stay with you.'),
+                 ('How long can I stay in Medellín as a visitor?',
+                  'It depends on your nationality and visa. Our guide to <a href="../blog/colombia-digital-nomad-visa-medellin.html">how long you can stay in Medellín</a> covers visitor stays, extensions and the digital nomad visa.')]),
+ 'es': dict(slug='es/arriendos-por-meses-medellin', home='Inicio', rentals='Arriendos', rentals_url='es/arriendos/', crumb='Arriendos por meses',
+            title='Arriendos por meses en Medellín | Apartamentos amoblados',
+            desc='Apartamentos amoblados en arriendo por meses en Medellín, para trabajo remoto, traslados y visitas largas. Precios en vivo desde {MIN_MONTH} COP al mes. Reserve directo por WhatsApp.',
+            h1='Apartamentos amoblados en arriendo por meses en Medellín',
+            lead='<strong>¿Necesita un apartamento amoblado en Medellín por un mes o más? Arrendamos apartamentos y casas amoblados por meses, desde 30 noches, y usted reserva directo con el equipo local que los administra.</strong> Al {AS_OF} hay {N_MONTH} arriendos por meses con precio, desde {MIN_MONTH} COP al mes. Escoja uno abajo y pregúntenos por WhatsApp, en español o en inglés.',
+            cta_wa='Preguntar por un arriendo por meses', wa_text='¡Hola! Busco un apartamento amoblado en Medellín por meses.', cta_all='Ver todos los arriendos con disponibilidad en vivo',
+            list_h='Arriendos por meses disponibles hoy',
+            list_intro='Al {AS_OF}, precios en pesos colombianos por mes, más una tarifa de aseo única. Toque «Preguntar por» y díganos sus fechas; para la disponibilidad en vivo, vea <a href="../arriendos/">todos nuestros arriendos amoblados</a>.',
+            prose="""
+      <h2>Arriendos de mediano plazo para trabajo remoto, traslados y visitas largas</h2>
+      <p>Un arriendo de mediano plazo está entre unas noches en Airbnb y un contrato de 12 meses: un apartamento amoblado por uno o varios meses, listo para vivir desde el día en que llega. Es ideal para trabajadores remotos y nómadas digitales, para quien se traslada a Medellín mientras busca algo permanente, para asignaciones de trabajo y para familias de visita larga. Cada arriendo por meses muestra el precio mensual y una tarifa de aseo única.</p>
+      <h2>Por qué arrendar por meses directo con nosotros</h2>
+      <ul><li><strong>Precios y disponibilidad al día.</strong> Nuestras propiedades salen en vivo de HostFlow, el sistema de reservas con el que operamos todas las propiedades que administramos.</li><li><strong>Un equipo local que conoce cada apartamento.</strong> Administramos estos apartamentos nosotros mismos, así que le contamos del edificio, la calle y qué incluye antes de que se comprometa.</li><li><strong>Respuestas por WhatsApp, en español o en inglés.</strong> Nuestro equipo está en El Poblado, y durante la estadía nos encuentra 24/7.</li></ul>
+      <h2>Dónde arrendar por un mes en Medellín</h2>
+      <p>Nuestros apartamentos por meses están en {MONTH_AREAS}. El Poblado tiene la mayor oferta de restaurantes, cafés y espacios de coworking; Laureles es plano, residencial y de barrio; Envigado es más tranquilo y bueno para la vida diaria. Para compararlos, lea <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado, Laureles o Envigado para quedarse un mes</a>.</p>
+      <h2>Cómo arrendar un apartamento amoblado por meses</h2>
+      <ol><li><strong>Escoja un apartamento</strong> de la lista de arriba, o díganos qué necesita: zona, habitaciones y fechas.</li><li><strong>Pregúntenos por WhatsApp.</strong> Confirmamos la disponibilidad para sus fechas y le resolvemos las dudas sobre el apartamento.</li><li><strong>Deje la estadía por escrito.</strong> Fechas, precio, qué incluye y las normas de la casa.</li><li><strong>Instálese.</strong> Nuestro equipo local coordina su llegada.</li></ol>
+      <h2>Antes de firmar: lista para un arriendo por meses</h2>
+      <ul><li><strong>Tenga claro qué incluye el precio mensual,</strong> por ejemplo servicios públicos, internet y aseo, y si se cobra algo aparte.</li><li><strong>Pregunte qué necesita para arrendar.</strong> Muchos arrendadores en Colombia piden fiador; nuestra guía de <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">arriendo amoblado en Medellín sin fiador</a> explica las alternativas.</li><li><strong>Revise cuánto tiempo puede quedarse en Colombia.</strong> Vea <a href="../blog/colombia-digital-nomad-visa-medellin.html">estadías de visitante y la visa de nómada digital</a>.</li><li><strong>Deje el acuerdo por escrito,</strong> con las fechas y qué pasa si quiere extender o salir antes.</li></ul>""",
+            faq=[('¿Cuánto cuesta un arriendo por meses en Medellín?',
+                  'En nuestras propiedades, al {AS_OF}, los arriendos amoblados por meses van desde {MIN_MONTH} hasta {MAX_MONTH} COP al mes, según la zona, el tamaño y el edificio, más una tarifa de aseo única. Cada propiedad de esta página muestra su precio.'),
+                 ('¿Cuál es la estadía mínima de un arriendo por meses?',
+                  '30 noches. Para estadías más cortas, vea nuestros <a href="../arriendos/">arriendos amoblados por noches</a>.'),
+                 ('¿En qué barrios están sus arriendos por meses?',
+                  'Al {AS_OF}: {MONTH_AREA_COUNTS}. La lista de esta página muestra los actuales.'),
+                 ('¿Necesito fiador para arrendar por meses?',
+                  'Pregúntenos qué pide cada apartamento antes de reservar. Nuestra guía de <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">arriendo sin fiador</a> explica cómo suelen arrendar los extranjeros un apartamento amoblado en Medellín.'),
+                 ('¿Cómo reservo un arriendo por meses?',
+                  'Toque «Preguntar por» en el apartamento que le guste, o escríbanos por WhatsApp (<a href="https://wa.me/573042773864">+57 304 277 3864</a>) con sus fechas. Confirmamos la disponibilidad y acordamos con usted los detalles de la estadía.'),
+                 ('¿Cuánto tiempo puedo quedarme en Medellín como visitante?',
+                  'Depende de su nacionalidad y su visa. Nuestra guía sobre <a href="../blog/colombia-digital-nomad-visa-medellin.html">cuánto tiempo puede quedarse en Medellín</a> explica las estadías de visitante, las prórrogas y la visa de nómada digital.')]),
+}
+
+for lang in LANGS:
+    ui = M[lang]; st = rl_stats(lang)
+    en_url, es_url = SITE + M['en']['slug'] + '/', SITE + M['es']['slug'] + '/'
+    url = es_url if lang == 'es' else en_url
+    home_url = SITE + ('es/' if lang == 'es' else '')
+    pre = '../' if lang == 'en' else '../../'
+    faq = [(fill(q, st), fill(a, st)) for q, a in ui['faq']]
+    faq_html = ''.join(f'        <details><summary>{html.escape(q, quote=False)}{PLUS}</summary><p>{a}</p></details>\n' for q, a in faq)
+    wa = 'https://wa.me/573042773864?text=' + urllib.parse.quote(ui['wa_text'])
+    body = f'''<section class="page-top">
+  <div class="wrap">
+    <p class="crumbs"><a href="../">{ui["home"]}</a> / <a href="{pre}{ui["rentals_url"]}">{ui["rentals"]}</a> / {ui["crumb"]}</p>
+    <h1>{ui["h1"]}</h1>
+    <div class="lead">{fill(ui["lead"], st)}</div>
+    <div class="ref-ctas"><a class="btn btn-primary" href="{wa}" target="_blank" rel="noopener">{ui["cta_wa"]}</a><a class="btn btn-ghost" href="{pre}{ui["rentals_url"]}">{ui["cta_all"]}</a></div>
+  </div>
+</section>
+<section class="rentals rentals-month">
+  <div class="wrap">
+    {rl_section(lang, st, only='long_term', h=ui['list_h'], intro=ui['list_intro'])}
+    <div class="prose">{fill(ui["prose"], st)}
+      <h2>{L[lang]["faq_h"]}</h2>
+      <div class="faq">
+{faq_html}      </div>
+    </div>
+    <aside class="article-cta">
+      <h2>{R[lang]["owners_h"]}</h2>
+      <p>{R[lang]["owners_p"]}</p>
+      <div class="ref-ctas"><a class="btn btn-primary" href="../#plans">{R[lang]["owners_cta"]}</a><a class="btn btn-outline" href="../#contact">{L[lang]["cta_1"]}</a></div>
+    </aside>
+  </div>
+</section>'''
+    schema = {'@context': 'https://schema.org', '@graph': [
+        {'@type': 'CollectionPage', 'name': ui['h1'], 'description': fill(ui['desc'], st), 'url': url, 'inLanguage': lang,
+         'publisher': {'@id': business_id()}},
+        {'@type': 'FAQPage', 'url': url, 'inLanguage': lang, 'mainEntity': [
+            {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}} for q, a in faq]},
+        breadcrumbs([(ui['home'], home_url), (ui['rentals'], SITE + ui['rentals_url']), (ui['crumb'], url)])]
+        + ([rl_schema(lang, url, only='long_term', name=ui['list_h'])] if LISTINGS['properties'] else [])}
+    en_href, es_href = (('./', '../es/arriendos-por-meses-medellin/') if lang == 'en' else ('../../monthly-rentals-medellin/', './'))
+    write(f'{ui["slug"]}/index.html', page(lang, title=ui['title'], desc=fill(ui['desc'], st), en_url=en_url, es_url=es_url,
+          en_href=en_href, es_href=es_href, body=body, schema=schema))
+SITEMAP.append((SITE + 'monthly-rentals-medellin/', SITE + 'es/arriendos-por-meses-medellin/', TODAY))
 
 
 # ======================= 4d. Meet the team (/team/, /es/equipo/) =======================
