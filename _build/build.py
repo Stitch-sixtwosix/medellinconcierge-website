@@ -24,6 +24,7 @@ from team import TEAM
 from faq import FAQ
 from fees import FEES
 from diamond_card import VENUES, DIAMOND, SINMENTE_SIGNUP
+from rentals_feed import load_listings
 
 TODAY = datetime.date.today().isoformat()
 LANGS = ('en', 'es')
@@ -536,15 +537,17 @@ for pg in PAGES:
 HOSTFLOW_LISTINGS = 'https://hostflow.in/listings?t=fv0tM03REiayJ2NegmXX-5RK'
 R = {
  'en': dict(slug='rentals', home='Home', crumb='Rentals',
-            title='Furnished Apartments for Rent in Medellín | Book Direct',
-            desc='Furnished apartments and homes for short and monthly stays in El Poblado, Laureles, Envigado, Sabaneta and across Medellín. Book direct on WhatsApp.',
-            h1='Furnished apartments for rent in Medellín',
-            lead='<strong>Medellín Concierge rents furnished apartments and homes in Medellín for short stays and monthly stays, booked directly with the local team that manages them.</strong> The listings below show live photos, prices and availability from our booking system. Tap “I’m interested” and we’ll answer you on WhatsApp, in English or Spanish.',
+            title='Furnished Rentals in Medellín | Monthly & Short Stays',
+            desc='Furnished apartments and monthly rentals in El Poblado, Laureles, Envigado and Sabaneta, with live prices and availability. Book direct on WhatsApp.',
+            h1='Furnished rentals and apartments in Medellín',
+            lead='<strong>Furnished rentals in Medellín, booked direct: Medellín Concierge rents furnished apartments and homes by the month and by the night, managed by our local team in El Poblado.</strong> The listings below show live photos, prices and availability from our booking system. Tap “I’m interested” and we’ll answer you on WhatsApp, in English or Spanish.',
             prose='''
       <h2>How booking direct works</h2>
       <ol><li><strong>Browse the listings.</strong> Photos, prices and availability come live from HostFlow, the platform every property we manage runs on, so what you see is current.</li><li><strong>Tap “I’m interested”.</strong> We answer you on WhatsApp and help with your questions about the apartment, the building and the area.</li><li><strong>Confirm your stay.</strong> We agree your dates and the details of the stay with you. Our local team, based in El Poblado, coordinates your check-in, and guests can reach us 24/7 during the stay.</li></ol>
-      <h2>Short stays and monthly stays</h2>
-      <p>Our apartments are offered for short stays (a few nights) and for monthly stays of 30 nights or more. Short stays are tourist rentals: in Colombia they need a Registro Nacional de Turismo (RNT), and foreign guests are reported to Migración Colombia through SIRE, which we handle as the property manager (as of November 2026). For a monthly stay, make sure you get a clear written agreement; our guide to <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">renting a furnished apartment in Medellín without a fiador</a> explains what to check. Staying several months? See <a href="../blog/colombia-digital-nomad-visa-medellin.html">how long you can stay in Medellín</a>.</p>
+      <h2>Monthly furnished rentals in Medellín</h2>
+      <p>Staying a month or more? As of {AS_OF}, {N_MONTH} of our furnished apartments and homes are offered by the month (30 nights or more), from {MIN_MONTH} COP a month, in {MONTH_AREAS}. Each listing shows the monthly price and a one-time cleaning fee; ask us what else is included, such as utilities, internet and cleaning during the stay. For a monthly stay, make sure you get a clear written agreement; our guide to <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">renting a furnished apartment in Medellín without a fiador</a> explains what to check. Staying several months? See <a href="../blog/colombia-digital-nomad-visa-medellin.html">how long you can stay in Medellín</a>.</p>
+      <h2>Short-term rentals: furnished apartments by the night</h2>
+      <p>For a few nights or a couple of weeks, {N_SHORT} furnished apartments and homes are offered by the night, from {MIN_NIGHT} COP a night. Short stays are tourist rentals: in Colombia they need a Registro Nacional de Turismo (RNT), and foreign guests are reported to Migración Colombia through SIRE, which we handle as the property manager (as of November 2026).</p>
       <h2>Where our furnished apartments are</h2>
       <ul><li><strong>El Poblado:</strong> the area with the most restaurants, cafés, coworking spaces and nightlife, and an easy first base in the city.</li><li><strong>Laureles:</strong> flat, tree-lined and residential, with a local feel and plenty of cafés and parks (<a href="https://medellinguru.com/guide-to-laureles/">Medellin Guru</a>).</li><li><strong>Envigado:</strong> a separate municipality just south of Medellín in the Valle de Aburrá (<a href="https://www.lafm.com.co/colombia/envigado-dijo-si-al-area-metropolitana">La FM</a>), quieter and good for everyday life.</li><li><strong>Sabaneta:</strong> the smallest municipality in Colombia by area (<a href="https://www.bluradio.com/turismo/el-municipio-mas-pequeno-de-colombia-esta-en-antioquia-y-tiene-planes-imperdibles-so35">Blu Radio</a>), with its own station on Metro Line A (<a href="https://en.wikipedia.org/wiki/Sabaneta_station">Wikipedia</a>).</li></ul>
       <p>The listings above show which areas have availability right now. Not sure which neighborhood fits you? Read <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado vs Laureles vs Envigado for a month-long stay</a>.</p>
@@ -555,8 +558,10 @@ R = {
                   'Choose an apartment in the listings on this page and tap “I’m interested”. We answer you on WhatsApp (<a href="https://wa.me/573042773864">+57 304 277 3864</a>), in English or Spanish, and confirm your dates and the details of the stay with you.'),
                  ('Can I rent a furnished apartment in Medellín for a month or longer?',
                   'Yes. Our apartments are offered for short stays and for monthly stays of 30 nights or more. The listings show current prices and availability for your dates.'),
+                 ('How much does a furnished apartment in Medellín cost per month?',
+                  'In our listings, as of {AS_OF}, monthly furnished rentals run from {MIN_MONTH} to {MAX_MONTH} COP a month, depending on the area, the size and the building, plus a one-time cleaning fee. Short stays start from {MIN_NIGHT} COP a night. The listings on this page show the current price of each apartment.'),
                  ('Which neighborhoods are your rentals in?',
-                  'El Poblado, Laureles, Envigado, Sabaneta and other parts of Medellín. The listings on this page show which areas have availability right now.'),
+                  'As of {AS_OF}, our available furnished rentals are in {AREA_COUNTS}. The listings on this page show which areas have availability right now.'),
                  ('Are the prices and availability up to date?',
                   'Yes. The listings come live from HostFlow, the booking system every property we manage runs on, so they show current photos, prices and availability.'),
                  ('Do you have an RNT for your short-term rentals?',
@@ -567,15 +572,17 @@ R = {
             owners_h='Own a property in Medellín?', owners_p='We manage homes like these for their owners, from listing to monthly GAAP statements.',
             owners_cta='See our management plans'),
  'es': dict(slug='es/arriendos', home='Inicio', crumb='Arriendos',
-            title='Apartamentos amoblados en Medellín | Arriendo directo',
-            desc='Apartamentos y casas amoblados por noches o por meses en El Poblado, Laureles, Envigado, Sabaneta y todo Medellín. Reserve directo por WhatsApp.',
-            h1='Apartamentos amoblados en arriendo en Medellín',
-            lead='<strong>En Medellín Concierge arrendamos apartamentos y casas amoblados en Medellín por noches o por meses, y usted reserva directo con el equipo local que los administra.</strong> Las propiedades de abajo muestran fotos, precios y disponibilidad en vivo desde nuestro sistema de reservas. Toque «Me interesa» y le respondemos por WhatsApp, en español o en inglés.',
+            title='Arriendos amoblados en Medellín | Por meses y por noches',
+            desc='Apartamentos amoblados en arriendo por meses o por noches en El Poblado, Laureles, Envigado y Sabaneta, con precios y disponibilidad en vivo. Reserve directo por WhatsApp.',
+            h1='Arriendos y apartamentos amoblados en Medellín',
+            lead='<strong>Arriendos amoblados en Medellín, con reserva directa: en Medellín Concierge arrendamos apartamentos y casas amoblados por meses y por noches, administrados por nuestro equipo local en El Poblado.</strong> Las propiedades de abajo muestran fotos, precios y disponibilidad en vivo desde nuestro sistema de reservas. Toque «Me interesa» y le respondemos por WhatsApp, en español o en inglés.',
             prose='''
       <h2>Cómo funciona la reserva directa</h2>
       <ol><li><strong>Mire las propiedades.</strong> Las fotos, los precios y la disponibilidad salen en vivo de HostFlow, la plataforma con la que operamos todas las propiedades que administramos, así que lo que ve está al día.</li><li><strong>Toque «Me interesa».</strong> Le respondemos por WhatsApp y le resolvemos las dudas sobre el apartamento, el edificio y el sector.</li><li><strong>Confirme su estadía.</strong> Acordamos con usted las fechas y los detalles de la estadía. Nuestro equipo local, con oficina en El Poblado, coordina su llegada, y durante la estadía nos encuentra 24/7.</li></ol>
-      <h2>Por noches o por meses</h2>
-      <p>Nuestros apartamentos se arriendan por estancias cortas (unas cuantas noches) y por meses, desde 30 noches. La estancia corta es vivienda turística: en Colombia exige el Registro Nacional de Turismo (RNT), y los huéspedes extranjeros se reportan a Migración Colombia por SIRE, algo que nosotros gestionamos como administradores (a noviembre de 2026). Si arrienda por meses, pida siempre un acuerdo claro por escrito; nuestra guía de <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">arriendo amoblado en Medellín sin fiador</a> explica qué revisar. ¿Se queda varios meses? Vea <a href="../blog/colombia-digital-nomad-visa-medellin.html">cuánto tiempo puede quedarse en Medellín</a>.</p>
+      <h2>Apartamentos amoblados por meses en Medellín</h2>
+      <p>¿Se queda un mes o más? Al {AS_OF}, {N_MONTH} de nuestros apartamentos y casas amoblados se arriendan por meses (desde 30 noches), desde {MIN_MONTH} COP al mes, en {MONTH_AREAS}. Cada propiedad muestra el precio mensual y una tarifa de aseo única; pregúntenos qué más incluye, como servicios públicos, internet y aseo durante la estadía. Si arrienda por meses, pida siempre un acuerdo claro por escrito; nuestra guía de <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">arriendo amoblado en Medellín sin fiador</a> explica qué revisar. ¿Se queda varios meses? Vea <a href="../blog/colombia-digital-nomad-visa-medellin.html">cuánto tiempo puede quedarse en Medellín</a>.</p>
+      <h2>Arriendo por noches: apartamentos amoblados para estancias cortas</h2>
+      <p>Para unas noches o un par de semanas, {N_SHORT} apartamentos y casas amoblados se arriendan por noches, desde {MIN_NIGHT} COP la noche. La estancia corta es vivienda turística: en Colombia exige el Registro Nacional de Turismo (RNT), y los huéspedes extranjeros se reportan a Migración Colombia por SIRE, algo que nosotros gestionamos como administradores (a noviembre de 2026).</p>
       <h2>Dónde están nuestros apartamentos amoblados</h2>
       <ul><li><strong>El Poblado:</strong> la zona con más restaurantes, cafés, espacios de coworking y vida nocturna, y una base cómoda para conocer la ciudad.</li><li><strong>Laureles:</strong> plano, arborizado y residencial, con ambiente de barrio y muchos cafés y parques (<a href="https://medellinguru.com/guide-to-laureles/">Medellin Guru</a>).</li><li><strong>Envigado:</strong> un municipio aparte, al sur de Medellín, en el Valle de Aburrá (<a href="https://www.lafm.com.co/colombia/envigado-dijo-si-al-area-metropolitana">La FM</a>), más tranquilo y bueno para la vida diaria.</li><li><strong>Sabaneta:</strong> el municipio más pequeño de Colombia por extensión (<a href="https://www.bluradio.com/turismo/el-municipio-mas-pequeno-de-colombia-esta-en-antioquia-y-tiene-planes-imperdibles-so35">Blu Radio</a>), con estación propia en la Línea A del Metro (<a href="https://en.wikipedia.org/wiki/Sabaneta_station">Wikipedia</a>).</li></ul>
       <p>Las propiedades de arriba muestran en qué zonas hay disponibilidad hoy. ¿No sabe qué barrio le conviene? Lea <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado, Laureles o Envigado para quedarse un mes</a>.</p>
@@ -586,8 +593,10 @@ R = {
                   'Escoja un apartamento entre las propiedades de esta página y toque «Me interesa». Le respondemos por WhatsApp (<a href="https://wa.me/573042773864">+57 304 277 3864</a>), en español o en inglés, y acordamos con usted las fechas y los detalles de la estadía.'),
                  ('¿Puedo arrendar un apartamento amoblado en Medellín por un mes o más?',
                   'Sí. Nuestros apartamentos se arriendan por noches y por meses, desde 30 noches. Las propiedades muestran los precios y la disponibilidad actuales para sus fechas.'),
+                 ('¿Cuánto cuesta un apartamento amoblado en Medellín por mes?',
+                  'En nuestras propiedades, al {AS_OF}, los arriendos amoblados por meses van desde {MIN_MONTH} hasta {MAX_MONTH} COP al mes, según la zona, el tamaño y el edificio, más una tarifa de aseo única. Las estancias cortas van desde {MIN_NIGHT} COP la noche. Las propiedades de esta página muestran el precio actual de cada apartamento.'),
                  ('¿En qué barrios están sus arriendos?',
-                  'En El Poblado, Laureles, Envigado, Sabaneta y otras zonas de Medellín. Las propiedades de esta página muestran en qué zonas hay disponibilidad hoy.'),
+                  'Al {AS_OF}, nuestros arriendos amoblados disponibles están en {AREA_COUNTS}. Las propiedades de esta página muestran en qué zonas hay disponibilidad hoy.'),
                  ('¿Los precios y la disponibilidad están al día?',
                   'Sí. Las propiedades salen en vivo de HostFlow, el sistema de reservas con el que operamos todas las propiedades que administramos, así que muestran fotos, precios y disponibilidad actuales.'),
                  ('¿Sus arriendos por noches tienen RNT?',
@@ -599,8 +608,108 @@ R = {
             owners_cta='Ver nuestros planes de administración'),
 }
 
+
+# Crawlable list of the bookable listings (from the HostFlow feed, see rentals_feed.py), shown under the guides and
+# described in ItemList schema, so search engines see the actual apartments, areas and prices (the embed itself is
+# noindex on hostflow.in). Prices are dated "as of" the day the feed last changed.
+LISTINGS = load_listings()
+RL_UI = {
+ 'en': dict(h='Furnished rentals available now', month='Monthly rentals (30 nights or more)', short='Short stays (by the night)',
+            intro='As of {AS_OF}: {N_AVAIL} furnished apartments and homes with a live price, out of {TOTAL} furnished properties we manage; the others are available on request. Prices are in Colombian pesos. For your dates, use the listings above or ask us about any of these on WhatsApp.',
+            per=dict(month='/ month', night='/ night'), frm='from ', on_req='Price on request', now='Available now', avail='Available from {d}',
+            ask='Ask about {ref}', wa='Hi! I’m interested in property {ref} ({t}).', clean='+ {c} COP cleaning fee',
+            beds=('bedroom', 'bedrooms'), baths=('bath', 'baths'), guests='up to {n} guests', and_=' and ',
+            amen=dict(ac='Air conditioning', washer='Washer', dryer='Dryer', elevator='Elevator', parking='Parking', gym='Gym', bbq='BBQ area', playground='Playground')),
+ 'es': dict(h='Arriendos amoblados disponibles hoy', month='Por meses (30 noches o más)', short='Por noches (estancias cortas)',
+            intro='Al {AS_OF}: {N_AVAIL} apartamentos y casas amoblados con precio en vivo, de las {TOTAL} propiedades amobladas que administramos; las demás, bajo consulta. Precios en pesos colombianos. Para sus fechas, use las propiedades de arriba o pregúntenos por cualquiera de estas por WhatsApp.',
+            per=dict(month='/ mes', night='/ noche'), frm='desde ', on_req='Precio bajo consulta', now='Disponible ya', avail='Disponible desde el {d}',
+            ask='Preguntar por {ref}', wa='¡Hola! Me interesa la propiedad {ref} ({t}).', clean='+ {c} COP de aseo',
+            beds=('habitación', 'habitaciones'), baths=('baño', 'baños'), guests='hasta {n} huéspedes', and_=' y ',
+            amen=dict(ac='Aire acondicionado', washer='Lavadora', dryer='Secadora', elevator='Ascensor', parking='Parqueadero', gym='Gimnasio', bbq='Zona BBQ', playground='Zona infantil')),
+}
+RL_AREA_FIX = {'Ciudad Del Rio': 'Ciudad del Río', 'Guatape': 'Guatapé', 'Medellin': 'Medellín', 'Bogota': 'Bogotá'}
+RL_ANTIOQUIA = {'El Poblado', 'Laureles', 'Envigado', 'Sabaneta', 'Medellín', 'Ciudad del Río', 'Guayabal', 'Barbosa', 'Guatapé', 'Peñol', 'Rionegro'}
+
+def cop(n): return '$' + f'{n:,}'.replace(',', '.')
+
+def rl_area(p): return RL_AREA_FIX.get(p['area'], p['area'])
+
+def rl_title(p, lang):
+    t = p['title_es' if lang == 'es' else 'title_en'] or p['title_en']
+    for a, b in RL_AREA_FIX.items(): t = t.replace(a, b)
+    return t
+
+def rl_join(items, lang):
+    return items[0] if len(items) == 1 else ', '.join(items[:-1]) + RL_UI[lang]['and_'] + items[-1]
+
+def rl_price(p): return (p['price'] or {}).get('amount')
+
+def rl_stats(lang):
+    P = LISTINGS['properties']
+    month = [rl_price(p) for p in P if p['stay_type'] == 'long_term' and rl_price(p)]
+    night = [rl_price(p) for p in P if p['stay_type'] == 'short_term' and rl_price(p)]
+    areas = {}
+    for p in P: areas[rl_area(p)] = areas.get(rl_area(p), 0) + 1
+    month_areas = sorted({rl_area(p) for p in P if p['stay_type'] == 'long_term'}, key=lambda a: (-areas[a], a))
+    counts = rl_join([f'{a} ({n})' for a, n in sorted(areas.items(), key=lambda x: (-x[1], x[0]))], lang)
+    return {'{AS_OF}': human_date(LISTINGS['as_of'] or TODAY, lang), '{TOTAL}': str(LISTINGS['total']), '{N_AVAIL}': str(len(P)),
+            '{N_MONTH}': str(sum(p['stay_type'] == 'long_term' for p in P)), '{N_SHORT}': str(sum(p['stay_type'] == 'short_term' for p in P)),
+            '{MIN_MONTH}': cop(min(month)) if month else '—', '{MAX_MONTH}': cop(max(month)) if month else '—',
+            '{MIN_NIGHT}': cop(min(night)) if night else '—', '{MONTH_AREAS}': rl_join(month_areas[:6], lang), '{AREA_COUNTS}': counts}
+
+def fill(t, st):
+    for k, v in st.items(): t = t.replace(k, v)
+    return t
+
+def rl_item(p, lang):
+    u = RL_UI[lang]; ref = p['ref'] or ''; t = rl_title(p, lang)
+    meta = [f'{p["bedrooms"]} {u["beds"][p["bedrooms"] != 1]}' if p.get('bedrooms') else '',
+            f'{p["bathrooms"]} {u["baths"][p["bathrooms"] != 1]}' if p.get('bathrooms') else '',
+            u['guests'].format(n=p['max_guests']) if p.get('max_guests') else '']
+    amen = [u['amen'][a] for a in (p.get('amenities') or []) if a in u['amen']]
+    pr = p['price'] or {}
+    price = (f'{u["frm"] if pr.get("from") else ""}{cop(pr["amount"])} COP <span>{u["per"].get(pr.get("per"), "")}</span>'
+             if pr.get('amount') else u['on_req'])
+    af = p.get('available_from')
+    avail = u['now'] if not af or af <= TODAY else u['avail'].format(d=human_date(af, lang))
+    clean = f'<p class="rl-fee">{u["clean"].format(c=cop(p["cleaning_fee"]))}</p>' if p.get('cleaning_fee') else ''
+    wa = 'https://wa.me/573042773864?text=' + urllib.parse.quote(u['wa'].format(ref=ref, t=t))
+    return (f'<li class="rl-item" id="p-{ref.lstrip("#")}"><div class="rl-main"><h4>{html.escape(t)}</h4>'
+            f'<p class="rl-meta">{" · ".join(m for m in meta if m)}</p>'
+            + (f'<p class="rl-amen">{" · ".join(amen)}</p>' if amen else '') +
+            f'</div><div class="rl-side"><p class="rl-price">{price}</p>{clean}<p class="rl-avail">{avail}</p>'
+            f'<a class="rl-ask" href="{wa}" target="_blank" rel="noopener">{u["ask"].format(ref=ref)}</a></div></li>')
+
+def rl_sort(p):   # available now first, El Poblado first, then by area and price
+    return ((p['available_from'] or '') > TODAY, rl_area(p) != 'El Poblado', rl_area(p), rl_price(p) or 10**12)
+
+def rl_section(lang, st):
+    u = RL_UI[lang]; P = LISTINGS['properties']
+    if not P: return ''
+    out = f'<section class="rl" aria-labelledby="rl-h"><h2 id="rl-h">{u["h"]}</h2><p class="rl-intro">{fill(u["intro"], st)}</p>'
+    for key, st_type in (('month', 'long_term'), ('short', 'short_term')):
+        grp = sorted((p for p in P if p['stay_type'] == st_type), key=rl_sort)
+        if grp: out += f'<h3>{u[key]}</h3><ul class="rl-list">' + ''.join(rl_item(p, lang) for p in grp) + '</ul>'
+    return out + '</section>'
+
+def rl_schema(lang, url):
+    P = sorted(LISTINGS['properties'], key=lambda p: (p['stay_type'] != 'long_term', rl_sort(p)))
+    items = []
+    for i, p in enumerate(P, 1):
+        typ = {'Apartment': 'Apartment', 'Condo': 'Apartment', 'Studio': 'Apartment', 'House': 'House'}.get(p['property_type'], 'Accommodation')
+        addr = {'@type': 'PostalAddress', 'addressLocality': rl_area(p), 'addressCountry': 'CO'}
+        if rl_area(p) in RL_ANTIOQUIA: addr['addressRegion'] = 'Antioquia'
+        it = {'@type': typ, 'name': rl_title(p, lang), 'url': url + '#p-' + (p['ref'] or '').lstrip('#'), 'address': addr}
+        if p.get('bedrooms'): it['numberOfBedrooms'] = p['bedrooms']
+        if p.get('bathrooms'): it['numberOfBathroomsTotal'] = p['bathrooms']
+        if p.get('max_guests'): it['occupancy'] = {'@type': 'QuantitativeValue', 'maxValue': p['max_guests']}
+        items.append({'@type': 'ListItem', 'position': i, 'item': it})
+    return {'@type': 'ItemList', 'name': RL_UI[lang]['h'], 'numberOfItems': len(items), 'itemListElement': items}
+
 for lang in LANGS:
     ui = R[lang]
+    st = rl_stats(lang)
+    ui = dict(ui, prose=fill(ui['prose'], st), faq=[(fill(q, st), fill(a, st)) for q, a in ui['faq']])
     en_url, es_url = SITE + R['en']['slug'] + '/', SITE + R['es']['slug'] + '/'
     url = es_url if lang == 'es' else en_url
     home_url = SITE + ('es/' if lang == 'es' else '')
@@ -619,6 +728,9 @@ for lang in LANGS:
     </div>
     <p class="rent-updated">{ui["fallback"]} <a href="{HOSTFLOW_LISTINGS}" target="_blank" rel="noopener">{ui["fallback_link"]}</a></p>
     <div class="prose">{ui["prose"]}
+    </div>
+    {rl_section(lang, st)}
+    <div class="prose">
       <h2>{L[lang]["faq_h"]}</h2>
       <div class="faq">
 {faq_html}      </div>
@@ -636,7 +748,7 @@ for lang in LANGS:
          'publisher': {'@id': business_id()}},
         {'@type': 'FAQPage', 'url': url, 'inLanguage': lang, 'mainEntity': [
             {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}} for q, a in ui['faq']]},
-        breadcrumbs([(ui['home'], home_url), (ui['crumb'], url)])]}
+        breadcrumbs([(ui['home'], home_url), (ui['crumb'], url)])] + ([rl_schema(lang, url)] if LISTINGS['properties'] else [])}
     en_href, es_href = (('./', '../es/arriendos/') if lang == 'en' else ('../../rentals/', './'))
     write(f'{ui["slug"]}/index.html', page(lang, title=ui['title'], desc=ui['desc'], en_url=en_url, es_url=es_url,
           en_href=en_href, es_href=es_href, body=body, schema=schema))

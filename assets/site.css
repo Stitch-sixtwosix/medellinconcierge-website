@@ -491,6 +491,22 @@
 .rent-updated{margin:16px 0 0;color:var(--muted);font-size:.92rem}
 .rent-updated a{color:var(--red-dark);font-weight:600}
 .rentals .article-cta{max-width:none;margin-top:48px}
+.rl{max-width:860px;margin:56px auto 0}
+.rl h2{font-size:clamp(1.4rem,2.6vw,1.75rem);margin:0 0 .5em}
+.rl-intro{color:var(--ink-2);margin:0 0 28px;max-width:700px}
+.rl h3{font-size:1.1rem;margin:32px 0 12px}
+.rl-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.rl-item{display:flex;justify-content:space-between;gap:24px;padding:16px 4px;border-bottom:1px solid var(--line);scroll-margin-top:96px}
+.rl-item h4{font-size:1rem;font-weight:600;margin:0 0 2px;color:var(--ink)}
+.rl-meta,.rl-amen,.rl-fee,.rl-avail{margin:0;font-size:.9rem;color:var(--muted);line-height:1.45}
+.rl-amen{font-size:.85rem}
+.rl-side{text-align:right;flex:none}
+.rl-price{margin:0;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.rl-price span{font-weight:400;color:var(--muted);font-size:.9rem}
+.rl-ask{display:inline-block;margin-top:4px;color:var(--red-dark);font-weight:600;font-size:.9rem;text-decoration:none}
+.rl-ask:hover{text-decoration:underline}
+.rl + .prose{margin-top:8px}
+@media (max-width:640px){.rl-item{flex-direction:column;gap:6px}.rl-side{text-align:left}.rl{padding:0 8px}}
 @media (max-width:640px){.rentals{padding:24px 0 72px}.rentals .wrap{padding:0 8px}.listings-embed{border-radius:var(--radius)}}
 
 /* Footer social icons */

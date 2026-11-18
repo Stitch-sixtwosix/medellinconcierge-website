@@ -1,0 +1,721 @@
+{
+ "as_of": "2026-11-18",
+ "total": 86,
+ "properties": [
+  {
+   "ref": "#0001",
+   "title_en": "1-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 1 habitación en El Poblado",
+   "area": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 1,
+   "bathrooms": 2,
+   "max_guests": 2,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 7050000,
+    "per": "month",
+    "from": false
+   },
+   "cleaning_fee": 110000,
+   "available_from": "2026-11-20",
+   "amenities": [
+    "ac",
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0002",
+   "title_en": "3-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 3 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 4,
+   "max_guests": 6,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 400000,
+    "per": "night",
+    "from": true
+   },
+   "cleaning_fee": 170000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "elevator",
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0010",
+   "title_en": "1-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 1 habitación en El Poblado",
+   "area": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 2,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 7770000,
+    "per": "month",
+    "from": false
+   },
+   "cleaning_fee": 100000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "elevator",
+    "ac",
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0011",
+   "title_en": "1-bedroom apartment in Guatapé",
+   "title_es": "Apartamento de 1 habitación en Guatapé",
+   "area": "Guatapé",
+   "property_type": "Apartment",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 2,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 145000,
+    "per": "night",
+    "from": true
+   },
+   "cleaning_fee": 120000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0048",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 3,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 9000000,
+    "per": "month",
+    "from": false
+   },
+   "cleaning_fee": 120000,
+   "available_from": "2027-01-09",
+   "amenities": [
+    "elevator",
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0068",
+   "title_en": "3-bedroom house in Envigado",
+   "title_es": "Casa de 3 habitaciones en Envigado",
+   "area": "Envigado",
+   "property_type": "House",
+   "bedrooms": 3,
+   "bathrooms": 3,
+   "max_guests": 6,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 13500000,
+    "per": "month",
+    "from": false
+   },
+   "cleaning_fee": 160000,
+   "available_from": "2027-04-30",
+   "amenities": []
+  },
+  {
+   "ref": "#0079",
+   "title_en": "2-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 2 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 15000000,
+    "per": "month",
+    "from": false
+   },
+   "cleaning_fee": 120000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "elevator",
+    "ac",
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0082",
+   "title_en": "3-bedroom apartment in Laureles",
+   "title_es": "Apartamento de 3 habitaciones en Laureles",
+   "area": "Laureles",
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 2,
+   "max_guests": 5,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 11070000,
+    "per": "month",
+    "from": false
+   },
+   "cleaning_fee": 150000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0083",
+   "title_en": "2-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 2 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 3,
+   "max_guests": 4,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 220000,
+    "per": "night",
+    "from": true
+   },
+   "cleaning_fee": 130000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "ac",
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0084",
+   "title_en": "2-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 2 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 3,
+   "max_guests": 4,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 220000,
+    "per": "night",
+    "from": true
+   },
+   "cleaning_fee": 130000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "ac",
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0085",
+   "title_en": "1-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 1 habitación en El Poblado",
+   "area": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 2,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 220000,
+    "per": "night",
+    "from": true
+   },
+   "cleaning_fee": 100000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "ac",
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0086",
+   "title_en": "1-bedroom apartment in Envigado",
+   "title_es": "Apartamento de 1 habitación en Envigado",
+   "area": "Envigado",
+   "property_type": "Apartment",
+   "bedrooms": 1,
+   "bathrooms": 2,
+   "max_guests": 2,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 183000,
+    "per": "night",
+    "from": true
+   },
+   "cleaning_fee": 110000,
+   "available_from": "2026-11-21",
+   "amenities": [
+    "elevator",
+    "parking",
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0087",
+   "title_en": "2-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 2 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 3,
+   "max_guests": 6,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 200000,
+    "per": "night",
+    "from": true
+   },
+   "cleaning_fee": 230000,
+   "available_from": "2026-11-21",
+   "amenities": [
+    "elevator",
+    "ac"
+   ]
+  },
+  {
+   "ref": "#0088",
+   "title_en": "1-bedroom studio in El Poblado",
+   "title_es": "Apartaestudio de 1 habitación en El Poblado",
+   "area": "El Poblado",
+   "property_type": "Studio",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 2,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 158000,
+    "per": "night",
+    "from": true
+   },
+   "cleaning_fee": 150000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "elevator",
+    "ac"
+   ]
+  },
+  {
+   "ref": "#0089",
+   "title_en": "3-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 3 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 4,
+   "max_guests": 8,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 342000,
+    "per": "night",
+    "from": true
+   },
+   "cleaning_fee": 220000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "elevator",
+    "ac"
+   ]
+  },
+  {
+   "ref": "#0094",
+   "title_en": "1-bedroom studio in Medellín",
+   "title_es": "Apartaestudio de 1 habitación en Medellín",
+   "area": "Medellín",
+   "property_type": "Studio",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 4,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 85000,
+    "per": "night",
+    "from": true
+   },
+   "cleaning_fee": 80000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0102",
+   "title_en": "3-bedroom house in Barbosa",
+   "title_es": "Casa de 3 habitaciones en Barbosa",
+   "area": "Barbosa",
+   "property_type": "House",
+   "bedrooms": 3,
+   "bathrooms": 3,
+   "max_guests": 10,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 400000,
+    "per": "night",
+    "from": true
+   },
+   "cleaning_fee": 160000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "parking"
+   ]
+  },
+  {
+   "ref": "#0104",
+   "title_en": "2-bedroom apartment in Sabaneta",
+   "title_es": "Apartamento de 2 habitaciones en Sabaneta",
+   "area": "Sabaneta",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 5,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 200000,
+    "per": "night",
+    "from": true
+   },
+   "cleaning_fee": 120000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "elevator",
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0106",
+   "title_en": "3-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 3 habitaciones en Medellín",
+   "area": "Medellín",
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 15000000,
+    "per": "month",
+    "from": false
+   },
+   "cleaning_fee": 130000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "elevator",
+    "ac",
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0111",
+   "title_en": "2-bedroom apartment in Sabaneta",
+   "title_es": "Apartamento de 2 habitaciones en Sabaneta",
+   "area": "Sabaneta",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 218000,
+    "per": "night",
+    "from": true
+   },
+   "cleaning_fee": 140000,
+   "available_from": "2026-12-02",
+   "amenities": [
+    "ac",
+    "parking",
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0112",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 6900000,
+    "per": "month",
+    "from": false
+   },
+   "cleaning_fee": 120000,
+   "available_from": "2027-09-15",
+   "amenities": [
+    "elevator",
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0113",
+   "title_en": "2-bedroom apartment in Envigado",
+   "title_es": "Apartamento de 2 habitaciones en Envigado",
+   "area": "Envigado",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 3,
+   "max_guests": 6,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 250000,
+    "per": "night",
+    "from": true
+   },
+   "cleaning_fee": 130000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "elevator",
+    "ac",
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0114",
+   "title_en": "3-bedroom apartment in Guayabal",
+   "title_es": "Apartamento de 3 habitaciones en Guayabal",
+   "area": "Guayabal",
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 12840000,
+    "per": "month",
+    "from": false
+   },
+   "cleaning_fee": 130000,
+   "available_from": "2026-11-25",
+   "amenities": [
+    "elevator",
+    "ac",
+    "parking"
+   ]
+  },
+  {
+   "ref": "#0115",
+   "title_en": "3-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 3 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "property_type": "Condo",
+   "bedrooms": 3,
+   "bathrooms": 3,
+   "max_guests": 4,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 15000000,
+    "per": "month",
+    "from": false
+   },
+   "cleaning_fee": 160000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "elevator",
+    "ac",
+    "parking"
+   ]
+  },
+  {
+   "ref": "#0116",
+   "title_en": "3-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 3 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 4,
+   "max_guests": 6,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 20700000,
+    "per": "month",
+    "from": false
+   },
+   "cleaning_fee": 170000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "elevator",
+    "ac",
+    "parking"
+   ]
+  },
+  {
+   "ref": "#0117",
+   "title_en": "2-bedroom apartment in Ciudad Del Rio",
+   "title_es": "Apartamento de 2 habitaciones en Ciudad Del Rio",
+   "area": "Ciudad Del Rio",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 9900000,
+    "per": "month",
+    "from": false
+   },
+   "cleaning_fee": 120000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "elevator"
+   ]
+  },
+  {
+   "ref": "#0118",
+   "title_en": "2-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 2 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "property_type": "Condo",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": "short_term",
+   "price": {
+    "amount": 572000,
+    "per": "night",
+    "from": true
+   },
+   "cleaning_fee": 160000,
+   "available_from": "2026-11-25",
+   "amenities": [
+    "elevator",
+    "ac",
+    "washer",
+    "dryer"
+   ]
+  },
+  {
+   "ref": "#0119",
+   "title_en": "1-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 1 habitación en El Poblado",
+   "area": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 1,
+   "bathrooms": 1,
+   "max_guests": 3,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 10290000,
+    "per": "month",
+    "from": false
+   },
+   "cleaning_fee": 100000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "elevator",
+    "ac",
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0120",
+   "title_en": "3-bedroom apartment in Laureles",
+   "title_es": "Apartamento de 3 habitaciones en Laureles",
+   "area": "Laureles",
+   "property_type": "Apartment",
+   "bedrooms": 3,
+   "bathrooms": 2,
+   "max_guests": 4,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 9240000,
+    "per": "month",
+    "from": false
+   },
+   "cleaning_fee": 130000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "bbq",
+    "playground",
+    "elevator",
+    "ac"
+   ]
+  },
+  {
+   "ref": "#0121",
+   "title_en": "2-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 2 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 3,
+   "stay_type": "long_term",
+   "price": {
+    "amount": null,
+    "per": null,
+    "from": false
+   },
+   "cleaning_fee": 120000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "gym",
+    "parking",
+    "washer",
+    "dryer"
+   ]
+  },
+  {
+   "ref": "#0122",
+   "title_en": "3-bedroom apartment in Envigado",
+   "title_es": "Apartamento de 3 habitaciones en Envigado",
+   "area": "Envigado",
+   "property_type": "Condo",
+   "bedrooms": 3,
+   "bathrooms": 2,
+   "max_guests": 6,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 8400000,
+    "per": "month",
+    "from": false
+   },
+   "cleaning_fee": 130000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "elevator",
+    "parking",
+    "washer",
+    "dryer"
+   ]
+  },
+  {
+   "ref": "#0123",
+   "title_en": "2-bedroom apartment in El Poblado",
+   "title_es": "Apartamento de 2 habitaciones en El Poblado",
+   "area": "El Poblado",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 3,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 7800000,
+    "per": "month",
+    "from": false
+   },
+   "cleaning_fee": 120000,
+   "available_from": "2026-11-18",
+   "amenities": [
+    "elevator",
+    "ac",
+    "parking"
+   ]
+  }
+ ]
+}
