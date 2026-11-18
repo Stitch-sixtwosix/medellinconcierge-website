@@ -14,6 +14,10 @@ HOME_ES = [
  ('content="Medellín Concierge: property management in Medellín"', 'content="Medellín Concierge: administración de propiedades en Medellín"'),
  ('<meta property="og:locale" content="en_US">', '<meta property="og:locale" content="es_CO">'),
 
+ # ---- owner guides (owners section) ----
+ ('      <h3>Guides for owners</h3>\n      <p>New to renting out in Medellín? Start with <a href="blog/medellin-property-management-guide.html">the complete guide to property management in Medellín</a>, check the rules in <a href="blog/is-airbnb-legal-in-medellin-rnt-tra-sire.html">is Airbnb legal in Medellín? RNT, TRA and SIRE explained</a>, and compare costs in <a href="blog/how-much-does-airbnb-management-cost-medellin.html">how much Airbnb management costs in Medellín</a>. More answers are on <a href="blog/">our blog</a>.</p>\n',
+  '      <h3>Guías para propietarios</h3>\n      <p>¿Es la primera vez que arrienda en Medellín? Empiece por <a href="blog/medellin-property-management-guide.html">la guía completa de administración de propiedades en Medellín</a>, revise las reglas en <a href="blog/is-airbnb-legal-in-medellin-rnt-tra-sire.html">el Registro Nacional de Turismo para vivienda turística</a> y compare costos en <a href="blog/how-much-does-airbnb-management-cost-medellin.html">cuánto cobra un administrador de Airbnb en Medellín</a>. Encuentre más respuestas en <a href="blog/">nuestro blog</a>.</p>\n'),
+
  # ---- header ----
  ('aria-label="Medellín Concierge home"', 'aria-label="Inicio de Medellín Concierge"'),
  ('aria-label="Main"', 'aria-label="Principal"'),
@@ -256,12 +260,16 @@ BLOG_UI = {
             blog_meta_title='Property Management Blog | Medellín Concierge',
             blog_meta_desc='Articles for property owners in Medellín: management plans, GAAP statements and payouts, and how to choose a property manager.',
             cta_h='Talk to us about your property', cta_p='Get a free consultation and a plan recommendation for your apartment in Medellín.',
-            cta_1='Request a free consultation', cta_2='Compare plans', more='More from the blog', more_label='More articles'),
+            cta_1='Request a free consultation', cta_2='Compare plans', more='More from the blog', more_label='More articles',
+            svc_h='Our property management services',
+            svc_p='Ready to hand over your property? Each service page answers first: what we do, what it costs (from 12% + IVA) and how to start.'),
  'es': dict(read='Leer artículo', min_read='min de lectura', home='Inicio', blog='Blog',
             blog_title='El blog de Medellín Concierge',
             blog_lead='Respuestas claras para propietarios en Medellín: planes, pagos, cumplimiento legal y qué esperar de un administrador profesional.',
             blog_meta_title='Blog de administración de propiedades | Medellín Concierge',
             blog_meta_desc='Artículos para propietarios en Medellín: planes de administración, estados bajo GAAP y pagos, y cómo elegir un administrador de propiedades.',
             cta_h='Hablemos de su propiedad', cta_p='Solicite una consulta gratuita y una recomendación de plan para su apartamento en Medellín.',
-            cta_1='Solicitar una consulta gratuita', cta_2='Comparar planes', more='Más del blog', more_label='Más artículos'),
+            cta_1='Solicitar una consulta gratuita', cta_2='Comparar planes', more='Más del blog', more_label='Más artículos',
+            svc_h='Nuestros servicios de administración de propiedades',
+            svc_p='¿Listo para entregar su inmueble? Cada página de servicio responde de una vez: qué hacemos, cuánto cuesta (desde 12% + IVA) y cómo empezar.'),
 }

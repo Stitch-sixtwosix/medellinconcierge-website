@@ -323,6 +323,21 @@ def breadcrumbs(items):
 
 
 # ======================= 3. Blog =======================
+# Service pages a blog post can link to: (href from /blog/ or /es/blog/ minus "../", anchor text, topic keywords).
+_pg = {pg['key']: pg for pg in PAGES}
+SERVICE_LINKS = {
+ 'en': [(f"{_pg['airbnb']['en']['slug']}/", 'Airbnb management in Medellín', ['airbnb', 'short-term', 'short stay', 'guests', 'nightly']),
+        (f"{_pg['long-term']['en']['slug']}/", 'long-term property management in Medellín', ['long-term', 'long term', '30 nights', 'monthly', 'long stay', 'tenant']),
+        (f"{FEES['en']['slug']}/", 'property management fees in Medellín', ['fee', 'how much', 'commission', 'iva']),
+        (f"{_pg['colombia']['en']['slug']}/", 'property management in Colombia for foreign owners', ['abroad', 'foreign', 'from overseas', 'non-resident', 'visa']),
+        ('rentals/', 'furnished apartments for rent in Medellín', ['furnished', 'fiador', 'where to stay', 'renter', 'nomad', 'month-long'])],
+ 'es': [(f"{_pg['airbnb']['es']['slug']}/", 'administración de Airbnb en Medellín', ['airbnb', 'renta corta', 'vivienda turística', 'huésped', 'por noches']),
+        (f"{_pg['long-term']['es']['slug']}/", 'administración de arriendos y rentas largas en Medellín', ['rentas largas', 'renta larga', 'arriendo', '30 noches', 'por meses', 'arrendatario']),
+        (f"{FEES['es']['slug']}/", 'tarifas de administración de propiedades en Medellín', ['tarifa', 'cuánto cobra', 'comisión', 'iva']),
+        (f"{_pg['colombia']['es']['slug']}/", 'administración de propiedades en Colombia para propietarios extranjeros', ['exterior', 'extranjer', 'desde afuera', 'no residente', 'visa']),
+        ('arriendos/', 'apartamentos amoblados en arriendo en Medellín', ['amoblado', 'fiador', 'dónde quedarse', 'nómada'])],
+}
+
 for lang in LANGS:
     ui = BLOG_UI[lang]
     folder = 'blog' if lang == 'en' else 'es/blog'
@@ -331,6 +346,8 @@ for lang in LANGS:
     other = '../es/blog/' if lang == 'en' else '../../blog/'
     sw = lambda slug='': ((f'./{slug}', f'{other}{slug}') if lang == 'en' else (f'{other}{slug}', f'./{slug}'))
 
+    svc_links = '\n'.join(f'      <a href="../{href}">{label[0].upper() + label[1:]}</a>' for href, label, _ in SERVICE_LINKS[lang])
+    svc_links += '\n' + '\n'.join(f'      <a href="../{_pg[k][lang]["slug"]}/">{_pg[k][lang]["h1"]}</a>' for k in ('el-poblado', 'laureles', 'envigado', 'sabaneta') if COMPLETE[k])
     body = f'''<section class="page-top">
   <div class="wrap">
     <p class="crumbs"><a href="../">{ui["home"]}</a> / {ui["blog"]}</p>
@@ -342,6 +359,11 @@ for lang in LANGS:
   <div class="wrap">
     <div class="post-grid">
 {cards(lang, '', POSTS, reveal=False, tag='h2')}    </div>
+    <nav class="more-posts" aria-label="{ui["svc_h"]}">
+      <h2>{ui["svc_h"]}</h2>
+      <p>{ui["svc_p"]}</p>
+{svc_links}
+    </nav>
   </div>
 </section>'''
     schema = {'@context': 'https://schema.org', '@graph': [
@@ -357,12 +379,14 @@ for lang in LANGS:
     for p in POSTS:
         t = p[lang]; slug = p['slug'] + '.html'
         others = ''.join(f'<a href="{o["slug"]}.html">{o[lang]["title"]}</a>' for o in POSTS[:6] if o is not p)
-        # Posts about Airbnb link to the Airbnb management money page (unless the post already does).
-        airbnb_pg = next(o for o in PAGES if o['key'] == 'airbnb')[lang]
+        # Each post links to up to 3 service pages that match its topic (unless the post body already links them).
         related = ''
-        if COMPLETE['airbnb'] and 'airbnb' in t['body'].lower() and airbnb_pg['slug'] not in t['body']:
-            related = (f'\n      <p>{"Related" if lang == "en" else "Relacionado"}: '
-                       f'<a href="../{airbnb_pg["slug"]}/">{airbnb_pg["h1"]}</a></p>')
+        cands = [(sum(min(t['body'].lower().count(k), 4) + t['title'].lower().count(k) * 6 for k in kws), i, href, label)
+                 for i, (href, label, kws) in enumerate(SERVICE_LINKS[lang]) if f'/{href}' not in t['body'] and f'"{href}' not in t['body']]
+        picks = [x for x in sorted(cands, key=lambda x: (-x[0], x[1])) if x[0] > 0][:3] or cands[:2]
+        if picks:
+            related = (f'\n      <p>{"Related services" if lang == "en" else "Servicios relacionados"}: '
+                       + ' · '.join(f'<a href="../{href}">{label}</a>' for _, _, href, label in picks) + '</p>')
         body = f'''<section class="page-top">
   <div class="wrap">
     <p class="crumbs"><a href="../">{ui["home"]}</a> / <a href="./">{ui["blog"]}</a></p>
