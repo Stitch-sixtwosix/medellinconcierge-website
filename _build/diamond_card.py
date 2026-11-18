@@ -9,7 +9,7 @@
 # "about": from the venue's own website (Sinmente brands), Hotel Selvario36's page (Ensō) or Instagram bio (Soundbar).
 # Each venue's first link opens its Google Maps business listing by place id (cid), each checked 2026-11-12 to be the right
 # business (listing links to the venue's own site or booking page, or matches its address).
-# sinmente=True: a Sinmente brand (listed on sinmente.co). Guests also need the free Sinmente card for the deal, from
+# sinmente=True: a Sinmente brand (listed on sinmente.co; Ensō confirmed by James 2026-11-17). Guests also need the free Sinmente card for the deal, from
 #   SINMENTE_SIGNUP (Sinmente's "Medellín Concierge 15% off" sign-up on Comeback; each guest gets their own card).
 # "logo": file in assets/partners/ (same charcoal logos as the home page partners banner).
 SINMENTE_SIGNUP = 'https://signup.comeback.es/8324acf9'
@@ -30,7 +30,7 @@ VENUES = [
                     es='Vista 360° desde lo alto del hotel The Charlee: coctelería de autor, sushi nikkei y música en vivo.'),
          deal=dict(en='15% off', es='15% de descuento'),
          links=[('map', 'https://maps.google.com/?cid=15876383819380324519'), ('web', 'https://envyrooftop.com/'), ('book', 'https://envy.cluvi.co/')]),
-    dict(name='Ensō Rooftop', logo='enso-rooftop.webp', h=28,
+    dict(name='Ensō Rooftop', sinmente=True, logo='enso-rooftop.webp', h=28,
          about=dict(en='Rooftop of Hotel Selvario36 in El Poblado, with views over the Aburrá Valley.',
                     es='Rooftop del Hotel Selvario36 en El Poblado, con vista al valle de Aburrá.'),
          deal=dict(en='15% off', es='15% de descuento'),
@@ -85,7 +85,7 @@ DIAMOND = {
                lead='Show your Diamond Card at these bars and restaurants to get each one’s deal. Valid during your stay with Medellín Concierge.',
                deal='Your deal', soon='Deal coming soon',
                sin_kicker='Sinmente venues', sin_h='Get the free Sinmente card too',
-               sin_p='At the Sinmente venues (Mal de Ojo, Envy Rooftop, Mala Audio Bar, Oni Nikkei, Egeo, Burdo and General) the deal also needs the Sinmente card. Sign up once (about 2 minutes), add it to your Wallet, and show it with your Diamond Card.',
+               sin_p='At the Sinmente venues (Mal de Ojo, Envy Rooftop, Ensō Rooftop, Mala Audio Bar, Oni Nikkei, Egeo, Burdo and General) the deal also needs the Sinmente card. Sign up once (about 2 minutes), add it to your Wallet, and show it with your Diamond Card.',
                sin_btn='Get the Sinmente card', sin_line='Also show your Sinmente card', own_line='Just show your Diamond Card',
                link=dict(map='Map', web='Website', book='Book', instagram='Instagram'),
                note='Deals are offered by each venue and may change. Questions or help with a reservation?',
@@ -96,7 +96,7 @@ DIAMOND = {
                lead='Muestre su Tarjeta Diamante en estos bares y restaurantes para recibir el beneficio de cada uno. Válida durante su estadía con Medellín Concierge.',
                deal='Su beneficio', soon='Beneficio muy pronto',
                sin_kicker='Lugares Sinmente', sin_h='Obtenga también la tarjeta Sinmente gratis',
-               sin_p='En los lugares Sinmente (Mal de Ojo, Envy Rooftop, Mala Audio Bar, Oni Nikkei, Egeo, Burdo y General) el beneficio también requiere la tarjeta Sinmente. Regístrese una vez (unos 2 minutos), agréguela a su Wallet y muéstrela junto con su Tarjeta Diamante.',
+               sin_p='En los lugares Sinmente (Mal de Ojo, Envy Rooftop, Ensō Rooftop, Mala Audio Bar, Oni Nikkei, Egeo, Burdo y General) el beneficio también requiere la tarjeta Sinmente. Regístrese una vez (unos 2 minutos), agréguela a su Wallet y muéstrela junto con su Tarjeta Diamante.',
                sin_btn='Obtener la tarjeta Sinmente', sin_line='Muestre también su tarjeta Sinmente', own_line='Solo muestre su Tarjeta Diamante',
                link=dict(map='Mapa', web='Web', book='Reservar', instagram='Instagram'),
                note='Cada lugar ofrece su propio beneficio y puede cambiar. ¿Preguntas o ayuda con una reserva?',
