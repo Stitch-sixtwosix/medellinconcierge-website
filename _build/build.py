@@ -12,7 +12,7 @@ index.html (English home page) is the hand-edited source. This script then:
   5. writes sitemap.xml and robots.txt
 It stops with a clear message if an English string in es_home.py no longer exists in index.html.
 """
-import datetime, glob, hashlib, html, json, os, re, subprocess, sys, urllib.parse
+import datetime, glob, hashlib, html, json, os, re, subprocess, sys, unicodedata, urllib.parse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -1005,7 +1005,9 @@ for lang in LANGS:
     url = es_url if lang == 'es' else en_url
     assets = '../assets/' if lang == 'en' else '../../assets/'
     items = []
-    for v in VENUES:
+    # A-Z by name, ignoring accents and case (Ensō, Medellín)
+    az = lambda v: unicodedata.normalize('NFKD', v['name']).encode('ascii', 'ignore').decode().lower()
+    for v in sorted(VENUES, key=az):
         need = (f'<small class="dc-need dc-need-sin"><a href="{SINMENTE_SIGNUP}" target="_blank" rel="noopener">{ui["sin_line"]}</a></small>'
                 if v.get('sinmente') else f'<small class="dc-need">{ui["own_line"]}</small>')
         deal = (f'<p class="dc-deal"><span>{ui["deal"]}</span>{html.escape(v["deal"][lang])}{need}</p>' if v['deal']
