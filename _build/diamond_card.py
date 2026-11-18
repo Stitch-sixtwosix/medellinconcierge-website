@@ -75,8 +75,8 @@ VENUES = [
 
 
 DIAMOND = {
-    'en': dict(slug='diamond-card', title='Diamond Card: partner bars and restaurants | Medellín Concierge',
-               desc='Diamond Card benefits for Medellín Concierge guests: partner bars and restaurants in Medellín and the deal at each one.',
+    'en': dict(slug='diamond-card', title='Diamond Card: partner bars and restaurants in Medellín',
+               desc='Diamond Card benefits for Medellín Concierge guests: our partner bars and restaurants in Medellín and the deal you get at each one.',
                kicker='Guest benefit', h1='Diamond Card',
                lead='Show your Diamond Card at these bars and restaurants to get each one’s deal. Valid during your stay with Medellín Concierge.',
                deal='Your deal', soon='Deal coming soon',
@@ -86,7 +86,7 @@ DIAMOND = {
                link=dict(map='Map', web='Website', book='Book', instagram='Instagram'),
                note='Deals are offered by each venue and may change. Questions or help with a reservation?',
                wa='Message us on WhatsApp', wa_text='Hi! I have a question about my Diamond Card.'),
-    'es': dict(slug='es/tarjeta-diamante', title='Tarjeta Diamante: bares y restaurantes aliados | Medellín Concierge',
+    'es': dict(slug='es/tarjeta-diamante', title='Tarjeta Diamante: bares y restaurantes aliados en Medellín',
                desc='Beneficios de la Tarjeta Diamante para huéspedes de Medellín Concierge: bares y restaurantes aliados en Medellín y el beneficio en cada uno.',
                kicker='Beneficio para huéspedes', h1='Tarjeta Diamante',
                lead='Muestre su Tarjeta Diamante en estos bares y restaurantes para recibir el beneficio de cada uno. Válida durante su estadía con Medellín Concierge.',

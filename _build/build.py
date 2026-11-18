@@ -597,7 +597,7 @@ R = {
             owners_cta='See our management plans'),
  'es': dict(slug='es/arriendos', home='Inicio', crumb='Arriendos',
             title='Arriendos amoblados en Medellín | Por meses y por noches',
-            desc='Apartamentos amoblados en arriendo por meses o por noches en El Poblado, Laureles, Envigado y Sabaneta, con precios y disponibilidad en vivo. Reserve directo por WhatsApp.',
+            desc='Apartamentos amoblados en arriendo por meses o por noches en El Poblado, Laureles, Envigado y Sabaneta, con precios en vivo. Reserve directo por WhatsApp.',
             h1='Arriendos y apartamentos amoblados en Medellín',
             lead='<strong>Arriendos amoblados en Medellín, con reserva directa: en Medellín Concierge arrendamos apartamentos y casas amoblados por meses y por noches, administrados por nuestro equipo local en El Poblado.</strong> Las propiedades de abajo muestran fotos, precios y disponibilidad en vivo desde nuestro sistema de reservas. Toque «Me interesa» y le respondemos por WhatsApp, en español o en inglés.',
             prose='''
@@ -790,8 +790,8 @@ SITEMAP.append((SITE + 'rentals/', SITE + 'es/arriendos/', TODAY))
 # for all stays (and links here). Facts only from the feed, the rentals page and our blog guides.
 M = {
  'en': dict(slug='monthly-rentals-medellin', home='Home', rentals='Rentals', rentals_url='rentals/', crumb='Monthly rentals',
-            title='Monthly Rentals in Medellín | Furnished Apartments, 30+ Nights',
-            desc='Furnished apartments for rent by the month in Medellín, for remote work, relocation and long visits. Live prices from {MIN_MONTH} COP a month. Book direct on WhatsApp.',
+            title='Monthly Rentals Medellín | Furnished Apartments, 30+ Nights',
+            desc='Furnished apartments for rent by the month in Medellín for remote work, relocation and long stays. From {MIN_MONTH} COP a month. Book direct on WhatsApp.',
             h1='Monthly furnished apartment rentals in Medellín',
             lead='<strong>Need a furnished apartment in Medellín for a month or more? We rent furnished apartments and homes by the month, from 30 nights, and you book directly with the local team that manages them.</strong> As of {AS_OF}, {N_MONTH} monthly rentals are listed with a price, from {MIN_MONTH} COP a month. Pick one below and ask us on WhatsApp, in English or Spanish.',
             cta_wa='Ask about a monthly rental', wa_text='Hi! I’m looking for a furnished apartment in Medellín by the month.', cta_all='See all rentals with live availability',
@@ -822,7 +822,7 @@ M = {
                   'It depends on your nationality and visa. Our guide to <a href="../blog/colombia-digital-nomad-visa-medellin.html">how long you can stay in Medellín</a> covers visitor stays, extensions and the digital nomad visa.')]),
  'es': dict(slug='es/arriendos-por-meses-medellin', home='Inicio', rentals='Arriendos', rentals_url='es/arriendos/', crumb='Arriendos por meses',
             title='Arriendos por meses en Medellín | Apartamentos amoblados',
-            desc='Apartamentos amoblados en arriendo por meses en Medellín, para trabajo remoto, traslados y visitas largas. Precios en vivo desde {MIN_MONTH} COP al mes. Reserve directo por WhatsApp.',
+            desc='Apartamentos amoblados por meses en Medellín para trabajo remoto, traslados y estadías largas. Desde {MIN_MONTH} COP al mes. Reserve directo por WhatsApp.',
             h1='Apartamentos amoblados en arriendo por meses en Medellín',
             lead='<strong>¿Necesita un apartamento amoblado en Medellín por un mes o más? Arrendamos apartamentos y casas amoblados por meses, desde 30 noches, y usted reserva directo con el equipo local que los administra.</strong> Al {AS_OF} hay {N_MONTH} arriendos por meses con precio, desde {MIN_MONTH} COP al mes. Escoja uno abajo y pregúntenos por WhatsApp, en español o en inglés.',
             cta_wa='Preguntar por un arriendo por meses', wa_text='¡Hola! Busco un apartamento amoblado en Medellín por meses.', cta_all='Ver todos los arriendos con disponibilidad en vivo',
@@ -1133,7 +1133,7 @@ COMMERCIAL_ICONS = [
 COMMERCIAL = {
  'en': dict(slug='commercial', home='Home', crumb='Commercial',
             title='Hotel & Building Management in Medellín | Medellín Concierge',
-            desc='Commercial hospitality management in Medellín: we run hotels, full buildings and community hospitality operations for their owners, from distribution and pricing to guests, compliance and monthly reporting.',
+            desc='Commercial hospitality management in Medellín: we run hotels and full buildings for their owners, from distribution and pricing to guests and monthly reports.',
             h1='Commercial hospitality management',
             lead='Hotels, full buildings and community hospitality operations in Medellín, run for their owners by the same team and systems that manage our apartments.',
             who_h='Who we work with',
@@ -1156,8 +1156,8 @@ COMMERCIAL = {
             form_p='Share the type of property, the number of units and where it is. We\'ll get back to you to arrange an operational review.',
             form_title='Request a free consultation', form_note='Form not loading?', form_open='Open it in a new tab'),
  'es': dict(slug='es/comercial', home='Inicio', crumb='Comercial',
-            title='Administración de hoteles y edificios en Medellín | Medellín Concierge',
-            desc='Administración hotelera comercial en Medellín: operamos hoteles, edificios completos y proyectos de hospitalidad comunitaria para sus dueños, desde la distribución y los precios hasta los huéspedes, el cumplimiento legal y los informes mensuales.',
+            title='Administración de hoteles y edificios en Medellín',
+            desc='Administración hotelera en Medellín: operamos hoteles y edificios completos para sus dueños, desde la distribución y los precios hasta los informes mensuales.',
             h1='Administración hotelera comercial',
             lead='Hoteles, edificios completos y proyectos de hospitalidad comunitaria en Medellín, operados para sus dueños por el mismo equipo y los mismos sistemas que administran nuestros apartamentos.',
             who_h='Con quién trabajamos',
