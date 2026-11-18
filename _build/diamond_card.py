@@ -4,6 +4,7 @@
 # "deal": ONLY what James has confirmed with the venue. None shows "Deal coming soon".
 # 2026-11-12: James confirmed a discount at every venue except Medellín Soundbar (welcome cocktail);
 # 2026-11-14: James corrected it to 15% off (it was listed as 10%).
+# 2026-11-18: James removed Glu Glu "for now" (entry kept at the end of this file, commented out, to restore later).
 # 2026-11-17: James added Glu Glu, TEST Kitchen Lab and Krudo (all at Wake, Cl. 10B #35-27) at 20% off; about lines from
 #   their Instagram names, medellin.co's Wake guide and Azure Road; Maps listings link to their Instagram.
 # "about": from the venue's own website (Sinmente brands), Hotel Selvario36's page (Ensō) or Instagram bio (Soundbar).
@@ -60,11 +61,6 @@ VENUES = [
                     es='Brunch todo el día y café de especialidad en El Poblado, con espacio para trabajar o compartir.'),
          deal=dict(en='15% off', es='15% de descuento'),
          links=[('map', 'https://maps.google.com/?cid=4226588920039407470'), ('web', 'https://generalcafe.co/'), ('book', 'https://cafe-general.cluvi.co/bookings/18710')]),
-    dict(name='Glu Glu', logo='glu-glu.webp', h=46,
-         about=dict(en='Wine bar and wine shop in the Wake complex, El Poblado.',
-                    es='Bar de vinos y tienda de vinos en el complejo Wake, El Poblado.'),
-         deal=dict(en='20% off', es='20% de descuento'),
-         links=[('map', 'https://maps.google.com/?cid=16207558861699760620'), ('instagram', 'https://www.instagram.com/gluglubardevinos/')]),
     dict(name='TEST Kitchen Lab', logo='test-kitchen-lab.webp', h=26,
          about=dict(en='Chef Adolfo Cavalie\'s chef\'s-counter kitchen at Wake, cooking only with Colombian ingredients.',
                     es='La cocina de barra del chef Adolfo Cavalie en Wake, solo con ingredientes colombianos.'),
@@ -102,3 +98,11 @@ DIAMOND = {
                note='Cada lugar ofrece su propio beneficio y puede cambiar. ¿Preguntas o ayuda con una reserva?',
                wa='Escríbanos por WhatsApp', wa_text='¡Hola! Tengo una pregunta sobre mi Tarjeta Diamante.'),
 }
+
+
+# Removed 2026-11-18 at James's request ("remove glu glu for now"). To restore, move back into VENUES:
+#     dict(name='Glu Glu', logo='glu-glu.webp', h=46,
+#          about=dict(en='Wine bar and wine shop in the Wake complex, El Poblado.',
+#                     es='Bar de vinos y tienda de vinos en el complejo Wake, El Poblado.'),
+#          deal=dict(en='20% off', es='20% de descuento'),
+#          links=[('map', 'https://maps.google.com/?cid=16207558861699760620'), ('instagram', 'https://www.instagram.com/gluglubardevinos/')]),
