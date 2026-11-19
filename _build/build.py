@@ -324,6 +324,59 @@ def breadcrumbs(items):
         {'@type': 'ListItem', 'position': i + 1, 'name': n, 'item': u} for i, (n, u) in enumerate(items)]}
 
 
+# Email inquiries for renters (James, Nov 19 2026: "we want more people emailing us for furnished rentals").
+# Every rental page keeps its WhatsApp buttons and adds a mailto: path with a prefilled subject and body; the address
+# is also shown as plain, selectable text because mailto: links don't open a mail app for everyone.
+MAIL = {
+ 'en': dict(h='Prefer email? Send us your dates, budget and number of guests',
+            p='Write to us and our team in El Poblado answers by email, in English or Spanish, with the apartments that fit your stay.',
+            btn='Email us about a furnished rental', addr='Or copy our address:', short='Prefer email?',
+            listing='Email us about this apartment', wa='Hi! I’m looking for a furnished apartment in Medellín.',
+            body='Hi Medellín Concierge,\n\nI am looking for a furnished apartment in Medellín.\n\nDates (arrival – departure): \nNumber of guests: \nBudget (COP per month or per night): \nPreferred area (El Poblado, Laureles, Envigado, other): \n\nThank you,\n',
+            body_item='Hi Medellín Concierge,\n\nI am interested in {t} ({ref}).\n\nDates (arrival – departure): \nNumber of guests: \n\nThank you,\n',
+            subj={'rentals': 'Furnished rental inquiry', 'monthly': 'Furnished rental inquiry – monthly', 'blog': 'Furnished rental inquiry',
+                  'item': 'Furnished rental inquiry – {ref} {t}'}),
+ 'es': dict(h='¿Prefiere el correo? Envíenos sus fechas, su presupuesto y cuántas personas son',
+            p='Escríbanos y nuestro equipo en El Poblado le responde por correo, en español o en inglés, con los apartamentos que se ajustan a su estadía.',
+            btn='Escríbanos por correo', addr='O copie nuestro correo:', short='¿Prefiere el correo?',
+            listing='Escríbanos por este apartamento', wa='¡Hola! Estoy buscando un apartamento amoblado en Medellín.',
+            body='Hola, Medellín Concierge:\n\nEstoy buscando un apartamento amoblado en Medellín.\n\nFechas (llegada – salida): \nNúmero de personas: \nPresupuesto (COP por mes o por noche): \nZona preferida (El Poblado, Laureles, Envigado, otra): \n\nGracias,\n',
+            body_item='Hola, Medellín Concierge:\n\nMe interesa {t} ({ref}).\n\nFechas (llegada – salida): \nNúmero de personas: \n\nGracias,\n',
+            subj={'rentals': 'Consulta arriendo amoblado', 'monthly': 'Consulta arriendo amoblado – por meses', 'blog': 'Consulta arriendo amoblado',
+                  'item': 'Consulta arriendo amoblado – {ref} {t}'}),
+}
+
+def mailto(subject, body):
+    q = lambda x: urllib.parse.quote(x, safe='')
+    return html.escape(f'mailto:{BUSINESS["email"]}?subject={q(subject)}&body={q(body)}')
+
+def mail_href(lang, kind): return mailto(MAIL[lang]['subj'][kind], MAIL[lang]['body'])
+
+def mail_item_href(lang, ref, t):
+    m = MAIL[lang]
+    return mailto(m['subj']['item'].format(ref=ref, t=t), m['body_item'].format(ref=ref, t=t))
+
+def mail_note(lang, lead=''):
+    return f'<p class="mail-note">{lead}{MAIL[lang]["addr"]} <span class="mail-addr">{BUSINESS["email"]}</span></p>'
+
+def mail_block(lang, kind):
+    """Email box for the body of rental pages and renter blog posts (WhatsApp kept beside it)."""
+    m = MAIL[lang]
+    wa = 'https://wa.me/573042773864?text=' + urllib.parse.quote(m['wa'])
+    return (f'<aside class="article-cta mail-cta" id="email">\n      <h2>{m["h"]}</h2>\n      <p>{m["p"]}</p>\n'
+            f'      <div class="ref-ctas"><a class="btn btn-primary" href="{mail_href(lang, kind)}">{m["btn"]}</a>'
+            f'<a class="btn btn-outline" href="{wa}" target="_blank" rel="noopener">WhatsApp</a></div>\n'
+            f'      {mail_note(lang)}\n    </aside>')
+
+def mail_contact_point():
+    return {'@type': 'ContactPoint', 'contactType': 'reservations', 'email': BUSINESS['email'],
+            'telephone': BUSINESS['telephone'], 'availableLanguage': ['en', 'es'], 'areaServed': 'CO'}
+
+def mail_publisher():
+    """Business node for rental pages' schema, with the reservations ContactPoint (email + WhatsApp)."""
+    return dict(provider_ref(), email=BUSINESS['email'], contactPoint=mail_contact_point())
+
+
 # ======================= 3. Blog =======================
 # Service pages a blog post can link to: (href from /blog/ or /es/blog/ minus "../", anchor text, topic keywords).
 _pg = {pg['key']: pg for pg in PAGES}
@@ -339,6 +392,9 @@ SERVICE_LINKS = {
         (f"{_pg['colombia']['es']['slug']}/", 'administración de propiedades en Colombia para propietarios extranjeros', ['exterior', 'extranjer', 'desde afuera', 'no residente', 'visa']),
         ('arriendos/', 'apartamentos amoblados en arriendo en Medellín', ['amoblado', 'fiador', 'dónde quedarse', 'nómada'])],
 }
+
+# Posts written for renters get the furnished-rental email box (mail_block) above the owner CTA.
+RENTER_POSTS = {'rent-furnished-apartment-medellin-without-fiador', 'where-to-stay-in-medellin-for-a-month', 'medellin-for-remote-workers'}
 
 for lang in LANGS:
     ui = BLOG_UI[lang]
@@ -389,6 +445,7 @@ for lang in LANGS:
         if picks:
             related = (f'\n      <p>{"Related services" if lang == "en" else "Servicios relacionados"}: '
                        + ' · '.join(f'<a href="../{href}">{label}</a>' for _, _, href, label in picks) + '</p>')
+        renter_mail = ('\n    ' + mail_block(lang, 'blog')) if p['slug'] in RENTER_POSTS else ''
         body = f'''<section class="page-top">
   <div class="wrap">
     <p class="crumbs"><a href="../">{ui["home"]}</a> / <a href="./">{ui["blog"]}</a></p>
@@ -400,7 +457,7 @@ for lang in LANGS:
   <div class="wrap">
     <div class="prose">
 {t["body"]}
-    </div>
+    </div>{renter_mail}
     <aside class="article-cta">
       <h2>{ui["cta_h"]}</h2>
       <p>{ui["cta_p"]}</p>
@@ -566,7 +623,7 @@ R = {
             title='Furnished Rentals in Medellín | Monthly & Short Stays',
             desc='Furnished apartments and monthly rentals in El Poblado, Laureles, Envigado and Sabaneta, with live prices and availability. Book direct on WhatsApp.',
             h1='Furnished rentals and apartments in Medellín',
-            lead='<strong>Furnished rentals in Medellín, booked direct: Medellín Concierge rents furnished apartments and homes by the month and by the night, managed by our local team in El Poblado.</strong> The listings below show live photos, prices and availability from our booking system. Tap “I’m interested” and we’ll answer you on WhatsApp, in English or Spanish.',
+            lead='<strong>Furnished rentals in Medellín, booked direct: Medellín Concierge rents furnished apartments and homes by the month and by the night, managed by our local team in El Poblado.</strong> The listings below show live photos, prices and availability from our booking system. Tap “I’m interested” and we’ll answer you on WhatsApp, or email us your dates, in English or Spanish.',
             prose='''
       <h2>How booking direct works</h2>
       <ol><li><strong>Browse the listings.</strong> Photos, prices and availability come live from HostFlow, the platform every property we manage runs on, so what you see is current.</li><li><strong>Tap “I’m interested”.</strong> We answer you on WhatsApp and help with your questions about the apartment, the building and the area.</li><li><strong>Confirm your stay.</strong> We agree your dates and the details of the stay with you. Our local team, based in El Poblado, coordinates your check-in, and guests can reach us 24/7 during the stay.</li></ol>
@@ -601,7 +658,7 @@ R = {
             title='Arriendos amoblados en Medellín | Por meses y por noches',
             desc='Apartamentos amoblados en arriendo por meses o por noches en El Poblado, Laureles, Envigado y Sabaneta, con precios en vivo. Reserve directo por WhatsApp.',
             h1='Arriendos y apartamentos amoblados en Medellín',
-            lead='<strong>Arriendos amoblados en Medellín, con reserva directa: en Medellín Concierge arrendamos apartamentos y casas amoblados por meses y por noches, administrados por nuestro equipo local en El Poblado.</strong> Las propiedades de abajo muestran fotos, precios y disponibilidad en vivo desde nuestro sistema de reservas. Toque «Me interesa» y le respondemos por WhatsApp, en español o en inglés.',
+            lead='<strong>Arriendos amoblados en Medellín, con reserva directa: en Medellín Concierge arrendamos apartamentos y casas amoblados por meses y por noches, administrados por nuestro equipo local en El Poblado.</strong> Las propiedades de abajo muestran fotos, precios y disponibilidad en vivo desde nuestro sistema de reservas. Toque «Me interesa» y le respondemos por WhatsApp, o escríbanos sus fechas por correo, en español o en inglés.',
             prose='''
       <h2>Cómo funciona la reserva directa</h2>
       <ol><li><strong>Mire las propiedades.</strong> Las fotos, los precios y la disponibilidad salen en vivo de HostFlow, la plataforma con la que operamos todas las propiedades que administramos, así que lo que ve está al día.</li><li><strong>Toque «Me interesa».</strong> Le respondemos por WhatsApp y le resolvemos las dudas sobre el apartamento, el edificio y el sector.</li><li><strong>Confirme su estadía.</strong> Acordamos con usted las fechas y los detalles de la estadía. Nuestro equipo local, con oficina en El Poblado, coordina su llegada, y durante la estadía nos encuentra 24/7.</li></ol>
@@ -641,13 +698,13 @@ R = {
 LISTINGS = load_listings()
 RL_UI = {
  'en': dict(h='Furnished rentals available now', month='Monthly rentals (30 nights or more)', short='Short stays (by the night)',
-            intro='As of {AS_OF}: {N_AVAIL} furnished apartments and homes with a live price, out of {TOTAL} furnished properties we manage; the others are available on request. Prices are in Colombian pesos. For your dates, use the listings above or ask us about any of these on WhatsApp.',
+            intro='As of {AS_OF}: {N_AVAIL} furnished apartments and homes with a live price, out of {TOTAL} furnished properties we manage; the others are available on request. Prices are in Colombian pesos. For your dates, use the listings above or ask us about any of these on WhatsApp or by email.',
             per=dict(month='/ month', night='/ night'), frm='from ', on_req='Price on request', now='Available now', avail='Available from {d}',
             ask='Ask about {ref}', wa='Hi! I’m interested in property {ref} ({t}).', clean='+ {c} COP cleaning fee',
             beds=('bedroom', 'bedrooms'), baths=('bath', 'baths'), guests='up to {n} guests', and_=' and ',
             amen=dict(ac='Air conditioning', washer='Washer', dryer='Dryer', elevator='Elevator', parking='Parking', gym='Gym', bbq='BBQ area', playground='Playground')),
  'es': dict(h='Arriendos amoblados disponibles hoy', month='Por meses (30 noches o más)', short='Por noches (estancias cortas)',
-            intro='Al {AS_OF}: {N_AVAIL} apartamentos y casas amoblados con precio en vivo, de las {TOTAL} propiedades amobladas que administramos; las demás, bajo consulta. Precios en pesos colombianos. Para sus fechas, use las propiedades de arriba o pregúntenos por cualquiera de estas por WhatsApp.',
+            intro='Al {AS_OF}: {N_AVAIL} apartamentos y casas amoblados con precio en vivo, de las {TOTAL} propiedades amobladas que administramos; las demás, bajo consulta. Precios en pesos colombianos. Para sus fechas, use las propiedades de arriba o pregúntenos por cualquiera de estas por WhatsApp o por correo.',
             per=dict(month='/ mes', night='/ noche'), frm='desde ', on_req='Precio bajo consulta', now='Disponible ya', avail='Disponible desde el {d}',
             ask='Preguntar por {ref}', wa='¡Hola! Me interesa la propiedad {ref} ({t}).', clean='+ {c} COP de aseo',
             beds=('habitación', 'habitaciones'), baths=('baño', 'baños'), guests='hasta {n} huéspedes', and_=' y ',
@@ -708,7 +765,8 @@ def rl_item(p, lang):
             f'<p class="rl-meta">{" · ".join(m for m in meta if m)}</p>'
             + (f'<p class="rl-amen">{" · ".join(amen)}</p>' if amen else '') +
             f'</div><div class="rl-side"><p class="rl-price">{price}</p>{clean}<p class="rl-avail">{avail}</p>'
-            f'<a class="rl-ask" href="{wa}" target="_blank" rel="noopener">{u["ask"].format(ref=ref)}</a></div></li>')
+            f'<a class="rl-ask" href="{wa}" target="_blank" rel="noopener">{u["ask"].format(ref=ref)}</a>'
+            f'<a class="rl-mail" href="{mail_item_href(lang, ref, t)}">{MAIL[lang]["listing"]}</a></div></li>')
 
 def rl_sort(p):   # available now first, El Poblado first, then by area and price
     return ((p['available_from'] or '') > TODAY, rl_area(p) != 'El Poblado', rl_area(p), rl_price(p) or 10**12)
@@ -750,6 +808,8 @@ for lang in LANGS:
     <p class="crumbs"><a href="../">{ui["home"]}</a> / {ui["crumb"]}</p>
     <h1>{ui["h1"]}</h1>
     <div class="lead">{ui["lead"]}</div>
+    <div class="ref-ctas"><a class="btn btn-primary" href="https://wa.me/573042773864?text={urllib.parse.quote(MAIL[lang]["wa"])}" target="_blank" rel="noopener">WhatsApp</a><a class="btn btn-ghost" href="{mail_href(lang, 'rentals')}">{MAIL[lang]["btn"]}</a></div>
+    {mail_note(lang, MAIL[lang]["short"] + " ")}
   </div>
 </section>
 <section class="rentals">
@@ -761,6 +821,7 @@ for lang in LANGS:
     <div class="prose">{ui["prose"]}
     </div>
     {rl_section(lang, st)}
+    {mail_block(lang, 'rentals')}
     <div class="prose">
       <h2>{L[lang]["faq_h"]}</h2>
       <div class="faq">
@@ -776,7 +837,7 @@ for lang in LANGS:
 <script>window.addEventListener("message",function(e){{if(!e.data||e.data.type!=="hostflow-listings")return;var f=document.getElementById("mc-listings");if(!f||e.source!==f.contentWindow)return;if(e.data.height)f.style.height=e.data.height+"px";if(e.data.scrollTop)f.scrollIntoView({{behavior:"smooth",block:"start"}});}});</script>'''
     schema = {'@context': 'https://schema.org', '@graph': [
         {'@type': 'CollectionPage', 'name': ui['h1'], 'description': ui['desc'], 'url': url, 'inLanguage': lang,
-         'publisher': {'@id': business_id()}},
+         'publisher': mail_publisher()},
         {'@type': 'FAQPage', 'url': url, 'inLanguage': lang, 'mainEntity': [
             {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}} for q, a in ui['faq']]},
         breadcrumbs([(ui['home'], home_url), (ui['crumb'], url)])] + ([rl_schema(lang, url)] if LISTINGS['properties'] else [])}
@@ -795,7 +856,7 @@ M = {
             title='Monthly Rentals Medellín | Furnished Apartments, 30+ Nights',
             desc='Furnished apartments for rent by the month in Medellín for remote work, relocation and long stays. From {MIN_MONTH} COP a month. Book direct on WhatsApp.',
             h1='Monthly furnished apartment rentals in Medellín',
-            lead='<strong>Need a furnished apartment in Medellín for a month or more? We rent furnished apartments and homes by the month, from 30 nights, and you book directly with the local team that manages them.</strong> As of {AS_OF}, {N_MONTH} monthly rentals are listed with a price, from {MIN_MONTH} COP a month. Pick one below and ask us on WhatsApp, in English or Spanish.',
+            lead='<strong>Need a furnished apartment in Medellín for a month or more? We rent furnished apartments and homes by the month, from 30 nights, and you book directly with the local team that manages them.</strong> As of {AS_OF}, {N_MONTH} monthly rentals are listed with a price, from {MIN_MONTH} COP a month. Pick one below and ask us on WhatsApp or by email, in English or Spanish.',
             cta_wa='Ask about a monthly rental', wa_text='Hi! I’m looking for a furnished apartment in Medellín by the month.', cta_all='See all rentals with live availability',
             list_h='Monthly rentals available now',
             list_intro='As of {AS_OF}, prices in Colombian pesos per month, plus a one-time cleaning fee. Tap “Ask about” and tell us your dates; for live availability, see <a href="../rentals/">all our furnished rentals</a>.',
@@ -826,7 +887,7 @@ M = {
             title='Arriendos por meses en Medellín | Apartamentos amoblados',
             desc='Apartamentos amoblados por meses en Medellín para trabajo remoto, traslados y estadías largas. Desde {MIN_MONTH} COP al mes. Reserve directo por WhatsApp.',
             h1='Apartamentos amoblados en arriendo por meses en Medellín',
-            lead='<strong>¿Necesita un apartamento amoblado en Medellín por un mes o más? Arrendamos apartamentos y casas amoblados por meses, desde 30 noches, y usted reserva directo con el equipo local que los administra.</strong> Al {AS_OF} hay {N_MONTH} arriendos por meses con precio, desde {MIN_MONTH} COP al mes. Escoja uno abajo y pregúntenos por WhatsApp, en español o en inglés.',
+            lead='<strong>¿Necesita un apartamento amoblado en Medellín por un mes o más? Arrendamos apartamentos y casas amoblados por meses, desde 30 noches, y usted reserva directo con el equipo local que los administra.</strong> Al {AS_OF} hay {N_MONTH} arriendos por meses con precio, desde {MIN_MONTH} COP al mes. Escoja uno abajo y pregúntenos por WhatsApp o por correo, en español o en inglés.',
             cta_wa='Preguntar por un arriendo por meses', wa_text='¡Hola! Busco un apartamento amoblado en Medellín por meses.', cta_all='Ver todos los arriendos con disponibilidad en vivo',
             list_h='Arriendos por meses disponibles hoy',
             list_intro='Al {AS_OF}, precios en pesos colombianos por mes, más una tarifa de aseo única. Toque «Preguntar por» y díganos sus fechas; para la disponibilidad en vivo, vea <a href="../arriendos/">todos nuestros arriendos amoblados</a>.',
@@ -869,12 +930,14 @@ for lang in LANGS:
     <p class="crumbs"><a href="../">{ui["home"]}</a> / <a href="{pre}{ui["rentals_url"]}">{ui["rentals"]}</a> / {ui["crumb"]}</p>
     <h1>{ui["h1"]}</h1>
     <div class="lead">{fill(ui["lead"], st)}</div>
-    <div class="ref-ctas"><a class="btn btn-primary" href="{wa}" target="_blank" rel="noopener">{ui["cta_wa"]}</a><a class="btn btn-ghost" href="{pre}{ui["rentals_url"]}">{ui["cta_all"]}</a></div>
+    <div class="ref-ctas"><a class="btn btn-primary" href="{wa}" target="_blank" rel="noopener">{ui["cta_wa"]}</a><a class="btn btn-ghost" href="{mail_href(lang, 'monthly')}">{MAIL[lang]["btn"]}</a><a class="btn btn-ghost" href="{pre}{ui["rentals_url"]}">{ui["cta_all"]}</a></div>
+    {mail_note(lang, MAIL[lang]["short"] + " ")}
   </div>
 </section>
 <section class="rentals rentals-month">
   <div class="wrap">
     {rl_section(lang, st, only='long_term', h=ui['list_h'], intro=ui['list_intro'])}
+    {mail_block(lang, 'monthly')}
     <div class="prose">{fill(ui["prose"], st)}
       <h2>{L[lang]["faq_h"]}</h2>
       <div class="faq">
@@ -889,7 +952,7 @@ for lang in LANGS:
 </section>'''
     schema = {'@context': 'https://schema.org', '@graph': [
         {'@type': 'CollectionPage', 'name': ui['h1'], 'description': fill(ui['desc'], st), 'url': url, 'inLanguage': lang,
-         'publisher': {'@id': business_id()}},
+         'publisher': mail_publisher()},
         {'@type': 'FAQPage', 'url': url, 'inLanguage': lang, 'mainEntity': [
             {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}} for q, a in faq]},
         breadcrumbs([(ui['home'], home_url), (ui['rentals'], SITE + ui['rentals_url']), (ui['crumb'], url)])]

@@ -632,3 +632,10 @@ a.area-card:not([href]) .read{display:none}
 .dc-need{display:block;margin-top:6px;font-size:.8rem;font-weight:500;color:var(--muted)}
 .dc-need-sin a{color:var(--red-dark);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 @media (max-width:760px){.dc-sin{flex-direction:column;align-items:flex-start}.dc-sin .btn{width:100%}}
+/* Email inquiries on rental pages (mail_block / mail_note in build.py) */
+.mail-note{margin:14px 0 0;font-size:.92rem;color:var(--muted)}
+.page-top .mail-note{color:var(--on-dark)}
+.mail-addr{font-weight:600;color:inherit;user-select:all;-webkit-user-select:all;word-break:break-all}
+.rentals .mail-cta,.article .mail-cta{margin-top:48px}
+.rl-mail{display:block;margin-top:2px;color:var(--muted);font-size:.85rem;text-decoration:underline;text-underline-offset:2px}
+.rl-mail:hover{color:var(--ink)}
