@@ -124,8 +124,8 @@ HOME_ES = [
 
  # ---- calculator ----
  ('What could your property earn on Airbnb?', '¿Cuánto podría ganar su propiedad en Airbnb?'),
- ('Adjust the sliders for a quick ballpark. For a detailed, property-specific estimate, request a free consultation.',
-  'Mueva los controles para obtener una cifra aproximada. Para una estimación detallada de su propiedad, solicite una consulta gratuita.'),
+ ('Adjust the sliders for a quick ballpark. For a detailed, property-specific estimate, request a free consultation. <a href="airbnb-revenue-calculator/">How the calculator works and what it leaves out</a>.',
+  'Mueva los controles para obtener una cifra aproximada. Para una estimación detallada de su propiedad, solicite una consulta gratuita. <a href="calculadora-ingresos-airbnb-medellin/">Cómo funciona la calculadora y qué no incluye</a>.'),
  ('id="hoodLabel">Neighborhood</div>', 'id="hoodLabel">Barrio</div>'),
  ('aria-pressed="false">Other</button>', 'aria-pressed="false">Otro</button>'),
  ('Bedrooms <output', 'Habitaciones <output'),

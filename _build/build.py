@@ -23,6 +23,7 @@ from landing import PAGES, AREAS
 from team import TEAM
 from faq import FAQ
 from fees import FEES
+from calculator import CALC
 from diamond_card import VENUES, DIAMOND, SINMENTE_SIGNUP
 from rentals_feed import load_listings
 
@@ -223,6 +224,7 @@ if missing:
 for a, b in HOME_ES:
     es = es.replace(a, b)
 es = es.replace(f'href="{FEES["en"]["slug"]}/"', f'href="{FEES["es"]["slug"]}/"')
+es = es.replace('href="airbnb-revenue-calculator/"', f'href="{CALC["es"]["slug"]}/"')
 es = es.replace('href="monthly-rentals-medellin/"', 'href="arriendos-por-meses-medellin/"').replace('href="rentals/"', 'href="arriendos/"').replace('href="team/"', 'href="equipo/"').replace('href="faq/"', 'href="preguntas-frecuentes/"').replace('href="commercial/"', 'href="comercial/"')
 for pg in PAGES:   # landing page links point to the Spanish versions
     es = es.replace(f'href="{pg["en"]["slug"]}/"', f'href="{pg["es"]["slug"]}/"')
@@ -1068,6 +1070,74 @@ for lang in LANGS:
 SITEMAP.append((SITE + FEES['en']['slug'] + '/', SITE + 'es/' + FEES['es']['slug'] + '/', TODAY))
 
 
+# ======================= 4i. Revenue calculator (/airbnb-revenue-calculator/, /es/calculadora-ingresos-airbnb-medellin/) =======================
+# The old Wix URL as a real page: the home page's calculator widget (section + inline script, copied from the built
+# home pages so they never drift apart) wrapped in answer-first copy from calculator.py.
+_js = en[en.index('  // Revenue calculator (illustrative)'):]
+_js = _js[:_js.index('\n  suggestRate(); calc();\n') + len('\n  suggestRate(); calc();')]   # the initial call, not the one inside the click handler
+for lang in LANGS:
+    ui = CALC[lang]
+    home_html = es if lang == 'es' else en
+    widget = home_html[home_html.index('<section id="calculator" class="dark">'):]
+    widget = widget[:widget.index('</section>') + len('</section>')]
+    widget = re.sub(r'\s*reveal(?=")', '', widget).replace('href="#contact"', 'href="../#contact"')
+    widget = re.sub(r'<p class="lead">.*?</p>\n?', '', widget, count=1, flags=re.S)
+    en_url, es_url = SITE + CALC['en']['slug'] + '/', SITE + 'es/' + CALC['es']['slug'] + '/'
+    url = es_url if lang == 'es' else en_url
+    home_url = SITE + ('es/' if lang == 'es' else '')
+    secs = ''.join(f'\n      <h2>{h}</h2>\n      {b}' for h, b in ui['sections'])
+    items = ''.join(f'        <details><summary>{html.escape(q, quote=False)}{PLUS}</summary><p>{a}</p></details>\n' for q, a in ui['faq'])
+    more = ''.join(f'<a href="{h}">{t}</a>' for h, t in ui['more'])
+    body = f'''<section class="page-top">
+  <div class="wrap">
+    <p class="crumbs"><a href="../">{ui["home"]}</a> / {ui["crumb"]}</p>
+    <h1>{ui["h1"]}</h1>
+    <div class="lead">{ui["lead"]}</div>
+    {rating_line(lang)}
+  </div>
+</section>
+{widget}
+<article class="article landing">
+  <div class="wrap">
+    <div class="prose">
+      {ui["after_calc"]}{secs}
+      <h2>{ui["faq_h"]}</h2>
+      <div class="faq">
+{items}      </div>
+    </div>
+    <aside class="article-cta">
+      <h2>{ui["cta_h"]}</h2>
+      <p>{ui["cta_p"]}</p>
+      <div class="ref-ctas"><a class="btn btn-primary" href="../#contact">{L[lang]["cta_1"]}</a><a class="btn btn-outline" href="https://wa.me/573042773864">WhatsApp</a></div>
+    </aside>
+    <nav class="more-posts" aria-label="{ui["more_h"]}">
+      <h2>{ui["more_h"]}</h2>
+      {more}
+    </nav>
+  </div>
+</article>
+<script>
+{_js}
+</script>'''
+    schema = {'@context': 'https://schema.org', '@graph': [
+        {'@type': 'WebPage', 'name': ui['h1'], 'url': url, 'inLanguage': lang, 'description': ui['desc'],
+         'about': {'@id': business_id()}},
+        {'@type': 'WebApplication', 'name': ui['h1'], 'url': url, 'inLanguage': lang, 'description': ui['desc'],
+         'applicationCategory': 'FinanceApplication', 'operatingSystem': 'Any', 'isAccessibleForFree': True,
+         'provider': provider_ref()},
+        {'@type': 'FAQPage', 'url': url, 'inLanguage': lang, 'mainEntity': [
+            {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}} for q, a in ui['faq']]},
+        breadcrumbs([(ui['home'], home_url), (ui['crumb'], url)])]}
+    if lang == 'en':
+        en_href, es_href = './', f'../es/{CALC["es"]["slug"]}/'
+    else:
+        en_href, es_href = f'../../{CALC["en"]["slug"]}/', './'
+    folder = CALC['en']['slug'] if lang == 'en' else 'es/' + CALC['es']['slug']
+    write(f'{folder}/index.html', page(lang, title=ui['title'], desc=ui['desc'], en_url=en_url, es_url=es_url,
+          en_href=en_href, es_href=es_href, body=body, schema=schema))
+SITEMAP.append((SITE + CALC['en']['slug'] + '/', SITE + 'es/' + CALC['es']['slug'] + '/', TODAY))
+
+
 # ======================= 4g. Tours (/tours/, /es/tours/) =======================
 # Viator partner widget (tours and activities). Viator renders it in its own iframe, so its cards and
 # buttons follow the settings in the Viator partner dashboard; everything around it uses our branding.
@@ -1316,8 +1386,7 @@ REDIRECTS = {
     'property-management':            '',            # → home until /long-term-property-management-medellin/ has its copy (it is noindex)
     'contact':                        '#contact',
     'es/contact':                     'es/#contact',
-    'airbnb-revenue-calculator':      '#calculator',
-    'es/airbnb-revenue-calculator':   'es/#calculator',
+    'es/airbnb-revenue-calculator':   'es/calculadora-ingresos-airbnb-medellin/',   # EN URL is now a real page (4i)
     'es/rentals':                     'es/arriendos/',   # old URL flagged by Bing (Nov 12, 2026)
     'tours-transportation':           'tours/',
     'properties/finca-con-bosque-nativo-privado': 'rentals/',   # any other /properties/* is sent to /rentals/ by 404.html
