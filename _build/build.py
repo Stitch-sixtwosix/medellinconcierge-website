@@ -359,12 +359,12 @@ def mail_item_href(lang, ref, t):
 def mail_note(lang, lead=''):
     return f'<p class="mail-note">{lead}{MAIL[lang]["addr"]} <span class="mail-addr">{BUSINESS["email"]}</span></p>'
 
-def mail_block(lang, kind):
+def mail_block(lang, kind, href=None, wa_text=None):
     """Email box for the body of rental pages and renter blog posts (WhatsApp kept beside it)."""
     m = MAIL[lang]
-    wa = 'https://wa.me/573042773864?text=' + urllib.parse.quote(m['wa'])
+    wa = 'https://wa.me/573042773864?text=' + urllib.parse.quote(wa_text or m['wa'])
     return (f'<aside class="article-cta mail-cta" id="email">\n      <h2>{m["h"]}</h2>\n      <p>{m["p"]}</p>\n'
-            f'      <div class="ref-ctas"><a class="btn btn-primary" href="{mail_href(lang, kind)}">{m["btn"]}</a>'
+            f'      <div class="ref-ctas"><a class="btn btn-primary" href="{href or mail_href(lang, kind)}">{m["btn"]}</a>'
             f'<a class="btn btn-outline" href="{wa}" target="_blank" rel="noopener">WhatsApp</a></div>\n'
             f'      {mail_note(lang)}\n    </aside>')
 
@@ -632,7 +632,7 @@ R = {
       <h2>Short-term rentals in Medellín: furnished apartments by the night</h2>
       <p>For a few nights or a couple of weeks, {N_SHORT} furnished apartments and homes are offered by the night, from {MIN_NIGHT} COP a night. Short stays are tourist rentals: in Colombia they need a Registro Nacional de Turismo (RNT), and foreign guests are reported to Migración Colombia through SIRE, which we handle as the property manager (as of November 2026).</p>
       <h2>Apartments for rent in El Poblado, Laureles, Envigado and Sabaneta</h2>
-      <ul><li><strong>El Poblado:</strong> the area with the most restaurants, cafés, coworking spaces and nightlife, and an easy first base in the city.</li><li><strong>Laureles:</strong> flat, tree-lined and residential, with a local feel and plenty of cafés and parks (<a href="https://medellinguru.com/guide-to-laureles/">Medellin Guru</a>).</li><li><strong>Envigado:</strong> a separate municipality just south of Medellín in the Valle de Aburrá (<a href="https://www.lafm.com.co/colombia/envigado-dijo-si-al-area-metropolitana">La FM</a>), quieter and good for everyday life.</li><li><strong>Sabaneta:</strong> the smallest municipality in Colombia by area (<a href="https://www.bluradio.com/turismo/el-municipio-mas-pequeno-de-colombia-esta-en-antioquia-y-tiene-planes-imperdibles-so35">Blu Radio</a>), with its own station on Metro Line A (<a href="https://en.wikipedia.org/wiki/Sabaneta_station">Wikipedia</a>).</li></ul>
+      <ul><li><strong>El Poblado:</strong> the area with the most restaurants, cafés, coworking spaces and nightlife, and an easy first base in the city. See our <a href="el-poblado/">furnished apartments for rent in El Poblado</a>.</li><li><strong>Laureles:</strong> flat, tree-lined and residential, with a local feel and plenty of cafés and parks (<a href="https://medellinguru.com/guide-to-laureles/">Medellin Guru</a>).</li><li><strong>Envigado:</strong> a separate municipality just south of Medellín in the Valle de Aburrá (<a href="https://www.lafm.com.co/colombia/envigado-dijo-si-al-area-metropolitana">La FM</a>), quieter and good for everyday life.</li><li><strong>Sabaneta:</strong> the smallest municipality in Colombia by area (<a href="https://www.bluradio.com/turismo/el-municipio-mas-pequeno-de-colombia-esta-en-antioquia-y-tiene-planes-imperdibles-so35">Blu Radio</a>), with its own station on Metro Line A (<a href="https://en.wikipedia.org/wiki/Sabaneta_station">Wikipedia</a>).</li></ul>
       <p>The listings above show which areas have availability right now. Not sure which neighborhood fits you? Read <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado vs Laureles vs Envigado for a month-long stay</a>.</p>
       <h2>Before you book a furnished apartment in Medellín: a quick checklist</h2>
       <ul><li><strong>For short stays, check the RNT.</strong> Ask for the listing’s RNT number and look it up on the <a href="https://rnt.confecamaras.co/">public RNT system</a>.</li><li><strong>Know the total price.</strong> Ask what the price includes (for example utilities, internet and cleaning) and whether anything is charged on top.</li><li><strong>Agree the dates and rules in writing.</strong> Check-in and check-out times, building rules and, for monthly stays, the length of the agreement.</li><li><strong>Know who to call.</strong> Make sure someone answers 24/7 if something goes wrong during your stay.</li></ul>
@@ -671,7 +671,7 @@ R = {
       <h2>Alquiler de apartamentos en Medellín por noches: estancias cortas</h2>
       <p>Para unas noches o un par de semanas, {N_SHORT} apartamentos y casas amoblados se arriendan por noches, desde {MIN_NIGHT} COP la noche. La estancia corta es vivienda turística: en Colombia exige el Registro Nacional de Turismo (RNT), y los huéspedes extranjeros se reportan a Migración Colombia por SIRE, algo que nosotros gestionamos como administradores (a noviembre de 2026).</p>
       <h2>Apartamentos en arriendo en El Poblado, Laureles, Envigado y Sabaneta</h2>
-      <ul><li><strong>El Poblado:</strong> la zona con más restaurantes, cafés, espacios de coworking y vida nocturna, y una base cómoda para conocer la ciudad.</li><li><strong>Laureles:</strong> plano, arborizado y residencial, con ambiente de barrio y muchos cafés y parques (<a href="https://medellinguru.com/guide-to-laureles/">Medellin Guru</a>).</li><li><strong>Envigado:</strong> un municipio aparte, al sur de Medellín, en el Valle de Aburrá (<a href="https://www.lafm.com.co/colombia/envigado-dijo-si-al-area-metropolitana">La FM</a>), más tranquilo y bueno para la vida diaria.</li><li><strong>Sabaneta:</strong> el municipio más pequeño de Colombia por extensión (<a href="https://www.bluradio.com/turismo/el-municipio-mas-pequeno-de-colombia-esta-en-antioquia-y-tiene-planes-imperdibles-so35">Blu Radio</a>), con estación propia en la Línea A del Metro (<a href="https://en.wikipedia.org/wiki/Sabaneta_station">Wikipedia</a>).</li></ul>
+      <ul><li><strong>El Poblado:</strong> la zona con más restaurantes, cafés, espacios de coworking y vida nocturna, y una base cómoda para conocer la ciudad. Vea nuestros <a href="el-poblado/">apartamentos amoblados en arriendo en El Poblado</a>.</li><li><strong>Laureles:</strong> plano, arborizado y residencial, con ambiente de barrio y muchos cafés y parques (<a href="https://medellinguru.com/guide-to-laureles/">Medellin Guru</a>).</li><li><strong>Envigado:</strong> un municipio aparte, al sur de Medellín, en el Valle de Aburrá (<a href="https://www.lafm.com.co/colombia/envigado-dijo-si-al-area-metropolitana">La FM</a>), más tranquilo y bueno para la vida diaria.</li><li><strong>Sabaneta:</strong> el municipio más pequeño de Colombia por extensión (<a href="https://www.bluradio.com/turismo/el-municipio-mas-pequeno-de-colombia-esta-en-antioquia-y-tiene-planes-imperdibles-so35">Blu Radio</a>), con estación propia en la Línea A del Metro (<a href="https://en.wikipedia.org/wiki/Sabaneta_station">Wikipedia</a>).</li></ul>
       <p>Las propiedades de arriba muestran en qué zonas hay disponibilidad hoy. ¿No sabe qué barrio le conviene? Lea <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado, Laureles o Envigado para quedarse un mes</a>.</p>
       <h2>Antes de arrendar un apartamento amoblado en Medellín: lista rápida</h2>
       <ul><li><strong>Si es por noches, verifique el RNT.</strong> Pida el número de RNT del anuncio y consúltelo en el <a href="https://rnt.confecamaras.co/">sistema público del RNT</a>.</li><li><strong>Tenga claro el precio total.</strong> Pregunte qué incluye (por ejemplo servicios públicos, internet y aseo) y si se cobra algo aparte.</li><li><strong>Deje por escrito fechas y reglas.</strong> Horarios de llegada y salida, normas del edificio y, si es por meses, la duración del acuerdo.</li><li><strong>Sepa a quién llamar.</strong> Asegúrese de que alguien responda 24/7 si algo pasa durante su estadía.</li></ul>
@@ -780,8 +780,8 @@ def rl_item(p, lang):
 def rl_sort(p):   # available now first, El Poblado first, then by area and price
     return ((p['available_from'] or '') > TODAY, rl_area(p) != 'El Poblado', rl_area(p), rl_price(p) or 10**12)
 
-def rl_section(lang, st, only=None, h=None, intro=None):
-    u = RL_UI[lang]; P = LISTINGS['properties']
+def rl_section(lang, st, only=None, h=None, intro=None, area=None):
+    u = RL_UI[lang]; P = [p for p in LISTINGS['properties'] if not area or rl_area(p) == area]
     if not P: return ''
     out = f'<section class="rl" aria-labelledby="rl-h"><h2 id="rl-h">{h or u["h"]}</h2><p class="rl-intro">{fill(intro or u["intro"], st)}</p>'
     for key, st_type in (('month', 'long_term'), ('short', 'short_term')):
@@ -790,8 +790,8 @@ def rl_section(lang, st, only=None, h=None, intro=None):
         if grp: out += (f'<h3>{u[key]}</h3>' if not only else '') + '<ul class="rl-list">' + ''.join(rl_item(p, lang) for p in grp) + '</ul>'
     return out + '</section>'
 
-def rl_schema(lang, url, only=None, name=None):
-    P = sorted((p for p in LISTINGS['properties'] if not only or p['stay_type'] == only), key=lambda p: (p['stay_type'] != 'long_term', rl_sort(p)))
+def rl_schema(lang, url, only=None, name=None, area=None):
+    P = sorted((p for p in LISTINGS['properties'] if (not only or p['stay_type'] == only) and (not area or rl_area(p) == area)), key=lambda p: (p['stay_type'] != 'long_term', rl_sort(p)))
     items = []
     for i, p in enumerate(P, 1):
         typ = {'Apartment': 'Apartment', 'Condo': 'Apartment', 'Studio': 'Apartment', 'House': 'House'}.get(p['property_type'], 'Accommodation')
@@ -970,6 +970,168 @@ for lang in LANGS:
     write(f'{ui["slug"]}/index.html', page(lang, title=ui['title'], desc=fill(ui['desc'], st), en_url=en_url, es_url=es_url,
           en_href=en_href, es_href=es_href, body=body, schema=schema))
 SITEMAP.append((SITE + 'monthly-rentals-medellin/', SITE + 'es/arriendos-por-meses-medellin/', TODAY))
+
+
+# ======================= 4c3. Rentals by neighborhood (/rentals/<area>/, /es/arriendos/<area>/) =======================
+# Backlog R3 (James, Nov 19 2026: more renter emails for furnished rentals). One page per area with at least 2 bookable
+# listings in the HostFlow feed: answer-first summary from the feed's own numbers, the area's listings, email +
+# WhatsApp CTAs, area facts with cited sources, FAQ + FAQPage/ItemList schema. Pages are one folder deeper than
+# /rentals/, so the body is written as if it sat at /rentals/ (EN) or /es/arriendos/ (ES) and every relative link is
+# shifted one level at the end (deeper()).
+RA = {
+ 'El Poblado': {
+  'slug': 'el-poblado',
+  'en': dict(title='Furnished Apartments for Rent in El Poblado, Medellín',
+             desc='Furnished apartments for rent in El Poblado, Medellín: {N} listed by the month or by the night, with live prices. Book direct by WhatsApp or email.',
+             h1='Furnished apartments for rent in El Poblado',
+             crumb='El Poblado',
+             lead='<strong>Looking for a furnished apartment for rent in El Poblado, Medellín? As of {AS_OF} we have {N} furnished apartments in El Poblado listed: {N_MONTH} by the month (30 nights or more), from {MIN_MONTH} COP a month, and {N_SHORT} by the night, from {MIN_NIGHT} COP a night.</strong> We manage them ourselves from our office in El Poblado, so you book directly with the local team that looks after them. Ask about any of them on WhatsApp or by email, in English or Spanish.',
+             wa_text='Hi! I’m looking for a furnished apartment in El Poblado.',
+             mail_subj='Furnished rental inquiry – El Poblado',
+             cta_all='See all rentals in Medellín',
+             list_h='Furnished apartments in El Poblado available now',
+             list_intro='As of {AS_OF}: {N} furnished apartments in El Poblado. Prices are in Colombian pesos, plus a one-time cleaning fee. Tap “Ask about” and tell us your dates; for live availability and our other areas, see <a href="../rentals/">all our furnished rentals in Medellín</a>.',
+             prose='''
+      <h2>What El Poblado is like to live in</h2>
+      <p>El Poblado is Comuna 14 of Medellín, one of the 16 <em>comunas</em> of the city’s urban area (<a href="https://www.medellin.gov.co/es/conoce-algunos-datos-generales-de-la-ciudad/">Alcaldía de Medellín</a>). It sits on the hillside in the southeast of the city and has the highest concentration of hotels, restaurants, coworking spaces and shopping malls; areas such as Parque Lleras and Provenza are known for their nightlife. For a first stay in Medellín that means almost everything is close, and many businesses are used to serving foreigners.</p>
+      <p><strong>Getting around:</strong> Metro Line A has stations at Poblado and Aguacatala along the river at the bottom of the hill (<a href="https://www.elcolombiano.com/medellin/socavacion-metro-medellin-estaciones-cerradas-AD30117052">El Colombiano</a>). Higher up the hill, most people use taxis or ride apps, so ask us how far an apartment is from the places you will go every day.</p>
+      <h2>Is El Poblado right for your stay?</h2>
+      <ul><li><strong>Good fit if you</strong> want to walk to cafés, gyms and restaurants, are new to Medellín and want services in English nearby, or enjoy going out in the evening.</li><li><strong>Think twice if you</strong> are sensitive to noise (especially near the nightlife streets on weekends), want flat streets for walking or cycling (much of El Poblado is steep), or are on a tight budget: guides consistently describe it as the most expensive area of the city (<a href="https://www.expatexchange.com/article/5474/Living-in-Colombia-Best-Places-to-Live-in-Medellin,-Colombia">Expat Exchange</a>).</li></ul>
+      <p>Prefer somewhere quieter or flatter? See <a href="../rentals/">our rentals in Laureles, Envigado and Sabaneta</a>, or compare the areas in <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado vs Laureles vs Envigado for a month-long stay</a>.</p>
+      <h2>Monthly or nightly: renting in El Poblado</h2>
+      <p><strong>By the month (30 nights or more).</strong> As of {AS_OF}, our {N_MONTH} monthly apartments in El Poblado run from {MIN_MONTH} to {MAX_MONTH} COP a month, depending on the size and the building, plus a one-time cleaning fee. See every monthly apartment in the city on our <a href="../monthly-rentals-medellin/">monthly rentals in Medellín</a> page. For a monthly stay, get a clear written agreement; our guide to <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">renting a furnished apartment in Medellín without a fiador</a> explains what to check.</p>
+      <p><strong>By the night.</strong> For a few nights or a couple of weeks, {N_SHORT} El Poblado apartments are offered by the night, from {MIN_NIGHT} COP a night. Short stays are tourist rentals: in Colombia they need a Registro Nacional de Turismo (RNT), and foreign guests are reported to Migración Colombia through SIRE, which we handle as the property manager (as of November 2026).</p>
+      <h2>How to rent one of our El Poblado apartments</h2>
+      <ol><li><strong>Pick an apartment</strong> from the list above, or tell us what you need: bedrooms, dates and budget.</li><li><strong>Ask us on WhatsApp or by email.</strong> We confirm availability for your dates and answer your questions about the apartment, the building and the street.</li><li><strong>Agree the stay in writing.</strong> Dates, price, what is included and the house rules.</li><li><strong>Move in.</strong> Our team in El Poblado coordinates your check-in, and guests can reach us 24/7 during the stay.</li></ol>
+      <h2>Before you book in El Poblado: a quick checklist</h2>
+      <ul><li><strong>Ask where exactly the apartment is.</strong> How steep the walk is, and how far it is from the Metro and from the nightlife streets if you want quiet nights.</li><li><strong>Know the total price.</strong> Ask what it includes (for example utilities, internet and cleaning) and whether anything is charged on top.</li><li><strong>For short stays, check the RNT.</strong> Ask for the listing’s RNT number and look it up on the <a href="https://rnt.confecamaras.co/">public RNT system</a>.</li><li><strong>Get the dates and rules in writing,</strong> including check-in and check-out times and the building’s rules.</li></ul>
+      <p>Rules for tourist rentals can change; this reflects how things stand as of November 2026.</p>''',
+             faq=[('How much does a furnished apartment in El Poblado cost per month?',
+                   'In our listings, as of {AS_OF}, furnished monthly rentals in El Poblado run from {MIN_MONTH} to {MAX_MONTH} COP a month, depending on the size and the building, plus a one-time cleaning fee. Each apartment on this page shows its current price.'),
+                  ('Can I rent an apartment in El Poblado for a few nights?',
+                   'Yes. As of {AS_OF}, {N_SHORT} of our El Poblado apartments are offered by the night, from {MIN_NIGHT} COP a night. Short stays are tourist rentals and need an RNT, which we handle for the apartments we manage (as of November 2026).'),
+                  ('Is El Poblado a good area to stay in Medellín?',
+                   'For many visitors, yes: it has the highest concentration of restaurants, cafés, coworking spaces and malls in the city, and many services in English. The trade-offs are price (guides describe it as the most expensive area), steep streets and weekend noise near the nightlife areas. If you want somewhere quieter, see our rentals in Laureles, Envigado and Sabaneta.'),
+                  ('Is El Poblado close to the Metro?',
+                   'Metro Line A has two stations at the bottom of the hill, Poblado and Aguacatala. Higher up the hill most people use taxis or ride apps, so ask us how far the apartment you like is from the station.'),
+                  ('Do I need a fiador or a deposit?',
+                   'Requirements depend on the apartment and the type of stay, so ask us for the exact conditions of the one you like before you book. Our guide to <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">renting without a fiador</a> explains the usual alternatives (general information, not legal advice).'),
+                  ('How do I book one of these apartments?',
+                   'Tap “Ask about” on the apartment you like, or write to us on WhatsApp (<a href="https://wa.me/573042773864">+57 304 277 3864</a>) or by email (<a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a>) with your dates. We confirm availability and agree the details of the stay with you, in English or Spanish.'),
+                  ('I own an apartment in El Poblado. Can you rent it out like these?',
+                   'Yes. We manage apartments for their owners from 12% of rental income + IVA for stays of 30 nights or more and 17% + IVA for short stays, with no upfront fees. See <a href="../property-management-el-poblado/">property management in El Poblado</a>.')]),
+  'es': dict(title='Apartamentos amoblados en arriendo en El Poblado, Medellín',
+             desc='Apartamentos amoblados en arriendo en El Poblado, Medellín: {N} por meses o por noches, con precios en vivo. Reserve directo por WhatsApp o correo.',
+             h1='Apartamentos amoblados en arriendo en El Poblado',
+             crumb='El Poblado',
+             lead='<strong>¿Busca un apartamento amoblado en arriendo en El Poblado, Medellín? Al {AS_OF} tenemos {N} apartamentos amoblados disponibles en El Poblado: {N_MONTH} por meses (desde 30 noches), desde {MIN_MONTH} COP al mes, y {N_SHORT} por noches, desde {MIN_NIGHT} COP la noche.</strong> Los administramos nosotros mismos desde nuestra oficina en El Poblado, así que usted reserva directo con el equipo local que los cuida. Pregúntenos por cualquiera por WhatsApp o por correo, en español o en inglés.',
+             wa_text='¡Hola! Estoy buscando un apartamento amoblado en El Poblado.',
+             mail_subj='Consulta arriendo amoblado – El Poblado',
+             cta_all='Ver todos los arriendos en Medellín',
+             list_h='Apartamentos amoblados en El Poblado disponibles hoy',
+             list_intro='Al {AS_OF}: {N} apartamentos amoblados en El Poblado. Precios en pesos colombianos, más una tarifa de aseo única. Toque «Preguntar por» y díganos sus fechas; para la disponibilidad en vivo y nuestras otras zonas, vea <a href="../arriendos/">todos nuestros arriendos amoblados en Medellín</a>.',
+             prose='''
+      <h2>Cómo es vivir en El Poblado</h2>
+      <p>El Poblado es la Comuna 14 de Medellín, una de las 16 comunas de la zona urbana de la ciudad (<a href="https://www.medellin.gov.co/es/conoce-algunos-datos-generales-de-la-ciudad/">Alcaldía de Medellín</a>). Queda en la ladera suroriental y concentra la mayor oferta de hoteles, restaurantes, espacios de coworking y centros comerciales; sectores como el Parque Lleras y Provenza son conocidos por su vida nocturna. Para una primera estadía en Medellín, eso significa tener casi todo cerca y muchos negocios acostumbrados a atender extranjeros.</p>
+      <p><strong>Cómo moverse:</strong> la Línea A del Metro tiene las estaciones Poblado y Aguacatala junto al río, en la parte baja de la loma (<a href="https://www.elcolombiano.com/medellin/socavacion-metro-medellin-estaciones-cerradas-AD30117052">El Colombiano</a>). Más arriba, la mayoría se mueve en taxi o en aplicaciones, así que pregúntenos qué tan lejos queda el apartamento de los lugares a los que irá a diario.</p>
+      <h2>¿El Poblado es para usted?</h2>
+      <ul><li><strong>Le conviene si</strong> quiere ir a pie a cafés, gimnasios y restaurantes, es nuevo en Medellín y quiere servicios en inglés cerca, o le gusta salir de noche.</li><li><strong>Piénselo dos veces si</strong> le molesta el ruido (sobre todo cerca de las calles de rumba los fines de semana), quiere calles planas para caminar o montar en bicicleta (buena parte de El Poblado es empinada) o tiene un presupuesto ajustado: las guías la describen como la zona más cara de la ciudad (<a href="https://www.expatexchange.com/article/5474/Living-in-Colombia-Best-Places-to-Live-in-Medellin,-Colombia">Expat Exchange</a>).</li></ul>
+      <p>¿Prefiere algo más tranquilo o más plano? Vea <a href="../arriendos/">nuestros arriendos en Laureles, Envigado y Sabaneta</a>, o compare las zonas en <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado, Laureles o Envigado para quedarse un mes</a>.</p>
+      <h2>Por meses o por noches: arrendar en El Poblado</h2>
+      <p><strong>Por meses (desde 30 noches).</strong> Al {AS_OF}, nuestros {N_MONTH} apartamentos por meses en El Poblado van desde {MIN_MONTH} hasta {MAX_MONTH} COP al mes, según el tamaño y el edificio, más una tarifa de aseo única. Vea todos los apartamentos por meses de la ciudad en nuestra página de <a href="../arriendos-por-meses-medellin/">arriendos por meses en Medellín</a>. Si arrienda por meses, pida un acuerdo claro por escrito; nuestra guía de <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">arriendo amoblado en Medellín sin fiador</a> explica qué revisar.</p>
+      <p><strong>Por noches.</strong> Para unas noches o un par de semanas, {N_SHORT} apartamentos en El Poblado se arriendan por noches, desde {MIN_NIGHT} COP la noche. La estancia corta es vivienda turística: en Colombia exige el Registro Nacional de Turismo (RNT), y los huéspedes extranjeros se reportan a Migración Colombia por SIRE, algo que gestionamos nosotros como administradores (a noviembre de 2026).</p>
+      <h2>Cómo arrendar uno de nuestros apartamentos en El Poblado</h2>
+      <ol><li><strong>Escoja un apartamento</strong> de la lista de arriba, o díganos qué necesita: habitaciones, fechas y presupuesto.</li><li><strong>Pregúntenos por WhatsApp o por correo.</strong> Confirmamos la disponibilidad para sus fechas y le resolvemos las dudas sobre el apartamento, el edificio y la cuadra.</li><li><strong>Deje la estadía por escrito.</strong> Fechas, precio, qué incluye y las normas de la casa.</li><li><strong>Instálese.</strong> Nuestro equipo en El Poblado coordina su llegada, y durante la estadía nos encuentra 24/7.</li></ol>
+      <h2>Antes de reservar en El Poblado: lista rápida</h2>
+      <ul><li><strong>Pregunte dónde queda exactamente.</strong> Qué tan empinado es el camino y qué tan lejos está del Metro y de las calles de rumba, si quiere noches tranquilas.</li><li><strong>Tenga claro el precio total.</strong> Pregunte qué incluye (por ejemplo servicios públicos, internet y aseo) y si se cobra algo aparte.</li><li><strong>Si es por noches, verifique el RNT.</strong> Pida el número de RNT del anuncio y consúltelo en el <a href="https://rnt.confecamaras.co/">sistema público del RNT</a>.</li><li><strong>Deje por escrito fechas y reglas,</strong> incluidos los horarios de llegada y salida y las normas del edificio.</li></ul>
+      <p>Las normas de la vivienda turística pueden cambiar; esto refleja cómo están las cosas a noviembre de 2026.</p>''',
+             faq=[('¿Cuánto cuesta un apartamento amoblado en El Poblado por mes?',
+                   'En nuestras propiedades, al {AS_OF}, los arriendos amoblados por meses en El Poblado van desde {MIN_MONTH} hasta {MAX_MONTH} COP al mes, según el tamaño y el edificio, más una tarifa de aseo única. Cada apartamento de esta página muestra su precio actual.'),
+                  ('¿Puedo arrendar un apartamento en El Poblado por unas noches?',
+                   'Sí. Al {AS_OF}, {N_SHORT} de nuestros apartamentos en El Poblado se arriendan por noches, desde {MIN_NIGHT} COP la noche. La estancia corta es vivienda turística y exige RNT, que gestionamos para los apartamentos que administramos (a noviembre de 2026).'),
+                  ('¿El Poblado es una buena zona para quedarse en Medellín?',
+                   'Para muchos visitantes, sí: concentra la mayor oferta de restaurantes, cafés, espacios de coworking y centros comerciales de la ciudad, y muchos servicios en inglés. A cambio, es la zona más cara según las guías, tiene calles empinadas y ruido los fines de semana cerca de la rumba. Si busca algo más tranquilo, vea nuestros arriendos en Laureles, Envigado y Sabaneta.'),
+                  ('¿El Poblado queda cerca del Metro?',
+                   'La Línea A del Metro tiene dos estaciones en la parte baja de la loma, Poblado y Aguacatala. Más arriba la mayoría se mueve en taxi o en aplicaciones, así que pregúntenos qué tan lejos queda de la estación el apartamento que le guste.'),
+                  ('¿Necesito fiador o depósito?',
+                   'Los requisitos dependen del apartamento y del tipo de estadía, así que pregúntenos las condiciones exactas del que le guste antes de reservar. Nuestra guía de <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">arriendo sin fiador</a> explica las alternativas usuales (información general, no asesoría legal).'),
+                  ('¿Cómo reservo uno de estos apartamentos?',
+                   'Toque «Preguntar por» en el apartamento que le guste, o escríbanos por WhatsApp (<a href="https://wa.me/573042773864">+57 304 277 3864</a>) o por correo (<a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a>) con sus fechas. Confirmamos la disponibilidad y acordamos con usted los detalles de la estadía, en español o en inglés.'),
+                  ('Tengo un apartamento en El Poblado. ¿Me lo pueden arrendar así?',
+                   'Sí. Administramos apartamentos para sus dueños desde el 12% de los ingresos por renta + IVA para estancias de 30 noches o más, y el 17% + IVA para estancias cortas, sin costos iniciales. Vea la <a href="../administracion-de-propiedades-el-poblado/">administración de propiedades en El Poblado</a>.')]),
+ },
+}
+
+def area_stats(lang, area):
+    P = [p for p in LISTINGS['properties'] if rl_area(p) == area]
+    month = [rl_price(p) for p in P if p['stay_type'] == 'long_term' and rl_price(p)]
+    night = [rl_price(p) for p in P if p['stay_type'] == 'short_term' and rl_price(p)]
+    return {'{AS_OF}': human_date(LISTINGS['as_of'] or TODAY, lang), '{N}': str(len(P)),
+            '{N_MONTH}': str(sum(p['stay_type'] == 'long_term' for p in P)), '{N_SHORT}': str(sum(p['stay_type'] == 'short_term' for p in P)),
+            '{MIN_MONTH}': cop(min(month)) if month else '—', '{MAX_MONTH}': cop(max(month)) if month else '—',
+            '{MIN_NIGHT}': cop(min(night)) if night else '—'}, P, month, night
+
+def deeper(h):   # page() output assumes one folder below /rentals/-level; these pages sit one more folder down
+    return re.sub(r'(src|href)="\.\./', r'\1="../../', h)
+
+RA_LIVE = []   # (area, slug) of area rental pages built this run, for links from /rentals/
+for area, cfg in RA.items():
+    st0, P, month, night = area_stats('en', area)
+    if len(P) < 2 or not month or not night:   # the copy quotes both monthly and nightly prices
+        print(f'  note: rentals/{cfg["slug"]}/ skipped ({len(P)} listings in {area}; needs 2+ with monthly and nightly prices)')
+        continue
+    RA_LIVE.append((area, cfg['slug']))
+    en_url, es_url = SITE + f'rentals/{cfg["slug"]}/', SITE + f'es/arriendos/{cfg["slug"]}/'
+    for lang in LANGS:
+        ui = cfg[lang]; st = area_stats(lang, area)[0]
+        url = es_url if lang == 'es' else en_url
+        home_url = SITE + ('es/' if lang == 'es' else '')
+        rentals_rel, rentals_url = (('../rentals/', SITE + 'rentals/') if lang == 'en' else ('../arriendos/', SITE + 'es/arriendos/'))
+        rentals_name = R[lang]['crumb']
+        faq = [(fill(q, st), fill(a, st)) for q, a in ui['faq']]
+        faq_html = ''.join(f'        <details><summary>{html.escape(q, quote=False)}{PLUS}</summary><p>{a}</p></details>\n' for q, a in faq)
+        wa = 'https://wa.me/573042773864?text=' + urllib.parse.quote(ui['wa_text'])
+        body_txt = MAIL[lang]['body'].replace('El Poblado, Laureles, Envigado, other', area).replace('El Poblado, Laureles, Envigado, otra', area)
+        mhref = mailto(ui['mail_subj'], body_txt)
+        desc = fill(ui['desc'], st)
+        body = f'''<section class="page-top">
+  <div class="wrap">
+    <p class="crumbs"><a href="../">{R[lang]["home"]}</a> / <a href="{rentals_rel}">{rentals_name}</a> / {ui["crumb"]}</p>
+    <h1>{ui["h1"]}</h1>
+    <div class="lead">{fill(ui["lead"], st)}</div>
+    <div class="ref-ctas"><a class="btn btn-primary" href="{wa}" target="_blank" rel="noopener">WhatsApp</a><a class="btn btn-ghost" href="{mhref}">{MAIL[lang]["btn"]}</a><a class="btn btn-ghost" href="{rentals_rel}">{ui["cta_all"]}</a></div>
+    {mail_note(lang, MAIL[lang]["short"] + " ")}
+  </div>
+</section>
+<section class="rentals">
+  <div class="wrap">
+    {rl_section(lang, st, h=ui['list_h'], intro=ui['list_intro'], area=area)}
+    {mail_block(lang, 'rentals', href=mhref, wa_text=ui['wa_text'])}
+    <div class="prose">{fill(ui["prose"], st)}
+      <h2>{L[lang]["faq_h"]}</h2>
+      <div class="faq">
+{faq_html}      </div>
+    </div>
+    <aside class="article-cta">
+      <h2>{R[lang]["owners_h"]}</h2>
+      <p>{R[lang]["owners_p"]}</p>
+      <div class="ref-ctas"><a class="btn btn-primary" href="../#plans">{R[lang]["owners_cta"]}</a><a class="btn btn-outline" href="../#contact">{L[lang]["cta_1"]}</a></div>
+    </aside>
+  </div>
+</section>'''
+        schema = {'@context': 'https://schema.org', '@graph': [
+            {'@type': 'CollectionPage', 'name': ui['h1'], 'description': desc, 'url': url, 'inLanguage': lang,
+             'about': {'@type': 'Place', 'name': f'{area}, Medellín', 'address': {'@type': 'PostalAddress', 'addressLocality': 'Medellín', 'addressRegion': 'Antioquia', 'addressCountry': 'CO'}},
+             'publisher': mail_publisher()},
+            {'@type': 'FAQPage', 'url': url, 'inLanguage': lang, 'mainEntity': [
+                {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}} for q, a in faq]},
+            breadcrumbs([(R[lang]['home'], home_url), (rentals_name, rentals_url), (ui['crumb'], url)]),
+            rl_schema(lang, url, name=ui['list_h'], area=area)]}
+        en_href, es_href = ((f'./', f'../es/arriendos/{cfg["slug"]}/') if lang == 'en' else (f'../../rentals/{cfg["slug"]}/', './'))
+        folder = f'rentals/{cfg["slug"]}' if lang == 'en' else f'es/arriendos/{cfg["slug"]}'
+        write(f'{folder}/index.html', deeper(page(lang, title=ui['title'], desc=desc, en_url=en_url, es_url=es_url,
+              en_href=en_href, es_href=es_href, body=body, schema=schema)))
+    SITEMAP.append((en_url, es_url, TODAY))
 
 
 # ======================= 4d. Meet the team (/team/, /es/equipo/) =======================

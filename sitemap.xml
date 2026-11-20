@@ -421,6 +421,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/monthly-rentals-medellin/"/>
   </url>
   <url>
+    <loc>https://www.medellinconcierge.net/rentals/el-poblado/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/rentals/el-poblado/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/arriendos/el-poblado/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/rentals/el-poblado/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/es/arriendos/el-poblado/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/rentals/el-poblado/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/arriendos/el-poblado/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/rentals/el-poblado/"/>
+  </url>
+  <url>
     <loc>https://www.medellinconcierge.net/team/</loc>
     <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/team/"/>
