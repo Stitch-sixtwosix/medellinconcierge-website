@@ -352,14 +352,14 @@
   </url>
   <url>
     <loc>https://www.medellinconcierge.net/property-management-envigado/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/property-management-envigado/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/administracion-de-propiedades-envigado/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/property-management-envigado/"/>
   </url>
   <url>
     <loc>https://www.medellinconcierge.net/es/administracion-de-propiedades-envigado/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/property-management-envigado/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/administracion-de-propiedades-envigado/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/property-management-envigado/"/>
@@ -433,6 +433,20 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/rentals/el-poblado/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/arriendos/el-poblado/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/rentals/el-poblado/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/rentals/envigado/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/rentals/envigado/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/arriendos/envigado/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/rentals/envigado/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/es/arriendos/envigado/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/rentals/envigado/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/arriendos/envigado/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/rentals/envigado/"/>
   </url>
   <url>
     <loc>https://www.medellinconcierge.net/team/</loc>
