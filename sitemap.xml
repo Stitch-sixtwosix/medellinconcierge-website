@@ -352,14 +352,14 @@
   </url>
   <url>
     <loc>https://www.medellinconcierge.net/property-management-laureles/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/property-management-laureles/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/administracion-de-propiedades-laureles/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/property-management-laureles/"/>
   </url>
   <url>
     <loc>https://www.medellinconcierge.net/es/administracion-de-propiedades-laureles/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/property-management-laureles/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/administracion-de-propiedades-laureles/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/property-management-laureles/"/>
@@ -380,14 +380,14 @@
   </url>
   <url>
     <loc>https://www.medellinconcierge.net/property-management-sabaneta/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/property-management-sabaneta/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/administracion-de-propiedades-sabaneta/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/property-management-sabaneta/"/>
   </url>
   <url>
     <loc>https://www.medellinconcierge.net/es/administracion-de-propiedades-sabaneta/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/property-management-sabaneta/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/administracion-de-propiedades-sabaneta/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/property-management-sabaneta/"/>
@@ -461,6 +461,34 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/rentals/envigado/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/arriendos/envigado/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/rentals/envigado/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/rentals/laureles/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/rentals/laureles/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/arriendos/laureles/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/rentals/laureles/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/es/arriendos/laureles/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/rentals/laureles/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/arriendos/laureles/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/rentals/laureles/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/rentals/sabaneta/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/rentals/sabaneta/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/arriendos/sabaneta/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/rentals/sabaneta/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/es/arriendos/sabaneta/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/rentals/sabaneta/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/arriendos/sabaneta/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/rentals/sabaneta/"/>
   </url>
   <url>
     <loc>https://www.medellinconcierge.net/team/</loc>

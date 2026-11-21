@@ -632,7 +632,7 @@ R = {
       <h2>Short-term rentals in Medellín: furnished apartments by the night</h2>
       <p>For a few nights or a couple of weeks, {N_SHORT} furnished apartments and homes are offered by the night, from {MIN_NIGHT} COP a night. Short stays are tourist rentals: in Colombia they need a Registro Nacional de Turismo (RNT), and foreign guests are reported to Migración Colombia through SIRE, which we handle as the property manager (as of November 2026).</p>
       <h2>Apartments for rent in El Poblado, Laureles, Envigado and Sabaneta</h2>
-      <ul><li><strong>El Poblado:</strong> the area with the most restaurants, cafés, coworking spaces and nightlife, and an easy first base in the city. See our <a href="el-poblado/">furnished apartments for rent in El Poblado</a>.</li><li><strong>Laureles:</strong> flat, tree-lined and residential, with a local feel and plenty of cafés and parks (<a href="https://medellinguru.com/guide-to-laureles/">Medellin Guru</a>).</li><li><strong>Envigado:</strong> a separate municipality just south of Medellín in the Valle de Aburrá (<a href="https://www.lafm.com.co/colombia/envigado-dijo-si-al-area-metropolitana">La FM</a>), quieter and good for everyday life. See our <a href="envigado/">furnished apartments for rent in Envigado</a>.</li><li><strong>Sabaneta:</strong> the smallest municipality in Colombia by area (<a href="https://www.bluradio.com/turismo/el-municipio-mas-pequeno-de-colombia-esta-en-antioquia-y-tiene-planes-imperdibles-so35">Blu Radio</a>), with its own station on Metro Line A (<a href="https://en.wikipedia.org/wiki/Sabaneta_station">Wikipedia</a>).</li></ul>
+      <ul><li><strong>El Poblado:</strong> the area with the most restaurants, cafés, coworking spaces and nightlife, and an easy first base in the city. See our <a href="el-poblado/">furnished apartments for rent in El Poblado</a>.</li><li><strong>Laureles:</strong> flat, tree-lined and residential, with a local feel and plenty of cafés and parks (<a href="https://medellinguru.com/guide-to-laureles/">Medellin Guru</a>). See our <a href="laureles/">furnished apartments for rent in Laureles</a>.</li><li><strong>Envigado:</strong> a separate municipality just south of Medellín in the Valle de Aburrá (<a href="https://www.lafm.com.co/colombia/envigado-dijo-si-al-area-metropolitana">La FM</a>), quieter and good for everyday life. See our <a href="envigado/">furnished apartments for rent in Envigado</a>.</li><li><strong>Sabaneta:</strong> the smallest municipality in Colombia by area (<a href="https://www.bluradio.com/turismo/el-municipio-mas-pequeno-de-colombia-esta-en-antioquia-y-tiene-planes-imperdibles-so35">Blu Radio</a>), with its own station on Metro Line A (<a href="https://en.wikipedia.org/wiki/Sabaneta_station">Wikipedia</a>). See our <a href="sabaneta/">furnished apartments for rent in Sabaneta</a>.</li></ul>
       <p>The listings above show which areas have availability right now. Not sure which neighborhood fits you? Read <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado vs Laureles vs Envigado for a month-long stay</a>.</p>
       <h2>Before you book a furnished apartment in Medellín: a quick checklist</h2>
       <ul><li><strong>For short stays, check the RNT.</strong> Ask for the listing’s RNT number and look it up on the <a href="https://rnt.confecamaras.co/">public RNT system</a>.</li><li><strong>Know the total price.</strong> Ask what the price includes (for example utilities, internet and cleaning) and whether anything is charged on top.</li><li><strong>Agree the dates and rules in writing.</strong> Check-in and check-out times, building rules and, for monthly stays, the length of the agreement.</li><li><strong>Know who to call.</strong> Make sure someone answers 24/7 if something goes wrong during your stay.</li></ul>
@@ -671,7 +671,7 @@ R = {
       <h2>Alquiler de apartamentos en Medellín por noches: estancias cortas</h2>
       <p>Para unas noches o un par de semanas, {N_SHORT} apartamentos y casas amoblados se arriendan por noches, desde {MIN_NIGHT} COP la noche. La estancia corta es vivienda turística: en Colombia exige el Registro Nacional de Turismo (RNT), y los huéspedes extranjeros se reportan a Migración Colombia por SIRE, algo que nosotros gestionamos como administradores (a noviembre de 2026).</p>
       <h2>Apartamentos en arriendo en El Poblado, Laureles, Envigado y Sabaneta</h2>
-      <ul><li><strong>El Poblado:</strong> la zona con más restaurantes, cafés, espacios de coworking y vida nocturna, y una base cómoda para conocer la ciudad. Vea nuestros <a href="el-poblado/">apartamentos amoblados en arriendo en El Poblado</a>.</li><li><strong>Laureles:</strong> plano, arborizado y residencial, con ambiente de barrio y muchos cafés y parques (<a href="https://medellinguru.com/guide-to-laureles/">Medellin Guru</a>).</li><li><strong>Envigado:</strong> un municipio aparte, al sur de Medellín, en el Valle de Aburrá (<a href="https://www.lafm.com.co/colombia/envigado-dijo-si-al-area-metropolitana">La FM</a>), más tranquilo y bueno para la vida diaria. Vea nuestros <a href="envigado/">apartamentos amoblados en arriendo en Envigado</a>.</li><li><strong>Sabaneta:</strong> el municipio más pequeño de Colombia por extensión (<a href="https://www.bluradio.com/turismo/el-municipio-mas-pequeno-de-colombia-esta-en-antioquia-y-tiene-planes-imperdibles-so35">Blu Radio</a>), con estación propia en la Línea A del Metro (<a href="https://en.wikipedia.org/wiki/Sabaneta_station">Wikipedia</a>).</li></ul>
+      <ul><li><strong>El Poblado:</strong> la zona con más restaurantes, cafés, espacios de coworking y vida nocturna, y una base cómoda para conocer la ciudad. Vea nuestros <a href="el-poblado/">apartamentos amoblados en arriendo en El Poblado</a>.</li><li><strong>Laureles:</strong> plano, arborizado y residencial, con ambiente de barrio y muchos cafés y parques (<a href="https://medellinguru.com/guide-to-laureles/">Medellin Guru</a>). Vea nuestros <a href="laureles/">apartamentos amoblados en arriendo en Laureles</a>.</li><li><strong>Envigado:</strong> un municipio aparte, al sur de Medellín, en el Valle de Aburrá (<a href="https://www.lafm.com.co/colombia/envigado-dijo-si-al-area-metropolitana">La FM</a>), más tranquilo y bueno para la vida diaria. Vea nuestros <a href="envigado/">apartamentos amoblados en arriendo en Envigado</a>.</li><li><strong>Sabaneta:</strong> el municipio más pequeño de Colombia por extensión (<a href="https://www.bluradio.com/turismo/el-municipio-mas-pequeno-de-colombia-esta-en-antioquia-y-tiene-planes-imperdibles-so35">Blu Radio</a>), con estación propia en la Línea A del Metro (<a href="https://en.wikipedia.org/wiki/Sabaneta_station">Wikipedia</a>). Vea nuestros <a href="sabaneta/">apartamentos amoblados en arriendo en Sabaneta</a>.</li></ul>
       <p>Las propiedades de arriba muestran en qué zonas hay disponibilidad hoy. ¿No sabe qué barrio le conviene? Lea <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado, Laureles o Envigado para quedarse un mes</a>.</p>
       <h2>Antes de arrendar un apartamento amoblado en Medellín: lista rápida</h2>
       <ul><li><strong>Si es por noches, verifique el RNT.</strong> Pida el número de RNT del anuncio y consúltelo en el <a href="https://rnt.confecamaras.co/">sistema público del RNT</a>.</li><li><strong>Tenga claro el precio total.</strong> Pregunte qué incluye (por ejemplo servicios públicos, internet y aseo) y si se cobra algo aparte.</li><li><strong>Deje por escrito fechas y reglas.</strong> Horarios de llegada y salida, normas del edificio y, si es por meses, la duración del acuerdo.</li><li><strong>Sepa a quién llamar.</strong> Asegúrese de que alguien responda 24/7 si algo pasa durante su estadía.</li></ul>
@@ -1141,10 +1141,174 @@ RA = {
                   ('Tengo una propiedad en Envigado. ¿Me la pueden arrendar así?',
                    'Sí. Administramos propiedades para sus dueños desde el 12% de los ingresos por renta + IVA para estancias de 30 noches o más, y el 17% + IVA para estancias cortas, sin costos iniciales. Vea la <a href="../administracion-de-propiedades-envigado/">administración de propiedades en Envigado</a>.')]),
  },
+ 'Laureles': {
+  'slug': 'laureles',
+  'only': 'long_term',   # the copy speaks of monthly stays only; {OTHER_NOTE} and 'no_other' FAQs follow the feed
+  'en': dict(title='Furnished Apartments for Rent in Laureles, Medellín',
+             desc='Furnished apartments for rent in Laureles, Medellín: {N} listed by the month, with live prices in pesos. Ask by email or WhatsApp and book direct.',
+             h1='Furnished apartments for rent in Laureles',
+             crumb='Laureles',
+             lead='<strong>Looking for a furnished apartment for rent in Laureles, Medellín? As of {AS_OF} we have {N} furnished apartments in Laureles listed by the month (30 nights or more), from {MIN_MONTH} to {MAX_MONTH} COP a month.</strong> We manage them ourselves from our office in El Poblado, so you deal directly with the local team that looks after them. Email us your dates, number of guests and budget, or ask on WhatsApp, in English or Spanish, and we confirm availability and the total price in writing.',
+             wa_text='Hi! I’m looking for a furnished apartment in Laureles.',
+             mail_subj='Furnished rental inquiry – Laureles',
+             cta_all='See all rentals in Medellín',
+             list_h='Furnished apartments in Laureles available now',
+             list_intro='As of {AS_OF}: {N} furnished apartments in Laureles, by the month. Prices are in Colombian pesos, plus a one-time cleaning fee. Email us or tap “Ask about” and tell us your dates; for live availability and our other areas, see <a href="../rentals/">all our furnished rentals in Medellín</a>.',
+             other_none='We have no Laureles apartments by the night at the moment; for a few nights, see <a href="../rentals/">all our furnished apartments for rent in Medellín</a>.',
+             other_some='For a few nights, see the Laureles apartments offered by the night on <a href="../rentals/">all our furnished rentals in Medellín</a>.',
+             prose='''
+      <h2>What Laureles is like to live in</h2>
+      <p>Laureles-Estadio lies west of the Medellín River. It is mostly flat, with tree-lined streets, circular avenues and lower buildings than El Poblado, and expat guides often recommend it for its residential, local feel, with plenty of cafés, restaurants and parks (<a href="https://medellinguru.com/guide-to-laureles/">Medellin Guru</a>). Because it is flat, many daily errands can be done on foot.</p>
+      <p><strong>Getting around:</strong> Metro Line B serves the area, and Estadio station is close to the Unicentro and Obelisco shopping centres (<a href="https://metrodemedellin.gov.co/en/users/what-to-do-and-where-to-go-in-medellin/commercial-centers">Metro de Medellín</a>). Ask us how far an apartment is from the station and from the supermarket you would use every day.</p>
+      <h2>Laureles or El Poblado: which suits your stay?</h2>
+      <ul><li><strong>Choose Laureles if you</strong> want a residential neighborhood with a local feel, flat streets to walk and a calm place to work for a month or more: remote workers, slow travellers and people trying the city before a move.</li><li><strong>Choose El Poblado if you</strong> are new to Medellín and want the widest choice of restaurants, coworking spaces and nightlife close by. See our <a href="../rentals/el-poblado/">furnished apartments for rent in El Poblado</a>.</li></ul>
+      <p>Our guide <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado vs Laureles vs Envigado for a month-long stay</a> compares the areas in detail, and we also have <a href="../rentals/envigado/">furnished apartments for rent in Envigado</a>.</p>
+      <h2>Monthly rentals in Laureles</h2>
+      <p>As of {AS_OF}, our {N} furnished apartments in Laureles are offered by the month, from {MIN_MONTH} to {MAX_MONTH} COP a month depending on the size and the building, plus a one-time cleaning fee. Each listing shows its current price. {OTHER_NOTE} For every monthly apartment in the city, see <a href="../monthly-rentals-medellin/">monthly rentals in Medellín</a>.</p>
+      <p>For a monthly stay, get a clear written agreement; our guide to <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">renting a furnished apartment in Medellín without a fiador</a> explains what to check.</p>
+      <h2>How to rent one of our Laureles apartments</h2>
+      <ol><li><strong>Pick an apartment</strong> from the list above, or tell us what you need: bedrooms, dates and budget.</li><li><strong>Email us or ask on WhatsApp.</strong> Write to <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> with your dates, number of guests and budget. We confirm availability and answer your questions about the apartment, the building and the street.</li><li><strong>Agree the stay in writing.</strong> Dates, price, what is included and the house rules.</li><li><strong>Move in.</strong> Our team coordinates your check-in, and guests can reach us 24/7 during the stay.</li></ol>
+      <h2>Before you book in Laureles: a quick checklist</h2>
+      <ul><li><strong>Ask where exactly the apartment is:</strong> which part of Laureles-Estadio, and how far it is from the Metro and the shops.</li><li><strong>Know the total price.</strong> Ask what it includes (for example utilities, internet and cleaning) and whether anything is charged on top.</li><li><strong>Ask about the workspace and the internet</strong> if you will work from the apartment.</li><li><strong>Get the dates and rules in writing,</strong> including the building’s rules.</li></ul>''',
+             faq=[('How much does a furnished apartment in Laureles cost per month?',
+                   'In our listings, as of {AS_OF}, furnished monthly rentals in Laureles run from {MIN_MONTH} to {MAX_MONTH} COP a month, depending on the size and the building, plus a one-time cleaning fee. Each apartment on this page shows its current price.'),
+                  ('Can I ask about a Laureles apartment by email?',
+                   'Yes. Email <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> with your dates, the number of guests and your budget, or use the email button on a listing so the apartment is named for you. We answer in English or Spanish and confirm availability and the price in writing.'),
+                  ('Is Laureles a good area for a stay of a month or more?',
+                   'Many longer-stay guests choose it: it is mostly flat and residential, with plenty of cafés, restaurants and parks, and expat guides recommend it for its local feel. It has fewer tourists than El Poblado.'),
+                  ('Is Laureles close to the Metro?',
+                   'Metro Line B serves the area, and Estadio station is close to the Unicentro and Obelisco shopping centres. Ask us how far the apartment you like is from the station.'),
+                  ('Do you have apartments in Laureles by the night?',
+                   'Not at the moment: as of {AS_OF} our Laureles apartments are offered by the month (30 nights or more). For a few nights, see <a href="../rentals/">all our furnished rentals in Medellín</a>.', 'no_other'),
+                  ('Do I need a fiador or a deposit?',
+                   'Requirements depend on the apartment and the type of stay, so ask us for the exact conditions of the one you like before you book. Our guide to <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">renting without a fiador</a> explains the usual alternatives (general information, not legal advice).'),
+                  ('I own an apartment in Laureles. Can you rent it out like these?',
+                   'Yes. We manage apartments for their owners from 12% of rental income + IVA for stays of 30 nights or more and 17% + IVA for short stays, with no upfront fees. See <a href="../property-management-laureles/">property management in Laureles</a>.')]),
+  'es': dict(title='Apartamentos amoblados en arriendo en Laureles',
+             desc='Apartamentos amoblados en arriendo en Laureles, Medellín: {N} por meses, con precios en vivo en pesos. Escríbanos por correo o WhatsApp y reserve directo.',
+             h1='Apartamentos amoblados en arriendo en Laureles',
+             crumb='Laureles',
+             lead='<strong>¿Busca un apartamento amoblado en arriendo en Laureles, Medellín? Al {AS_OF} tenemos {N} apartamentos amoblados en Laureles por meses (desde 30 noches), entre {MIN_MONTH} y {MAX_MONTH} COP al mes.</strong> Los administramos nosotros mismos desde nuestra oficina en El Poblado, así que usted trata directo con el equipo local que los cuida. Escríbanos por correo con sus fechas, cuántas personas son y su presupuesto, o pregúntenos por WhatsApp, en español o en inglés, y le confirmamos por escrito la disponibilidad y el precio total.',
+             wa_text='¡Hola! Estoy buscando un apartamento amoblado en Laureles.',
+             mail_subj='Consulta arriendo amoblado – Laureles',
+             cta_all='Ver todos los arriendos en Medellín',
+             list_h='Apartamentos amoblados en Laureles disponibles hoy',
+             list_intro='Al {AS_OF}: {N} apartamentos amoblados en Laureles, por meses. Precios en pesos colombianos, más una tarifa de aseo única. Escríbanos o toque «Preguntar por» y díganos sus fechas; para la disponibilidad en vivo y nuestras otras zonas, vea <a href="../arriendos/">todos nuestros arriendos amoblados en Medellín</a>.',
+             other_none='Por ahora no tenemos apartamentos en Laureles por noches; para pocas noches, vea <a href="../arriendos/">todos nuestros apartamentos amoblados en arriendo en Medellín</a>.',
+             other_some='Para pocas noches, vea los apartamentos en Laureles por noches en <a href="../arriendos/">todos nuestros arriendos amoblados en Medellín</a>.',
+             prose='''
+      <h2>Cómo es vivir en Laureles</h2>
+      <p>Laureles-Estadio queda al occidente del río Medellín. Es mayormente plano, con calles arborizadas, circulares y edificios más bajos que en El Poblado, y las guías para extranjeros lo recomiendan por su ambiente residencial y de barrio, con muchos cafés, restaurantes y parques (<a href="https://medellinguru.com/guide-to-laureles/">Medellin Guru</a>). Como es plano, muchas vueltas del día a día se hacen a pie.</p>
+      <p><strong>Cómo moverse:</strong> la Línea B del Metro pasa por la zona y la estación Estadio queda cerca de los centros comerciales Unicentro y Obelisco (<a href="https://metrodemedellin.gov.co/en/users/what-to-do-and-where-to-go-in-medellin/commercial-centers">Metro de Medellín</a>). Pregúntenos qué tan lejos queda el apartamento de la estación y del supermercado que usaría a diario.</p>
+      <h2>¿Laureles o El Poblado? Cuál le conviene</h2>
+      <ul><li><strong>Escoja Laureles si</strong> quiere un barrio residencial con ambiente local, calles planas para caminar y un lugar tranquilo para trabajar durante un mes o más: personas que trabajan en remoto, que viajan sin afán o que vienen a probar la ciudad antes de mudarse.</li><li><strong>Escoja El Poblado si</strong> es su primera vez en Medellín y quiere tener cerca la mayor oferta de restaurantes, coworkings y vida nocturna. Vea nuestros <a href="../arriendos/el-poblado/">apartamentos amoblados en arriendo en El Poblado</a>.</li></ul>
+      <p>Nuestra guía <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado, Laureles o Envigado para quedarse un mes</a> compara las zonas a fondo, y también tenemos <a href="../arriendos/envigado/">apartamentos amoblados en arriendo en Envigado</a>.</p>
+      <h2>Apartamentos amoblados por meses en Laureles</h2>
+      <p>Al {AS_OF}, nuestros {N} apartamentos amoblados en Laureles se arriendan por meses, entre {MIN_MONTH} y {MAX_MONTH} COP al mes según el tamaño y el edificio, más una tarifa de aseo única. Cada propiedad muestra su precio actual. {OTHER_NOTE} Para ver todos los que se arriendan por meses en la ciudad, vea <a href="../arriendos-por-meses-medellin/">apartamentos amoblados por meses en Medellín</a>.</p>
+      <p>Si arrienda por meses, pida un acuerdo claro por escrito; nuestra guía de <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">arriendo amoblado en Medellín sin fiador</a> explica qué revisar.</p>
+      <h2>Cómo arrendar uno de nuestros apartamentos en Laureles</h2>
+      <ol><li><strong>Escoja un apartamento</strong> de la lista de arriba, o díganos qué necesita: habitaciones, fechas y presupuesto.</li><li><strong>Escríbanos por correo o por WhatsApp.</strong> Envíe sus fechas, cuántas personas son y su presupuesto a <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a>. Confirmamos la disponibilidad y le resolvemos las dudas sobre el apartamento, el edificio y la cuadra.</li><li><strong>Deje la estadía por escrito.</strong> Fechas, precio, qué incluye y las normas de la casa.</li><li><strong>Instálese.</strong> Nuestro equipo coordina su llegada, y durante la estadía nos encuentra 24/7.</li></ol>
+      <h2>Antes de reservar en Laureles: lista rápida</h2>
+      <ul><li><strong>Pregunte dónde queda exactamente:</strong> en qué parte de Laureles-Estadio y qué tan lejos del Metro y del comercio.</li><li><strong>Tenga claro el precio total.</strong> Pregunte qué incluye (por ejemplo servicios públicos, internet y aseo) y si se cobra algo aparte.</li><li><strong>Si va a trabajar desde el apartamento,</strong> pregunte por el espacio de trabajo y el internet.</li><li><strong>Deje por escrito fechas y reglas,</strong> incluido el reglamento del edificio.</li></ul>''',
+             faq=[('¿Cuánto cuesta un apartamento amoblado en Laureles al mes?',
+                   'En nuestras propiedades, al {AS_OF}, los arriendos amoblados por meses en Laureles van de {MIN_MONTH} a {MAX_MONTH} COP al mes, según el tamaño y el edificio, más una tarifa de aseo única. Cada apartamento de esta página muestra su precio actual.'),
+                  ('¿Puedo preguntar por un apartamento en Laureles por correo?',
+                   'Sí. Escriba a <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> con sus fechas, cuántas personas son y su presupuesto, o use el botón de correo de la propiedad para que el apartamento quede indicado. Respondemos en español o en inglés y le confirmamos por escrito la disponibilidad y el precio.'),
+                  ('¿Laureles es buen sector para quedarse un mes o más?',
+                   'Muchos huéspedes de estadías largas lo escogen: es mayormente plano y residencial, con muchos cafés, restaurantes y parques, y las guías para extranjeros lo recomiendan por su ambiente de barrio. Tiene menos turistas que El Poblado.'),
+                  ('¿Laureles queda cerca del Metro?',
+                   'La Línea B del Metro pasa por la zona y la estación Estadio queda cerca de los centros comerciales Unicentro y Obelisco. Pregúntenos qué tan lejos queda de la estación el apartamento que le guste.'),
+                  ('¿Tienen apartamentos amoblados en Laureles por días?',
+                   'Por ahora no: al {AS_OF} nuestros apartamentos en Laureles se arriendan por meses (desde 30 noches). Para pocas noches, vea <a href="../arriendos/">todos nuestros arriendos amoblados en Medellín</a>.', 'no_other'),
+                  ('¿Necesito fiador o depósito?',
+                   'Los requisitos dependen del apartamento y del tipo de estadía, así que pregúntenos las condiciones exactas del que le guste antes de reservar. Nuestra guía de <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">arriendo sin fiador</a> explica las alternativas usuales (información general, no asesoría legal).'),
+                  ('Tengo un apartamento en Laureles. ¿Me lo pueden arrendar así?',
+                   'Sí. Administramos apartamentos para sus dueños desde el 12% de los ingresos por renta + IVA para estancias de 30 noches o más, y el 17% + IVA para estancias cortas, sin costos iniciales. Vea la <a href="../administracion-de-propiedades-laureles/">administración de propiedades en Laureles</a>.')]),
+ },
+ 'Sabaneta': {
+  'slug': 'sabaneta',
+  'only': 'short_term',
+  'en': dict(title='Furnished Apartments for Rent in Sabaneta, Colombia',
+             desc='Furnished apartments for rent in Sabaneta, just south of Medellín: {N} listed by the night, with live prices. Ask by email or WhatsApp and book direct.',
+             h1='Furnished apartments for rent in Sabaneta',
+             crumb='Sabaneta',
+             lead='<strong>Looking for a furnished apartment for rent in Sabaneta, just south of Medellín? As of {AS_OF} we have {N} furnished apartments in Sabaneta listed by the night, from {MIN_NIGHT} COP a night.</strong> We manage them ourselves, so you book directly with the local team that looks after them. Email us your dates and number of guests, or ask on WhatsApp, in English or Spanish, and we confirm availability and the total price in writing.',
+             wa_text='Hi! I’m looking for a furnished apartment in Sabaneta.',
+             mail_subj='Furnished rental inquiry – Sabaneta',
+             cta_all='See all rentals in Medellín',
+             list_h='Furnished apartments in Sabaneta available now',
+             list_intro='As of {AS_OF}: {N} furnished apartments in Sabaneta, by the night. Prices are in Colombian pesos, plus a one-time cleaning fee. Email us or tap “Ask about” and tell us your dates; for live availability and our other areas, see <a href="../rentals/">all our furnished rentals in Medellín</a>.',
+             other_none='We have no Sabaneta apartment listed by the month at the moment. If you need 30 nights or more, email <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> with your dates and we tell you what is available, or see our <a href="../monthly-rentals-medellin/">monthly rentals in Medellín</a>.',
+             other_some='For 30 nights or more, see the Sabaneta apartments offered by the month on our <a href="../monthly-rentals-medellin/">monthly rentals in Medellín</a> page.',
+             prose='''
+      <h2>What Sabaneta is like to stay in</h2>
+      <p>Sabaneta is a separate municipality in the south of the Valle de Aburrá, next to Envigado, and is often described as the smallest municipality in Colombia by area (<a href="https://www.bluradio.com/turismo/el-municipio-mas-pequeno-de-colombia-esta-en-antioquia-y-tiene-planes-imperdibles-so35">Blu Radio</a>). It is compact and residential, with its own main park and local life, and quieter than El Poblado.</p>
+      <p><strong>Getting around:</strong> Sabaneta station on Metro Line A sits between Itagüí and La Estrella, so you ride north to Poblado station and the rest of Medellín without changing lines (<a href="https://en.wikipedia.org/wiki/Sabaneta_station">Sabaneta station</a>; <a href="https://www.metrodemedellin.gov.co/en/users/integrated-system/line-a">Metro de Medellín, Line A</a>). Ask us how far an apartment is from the station and from the main park.</p>
+      <h2>Sabaneta, Envigado or El Poblado: which suits your stay?</h2>
+      <ul><li><strong>Choose Sabaneta if you</strong> want a calm, residential base with a direct Metro ride into Medellín: families, remote workers and people visiting relatives or getting to know the south of the valley. Because it lies south of Envigado, the trip to El Poblado and the city centre is longer.</li><li><strong>Prefer to be closer in?</strong> See our <a href="../rentals/envigado/">furnished apartments for rent in Envigado</a> or <a href="../rentals/el-poblado/">in El Poblado</a>.</li></ul>
+      <h2>Renting in Sabaneta by the night or by the month</h2>
+      <p><strong>By the night.</strong> As of {AS_OF}, our {N} Sabaneta apartments are offered by the night, from {MIN_NIGHT} COP a night, plus a one-time cleaning fee. Short stays are tourist rentals: in Colombia they need a Registro Nacional de Turismo (RNT), and foreign guests are reported to Migración Colombia through SIRE, which we handle as the property manager (as of November 2026).</p>
+      <p><strong>By the month.</strong> {OTHER_NOTE}</p>
+      <h2>How to rent one of our Sabaneta apartments</h2>
+      <ol><li><strong>Pick an apartment</strong> from the list above, or tell us your dates and how many guests.</li><li><strong>Email us or ask on WhatsApp.</strong> Write to <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> with your dates and number of guests. We confirm availability and answer your questions about the apartment, the building and the street.</li><li><strong>Agree the stay in writing.</strong> Dates, price, what is included and the house rules.</li><li><strong>Move in.</strong> Our team coordinates your check-in, and guests can reach us 24/7 during the stay.</li></ol>
+      <h2>Before you book in Sabaneta: a quick checklist</h2>
+      <ul><li><strong>Ask where exactly the apartment is</strong> and how far it is from Sabaneta station and the main park.</li><li><strong>Know the total price for your dates,</strong> including the cleaning fee.</li><li><strong>Check the RNT.</strong> Ask for the listing’s RNT number and look it up on the <a href="https://rnt.confecamaras.co/">public RNT system</a>.</li><li><strong>Get the dates and the building’s rules in writing,</strong> including check-in and check-out times.</li></ul>
+      <p>Rules for tourist rentals can change; this reflects how things stand as of November 2026.</p>''',
+             faq=[('How much does a furnished apartment in Sabaneta cost per night?',
+                   'In our listings, as of {AS_OF}, furnished apartments in Sabaneta start from {MIN_NIGHT} COP a night, plus a one-time cleaning fee. Each apartment on this page shows its current price.'),
+                  ('Can I ask about a Sabaneta apartment by email?',
+                   'Yes. Email <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> with your dates and the number of guests, or use the email button on a listing so the apartment is named for you. We answer in English or Spanish and confirm availability and the price in writing.'),
+                  ('Is Sabaneta part of Medellín?',
+                   'No. Sabaneta is a separate municipality in the south of the Valle de Aburrá, next to Envigado. Metro Line A connects it with El Poblado and the rest of Medellín.'),
+                  ('Is Sabaneta on the Metro?',
+                   'Yes. Sabaneta station is on Metro Line A, between Itagüí and La Estrella, with a direct ride north to Poblado station.'),
+                  ('Can I rent a furnished apartment in Sabaneta by the month?',
+                   'As of {AS_OF} our Sabaneta apartments are listed by the night. Email us your dates for a stay of 30 nights or more and we tell you what is available, or see our <a href="../monthly-rentals-medellin/">monthly rentals in Medellín</a>.', 'no_other'),
+                  ('I own an apartment in Sabaneta. Can you rent it out like these?',
+                   'Yes. We manage apartments for their owners from 17% of rental income + IVA for short stays and 12% + IVA for stays of 30 nights or more, with no upfront fees. See <a href="../property-management-sabaneta/">property management in Sabaneta</a>.')]),
+  'es': dict(title='Apartamentos amoblados en arriendo en Sabaneta',
+             desc='Apartamentos amoblados en Sabaneta, Antioquia: {N} en arriendo por días, con precios en vivo. Escríbanos por correo o WhatsApp y reserve directo.',
+             h1='Apartamentos amoblados en arriendo en Sabaneta',
+             crumb='Sabaneta',
+             lead='<strong>¿Busca un apartamento amoblado en arriendo en Sabaneta, Antioquia? Al {AS_OF} tenemos {N} apartamentos amoblados en Sabaneta por días, desde {MIN_NIGHT} COP la noche.</strong> Los administramos nosotros mismos, así que usted reserva directo con el equipo local que los cuida. Escríbanos por correo con sus fechas y cuántas personas son, o pregúntenos por WhatsApp, y le confirmamos por escrito la disponibilidad y el precio total.',
+             wa_text='¡Hola! Estoy buscando un apartamento amoblado en Sabaneta.',
+             mail_subj='Consulta arriendo amoblado – Sabaneta',
+             cta_all='Ver todos los arriendos en Medellín',
+             list_h='Apartamentos amoblados en Sabaneta disponibles hoy',
+             list_intro='Al {AS_OF}: {N} apartamentos amoblados en Sabaneta, por días. Precios en pesos colombianos, más una tarifa de aseo única. Escríbanos o toque «Preguntar por» y díganos sus fechas; para la disponibilidad en vivo y nuestras otras zonas, vea <a href="../arriendos/">todos nuestros arriendos amoblados en Medellín</a>.',
+             other_none='Por ahora no tenemos un apartamento en Sabaneta publicado por meses. Si necesita 30 noches o más, escriba a <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> con sus fechas y le decimos qué hay disponible, o vea nuestros <a href="../arriendos-por-meses-medellin/">apartamentos amoblados por meses en Medellín</a>.',
+             other_some='Para 30 noches o más, vea los apartamentos en Sabaneta por meses en nuestra página de <a href="../arriendos-por-meses-medellin/">apartamentos amoblados por meses en Medellín</a>.',
+             prose='''
+      <h2>Cómo es quedarse en Sabaneta</h2>
+      <p>Sabaneta es un municipio aparte, en el sur del Valle de Aburrá y vecino de Envigado, y se le conoce como el municipio más pequeño de Colombia por extensión (<a href="https://www.bluradio.com/turismo/el-municipio-mas-pequeno-de-colombia-esta-en-antioquia-y-tiene-planes-imperdibles-so35">Blu Radio</a>). Es compacto y residencial, con su parque principal y vida de barrio, y más tranquilo que El Poblado.</p>
+      <p><strong>Cómo moverse:</strong> la estación Sabaneta de la Línea A del Metro queda entre Itagüí y La Estrella, así que usted sube hasta la estación Poblado y el resto de Medellín sin hacer transbordos (<a href="https://en.wikipedia.org/wiki/Sabaneta_station">estación Sabaneta</a>; <a href="https://www.metrodemedellin.gov.co/en/users/integrated-system/line-a">Metro de Medellín, Línea A</a>). Pregúntenos qué tan lejos queda el apartamento de la estación y del parque principal.</p>
+      <h2>¿Sabaneta, Envigado o El Poblado? Cuál le conviene</h2>
+      <ul><li><strong>Escoja Sabaneta si</strong> quiere una base tranquila y residencial con Metro directo a Medellín: familias, personas que trabajan en remoto y quienes visitan parientes o vienen a conocer el sur del valle. Como queda al sur de Envigado, el trayecto a El Poblado y al centro es más largo.</li><li><strong>¿Prefiere quedar más cerca?</strong> Vea nuestros <a href="../arriendos/envigado/">apartamentos amoblados en arriendo en Envigado</a> o <a href="../arriendos/el-poblado/">en El Poblado</a>.</li></ul>
+      <h2>Apartamentos amoblados en Sabaneta por días o por meses</h2>
+      <p><strong>Por días.</strong> Al {AS_OF}, nuestros {N} apartamentos en Sabaneta se arriendan por noches, desde {MIN_NIGHT} COP la noche, más una tarifa de aseo única. La renta corta es vivienda turística: en Colombia exige el Registro Nacional de Turismo (RNT), y los huéspedes extranjeros se reportan a Migración Colombia por SIRE, algo que gestionamos nosotros como administradores (a noviembre de 2026).</p>
+      <p><strong>Por meses.</strong> {OTHER_NOTE}</p>
+      <h2>Cómo arrendar uno de nuestros apartamentos en Sabaneta</h2>
+      <ol><li><strong>Escoja un apartamento</strong> de la lista de arriba, o díganos sus fechas y cuántas personas son.</li><li><strong>Escríbanos por correo o por WhatsApp.</strong> Envíe sus fechas y cuántas personas son a <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a>. Confirmamos la disponibilidad y le resolvemos las dudas sobre el apartamento, el edificio y la cuadra.</li><li><strong>Deje la estadía por escrito.</strong> Fechas, precio, qué incluye y las normas de la casa.</li><li><strong>Instálese.</strong> Nuestro equipo coordina su llegada, y durante la estadía nos encuentra 24/7.</li></ol>
+      <h2>Antes de reservar en Sabaneta: lista rápida</h2>
+      <ul><li><strong>Pregunte dónde queda exactamente</strong> y qué tan lejos está de la estación Sabaneta y del parque principal.</li><li><strong>Tenga claro el precio total para sus fechas,</strong> con la tarifa de aseo.</li><li><strong>Verifique el RNT.</strong> Pida el número de RNT del anuncio y consúltelo en el <a href="https://rnt.confecamaras.co/">sistema público del RNT</a>.</li><li><strong>Deje por escrito fechas y reglas,</strong> incluidos los horarios de llegada y salida y el reglamento del edificio.</li></ul>
+      <p>Las normas de la vivienda turística pueden cambiar; esto refleja cómo están las cosas a noviembre de 2026.</p>''',
+             faq=[('¿Cuánto cuesta un apartamento amoblado en Sabaneta por noche?',
+                   'En nuestras propiedades, al {AS_OF}, los apartamentos amoblados en Sabaneta van desde {MIN_NIGHT} COP la noche, más una tarifa de aseo única. Cada apartamento de esta página muestra su precio actual.'),
+                  ('¿Puedo preguntar por un apartamento en Sabaneta por correo?',
+                   'Sí. Escriba a <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> con sus fechas y cuántas personas son, o use el botón de correo de la propiedad para que el apartamento quede indicado. Respondemos en español o en inglés y le confirmamos por escrito la disponibilidad y el precio.'),
+                  ('¿Sabaneta hace parte de Medellín?',
+                   'No. Sabaneta es un municipio aparte, en el sur del Valle de Aburrá y vecino de Envigado. La Línea A del Metro lo conecta con El Poblado y el resto de Medellín.'),
+                  ('¿Sabaneta tiene Metro?',
+                   'Sí. La estación Sabaneta está en la Línea A, entre Itagüí y La Estrella, con viaje directo hacia el norte hasta la estación Poblado.'),
+                  ('¿Arriendan apartamentos amoblados en Sabaneta por meses?',
+                   'Al {AS_OF} nuestros apartamentos en Sabaneta están publicados por noches. Escríbanos con sus fechas para una estadía de 30 noches o más y le decimos qué hay disponible, o vea nuestros <a href="../arriendos-por-meses-medellin/">apartamentos amoblados por meses en Medellín</a>.', 'no_other'),
+                  ('Tengo un apartamento en Sabaneta. ¿Me lo pueden arrendar así?',
+                   'Sí. Administramos apartamentos para sus dueños desde el 17% de los ingresos por renta + IVA para estancias cortas y el 12% + IVA para estancias de 30 noches o más, sin costos iniciales. Vea la <a href="../administracion-de-propiedades-sabaneta/">administración de propiedades en Sabaneta</a>.')]),
+ },
 }
 
-def area_stats(lang, area):
-    P = [p for p in LISTINGS['properties'] if rl_area(p) == area]
+def area_stats(lang, area, only=None):
+    P = [p for p in LISTINGS['properties'] if rl_area(p) == area and (not only or p['stay_type'] == only)]
     month = [rl_price(p) for p in P if p['stay_type'] == 'long_term' and rl_price(p)]
     night = [rl_price(p) for p in P if p['stay_type'] == 'short_term' and rl_price(p)]
     return {'{AS_OF}': human_date(LISTINGS['as_of'] or TODAY, lang), '{N}': str(len(P)),
@@ -1155,21 +1319,25 @@ def area_stats(lang, area):
 def deeper(h):   # page() output assumes one folder below /rentals/-level; these pages sit one more folder down
     return re.sub(r'(src|href)="\.\./', r'\1="../../', h)
 
+RA_MUNICIPALITIES = {'Envigado', 'Sabaneta'}   # separate municipalities, not neighborhoods of Medellín
 RA_LIVE = []   # (area, slug) of area rental pages built this run, for links from /rentals/
 for area, cfg in RA.items():
-    st0, P, month, night = area_stats('en', area)
-    if len(P) < 2 or not month or not night:   # the copy quotes both monthly and nightly prices
-        print(f'  note: rentals/{cfg["slug"]}/ skipped ({len(P)} listings in {area}; needs 2+ with monthly and nightly prices)')
+    only = cfg.get('only')   # single-stay-type areas: copy speaks of that type; page lists only that type
+    st0, P, month, night = area_stats('en', area, only)
+    if len(P) < 2 or (not only and (not month or not night)) or (only == 'long_term' and not month) or (only == 'short_term' and not night):
+        print(f'  note: rentals/{cfg["slug"]}/ skipped ({len(P)} listings in {area}; needs 2+ with the prices its copy quotes)')
         continue
+    has_other = bool(only) and any(rl_area(p) == area and p['stay_type'] != only for p in LISTINGS['properties'])
     RA_LIVE.append((area, cfg['slug']))
     en_url, es_url = SITE + f'rentals/{cfg["slug"]}/', SITE + f'es/arriendos/{cfg["slug"]}/'
     for lang in LANGS:
-        ui = cfg[lang]; st = area_stats(lang, area)[0]
+        ui = cfg[lang]; st = area_stats(lang, area, only)[0]
+        if only: st['{OTHER_NOTE}'] = fill(ui['other_some' if has_other else 'other_none'], st)
         url = es_url if lang == 'es' else en_url
         home_url = SITE + ('es/' if lang == 'es' else '')
         rentals_rel, rentals_url = (('../rentals/', SITE + 'rentals/') if lang == 'en' else ('../arriendos/', SITE + 'es/arriendos/'))
         rentals_name = R[lang]['crumb']
-        faq = [(fill(q, st), fill(a, st)) for q, a in ui['faq']]
+        faq = [(fill(f[0], st), fill(f[1], st)) for f in ui['faq'] if not (len(f) > 2 and f[2] == 'no_other' and has_other)]
         faq_html = ''.join(f'        <details><summary>{html.escape(q, quote=False)}{PLUS}</summary><p>{a}</p></details>\n' for q, a in faq)
         wa = 'https://wa.me/573042773864?text=' + urllib.parse.quote(ui['wa_text'])
         body_txt = MAIL[lang]['body'].replace('El Poblado, Laureles, Envigado, other', area).replace('El Poblado, Laureles, Envigado, otra', area)
@@ -1186,7 +1354,7 @@ for area, cfg in RA.items():
 </section>
 <section class="rentals">
   <div class="wrap">
-    {rl_section(lang, st, h=ui['list_h'], intro=ui['list_intro'], area=area)}
+    {rl_section(lang, st, only=only, h=ui['list_h'], intro=ui['list_intro'], area=area)}
     {mail_block(lang, 'rentals', href=mhref, wa_text=ui['wa_text'])}
     <div class="prose">{fill(ui["prose"], st)}
       <h2>{L[lang]["faq_h"]}</h2>
@@ -1202,12 +1370,12 @@ for area, cfg in RA.items():
 </section>'''
         schema = {'@context': 'https://schema.org', '@graph': [
             {'@type': 'CollectionPage', 'name': ui['h1'], 'description': desc, 'url': url, 'inLanguage': lang,
-             'about': {'@type': 'Place', 'name': f'{area}, Medellín', 'address': {'@type': 'PostalAddress', 'addressLocality': 'Medellín', 'addressRegion': 'Antioquia', 'addressCountry': 'CO'}},
+             'about': {'@type': 'Place', 'name': f'{area}, Medellín' if area not in RA_MUNICIPALITIES else f'{area}, Antioquia', 'address': {'@type': 'PostalAddress', 'addressLocality': area if area in RA_MUNICIPALITIES else 'Medellín', 'addressRegion': 'Antioquia', 'addressCountry': 'CO'}},
              'publisher': mail_publisher()},
             {'@type': 'FAQPage', 'url': url, 'inLanguage': lang, 'mainEntity': [
                 {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}} for q, a in faq]},
             breadcrumbs([(R[lang]['home'], home_url), (rentals_name, rentals_url), (ui['crumb'], url)]),
-            rl_schema(lang, url, name=ui['list_h'], area=area)]}
+            rl_schema(lang, url, only=only, name=ui['list_h'], area=area)]}
         en_href, es_href = ((f'./', f'../es/arriendos/{cfg["slug"]}/') if lang == 'en' else (f'../../rentals/{cfg["slug"]}/', './'))
         folder = f'rentals/{cfg["slug"]}' if lang == 'en' else f'es/arriendos/{cfg["slug"]}'
         write(f'{folder}/index.html', deeper(page(lang, title=ui['title'], desc=desc, en_url=en_url, es_url=es_url,
