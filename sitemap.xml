@@ -505,6 +505,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/rentals/sabaneta/"/>
   </url>
   <url>
+    <loc>https://www.medellinconcierge.net/short-term-rentals-medellin/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/short-term-rentals-medellin/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/apartamentos-por-dias-medellin/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/short-term-rentals-medellin/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/es/apartamentos-por-dias-medellin/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/short-term-rentals-medellin/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/apartamentos-por-dias-medellin/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/short-term-rentals-medellin/"/>
+  </url>
+  <url>
     <loc>https://www.medellinconcierge.net/team/</loc>
     <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/team/"/>

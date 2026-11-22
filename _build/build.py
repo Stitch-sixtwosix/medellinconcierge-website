@@ -225,7 +225,7 @@ for a, b in HOME_ES:
     es = es.replace(a, b)
 es = es.replace(f'href="{FEES["en"]["slug"]}/"', f'href="{FEES["es"]["slug"]}/"')
 es = es.replace('href="airbnb-revenue-calculator/"', f'href="{CALC["es"]["slug"]}/"')
-es = es.replace('href="monthly-rentals-medellin/"', 'href="arriendos-por-meses-medellin/"').replace('href="rentals/"', 'href="arriendos/"').replace('href="team/"', 'href="equipo/"').replace('href="faq/"', 'href="preguntas-frecuentes/"').replace('href="commercial/"', 'href="comercial/"')
+es = es.replace('href="short-term-rentals-medellin/"', 'href="apartamentos-por-dias-medellin/"').replace('href="monthly-rentals-medellin/"', 'href="arriendos-por-meses-medellin/"').replace('href="rentals/"', 'href="arriendos/"').replace('href="team/"', 'href="equipo/"').replace('href="faq/"', 'href="preguntas-frecuentes/"').replace('href="commercial/"', 'href="comercial/"')
 for pg in PAGES:   # landing page links point to the Spanish versions
     es = es.replace(f'href="{pg["en"]["slug"]}/"', f'href="{pg["es"]["slug"]}/"')
 es = set_home_jsonld(es, 'es')
@@ -334,7 +334,7 @@ MAIL = {
             listing='Email us about this apartment', wa='Hi! I’m looking for a furnished apartment in Medellín.',
             body='Hi Medellín Concierge,\n\nI am looking for a furnished apartment in Medellín.\n\nDates (arrival – departure): \nNumber of guests: \nBudget (COP per month or per night): \nPreferred area (El Poblado, Laureles, Envigado, other): \n\nThank you,\n',
             body_item='Hi Medellín Concierge,\n\nI am interested in {t} ({ref}).\n\nDates (arrival – departure): \nNumber of guests: \n\nThank you,\n',
-            subj={'rentals': 'Furnished rental inquiry', 'monthly': 'Furnished rental inquiry – monthly', 'blog': 'Furnished rental inquiry',
+            subj={'rentals': 'Furnished rental inquiry', 'monthly': 'Furnished rental inquiry – monthly', 'short': 'Furnished rental inquiry – short stay', 'blog': 'Furnished rental inquiry',
                   'item': 'Furnished rental inquiry – {ref} {t}'}),
  'es': dict(h='¿Prefiere el correo? Envíenos sus fechas, su presupuesto y cuántas personas son',
             p='Escríbanos y nuestro equipo en El Poblado le responde por correo, en español o en inglés, con los apartamentos que se ajustan a su estadía.',
@@ -342,7 +342,7 @@ MAIL = {
             listing='Escríbanos por este apartamento', wa='¡Hola! Estoy buscando un apartamento amoblado en Medellín.',
             body='Hola, Medellín Concierge:\n\nEstoy buscando un apartamento amoblado en Medellín.\n\nFechas (llegada – salida): \nNúmero de personas: \nPresupuesto (COP por mes o por noche): \nZona preferida (El Poblado, Laureles, Envigado, otra): \n\nGracias,\n',
             body_item='Hola, Medellín Concierge:\n\nMe interesa {t} ({ref}).\n\nFechas (llegada – salida): \nNúmero de personas: \n\nGracias,\n',
-            subj={'rentals': 'Consulta arriendo amoblado', 'monthly': 'Consulta arriendo amoblado – por meses', 'blog': 'Consulta arriendo amoblado',
+            subj={'rentals': 'Consulta arriendo amoblado', 'monthly': 'Consulta arriendo amoblado – por meses', 'short': 'Consulta arriendo amoblado – por días', 'blog': 'Consulta arriendo amoblado',
                   'item': 'Consulta arriendo amoblado – {ref} {t}'}),
 }
 
@@ -630,7 +630,7 @@ R = {
       <h2>Monthly rentals in Medellín: furnished apartments by the month</h2>
       <p>Staying a month or more? As of {AS_OF}, {N_MONTH} of our furnished apartments and homes are offered by the month (30 nights or more), from {MIN_MONTH} COP a month, in {MONTH_AREAS}. Each listing shows the monthly price and a one-time cleaning fee; ask us what else is included, such as utilities, internet and cleaning during the stay. See all of them on our <a href="../monthly-rentals-medellin/">monthly rentals in Medellín</a> page. For a monthly stay, make sure you get a clear written agreement; our guide to <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">renting a furnished apartment in Medellín without a fiador</a> explains what to check. Staying several months? See <a href="../blog/colombia-digital-nomad-visa-medellin.html">how long you can stay in Medellín</a>.</p>
       <h2>Short-term rentals in Medellín: furnished apartments by the night</h2>
-      <p>For a few nights or a couple of weeks, {N_SHORT} furnished apartments and homes are offered by the night, from {MIN_NIGHT} COP a night. Short stays are tourist rentals: in Colombia they need a Registro Nacional de Turismo (RNT), and foreign guests are reported to Migración Colombia through SIRE, which we handle as the property manager (as of November 2026).</p>
+      <p>For a few nights or a couple of weeks, {N_SHORT} furnished apartments and homes are offered by the night, from {MIN_NIGHT} COP a night; see them all on our <a href="../short-term-rentals-medellin/">short-term rentals in Medellín</a> page. Short stays are tourist rentals: in Colombia they need a Registro Nacional de Turismo (RNT), and foreign guests are reported to Migración Colombia through SIRE, which we handle as the property manager (as of November 2026).</p>
       <h2>Apartments for rent in El Poblado, Laureles, Envigado and Sabaneta</h2>
       <ul><li><strong>El Poblado:</strong> the area with the most restaurants, cafés, coworking spaces and nightlife, and an easy first base in the city. See our <a href="el-poblado/">furnished apartments for rent in El Poblado</a>.</li><li><strong>Laureles:</strong> flat, tree-lined and residential, with a local feel and plenty of cafés and parks (<a href="https://medellinguru.com/guide-to-laureles/">Medellin Guru</a>). See our <a href="laureles/">furnished apartments for rent in Laureles</a>.</li><li><strong>Envigado:</strong> a separate municipality just south of Medellín in the Valle de Aburrá (<a href="https://www.lafm.com.co/colombia/envigado-dijo-si-al-area-metropolitana">La FM</a>), quieter and good for everyday life. See our <a href="envigado/">furnished apartments for rent in Envigado</a>.</li><li><strong>Sabaneta:</strong> the smallest municipality in Colombia by area (<a href="https://www.bluradio.com/turismo/el-municipio-mas-pequeno-de-colombia-esta-en-antioquia-y-tiene-planes-imperdibles-so35">Blu Radio</a>), with its own station on Metro Line A (<a href="https://en.wikipedia.org/wiki/Sabaneta_station">Wikipedia</a>). See our <a href="sabaneta/">furnished apartments for rent in Sabaneta</a>.</li></ul>
       <p>The listings above show which areas have availability right now. Not sure which neighborhood fits you? Read <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado vs Laureles vs Envigado for a month-long stay</a>.</p>
@@ -671,7 +671,7 @@ R = {
       <h2>Apartamentos amoblados por meses en Medellín</h2>
       <p>¿Se queda un mes o más? Al {AS_OF}, {N_MONTH} de nuestros apartamentos y casas amoblados se arriendan por meses (desde 30 noches), desde {MIN_MONTH} COP al mes, en {MONTH_AREAS}. Cada propiedad muestra el precio mensual y una tarifa de aseo única; pregúntenos qué más incluye, como servicios públicos, internet y aseo durante la estadía. Véalos todos en nuestra página de <a href="../arriendos-por-meses-medellin/">arriendos por meses en Medellín</a>. Si arrienda por meses, pida siempre un acuerdo claro por escrito; nuestra guía de <a href="../blog/rent-furnished-apartment-medellin-without-fiador.html">arriendo amoblado en Medellín sin fiador</a> explica qué revisar. ¿Se queda varios meses? Vea <a href="../blog/colombia-digital-nomad-visa-medellin.html">cuánto tiempo puede quedarse en Medellín</a>.</p>
       <h2>Alquiler de apartamentos en Medellín por noches: estancias cortas</h2>
-      <p>Para unas noches o un par de semanas, {N_SHORT} apartamentos y casas amoblados se arriendan por noches, desde {MIN_NIGHT} COP la noche. La estancia corta es vivienda turística: en Colombia exige el Registro Nacional de Turismo (RNT), y los huéspedes extranjeros se reportan a Migración Colombia por SIRE, algo que nosotros gestionamos como administradores (a noviembre de 2026).</p>
+      <p>Para unas noches o un par de semanas, {N_SHORT} apartamentos y casas amoblados se arriendan por noches, desde {MIN_NIGHT} COP la noche; véalos todos en nuestra página de <a href="../apartamentos-por-dias-medellin/">apartamentos por días en Medellín</a>. La estancia corta es vivienda turística: en Colombia exige el Registro Nacional de Turismo (RNT), y los huéspedes extranjeros se reportan a Migración Colombia por SIRE, algo que nosotros gestionamos como administradores (a noviembre de 2026).</p>
       <h2>Apartamentos en arriendo en El Poblado, Laureles, Envigado y Sabaneta</h2>
       <ul><li><strong>El Poblado:</strong> la zona con más restaurantes, cafés, espacios de coworking y vida nocturna, y una base cómoda para conocer la ciudad. Vea nuestros <a href="el-poblado/">apartamentos amoblados en arriendo en El Poblado</a>.</li><li><strong>Laureles:</strong> plano, arborizado y residencial, con ambiente de barrio y muchos cafés y parques (<a href="https://medellinguru.com/guide-to-laureles/">Medellin Guru</a>). Vea nuestros <a href="laureles/">apartamentos amoblados en arriendo en Laureles</a>.</li><li><strong>Envigado:</strong> un municipio aparte, al sur de Medellín, en el Valle de Aburrá (<a href="https://www.lafm.com.co/colombia/envigado-dijo-si-al-area-metropolitana">La FM</a>), más tranquilo y bueno para la vida diaria. Vea nuestros <a href="envigado/">apartamentos amoblados en arriendo en Envigado</a>.</li><li><strong>Sabaneta:</strong> el municipio más pequeño de Colombia por extensión (<a href="https://www.bluradio.com/turismo/el-municipio-mas-pequeno-de-colombia-esta-en-antioquia-y-tiene-planes-imperdibles-so35">Blu Radio</a>), con estación propia en la Línea A del Metro (<a href="https://en.wikipedia.org/wiki/Sabaneta_station">Wikipedia</a>). Vea nuestros <a href="sabaneta/">apartamentos amoblados en arriendo en Sabaneta</a>.</li></ul>
       <p>Las propiedades de arriba muestran en qué zonas hay disponibilidad hoy. ¿No sabe qué barrio le conviene? Lea <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado, Laureles o Envigado para quedarse un mes</a>.</p>
@@ -714,12 +714,14 @@ RL_UI = {
             per=dict(month='/ month', night='/ night'), frm='from ', on_req='Price on request', now='Available now', avail='Available from {d}',
             ask='Ask about {ref}', wa='Hi! I’m interested in property {ref} ({t}).', clean='+ {c} COP cleaning fee',
             beds=('bedroom', 'bedrooms'), baths=('bath', 'baths'), guests='up to {n} guests', and_=' and ',
+            short_more='See every apartment we rent by the night, in all areas, on our <a href="../short-term-rentals-medellin/">short-term rentals in Medellín</a> page.',
             amen=dict(ac='Air conditioning', washer='Washer', dryer='Dryer', elevator='Elevator', parking='Parking', gym='Gym', bbq='BBQ area', playground='Playground')),
  'es': dict(h='Arriendos amoblados disponibles hoy', month='Por meses (30 noches o más)', short='Por noches (estancias cortas)',
             intro='Al {AS_OF}: {N_AVAIL} apartamentos y casas amoblados con precio en vivo, de las {TOTAL} propiedades amobladas que administramos; las demás, bajo consulta. Precios en pesos colombianos. Para sus fechas, use las propiedades de arriba o pregúntenos por cualquiera de estas por WhatsApp o por correo.',
             per=dict(month='/ mes', night='/ noche'), frm='desde ', on_req='Precio bajo consulta', now='Disponible ya', avail='Disponible desde el {d}',
             ask='Preguntar por {ref}', wa='¡Hola! Me interesa la propiedad {ref} ({t}).', clean='+ {c} COP de aseo',
             beds=('habitación', 'habitaciones'), baths=('baño', 'baños'), guests='hasta {n} huéspedes', and_=' y ',
+            short_more='Vea todos los apartamentos que arrendamos por días, en todas las zonas, en nuestra página de <a href="../apartamentos-por-dias-medellin/">apartamentos por días en Medellín</a>.',
             amen=dict(ac='Aire acondicionado', washer='Lavadora', dryer='Secadora', elevator='Ascensor', parking='Parqueadero', gym='Gimnasio', bbq='Zona BBQ', playground='Zona infantil')),
 }
 RL_AREA_FIX = {'Ciudad Del Rio': 'Ciudad del Río', 'Guatape': 'Guatapé', 'Medellin': 'Medellín', 'Bogota': 'Bogotá'}
@@ -784,7 +786,7 @@ def rl_item(p, lang):
 def rl_sort(p):   # available now first, El Poblado first, then by area and price
     return ((p['available_from'] or '') > TODAY, rl_area(p) != 'El Poblado', rl_area(p), rl_price(p) or 10**12)
 
-def rl_section(lang, st, only=None, h=None, intro=None, area=None):
+def rl_section(lang, st, only=None, h=None, intro=None, area=None, short_note=True):
     u = RL_UI[lang]; P = [p for p in LISTINGS['properties'] if not area or rl_area(p) == area]
     if not P: return ''
     out = f'<section class="rl" aria-labelledby="rl-h"><h2 id="rl-h">{h or u["h"]}</h2><p class="rl-intro">{fill(intro or u["intro"], st)}</p>'
@@ -792,6 +794,7 @@ def rl_section(lang, st, only=None, h=None, intro=None, area=None):
         if only and st_type != only: continue
         grp = sorted((p for p in P if p['stay_type'] == st_type), key=rl_sort)
         if grp: out += (f'<h3>{u[key]}</h3>' if not only else '') + '<ul class="rl-list">' + ''.join(rl_item(p, lang) for p in grp) + '</ul>'
+        if grp and st_type == 'short_term' and short_note: out += f'<p class="rl-intro">{u["short_more"]}</p>'
     return out + '</section>'
 
 def rl_schema(lang, url, only=None, name=None, area=None):
@@ -889,7 +892,7 @@ M = {
                  ('Can I ask about an apartment by email instead of WhatsApp?',
                   'Yes. Email <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> with your dates, the number of guests, your budget and the area you prefer, or use the “Email us about this apartment” button on any listing so the apartment is named for you. We answer in English or Spanish and confirm availability and the total price in writing.'),
                  ('What is the minimum stay for a monthly rental?',
-                  '30 nights. For shorter stays, see our <a href="../rentals/">furnished rentals by the night</a>.'),
+                  '30 nights. Staying less than a month? See our <a href="../short-term-rentals-medellin/">short-term rentals in Medellín</a>, furnished apartments by the night.'),
                  ('Which neighborhoods are your monthly rentals in?',
                   'As of {AS_OF}: {MONTH_AREA_COUNTS}. The list on this page shows the current ones.'),
                  ('Do I need a fiador (guarantor) to rent by the month?',
@@ -922,7 +925,7 @@ M = {
                  ('¿Puedo preguntar por un apartamento por correo en vez de WhatsApp?',
                   'Sí. Escriba a <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> con sus fechas, cuántas personas son, su presupuesto y la zona que prefiere, o use el botón «Escríbanos por este apartamento» de cualquier propiedad para que el apartamento quede indicado. Respondemos en español o en inglés y le confirmamos por escrito la disponibilidad y el precio total.'),
                  ('¿Cuál es la estadía mínima de un arriendo por meses?',
-                  '30 noches. Para estadías más cortas, vea nuestros <a href="../arriendos/">arriendos amoblados por noches</a>.'),
+                  '30 noches. ¿Se queda menos de un mes? Vea nuestros <a href="../apartamentos-por-dias-medellin/">apartamentos por días en Medellín</a>, amoblados y por noches.'),
                  ('¿En qué barrios están sus arriendos por meses?',
                   'Al {AS_OF}: {MONTH_AREA_COUNTS}. La lista de esta página muestra los actuales.'),
                  ('¿Necesito fiador para arrendar por meses?',
@@ -1393,6 +1396,178 @@ for area, cfg in RA.items():
         write(f'{folder}/index.html', deeper(page(lang, title=ui['title'], desc=desc, en_url=en_url, es_url=es_url,
               en_href=en_href, es_href=es_href, body=body, schema=schema)))
     SITEMAP.append((en_url, es_url, TODAY))
+
+
+# ======================= 4c4. Short-term rentals (/short-term-rentals-medellin/, /es/apartamentos-por-dias-medellin/) =======================
+# Backlog R6 (James, Nov 22 2026: "more ways to show up for renters"). Every listing offered by the night in the HostFlow
+# feed, grouped by area, with an answer-first summary from the feed's own numbers, email + WhatsApp CTAs and FAQ.
+# Targets "short term rentals medellin", "vacation rentals medellin" / "apartamentos por días medellín". No minimum
+# nights, check-in times or payment methods are stated here: they are not confirmed (ask us).
+S = {
+ 'en': dict(slug='short-term-rentals-medellin', home='Home', rentals='Rentals', rentals_url='rentals/', crumb='Short-term rentals',
+            title='Short-Term Rentals Medellín | Furnished Apartments by Night',
+            desc='Short-term rentals in Medellín: {N_SHORT} furnished apartments by the night in {TOP_AREAS} and more, from {MIN_NIGHT} COP. Email us and book direct.',
+            h1='Short-term rentals in Medellín: furnished apartments by the night',
+            lead='<strong>Looking for a short-term rental in Medellín for a few nights or a couple of weeks? We rent furnished apartments by the night, and you book directly with the local team that manages them.</strong> As of {AS_OF}, {N_SHORT} short-term rentals are listed with a price, from {MIN_NIGHT} COP a night plus a one-time cleaning fee, in {SHORT_AREAS}. Email us your dates or ask on WhatsApp, in English or Spanish, and we confirm availability and the total price in writing.',
+            cta_wa='Ask about a short stay', wa_text='Hi! I’m looking for a furnished apartment in Medellín for a short stay.', cta_all='See all rentals with live availability',
+            list_h='Short-term rentals available now',
+            list_intro='As of {AS_OF}, “from” prices in Colombian pesos per night, plus a one-time cleaning fee. Tap “Ask about” and tell us your dates; for live availability, see <a href="../rentals/">all our furnished rentals</a>. Jump to: {JUMP}',
+            area_h='Short-term rentals in {A}', area_p='{n} apartments by the night, from {min} COP a night.', area_one='1 apartment by the night, from {min} COP a night.',
+            area_more='More in {A}: <a href="../rentals/{slug}/">furnished apartments for rent in {A}</a>, by the night and by the month.',
+            other_h='More short-term rentals in and around Medellín', other_p='Also by the night: {LIST}.',
+            label={'Medellín': 'Medellín (other neighborhoods)'},
+            prose="""
+      <h2>Short-term rentals in Medellín, booked direct</h2>
+      <p>A short-term rental is a furnished apartment you rent by the night, ready to live in from the day you arrive: a kitchen, your own space and a local team a message away. It suits a holiday, a business trip, a family visit, or a first week in the city while you look for a <a href="../monthly-rentals-medellin/">monthly rental</a>. Each listing on this page shows a “from” price per night and a one-time cleaning fee; as of {AS_OF}, cleaning fees on our short-term rentals run from {MIN_CLEAN_S} to {MAX_CLEAN_S} COP. The price for your exact dates comes in our written quote.</p>
+      <h2>How to book a short-term rental with us</h2>
+      <ol><li><strong>Choose an apartment</strong> from the list above, or tell us what you need: area, bedrooms, number of guests and dates.</li><li><strong>Email us or ask on WhatsApp.</strong> Write to <a href="mailto:sales@medellinconcierge.net?subject=Furnished%20rental%20inquiry%20%E2%80%93%20short%20stay">sales@medellinconcierge.net</a> or tap “Ask about” on a listing. We answer in English or Spanish.</li><li><strong>Get your quote in writing.</strong> We confirm availability, the total price for your dates including the cleaning fee, and the house rules.</li><li><strong>Arrive.</strong> Our local team, based in El Poblado, coordinates your check-in, and guests can reach us 24/7 during the stay.</li></ol>
+      <h2>Short stays in Colombia: RNT and SIRE</h2>
+      <p>Renting an apartment by the night is a tourist rental. In Colombia it needs a Registro Nacional de Turismo (RNT), and foreign guests are reported to Migración Colombia through SIRE; as the property manager, we handle both for the apartments we manage (as of November 2026). Before you book any short-term rental in Medellín, ask for the listing’s RNT number and look it up on the <a href="https://rnt.confecamaras.co/">public RNT system</a>. Rules for tourist rentals can change; this reflects how things stand as of November 2026.</p>
+      <h2>Short stay or monthly rental?</h2>
+      <p>If you are staying 30 nights or more, our <a href="../monthly-rentals-medellin/">monthly rentals in Medellín</a> are priced by the month instead of by the night. Not sure where to stay? El Poblado has the most restaurants, cafés and nightlife; Envigado and Sabaneta, just south of Medellín, are quieter and good for everyday life. Read <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado vs Laureles vs Envigado</a> to compare.</p>
+      <h2>Before you book: a short-stay checklist</h2>
+      <ul><li><strong>Check the RNT</strong> on the public RNT system.</li><li><strong>Know the total price,</strong> including the cleaning fee and anything charged on top.</li><li><strong>Get the dates and rules in writing,</strong> including check-in and check-out times and the building’s rules.</li><li><strong>Know who to call.</strong> Make sure someone answers 24/7 if something goes wrong during your stay.</li></ul>""",
+            faq=[('How much does a short-term rental in Medellín cost?',
+                  'In our listings, as of {AS_OF}, furnished apartments by the night run from {MIN_NIGHT} to {MAX_NIGHT} COP a night, depending on the area, the size and the building, plus a one-time cleaning fee. Each listing on this page shows its current “from” price; we confirm the total for your dates in writing.'),
+                 ('Is there a cleaning fee for short stays?',
+                  'Yes. Each listing shows a one-time cleaning fee, charged once per stay; as of {AS_OF}, cleaning fees on our short-term rentals run from {MIN_CLEAN_S} to {MAX_CLEAN_S} COP.'),
+                 ('Can I ask about an apartment by email instead of WhatsApp?',
+                  'Yes. Email <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> with your dates, the number of guests, your budget and the area you prefer, or use the “Email us about this apartment” button on any listing so the apartment is named for you. We answer in English or Spanish and confirm availability and the total price in writing.'),
+                 ('What is the minimum stay?',
+                  'It depends on the apartment and your dates, so ask us: send your dates by email or WhatsApp and we tell you what is available. For 30 nights or more, see our <a href="../monthly-rentals-medellin/">monthly rentals in Medellín</a>.'),
+                 ('How does check-in work?',
+                  'Our local team, based in El Poblado, coordinates your check-in and confirms the check-in and check-out times of your apartment in writing before you arrive. During the stay you can reach us 24/7.'),
+                 ('How do I pay for a short-term rental?',
+                  'When we confirm your dates, we send you the total price, including the cleaning fee, and how to pay, in writing. Ask us any question about payment before you book.'),
+                 ('Do your short-term rentals have an RNT?',
+                  'Short stays in Colombia need a Registro Nacional de Turismo (RNT), and as the property manager we handle RNT, SIRE and TRA for the properties we manage (as of November 2026). Ask us for the RNT number of the apartment you like and check it on the public RNT system.'),
+                 ('Which areas are your short-term rentals in?',
+                  'As of {AS_OF}: {SHORT_AREA_COUNTS}. The list on this page shows the current ones.')]),
+ 'es': dict(slug='es/apartamentos-por-dias-medellin', home='Inicio', rentals='Arriendos', rentals_url='es/arriendos/', crumb='Apartamentos por días',
+            title='Apartamentos por días en Medellín | Amoblados',
+            desc='Apartamentos amoblados por días en Medellín: {N_SHORT} por noches en {TOP_AREAS} y más, desde {MIN_NIGHT} COP. Escríbanos y reserve directo.',
+            h1='Apartamentos por días en Medellín: amoblados, por noches',
+            lead='<strong>¿Busca un apartamento por días en Medellín para unas noches o un par de semanas? Arrendamos apartamentos amoblados por noches, y usted reserva directo con el equipo local que los administra.</strong> Al {AS_OF} hay {N_SHORT} apartamentos por días con precio, desde {MIN_NIGHT} COP la noche más una tarifa de aseo única, en {SHORT_AREAS}. Escríbanos sus fechas por correo o por WhatsApp, en español o en inglés, y le confirmamos por escrito la disponibilidad y el precio total.',
+            cta_wa='Preguntar por una estadía corta', wa_text='¡Hola! Busco un apartamento amoblado en Medellín por días.', cta_all='Ver todos los arriendos con disponibilidad en vivo',
+            list_h='Apartamentos por días disponibles hoy',
+            list_intro='Al {AS_OF}, precios «desde» en pesos colombianos por noche, más una tarifa de aseo única. Toque «Preguntar por» y díganos sus fechas; para la disponibilidad en vivo, vea <a href="../arriendos/">todos nuestros arriendos amoblados</a>. Ir a: {JUMP}',
+            area_h='Apartamentos por días en {A}', area_p='{n} apartamentos por noches, desde {min} COP la noche.', area_one='1 apartamento por noches, desde {min} COP la noche.',
+            area_more='Más en {A}: <a href="../arriendos/{slug}/">apartamentos amoblados en arriendo en {A}</a>, por noches y por meses.',
+            other_h='Más apartamentos por días en Medellín y sus alrededores', other_p='También por noches: {LIST}.',
+            label={'Medellín': 'Medellín (otros barrios)'},
+            prose="""
+      <h2>Apartamentos por días en Medellín, con reserva directa</h2>
+      <p>Un apartamento por días es un apartamento amoblado que se arrienda por noches, listo para vivir desde el día en que llega: cocina, su propio espacio y un equipo local a un mensaje de distancia. Sirve para unas vacaciones, un viaje de trabajo, una visita familiar o la primera semana en la ciudad mientras busca un <a href="../arriendos-por-meses-medellin/">arriendo por meses</a>. Cada propiedad de esta página muestra un precio «desde» por noche y una tarifa de aseo única; al {AS_OF}, el aseo en nuestros apartamentos por días va desde {MIN_CLEAN_S} hasta {MAX_CLEAN_S} COP. El precio para sus fechas exactas se lo enviamos por escrito.</p>
+      <h2>Cómo reservar un apartamento por días con nosotros</h2>
+      <ol><li><strong>Escoja un apartamento</strong> de la lista de arriba, o díganos qué necesita: zona, habitaciones, cuántas personas son y las fechas.</li><li><strong>Escríbanos por correo o por WhatsApp.</strong> Escriba a <a href="mailto:sales@medellinconcierge.net?subject=Consulta%20arriendo%20amoblado%20%E2%80%93%20por%20d%C3%ADas">sales@medellinconcierge.net</a> o toque «Preguntar por» en una propiedad. Respondemos en español o en inglés.</li><li><strong>Reciba la cotización por escrito.</strong> Le confirmamos la disponibilidad, el precio total de sus fechas con el aseo incluido y las normas de la casa.</li><li><strong>Llegue.</strong> Nuestro equipo local, con oficina en El Poblado, coordina su llegada, y durante la estadía nos encuentra 24/7.</li></ol>
+      <h2>Estancias cortas en Colombia: RNT y SIRE</h2>
+      <p>Arrendar un apartamento por noches es vivienda turística. En Colombia exige el Registro Nacional de Turismo (RNT), y los huéspedes extranjeros se reportan a Migración Colombia por SIRE; como administradores, gestionamos ambos en los apartamentos que administramos (a noviembre de 2026). Antes de reservar cualquier apartamento por días en Medellín, pida el número de RNT del anuncio y consúltelo en el <a href="https://rnt.confecamaras.co/">sistema público del RNT</a>. Las normas de la vivienda turística pueden cambiar; esto refleja cómo están las cosas a noviembre de 2026.</p>
+      <h2>¿Por días o por meses?</h2>
+      <p>Si se queda 30 noches o más, nuestros <a href="../arriendos-por-meses-medellin/">arriendos por meses en Medellín</a> tienen precio mensual en vez de por noche. ¿No sabe dónde quedarse? El Poblado tiene la mayor oferta de restaurantes, cafés y vida nocturna; Envigado y Sabaneta, al sur de Medellín, son más tranquilos y buenos para la vida diaria. Lea <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado, Laureles o Envigado</a> para compararlos.</p>
+      <h2>Antes de reservar: lista para una estadía corta</h2>
+      <ul><li><strong>Verifique el RNT</strong> en el sistema público del RNT.</li><li><strong>Tenga claro el precio total,</strong> con el aseo y cualquier cobro adicional.</li><li><strong>Deje por escrito fechas y reglas,</strong> incluidos los horarios de llegada y salida y las normas del edificio.</li><li><strong>Sepa a quién llamar.</strong> Asegúrese de que alguien responda 24/7 si algo pasa durante su estadía.</li></ul>""",
+            faq=[('¿Cuánto cuesta un apartamento por días en Medellín?',
+                  'En nuestras propiedades, al {AS_OF}, los apartamentos amoblados por noches van desde {MIN_NIGHT} hasta {MAX_NIGHT} COP la noche, según la zona, el tamaño y el edificio, más una tarifa de aseo única. Cada propiedad de esta página muestra su precio «desde» actual; el total de sus fechas se lo confirmamos por escrito.'),
+                 ('¿Se cobra aseo en las estadías cortas?',
+                  'Sí. Cada propiedad muestra una tarifa de aseo única, que se cobra una vez por estadía; al {AS_OF}, el aseo en nuestros apartamentos por días va desde {MIN_CLEAN_S} hasta {MAX_CLEAN_S} COP.'),
+                 ('¿Puedo preguntar por un apartamento por correo en vez de WhatsApp?',
+                  'Sí. Escriba a <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> con sus fechas, cuántas personas son, su presupuesto y la zona que prefiere, o use el botón «Escríbanos por este apartamento» de cualquier propiedad para que el apartamento quede indicado. Respondemos en español o en inglés y le confirmamos por escrito la disponibilidad y el precio total.'),
+                 ('¿Cuál es la estadía mínima?',
+                  'Depende del apartamento y de sus fechas, así que pregúntenos: envíenos sus fechas por correo o por WhatsApp y le decimos qué hay disponible. Para 30 noches o más, vea nuestros <a href="../arriendos-por-meses-medellin/">arriendos por meses en Medellín</a>.'),
+                 ('¿Cómo es la llegada (check-in)?',
+                  'Nuestro equipo local, con oficina en El Poblado, coordina su llegada y le confirma por escrito, antes de que llegue, los horarios de entrada y salida de su apartamento. Durante la estadía nos encuentra 24/7.'),
+                 ('¿Cómo pago un apartamento por días?',
+                  'Cuando confirmamos sus fechas, le enviamos por escrito el precio total, con el aseo incluido, y cómo pagar. Pregúntenos cualquier duda sobre el pago antes de reservar.'),
+                 ('¿Sus apartamentos por días tienen RNT?',
+                  'La renta corta en Colombia exige el Registro Nacional de Turismo (RNT), y como administradores gestionamos el RNT, el SIRE y la TRA de las propiedades que administramos (a noviembre de 2026). Pídanos el número de RNT del apartamento que le guste y consúltelo en el sistema público del RNT.'),
+                 ('¿En qué zonas están sus apartamentos por días?',
+                  'Al {AS_OF}: {SHORT_AREA_COUNTS}. La lista de esta página muestra los actuales.')]),
+}
+
+def short_stats(lang):
+    ui = S[lang]; P = [p for p in LISTINGS['properties'] if p['stay_type'] == 'short_term']
+    night = [rl_price(p) for p in P if rl_price(p)]
+    clean = [p['cleaning_fee'] for p in P if p.get('cleaning_fee')]
+    n = {}
+    for p in P: n[rl_area(p)] = n.get(rl_area(p), 0) + 1
+    areas = sorted(n, key=lambda a: (-n[a], a))
+    lab = lambda a: ui['label'].get(a, a)
+    st = rl_stats(lang)
+    st.update({'{MIN_NIGHT}': cop(min(night)) if night else '—', '{MAX_NIGHT}': cop(max(night)) if night else '—',
+               '{MIN_CLEAN_S}': cop(min(clean)) if clean else '—', '{MAX_CLEAN_S}': cop(max(clean)) if clean else '—',
+               '{SHORT_AREAS}': rl_join([lab(a) for a in areas], lang), '{TOP_AREAS}': ', '.join(areas[:3]),
+               '{SHORT_AREA_COUNTS}': rl_join([f'{a} ({n[a]})' for a in areas], lang)})
+    return st, P, n, areas
+
+def short_list(lang, st, P, n, areas):
+    """Nightly listings grouped by area: an H2 per area with 2+ listings, the rest under one closing H2."""
+    ui = S[lang]; lab = lambda a: ui['label'].get(a, a)
+    big = [a for a in areas if n[a] >= 2]; small = [a for a in areas if n[a] < 2]
+    aid = lambda a: 'area-' + re.sub(r'[^a-z]+', '-', unicodedata.normalize('NFKD', a).encode('ascii', 'ignore').decode().lower()).strip('-')
+    jump = ' · '.join([f'<a href="#{aid(a)}">{a}</a>' for a in big] + ([f'<a href="#area-more">{ui["other_h"]}</a>'] if small else []))
+    out = f'<section class="rl" aria-labelledby="rl-h"><h2 id="rl-h">{ui["list_h"]}</h2><p class="rl-intro">{fill(ui["list_intro"], st).replace("{JUMP}", jump)}</p>'
+    slugs = dict(RA_LIVE)
+    for a in big:
+        grp = sorted((p for p in P if rl_area(p) == a), key=rl_sort)
+        mn = min(rl_price(p) for p in grp if rl_price(p))
+        out += (f'<h2 id="{aid(a)}">{ui["area_h"].format(A=a)}</h2><p class="rl-intro">{ui["area_p"].format(n=len(grp), min=cop(mn))}'
+                + (' ' + ui['area_more'].format(A=a, slug=slugs[a]) if a in slugs else '') + '</p>'
+                + '<ul class="rl-list">' + ''.join(rl_item(p, lang) for p in grp) + '</ul>')
+    if small:
+        grp = sorted((p for p in P if rl_area(p) in small), key=rl_sort)
+        out += (f'<h2 id="area-more">{ui["other_h"]}</h2><p class="rl-intro">{ui["other_p"].replace("{LIST}", rl_join([f"{a} ({n[a]})" for a in small], lang))}</p>'
+                + '<ul class="rl-list">' + ''.join(rl_item(p, lang) for p in grp) + '</ul>')
+    return out + '</section>'
+
+if sum(p['stay_type'] == 'short_term' and bool(rl_price(p)) for p in LISTINGS['properties']) >= 2:
+    for lang in LANGS:
+        ui = S[lang]; st, P, n, areas = short_stats(lang)
+        en_url, es_url = SITE + S['en']['slug'] + '/', SITE + S['es']['slug'] + '/'
+        url = es_url if lang == 'es' else en_url
+        home_url = SITE + ('es/' if lang == 'es' else '')
+        pre = '../' if lang == 'en' else '../../'
+        faq = [(fill(q, st), fill(a, st)) for q, a in ui['faq']]
+        faq_html = ''.join(f'        <details><summary>{html.escape(q, quote=False)}{PLUS}</summary><p>{a}</p></details>\n' for q, a in faq)
+        wa = 'https://wa.me/573042773864?text=' + urllib.parse.quote(ui['wa_text'])
+        desc = fill(ui['desc'], st)
+        body = f'''<section class="page-top">
+  <div class="wrap">
+    <p class="crumbs"><a href="../">{ui["home"]}</a> / <a href="{pre}{ui["rentals_url"]}">{ui["rentals"]}</a> / {ui["crumb"]}</p>
+    <h1>{ui["h1"]}</h1>
+    <div class="lead">{fill(ui["lead"], st)}</div>
+    <div class="ref-ctas"><a class="btn btn-primary" href="{wa}" target="_blank" rel="noopener">{ui["cta_wa"]}</a><a class="btn btn-ghost" href="{mail_href(lang, 'short')}">{MAIL[lang]["btn"]}</a><a class="btn btn-ghost" href="{pre}{ui["rentals_url"]}">{ui["cta_all"]}</a></div>
+    {mail_note(lang, MAIL[lang]["short"] + " ")}
+  </div>
+</section>
+<section class="rentals">
+  <div class="wrap">
+    {short_list(lang, st, P, n, areas)}
+    {mail_block(lang, 'short', wa_text=ui['wa_text'])}
+    <div class="prose">{fill(ui["prose"], st)}
+      <h2>{L[lang]["faq_h"]}</h2>
+      <div class="faq">
+{faq_html}      </div>
+    </div>
+    <aside class="article-cta">
+      <h2>{R[lang]["owners_h"]}</h2>
+      <p>{R[lang]["owners_p"]}</p>
+      <div class="ref-ctas"><a class="btn btn-primary" href="../#plans">{R[lang]["owners_cta"]}</a><a class="btn btn-outline" href="../#contact">{L[lang]["cta_1"]}</a></div>
+    </aside>
+  </div>
+</section>'''
+        schema = {'@context': 'https://schema.org', '@graph': [
+            {'@type': 'CollectionPage', 'name': ui['h1'], 'description': desc, 'url': url, 'inLanguage': lang,
+             'publisher': mail_publisher()},
+            {'@type': 'FAQPage', 'url': url, 'inLanguage': lang, 'mainEntity': [
+                {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}} for q, a in faq]},
+            breadcrumbs([(ui['home'], home_url), (ui['rentals'], SITE + ui['rentals_url']), (ui['crumb'], url)]),
+            rl_schema(lang, url, only='short_term', name=ui['list_h'])]}
+        en_href, es_href = (('./', '../es/apartamentos-por-dias-medellin/') if lang == 'en' else ('../../short-term-rentals-medellin/', './'))
+        write(f'{ui["slug"]}/index.html', page(lang, title=ui['title'], desc=desc, en_url=en_url, es_url=es_url,
+              en_href=en_href, es_href=es_href, body=body, schema=schema))
+    SITEMAP.append((SITE + 'short-term-rentals-medellin/', SITE + 'es/apartamentos-por-dias-medellin/', TODAY))
+else:
+    print('  note: short-term-rentals-medellin/ skipped (fewer than 2 priced nightly listings in the feed)')
 
 
 # ======================= 4d. Meet the team (/team/, /es/equipo/) =======================
