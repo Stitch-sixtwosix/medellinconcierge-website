@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-18",
+ "as_of": "2026-11-22",
  "total": 86,
  "properties": [
   {
@@ -18,7 +18,7 @@
     "from": false
    },
    "cleaning_fee": 110000,
-   "available_from": "2026-11-20",
+   "available_from": "2026-11-22",
    "amenities": [
     "ac",
     "washer"
@@ -40,32 +40,9 @@
     "from": true
    },
    "cleaning_fee": 170000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "elevator",
-    "washer"
-   ]
-  },
-  {
-   "ref": "#0010",
-   "title_en": "1-bedroom apartment in El Poblado",
-   "title_es": "Apartamento de 1 habitación en El Poblado",
-   "area": "El Poblado",
-   "property_type": "Apartment",
-   "bedrooms": 1,
-   "bathrooms": 1,
-   "max_guests": 2,
-   "stay_type": "long_term",
-   "price": {
-    "amount": 7770000,
-    "per": "month",
-    "from": false
-   },
-   "cleaning_fee": 100000,
-   "available_from": "2026-11-18",
-   "amenities": [
-    "elevator",
-    "ac",
     "washer"
    ]
   },
@@ -85,7 +62,7 @@
     "from": true
    },
    "cleaning_fee": 120000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-23",
    "amenities": [
     "washer"
    ]
@@ -147,10 +124,31 @@
     "from": false
    },
    "cleaning_fee": 120000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "elevator",
     "ac",
+    "washer"
+   ]
+  },
+  {
+   "ref": "#0081",
+   "title_en": "2-bedroom apartment in Medellín",
+   "title_es": "Apartamento de 2 habitaciones en Medellín",
+   "area": "Medellín",
+   "property_type": "Apartment",
+   "bedrooms": 2,
+   "bathrooms": 2,
+   "max_guests": 5,
+   "stay_type": "long_term",
+   "price": {
+    "amount": 7590000,
+    "per": "month",
+    "from": false
+   },
+   "cleaning_fee": 120000,
+   "available_from": "2026-11-22",
+   "amenities": [
     "washer"
    ]
   },
@@ -170,7 +168,7 @@
     "from": false
    },
    "cleaning_fee": 150000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "washer"
    ]
@@ -191,7 +189,7 @@
     "from": true
    },
    "cleaning_fee": 130000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "ac",
     "washer"
@@ -213,7 +211,7 @@
     "from": true
    },
    "cleaning_fee": 130000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "ac",
     "washer"
@@ -235,7 +233,7 @@
     "from": true
    },
    "cleaning_fee": 100000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "ac",
     "washer"
@@ -252,12 +250,12 @@
    "max_guests": 2,
    "stay_type": "short_term",
    "price": {
-    "amount": 183000,
+    "amount": 170000,
     "per": "night",
     "from": true
    },
    "cleaning_fee": 110000,
-   "available_from": "2026-11-21",
+   "available_from": "2026-12-21",
    "amenities": [
     "elevator",
     "parking",
@@ -280,7 +278,7 @@
     "from": true
    },
    "cleaning_fee": 230000,
-   "available_from": "2026-11-21",
+   "available_from": "2026-11-22",
    "amenities": [
     "elevator",
     "ac"
@@ -302,7 +300,7 @@
     "from": true
    },
    "cleaning_fee": 150000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "elevator",
     "ac"
@@ -324,7 +322,7 @@
     "from": true
    },
    "cleaning_fee": 220000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "elevator",
     "ac"
@@ -346,7 +344,7 @@
     "from": true
    },
    "cleaning_fee": 80000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "washer"
    ]
@@ -367,7 +365,7 @@
     "from": true
    },
    "cleaning_fee": 160000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "parking"
    ]
@@ -388,7 +386,7 @@
     "from": true
    },
    "cleaning_fee": 120000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "elevator",
     "washer"
@@ -410,7 +408,7 @@
     "from": false
    },
    "cleaning_fee": 130000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "elevator",
     "ac",
@@ -478,7 +476,7 @@
     "from": true
    },
    "cleaning_fee": 130000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "elevator",
     "ac",
@@ -501,7 +499,7 @@
     "from": false
    },
    "cleaning_fee": 130000,
-   "available_from": "2026-11-25",
+   "available_from": "2026-11-29",
    "amenities": [
     "elevator",
     "ac",
@@ -524,7 +522,7 @@
     "from": false
    },
    "cleaning_fee": 160000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "elevator",
     "ac",
@@ -547,7 +545,7 @@
     "from": false
    },
    "cleaning_fee": 170000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "elevator",
     "ac",
@@ -565,12 +563,12 @@
    "max_guests": 4,
    "stay_type": "long_term",
    "price": {
-    "amount": 9900000,
+    "amount": 10950000,
     "per": "month",
     "from": false
    },
    "cleaning_fee": 120000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "elevator"
    ]
@@ -586,7 +584,7 @@
    "max_guests": 4,
    "stay_type": "short_term",
    "price": {
-    "amount": 572000,
+    "amount": 567000,
     "per": "night",
     "from": true
    },
@@ -615,7 +613,7 @@
     "from": false
    },
    "cleaning_fee": 100000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "elevator",
     "ac",
@@ -638,7 +636,7 @@
     "from": false
    },
    "cleaning_fee": 130000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "bbq",
     "playground",
@@ -662,9 +660,10 @@
     "from": false
    },
    "cleaning_fee": 120000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "gym",
+    "elevator",
     "parking",
     "washer",
     "dryer"
@@ -686,7 +685,7 @@
     "from": false
    },
    "cleaning_fee": 130000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "elevator",
     "parking",
@@ -710,7 +709,7 @@
     "from": false
    },
    "cleaning_fee": 120000,
-   "available_from": "2026-11-18",
+   "available_from": "2026-11-22",
    "amenities": [
     "elevator",
     "ac",
