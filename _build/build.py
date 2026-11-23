@@ -797,6 +797,81 @@ def rl_section(lang, st, only=None, h=None, intro=None, area=None, short_note=Tr
         if grp and st_type == 'short_term' and short_note: out += f'<p class="rl-intro">{u["short_more"]}</p>'
     return out + '</section>'
 
+# Rentals by size (backlog R7): one H2 per bedroom count with at least 2 listings, each a compact list linking to the
+# full card in the list below (#p-ref), with the count and price range by month and by night, all from the feed.
+RS_UI = {
+ 'en': dict(jump='Browse by size:', h='{n}-bedroom {kind} for rent in Medellín', apt='apartments', studio='apartments and studios', house='apartments and houses',
+            jump_one='{n} bedroom', jump_many='{n} bedrooms',
+            intro='As of {AS_OF}, we list {k} furnished {n}-bedroom homes{EXTRA}: {PARTS}. Prices are in Colombian pesos, plus a one-time cleaning fee. Tap a name to see the full listing, or email <a href="mailto:sales@medellinconcierge.net?subject={SUBJ}">sales@medellinconcierge.net</a> with your dates.',
+            extra_studio=', {c} of them studios', extra_house=', {c} of them houses',
+            month_part='{m} by the month ({RANGE} a month)', night_part='{m} by the night (from {LOW} a night)', req='{m} by the month (price on request)',
+            subj='{n}-bedroom furnished rental inquiry', month='Monthly', night='By the night',
+            faq_q='Do you have 1-, 2- and 3-bedroom furnished apartments for rent in Medellín?',
+            faq_a='Yes. As of {AS_OF}, our furnished rentals include {SIZE_COUNTS}. This page lists them by size, with the monthly and nightly prices for each group; tell us how many bedrooms you need, your dates and your budget at <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> or on WhatsApp.',
+            cnt='{c} with {n} {b}', beds=('bedroom', 'bedrooms')),
+ 'es': dict(jump='Por tamaño:', h='{kind} de {n} {hab} en arriendo en Medellín', apt='Apartamentos', studio='Apartamentos y apartaestudios', house='Apartamentos y casas',
+            jump_one='{n} habitación', jump_many='{n} habitaciones',
+            intro='Al {AS_OF}, tenemos {k} propiedades amobladas de {n} {hab}{EXTRA}: {PARTS}. Precios en pesos colombianos, más una tarifa de aseo única. Toque un nombre para ver la propiedad completa, o escriba a <a href="mailto:sales@medellinconcierge.net?subject={SUBJ}">sales@medellinconcierge.net</a> con sus fechas.',
+            extra_studio=', {c} de ellas apartaestudios', extra_house=', {c} de ellas casas',
+            month_part='{m} por meses ({RANGE} al mes)', night_part='{m} por noches (desde {LOW} la noche)', req='{m} por meses (precio bajo consulta)',
+            subj='Arriendo amoblado de {n} habitaciones', month='Por meses', night='Por noches',
+            faq_q='¿Tienen apartamentos amoblados de 1, 2 y 3 habitaciones en arriendo en Medellín?',
+            faq_a='Sí. Al {AS_OF}, nuestros arriendos amoblados incluyen {SIZE_COUNTS}. En esta página están agrupados por tamaño, con los precios por mes y por noche de cada grupo; díganos cuántas habitaciones necesita, sus fechas y su presupuesto en <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> o por WhatsApp.',
+            cnt='{c} de {n} {b}', beds=('habitación', 'habitaciones')),
+}
+
+def rs_groups():
+    g = {}
+    for p in LISTINGS['properties']:
+        if p.get('bedrooms'): g.setdefault(p['bedrooms'], []).append(p)
+    return [(n, g[n]) for n in sorted(g) if len(g[n]) >= 2]
+
+def rs_size_counts(lang):
+    u = RS_UI[lang]
+    return rl_join([u['cnt'].format(c=len(P), n=n, b=u['beds'][n != 1]) for n, P in rs_groups()], lang)
+
+def rs_jump(lang):
+    u = RS_UI[lang]; G = rs_groups()
+    if not G: return ''
+    links = ' · '.join(f'<a href="#size-{n}">{(u["jump_one"] if n == 1 else u["jump_many"]).format(n=n)}</a>' for n, _ in G)
+    return f'<p class="rent-updated">{u["jump"]} {links}</p>'
+
+def rs_section(lang, st):
+    u = RS_UI[lang]; ru = RL_UI[lang]; G = rs_groups()
+    if not G: return ''
+    out = '<section class="rl" id="by-size">'
+    for n, P in G:
+        studios = sum(p['property_type'] == 'Studio' for p in P); houses = sum(p['property_type'] == 'House' for p in P)
+        hab = ru['beds'][n != 1]
+        h = u['h'].format(n=n, kind=u['house'] if houses else u['studio'] if studios else u['apt'], hab=hab)
+        extra = u['extra_house'].format(c=houses) if houses else u['extra_studio'].format(c=studios) if studios else ''
+        parts = []
+        for key, typ in (('month', 'long_term'), ('night', 'short_term')):
+            grp = [p for p in P if p['stay_type'] == typ]
+            if not grp: continue
+            pr = sorted(rl_price(p) for p in grp if rl_price(p))
+            if not pr: parts.append(u['req'].format(m=len(grp)) if key == 'month' else ''); continue
+            if key == 'month':
+                rng = f'{cop(pr[0])} COP' if pr[0] == pr[-1] else f'{cop(pr[0])} to {cop(pr[-1])} COP'.replace(' to ', ' a ' if lang == 'es' else ' to ')
+                parts.append(u['month_part'].format(m=len(grp), RANGE=rng))
+            else:
+                parts.append(u['night_part'].format(m=len(grp), LOW=f'{cop(pr[0])} COP'))
+        parts = [x for x in parts if x]
+        intro = (u['intro'].replace('{AS_OF}', st['{AS_OF}']).replace('{k}', str(len(P))).replace('{n}', str(n)).replace('{hab}', hab)
+                 .replace('{EXTRA}', extra).replace('{PARTS}', rl_join(parts, lang))
+                 .replace('{SUBJ}', urllib.parse.quote(u['subj'].format(n=n))))
+        items = ''
+        for p in sorted(P, key=lambda p: (p['stay_type'] != 'long_term', rl_sort(p))):
+            pr = p['price'] or {}
+            price = (f'{ru["frm"] if pr.get("from") else ""}{cop(pr["amount"])} COP <span>{ru["per"].get(pr.get("per"), "")}</span>' if pr.get('amount') else ru['on_req'])
+            meta = [rl_area(p), u['month'] if p['stay_type'] == 'long_term' else u['night'],
+                    f'{p["bathrooms"]} {ru["baths"][p["bathrooms"] != 1]}' if p.get('bathrooms') else '',
+                    ru['guests'].format(n=p['max_guests']) if p.get('max_guests') else '']
+            items += (f'<li class="rl-item"><div class="rl-main"><h4><a href="#p-{(p["ref"] or "").lstrip("#")}">{html.escape(rl_title(p, lang))}</a></h4>'
+                      f'<p class="rl-meta">{" · ".join(m for m in meta if m)}</p></div><div class="rl-side"><p class="rl-price">{price}</p></div></li>')
+        out += f'<h2 id="size-{n}">{h}</h2><p class="rl-intro">{intro}</p><ul class="rl-list">{items}</ul>'
+    return out + '</section>'
+
 def rl_schema(lang, url, only=None, name=None, area=None):
     P = sorted((p for p in LISTINGS['properties'] if (not only or p['stay_type'] == only) and (not area or rl_area(p) == area)), key=lambda p: (p['stay_type'] != 'long_term', rl_sort(p)))
     items = []
@@ -814,7 +889,8 @@ def rl_schema(lang, url, only=None, name=None, area=None):
 for lang in LANGS:
     ui = R[lang]
     st = rl_stats(lang)
-    ui = dict(ui, prose=fill(ui['prose'], st), faq=[(fill(q, st), fill(a, st)) for q, a in ui['faq']])
+    rs_faq = [(RS_UI[lang]['faq_q'], RS_UI[lang]['faq_a'].replace('{SIZE_COUNTS}', rs_size_counts(lang)))] if rs_groups() else []
+    ui = dict(ui, prose=fill(ui['prose'], st), faq=[(fill(q, st), fill(a, st)) for q, a in ui['faq'][:6] + rs_faq + ui['faq'][6:]])
     en_url, es_url = SITE + R['en']['slug'] + '/', SITE + R['es']['slug'] + '/'
     url = es_url if lang == 'es' else en_url
     home_url = SITE + ('es/' if lang == 'es' else '')
@@ -826,6 +902,7 @@ for lang in LANGS:
     <div class="lead">{ui["lead"]}</div>
     <div class="ref-ctas"><a class="btn btn-primary" href="https://wa.me/573042773864?text={urllib.parse.quote(MAIL[lang]["wa"])}" target="_blank" rel="noopener">WhatsApp</a><a class="btn btn-ghost" href="{mail_href(lang, 'rentals')}">{MAIL[lang]["btn"]}</a></div>
     {mail_note(lang, MAIL[lang]["short"] + " ")}
+    {rs_jump(lang)}
   </div>
 </section>
 <section class="rentals">
@@ -836,6 +913,7 @@ for lang in LANGS:
     <p class="rent-updated">{ui["fallback"]} <a href="{HOSTFLOW_LISTINGS}" target="_blank" rel="noopener">{ui["fallback_link"]}</a></p>
     <div class="prose">{ui["prose"]}
     </div>
+    {rs_section(lang, st)}
     {rl_section(lang, st)}
     {mail_block(lang, 'rentals')}
     <div class="prose">
