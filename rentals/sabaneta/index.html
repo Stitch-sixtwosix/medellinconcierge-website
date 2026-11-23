@@ -169,20 +169,44 @@
      "@type": "ListItem",
      "position": 1,
      "item": {
-      "@type": "Apartment",
+      "@type": "Offer",
       "name": "2-bedroom apartment in Sabaneta",
       "url": "https://www.medellinconcierge.net/rentals/sabaneta/#p-0104",
-      "address": {
-       "@type": "PostalAddress",
-       "addressLocality": "Sabaneta",
-       "addressCountry": "CO",
-       "addressRegion": "Antioquia"
+      "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+      "price": 200000,
+      "priceCurrency": "COP",
+      "priceSpecification": {
+       "@type": "UnitPriceSpecification",
+       "priceCurrency": "COP",
+       "unitText": "NIGHT",
+       "unitCode": "DAY",
+       "referenceQuantity": {
+        "@type": "QuantitativeValue",
+        "value": 1,
+        "unitCode": "DAY"
+       },
+       "minPrice": 200000
       },
-      "numberOfBedrooms": 2,
-      "numberOfBathroomsTotal": 2,
-      "occupancy": {
-       "@type": "QuantitativeValue",
-       "maxValue": 5
+      "offeredBy": {
+       "@id": "https://www.medellinconcierge.net/#business",
+       "name": "Medellín Concierge"
+      },
+      "itemOffered": {
+       "@type": "Apartment",
+       "name": "2-bedroom apartment in Sabaneta",
+       "url": "https://www.medellinconcierge.net/rentals/sabaneta/#p-0104",
+       "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Sabaneta",
+        "addressCountry": "CO",
+        "addressRegion": "Antioquia"
+       },
+       "numberOfBedrooms": 2,
+       "numberOfBathroomsTotal": 2,
+       "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 5
+       }
       }
      }
     },
@@ -190,21 +214,46 @@
      "@type": "ListItem",
      "position": 2,
      "item": {
-      "@type": "Apartment",
+      "@type": "Offer",
       "name": "2-bedroom apartment in Sabaneta",
       "url": "https://www.medellinconcierge.net/rentals/sabaneta/#p-0111",
-      "address": {
-       "@type": "PostalAddress",
-       "addressLocality": "Sabaneta",
-       "addressCountry": "CO",
-       "addressRegion": "Antioquia"
+      "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+      "price": 218000,
+      "priceCurrency": "COP",
+      "priceSpecification": {
+       "@type": "UnitPriceSpecification",
+       "priceCurrency": "COP",
+       "unitText": "NIGHT",
+       "unitCode": "DAY",
+       "referenceQuantity": {
+        "@type": "QuantitativeValue",
+        "value": 1,
+        "unitCode": "DAY"
+       },
+       "minPrice": 218000
       },
-      "numberOfBedrooms": 2,
-      "numberOfBathroomsTotal": 2,
-      "occupancy": {
-       "@type": "QuantitativeValue",
-       "maxValue": 4
-      }
+      "offeredBy": {
+       "@id": "https://www.medellinconcierge.net/#business",
+       "name": "Medellín Concierge"
+      },
+      "itemOffered": {
+       "@type": "Apartment",
+       "name": "2-bedroom apartment in Sabaneta",
+       "url": "https://www.medellinconcierge.net/rentals/sabaneta/#p-0111",
+       "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Sabaneta",
+        "addressCountry": "CO",
+        "addressRegion": "Antioquia"
+       },
+       "numberOfBedrooms": 2,
+       "numberOfBathroomsTotal": 2,
+       "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 4
+       }
+      },
+      "availabilityStarts": "2026-12-02"
      }
     }
    ]

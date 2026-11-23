@@ -878,6 +878,26 @@ def rs_section(lang, st):
         out += f'<h2 id="size-{n}">{h}</h2><p class="rl-intro">{intro}</p><ul class="rl-list">{items}</ul>'
     return out + '</section>'
 
+# Backlog R8: a listing with a live price becomes an Offer (lease out) whose itemOffered is the apartment, the pattern
+# schema.org uses for rooms and rentals (Accommodation has no `offers`). Price, currency and unit (month or night) come
+# from the feed; nightly prices are "from" prices, so they go in minPrice. Listings without a price stay a bare
+# Apartment/House. Never hard-code prices here.
+RL_UNIT = {'month': ('MONTH', 'MON'), 'night': ('NIGHT', 'DAY')}
+
+def rl_offer(p, it):
+    pr = p['price'] or {}
+    if not pr.get('amount') or pr.get('per') not in RL_UNIT: return None
+    text, code = RL_UNIT[pr['per']]
+    spec = {'@type': 'UnitPriceSpecification', 'priceCurrency': 'COP', 'unitText': text, 'unitCode': code,
+            'referenceQuantity': {'@type': 'QuantitativeValue', 'value': 1, 'unitCode': code}}
+    spec['minPrice' if pr.get('from') else 'price'] = pr['amount']
+    off = {'@type': 'Offer', 'name': it['name'], 'url': it['url'], 'businessFunction': 'http://purl.org/goodrelations/v1#LeaseOut',
+           'price': pr['amount'], 'priceCurrency': 'COP', 'priceSpecification': spec,
+           'offeredBy': {'@id': business_id(), 'name': BUSINESS['name']}, 'itemOffered': it}
+    af = p.get('available_from')
+    if af and af > TODAY: off['availabilityStarts'] = af
+    return off
+
 def rl_schema(lang, url, only=None, name=None, area=None):
     P = sorted((p for p in LISTINGS['properties'] if (not only or p['stay_type'] == only) and (not area or rl_area(p) == area)), key=lambda p: (p['stay_type'] != 'long_term', rl_sort(p)))
     items = []
@@ -889,6 +909,7 @@ def rl_schema(lang, url, only=None, name=None, area=None):
         if p.get('bedrooms'): it['numberOfBedrooms'] = p['bedrooms']
         if p.get('bathrooms'): it['numberOfBathroomsTotal'] = p['bathrooms']
         if p.get('max_guests'): it['occupancy'] = {'@type': 'QuantitativeValue', 'maxValue': p['max_guests']}
+        it = rl_offer(p, it) or it
         items.append({'@type': 'ListItem', 'position': i, 'item': it})
     return {'@type': 'ItemList', 'name': name or RL_UI[lang]['h'], 'numberOfItems': len(items), 'itemListElement': items}
 

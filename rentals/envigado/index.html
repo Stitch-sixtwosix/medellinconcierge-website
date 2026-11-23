@@ -177,20 +177,44 @@
      "@type": "ListItem",
      "position": 1,
      "item": {
-      "@type": "Apartment",
+      "@type": "Offer",
       "name": "3-bedroom apartment in Envigado",
       "url": "https://www.medellinconcierge.net/rentals/envigado/#p-0122",
-      "address": {
-       "@type": "PostalAddress",
-       "addressLocality": "Envigado",
-       "addressCountry": "CO",
-       "addressRegion": "Antioquia"
+      "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+      "price": 8400000,
+      "priceCurrency": "COP",
+      "priceSpecification": {
+       "@type": "UnitPriceSpecification",
+       "priceCurrency": "COP",
+       "unitText": "MONTH",
+       "unitCode": "MON",
+       "referenceQuantity": {
+        "@type": "QuantitativeValue",
+        "value": 1,
+        "unitCode": "MON"
+       },
+       "price": 8400000
       },
-      "numberOfBedrooms": 3,
-      "numberOfBathroomsTotal": 2,
-      "occupancy": {
-       "@type": "QuantitativeValue",
-       "maxValue": 6
+      "offeredBy": {
+       "@id": "https://www.medellinconcierge.net/#business",
+       "name": "Medellín Concierge"
+      },
+      "itemOffered": {
+       "@type": "Apartment",
+       "name": "3-bedroom apartment in Envigado",
+       "url": "https://www.medellinconcierge.net/rentals/envigado/#p-0122",
+       "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Envigado",
+        "addressCountry": "CO",
+        "addressRegion": "Antioquia"
+       },
+       "numberOfBedrooms": 3,
+       "numberOfBathroomsTotal": 2,
+       "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 6
+       }
       }
      }
     },
@@ -198,41 +222,90 @@
      "@type": "ListItem",
      "position": 2,
      "item": {
-      "@type": "House",
+      "@type": "Offer",
       "name": "3-bedroom house in Envigado",
       "url": "https://www.medellinconcierge.net/rentals/envigado/#p-0068",
-      "address": {
-       "@type": "PostalAddress",
-       "addressLocality": "Envigado",
-       "addressCountry": "CO",
-       "addressRegion": "Antioquia"
+      "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+      "price": 13500000,
+      "priceCurrency": "COP",
+      "priceSpecification": {
+       "@type": "UnitPriceSpecification",
+       "priceCurrency": "COP",
+       "unitText": "MONTH",
+       "unitCode": "MON",
+       "referenceQuantity": {
+        "@type": "QuantitativeValue",
+        "value": 1,
+        "unitCode": "MON"
+       },
+       "price": 13500000
       },
-      "numberOfBedrooms": 3,
-      "numberOfBathroomsTotal": 3,
-      "occupancy": {
-       "@type": "QuantitativeValue",
-       "maxValue": 6
-      }
+      "offeredBy": {
+       "@id": "https://www.medellinconcierge.net/#business",
+       "name": "Medellín Concierge"
+      },
+      "itemOffered": {
+       "@type": "House",
+       "name": "3-bedroom house in Envigado",
+       "url": "https://www.medellinconcierge.net/rentals/envigado/#p-0068",
+       "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Envigado",
+        "addressCountry": "CO",
+        "addressRegion": "Antioquia"
+       },
+       "numberOfBedrooms": 3,
+       "numberOfBathroomsTotal": 3,
+       "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 6
+       }
+      },
+      "availabilityStarts": "2027-04-30"
      }
     },
     {
      "@type": "ListItem",
      "position": 3,
      "item": {
-      "@type": "Apartment",
+      "@type": "Offer",
       "name": "2-bedroom apartment in Envigado",
       "url": "https://www.medellinconcierge.net/rentals/envigado/#p-0113",
-      "address": {
-       "@type": "PostalAddress",
-       "addressLocality": "Envigado",
-       "addressCountry": "CO",
-       "addressRegion": "Antioquia"
+      "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+      "price": 250000,
+      "priceCurrency": "COP",
+      "priceSpecification": {
+       "@type": "UnitPriceSpecification",
+       "priceCurrency": "COP",
+       "unitText": "NIGHT",
+       "unitCode": "DAY",
+       "referenceQuantity": {
+        "@type": "QuantitativeValue",
+        "value": 1,
+        "unitCode": "DAY"
+       },
+       "minPrice": 250000
       },
-      "numberOfBedrooms": 2,
-      "numberOfBathroomsTotal": 3,
-      "occupancy": {
-       "@type": "QuantitativeValue",
-       "maxValue": 6
+      "offeredBy": {
+       "@id": "https://www.medellinconcierge.net/#business",
+       "name": "Medellín Concierge"
+      },
+      "itemOffered": {
+       "@type": "Apartment",
+       "name": "2-bedroom apartment in Envigado",
+       "url": "https://www.medellinconcierge.net/rentals/envigado/#p-0113",
+       "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Envigado",
+        "addressCountry": "CO",
+        "addressRegion": "Antioquia"
+       },
+       "numberOfBedrooms": 2,
+       "numberOfBathroomsTotal": 3,
+       "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 6
+       }
       }
      }
     },
@@ -240,21 +313,46 @@
      "@type": "ListItem",
      "position": 4,
      "item": {
-      "@type": "Apartment",
+      "@type": "Offer",
       "name": "1-bedroom apartment in Envigado",
       "url": "https://www.medellinconcierge.net/rentals/envigado/#p-0086",
-      "address": {
-       "@type": "PostalAddress",
-       "addressLocality": "Envigado",
-       "addressCountry": "CO",
-       "addressRegion": "Antioquia"
+      "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+      "price": 183000,
+      "priceCurrency": "COP",
+      "priceSpecification": {
+       "@type": "UnitPriceSpecification",
+       "priceCurrency": "COP",
+       "unitText": "NIGHT",
+       "unitCode": "DAY",
+       "referenceQuantity": {
+        "@type": "QuantitativeValue",
+        "value": 1,
+        "unitCode": "DAY"
+       },
+       "minPrice": 183000
       },
-      "numberOfBedrooms": 1,
-      "numberOfBathroomsTotal": 2,
-      "occupancy": {
-       "@type": "QuantitativeValue",
-       "maxValue": 2
-      }
+      "offeredBy": {
+       "@id": "https://www.medellinconcierge.net/#business",
+       "name": "Medellín Concierge"
+      },
+      "itemOffered": {
+       "@type": "Apartment",
+       "name": "1-bedroom apartment in Envigado",
+       "url": "https://www.medellinconcierge.net/rentals/envigado/#p-0086",
+       "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Envigado",
+        "addressCountry": "CO",
+        "addressRegion": "Antioquia"
+       },
+       "numberOfBedrooms": 1,
+       "numberOfBathroomsTotal": 2,
+       "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 2
+       }
+      },
+      "availabilityStarts": "2026-12-21"
      }
     }
    ]
