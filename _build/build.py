@@ -205,8 +205,14 @@ def cards(lang, prefix, posts, reveal=True, tag='h3'):
 # ======================= 1. English home =======================
 print('Building…')
 en = read('index.html')
-assert f"<strong>{BUSINESS['google_rating']}</strong> on Google · {BUSINESS['google_reviews']} reviews" in en, \
-    'index.html hero rating no longer matches google_rating / google_reviews in site_config.py: update the hero line'
+# Google rating + review count: one place (site_config.BUSINESS) for every page. The home page hero and the
+# reviews block are rewritten from it on each build, so updating the count there updates the whole site (EN + ES).
+_gr, _gn = BUSINESS['google_rating'], BUSINESS['google_reviews']
+en, _n1 = re.subn(r'<strong>[\d.]+</strong> on Google · \d+ reviews</a>', f'<strong>{_gr}</strong> on Google · {_gn} reviews</a>', en)
+en, _n2 = re.subn(r'</svg>\d+ Google reviews</p>', f'</svg>{_gn} Google reviews</p>', en)
+assert _n1 == 1 and _n2 == 1, 'index.html: hero rating line or reviews-block count not found; keep "<strong>4.7</strong> on Google · N reviews</a>" and "N Google reviews</p>"'
+assert f'<span class="score-num">{_gr}</span>' in en and f'aria-label="{_gr} out of 5 stars"' in en, \
+    'index.html reviews block rating does not match google_rating in site_config.py: update score-num and aria-label'
 en = set_landing_links(en)
 en, _n = re.subn(r'<div class="newsletter" data-newsletter data-endpoint="[^"]*"(?: hidden)?>',
                 lambda m: f'<div class="newsletter" data-newsletter data-endpoint="{html.escape(NEWSLETTER_ENDPOINT, quote=True)}"' + ('' if NEWSLETTER_ENDPOINT else ' hidden') + '>', en)

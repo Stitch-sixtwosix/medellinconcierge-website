@@ -3,6 +3,11 @@
 # Every English string must exist in index.html, or the build stops and names it.
 # When you change English copy in index.html, update the matching line here.
 
+from site_config import BUSINESS
+# Rating and review count come from site_config.BUSINESS (build.py writes them into index.html too).
+_GR, _GN = BUSINESS['google_rating'], BUSINESS['google_reviews']
+_GR_ES = str(_GR).replace('.', ',')
+
 HOME_ES = [
  # ---- head ----
  ('<html lang="en">', '<html lang="es">'),
@@ -38,7 +43,7 @@ HOME_ES = [
   '<strong>Medellín Concierge es una empresa de administración de propiedades en Medellín con oficina en El Poblado.</strong> Administramos rentas cortas (Airbnb, Booking.com) y largas en El Poblado, Laureles, Envigado y Sabaneta, desde 12% + IVA y sin costos iniciales: reservas, atención al huésped, aseo, mantenimiento y registros de RNT, SIRE y TRA. Vea nuestra <a href="airbnb-management-medellin/">administración de Airbnb en Medellín</a>. Usted recibe sus ganancias en los primeros 5 días hábiles de cada mes.'),
  ('Estimate my income', 'Calcular mis ingresos'),
  ('Talk to our team', 'Hablar con nuestro equipo'),
- ('<strong>4.7</strong> on Google · 63 reviews</a>', '<strong>4,7</strong> en Google · 63 reseñas</a>'),
+ (f'<strong>{_GR}</strong> on Google · {_GN} reviews</a>', f'<strong>{_GR_ES}</strong> en Google · {_GN} reseñas</a>'),
  ('Listed &amp; optimized on <strong>Airbnb</strong>, <strong>Booking.com</strong>, <strong>Expedia</strong>, <strong>VRBO</strong> and more',
   'Publicada y optimizada en <strong>Airbnb</strong>, <strong>Booking.com</strong>, <strong>Expedia</strong>, <strong>VRBO</strong> y más'),
  ('Airbnb and long-term property management, handled for you', 'Administración de Airbnb y arriendos, nosotros nos encargamos'),
@@ -154,7 +159,7 @@ HOME_ES = [
  ('What clients say about us', 'Lo que dicen nuestros clientes'),
  ('<span class="score-num">4.7</span>', '<span class="score-num">4,7</span>'),
  ('aria-label="4.7 out of 5 stars"', 'aria-label="4,7 de 5 estrellas"'),
- ('63 Google reviews</p>', '63 reseñas en Google</p>'),
+ (f'</svg>{_GN} Google reviews</p>', f'</svg>{_GN} reseñas en Google</p>'),
  ('Read our Google reviews', 'Leer nuestras reseñas en Google'),
  ('See our Airbnb host profile', 'Ver nuestro perfil de anfitrión en Airbnb'),
  ('<strong>Visit our office</strong>', '<strong>Visite nuestra oficina</strong>'),

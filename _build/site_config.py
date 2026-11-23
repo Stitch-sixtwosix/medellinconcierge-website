@@ -16,9 +16,11 @@ BUSINESS = {
     'country': 'CO',
     'lat': 6.2104748, 'lng': -75.569858,                 # Google Maps pin of the office
     'map': 'https://maps.app.goo.gl/Z1Edu7BPoXGiPpqh8',
-    # Google Business Profile rating, as seen by James on the profile (Nov 12, 2026). Shown as text linked to
-    # the profile; never as AggregateRating/Review schema (self-serving for a business's own site).
-    'google_rating': 4.7, 'google_reviews': 63, 'rating_checked': 'Nov 2026',
+    # Google Business Profile rating. THE one place for the rating and review count: every page (home EN/ES,
+    # landing, fees, calculator, llms.txt) prints it from here. 63 seen by James Nov 12; 65 (4.7) on the profile
+    # Nov 19, 2026 (office report mc-2026-11-22-build). Shown as text linked to the profile; never as
+    # AggregateRating/Review schema (self-serving for a business's own site).
+    'google_rating': 4.7, 'google_reviews': 65, 'rating_checked': 'Nov 2026',
     'area_served': ['Medellín', 'El Poblado', 'Laureles', 'Envigado', 'Sabaneta', 'Colombia'],
     # Same fees as the home page plans (commission on rental income, IVA added to the commission).
     'price_range_en': '12%–20% of rental income + IVA',
