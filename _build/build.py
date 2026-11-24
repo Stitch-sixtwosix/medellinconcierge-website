@@ -401,6 +401,12 @@ SERVICE_LINKS = {
 
 # Posts written for renters get the furnished-rental email box (mail_block) above the owner CTA.
 RENTER_POSTS = {'rent-furnished-apartment-medellin-without-fiador', 'where-to-stay-in-medellin-for-a-month', 'medellin-for-remote-workers'}
+# Every renter guide (backlog R11) also gets the email box and a "Furnished rentals by area" link row. The row links
+# area pages only if they are built this run, so these posts are written after section 4c4 (see RENTER_POST_WRITES).
+RENTER_GUIDES = RENTER_POSTS | {'furnished-apartments-for-rent-medellin', 'el-poblado-apartments-for-rent', 'colombia-digital-nomad-visa-medellin',
+                                'cost-of-living-medellin'}
+RENTER_ROW_MARK = '<!--renter-area-row-->'
+RENTER_POST_WRITES = []   # (path, html, lang) written once the rentals pages are known
 
 for lang in LANGS:
     ui = BLOG_UI[lang]
@@ -451,7 +457,8 @@ for lang in LANGS:
         if picks:
             related = (f'\n      <p>{"Related services" if lang == "en" else "Servicios relacionados"}: '
                        + ' · '.join(f'<a href="../{href}">{label}</a>' for _, _, href, label in picks) + '</p>')
-        renter_mail = ('\n    ' + mail_block(lang, 'blog')) if p['slug'] in RENTER_POSTS else ''
+        is_renter = p['slug'] in RENTER_GUIDES
+        renter_mail = ('\n    ' + mail_block(lang, 'blog') + '\n    ' + RENTER_ROW_MARK) if is_renter else ''
         body = f'''<section class="page-top">
   <div class="wrap">
     <p class="crumbs"><a href="../">{ui["home"]}</a> / <a href="./">{ui["blog"]}</a></p>
@@ -488,9 +495,11 @@ for lang in LANGS:
                            'logo': {'@type': 'ImageObject', 'url': SITE + 'assets/logo.png'}}},
             breadcrumbs([(ui['home'], home_url), (ui['blog'], blog_url[lang]), (t['title'], url)])]}
         en_href, es_href = sw(slug)
-        write(f'{folder}/{slug}', page(lang, title=t.get('seo_title') or f'{t["title"]} | Medellín Concierge', desc=t['description'],
+        post_html = page(lang, title=t.get('seo_title') or f'{t["title"]} | Medellín Concierge', desc=t['description'],
               en_url=blog_url['en'] + slug, es_url=blog_url['es'] + slug, en_href=en_href, es_href=es_href,
-              body=body, schema=schema, og_type='article'))
+              body=body, schema=schema, og_type='article')
+        if is_renter: RENTER_POST_WRITES.append((f'{folder}/{slug}', post_html, lang))
+        else: write(f'{folder}/{slug}', post_html)
         if lang == 'en':
             SITEMAP.append((blog_url['en'] + slug, blog_url['es'] + slug, p.get('modified', p['date'])))
 
@@ -1689,6 +1698,33 @@ else:
     print('  note: short-term-rentals-medellin/ skipped (fewer than 2 priced nightly listings in the feed)')
 
 
+# ======================= 4c5. Renter blog posts: "Furnished rentals by area" row (backlog R11) =======================
+RENTER_ROW = {
+ 'en': dict(h='Furnished rentals by area', label='Furnished rentals by area',
+            p='Every apartment on these pages is one we manage, listed with its current price. Email us your dates and we answer with what is available.',
+            all=('rentals/', 'All furnished apartments for rent in Medellín'),
+            month=('monthly-rentals-medellin/', 'Monthly rentals in Medellín (30+ nights)'),
+            short=('short-term-rentals-medellin/', 'Short-term rentals in Medellín, by the night'),
+            area='rentals/{slug}/', area_t='Furnished apartments for rent in {area}'),
+ 'es': dict(h='Arriendos amoblados por zona', label='Arriendos amoblados por zona',
+            p='Todos los apartamentos de estas páginas los administramos nosotros y aparecen con su precio actual. Escríbanos sus fechas y le respondemos con lo que está disponible.',
+            all=('arriendos/', 'Todos los apartamentos amoblados en arriendo en Medellín'),
+            month=('arriendos-por-meses-medellin/', 'Arriendos amoblados por meses en Medellín (30+ noches)'),
+            short=('apartamentos-por-dias-medellin/', 'Apartamentos por días en Medellín'),
+            area='arriendos/{slug}/', area_t='Apartamentos amoblados en arriendo en {area}'),
+}
+_built = {u for u, _, _ in SITEMAP}
+for path, post_html, lang in RENTER_POST_WRITES:
+    c = RENTER_ROW[lang]
+    links = [c['all'], c['month']]
+    if SITE + 'short-term-rentals-medellin/' in _built: links.append(c['short'])
+    links += [(c['area'].format(slug=slug), c['area_t'].format(area=area)) for area, slug in RA_LIVE]
+    links = [(h, t) for h, t in links if os.path.exists(os.path.join(ROOT, ('' if lang == 'en' else 'es/') + h, 'index.html'))]
+    row = (f'<nav class="more-posts" aria-label="{c["label"]}">\n      <h2>{c["h"]}</h2>\n      <p>{c["p"]}</p>\n'
+           + '\n'.join(f'      <a href="../{h}">{t}</a>' for h, t in links) + '\n    </nav>')
+    write(path, post_html.replace(RENTER_ROW_MARK, row))
+
+
 # ======================= 4d. Meet the team (/team/, /es/equipo/) =======================
 # People and roles are in team.py; photos (on white, 4:5) in assets/team/, made by team_photos.py.
 T = {
@@ -2362,7 +2398,6 @@ llms = [f"# {B['name']}", '',
 # Spanish twin and one factual line (counts and prices as of the feed date), then the renter guides.
 RENT_TOP = {SITE + 'rentals/', SITE + 'monthly-rentals-medellin/', SITE + 'short-term-rentals-medellin/'}
 RENT_AREA = {SITE + f'rentals/{slug}/': area for area, slug in RA_LIVE}
-RENTER_GUIDES = RENTER_POSTS | {'furnished-apartments-for-rent-medellin', 'el-poblado-apartments-for-rent', 'colombia-digital-nomad-visa-medellin'}
 def rent_fact(u):
     st = rl_stats('en'); a = st['{AS_OF}']
     if u == SITE + 'rentals/':
