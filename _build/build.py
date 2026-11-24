@@ -2358,11 +2358,55 @@ llms = [f"# {B['name']}", '',
         f"- NIT (Colombian tax ID): {B['tax_id']}",
         f"- Website (English): {SITE} | Spanish: {SITE}es/",
         f"- Profiles: {', '.join(SAME_AS)}", '']
-pages, posts = [], []
+# Renters get their own section (backlog R10): a dated summary from the HostFlow feed, then each rentals page with its
+# Spanish twin and one factual line (counts and prices as of the feed date), then the renter guides.
+RENT_TOP = {SITE + 'rentals/', SITE + 'monthly-rentals-medellin/', SITE + 'short-term-rentals-medellin/'}
+RENT_AREA = {SITE + f'rentals/{slug}/': area for area, slug in RA_LIVE}
+RENTER_GUIDES = RENTER_POSTS | {'furnished-apartments-for-rent-medellin', 'el-poblado-apartments-for-rent', 'colombia-digital-nomad-visa-medellin'}
+def rent_fact(u):
+    st = rl_stats('en'); a = st['{AS_OF}']
+    if u == SITE + 'rentals/':
+        return (f"As of {a}: {st['{N_AVAIL}']} furnished apartments and homes with a live price ({st['{N_MONTH}']} by the month, "
+                f"{st['{N_SHORT}']} by the night) out of {st['{TOTAL}']} furnished properties we manage; by area: {st['{AREA_COUNTS}']}.")
+    if u == SITE + 'monthly-rentals-medellin/':
+        return (f"As of {a}: {st['{N_MONTH}']} furnished homes by the month (30+ nights), {st['{MIN_MONTH}']} to {st['{MAX_MONTH}']} COP "
+                f"a month; by area: {st['{MONTH_AREA_COUNTS}']}.")
+    if u == SITE + 'short-term-rentals-medellin/':
+        ss = short_stats('en')[0]
+        return (f"As of {a}: {st['{N_SHORT}']} furnished apartments by the night, from {ss['{MIN_NIGHT}']} COP a night; "
+                f"by area: {ss['{SHORT_AREA_COUNTS}']}.")
+    if u in RENT_AREA:
+        area = RENT_AREA[u]; s0, P, month, night = area_stats('en', area)
+        parts = ([f"{s0['{N_MONTH}']} by the month ({s0['{MIN_MONTH}']} to {s0['{MAX_MONTH}']} COP a month)"] if month else []) + \
+                ([f"{s0['{N_SHORT}']} by the night (from {s0['{MIN_NIGHT}']} COP)"] if night else [])
+        return f"As of {a}: {len(P)} furnished homes in {area} with a live price: {' and '.join(parts)}." if parts else ''
+    return ''
+pages, posts, rent_pages, rent_posts = [], [], [], []
 for en_url, es_url, _ in SITEMAP:
     t, d = page_meta(en_url)
-    (posts if '/blog/' in en_url and not en_url.endswith('/blog/') else pages).append(f'- [{t}]({en_url}): {d}')
-llms += ['## Main pages', ''] + pages + ['', '## Owner guides (blog)', ''] + posts + ['',
+    is_post = '/blog/' in en_url and not en_url.endswith('/blog/')
+    if en_url in RENT_TOP or en_url in RENT_AREA:
+        rent_pages.append(f'- [{t}]({en_url}) (Spanish: {es_url}): {d} {rent_fact(en_url)}'.rstrip())
+    elif is_post and en_url.rsplit('/', 1)[-1].removesuffix('.html') in RENTER_GUIDES:
+        rent_posts.append(f'- [{t}]({en_url}): {d}')
+    else:
+        (posts if is_post else pages).append(f'- [{t}]({en_url}): {d}')
+_st = rl_stats('en')
+rent_intro = [
+    '## Furnished rentals (for renters)', '',
+    f"Medellín Concierge also rents the furnished apartments it manages directly to guests, by the month (30+ nights) and "
+    f"by the night, booked direct. As of {_st['{AS_OF}']} (from our HostFlow listings feed): {_st['{N_MONTH}']} homes "
+    f"by the month from {_st['{MIN_MONTH}']} to {_st['{MAX_MONTH}']} COP a month, {_st['{N_SHORT}']} by the night from "
+    f"{_st['{MIN_NIGHT}']} COP, plus a one-time cleaning fee ({_st['{MIN_CLEAN}']} to {_st['{MAX_CLEAN}']} COP). "
+    f"Areas: {_st['{AREA_COUNTS}']}. To ask or book, email {B['email']} with dates, number of guests, budget and "
+    f"preferred area, or WhatsApp {B['telephone']}; we answer in English or Spanish and confirm availability and the "
+    f"total price in writing. For nightly stays we manage the RNT, SIRE (foreign guests reported to Migración Colombia) "
+    f"and TRA of the properties we manage (as of November 2026); ask us for the apartment's RNT number. Foreigners can "
+    f"rent in Colombia (Constitution, Article 100); unfurnished leases usually ask for a Colombian co-signer (fiador), "
+    f"so most newcomers start with a furnished apartment booked direct; ask us what the one you like requires. "
+    f"General information, not legal advice.", '']
+llms += rent_intro + rent_pages + ['', '### Renter guides (blog)', ''] + rent_posts + ['']
+llms += ['## Main pages (for property owners)', ''] + pages + ['', '## Owner guides (blog)', ''] + posts + ['',
          '## Optional', '', f'- [Spanish site]({SITE}es/): every page above is also available in Spanish.',
          f'- [Sitemap]({SITE}sitemap.xml)', '']
 write('llms.txt', '\n'.join(llms))
