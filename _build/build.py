@@ -1009,6 +1009,9 @@ M = {
       <p>A mid-term rental sits between a few nights on Airbnb and a 12-month lease: a furnished apartment for one month or several, ready to live in from the day you arrive. It suits remote workers and digital nomads, people relocating to Medellín while they look for something permanent, work assignments, and families on a long visit. Each of our monthly listings shows the price per month and a one-time cleaning fee.</p>
       <h2>Why rent by the month directly with us</h2>
       <ul><li><strong>Current prices and availability.</strong> Our listings come live from HostFlow, the booking system every property we manage runs on.</li><li><strong>A local team that knows each apartment.</strong> We manage these apartments ourselves, so we can tell you about the building, the street and what is included before you commit.</li><li><strong>Answers on WhatsApp, in English or Spanish.</strong> Our team is based in El Poblado, and guests can reach us 24/7 during the stay.</li></ul>
+      <h2>Long-term rentals in Medellín, direct from the manager</h2>
+      <p><strong>Looking for a long-term rental in Medellín direct from the owner? With us you deal directly with the local team that manages each apartment for its owner.</strong> We are not the owners: owners hire Medellín Concierge, a property management company based in El Poblado, to rent out and look after their homes. That means we can confirm the monthly price, your dates and what is included, and we are the people you contact during the stay. You book with us directly, by email or WhatsApp, and agree the stay in writing. As of {AS_OF}, {N_MONTH} furnished apartments are listed by the month, from {MIN_MONTH} to {MAX_MONTH} COP a month, plus a one-time cleaning fee.</p>
+      <div class="ref-ctas"><a class="btn btn-primary" href="{LT_MAIL}">Email us about a long-term rental</a></div>
       <h2>Where to rent for a month in Medellín</h2>
       <p>Our monthly apartments are in {MONTH_AREAS}. El Poblado has the most restaurants, cafés and coworking spaces; Laureles is flat, residential and local; Envigado is quieter and good for everyday life. For a side-by-side comparison, read <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado vs Laureles vs Envigado for a month-long stay</a>.</p>
       <h2>How to rent a furnished apartment by the month</h2>
@@ -1019,6 +1022,8 @@ M = {
                   'In our listings, as of {AS_OF}, furnished monthly rentals run from {MIN_MONTH} to {MAX_MONTH} COP a month, depending on the area, the size and the building, plus a one-time cleaning fee. Each listing on this page shows its price.'),
                  ('Can I ask about an apartment by email instead of WhatsApp?',
                   'Yes. Email <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> with your dates, the number of guests, your budget and the area you prefer, or use the “Email us about this apartment” button on any listing so the apartment is named for you. We answer in English or Spanish and confirm availability and the total price in writing.'),
+                 ('Are your long-term rentals rented by the owner?',
+                  'No, they are rented by the manager. Each apartment belongs to a private owner who has hired Medellín Concierge to manage it, so you deal directly with our local team: we confirm the monthly price, your dates and what is included in writing, and we are your contact 24/7 during the stay. Email <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> with your move-in date and how many months you need.'),
                  ('What is the minimum stay for a monthly rental?',
                   '30 nights. Staying less than a month? See our <a href="../short-term-rentals-medellin/">short-term rentals in Medellín</a>, furnished apartments by the night.'),
                  ('Which neighborhoods are your monthly rentals in?',
@@ -1042,6 +1047,9 @@ M = {
       <p>Un arriendo de mediano plazo está entre unas noches en Airbnb y un contrato de 12 meses: un apartamento amoblado por uno o varios meses, listo para vivir desde el día en que llega. Es ideal para trabajadores remotos y nómadas digitales, para quien se traslada a Medellín mientras busca algo permanente, para asignaciones de trabajo y para familias de visita larga. Cada arriendo por meses muestra el precio mensual y una tarifa de aseo única.</p>
       <h2>Por qué arrendar por meses directo con nosotros</h2>
       <ul><li><strong>Precios y disponibilidad al día.</strong> Nuestras propiedades salen en vivo de HostFlow, el sistema de reservas con el que operamos todas las propiedades que administramos.</li><li><strong>Un equipo local que conoce cada apartamento.</strong> Administramos estos apartamentos nosotros mismos, así que le contamos del edificio, la calle y qué incluye antes de que se comprometa.</li><li><strong>Respuestas por WhatsApp, en español o en inglés.</strong> Nuestro equipo está en El Poblado, y durante la estadía nos encuentra 24/7.</li></ul>
+      <h2>Apartamentos amoblados en Medellín, directo con quien los administra</h2>
+      <p><strong>¿Busca un apartamento amoblado en Medellín directo con el dueño? Con nosotros trata directamente con el equipo local que administra cada apartamento en nombre de su propietario.</strong> No somos los dueños: los propietarios contratan a Medellín Concierge, empresa de administración de propiedades con sede en El Poblado, para arrendar y cuidar sus inmuebles. Por eso le confirmamos el precio mensual, sus fechas y qué incluye, y somos a quienes usted contacta durante la estadía. Reserva directo con nosotros, por correo o por WhatsApp, y deja la estadía por escrito. Al {AS_OF} hay {N_MONTH} apartamentos amoblados publicados por meses, entre {MIN_MONTH} y {MAX_MONTH} COP al mes, más una tarifa de aseo única.</p>
+      <div class="ref-ctas"><a class="btn btn-primary" href="{LT_MAIL}">Escríbanos por un arriendo por meses</a></div>
       <h2>Dónde arrendar por un mes en Medellín</h2>
       <p>Nuestros apartamentos por meses están en {MONTH_AREAS}. El Poblado tiene la mayor oferta de restaurantes, cafés y espacios de coworking; Laureles es plano, residencial y de barrio; Envigado es más tranquilo y bueno para la vida diaria. Para compararlos, lea <a href="../blog/where-to-stay-in-medellin-for-a-month.html">El Poblado, Laureles o Envigado para quedarse un mes</a>.</p>
       <h2>Cómo arrendar un apartamento amoblado por meses</h2>
@@ -1052,6 +1060,8 @@ M = {
                   'En nuestras propiedades, al {AS_OF}, los arriendos amoblados por meses van desde {MIN_MONTH} hasta {MAX_MONTH} COP al mes, según la zona, el tamaño y el edificio, más una tarifa de aseo única. Cada propiedad de esta página muestra su precio.'),
                  ('¿Puedo preguntar por un apartamento por correo en vez de WhatsApp?',
                   'Sí. Escriba a <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> con sus fechas, cuántas personas son, su presupuesto y la zona que prefiere, o use el botón «Escríbanos por este apartamento» de cualquier propiedad para que el apartamento quede indicado. Respondemos en español o en inglés y le confirmamos por escrito la disponibilidad y el precio total.'),
+                 ('¿Sus arriendos por meses son directo con el dueño?',
+                  'Son directo con quien los administra. Cada apartamento es de un propietario particular que contrató a Medellín Concierge para administrarlo, así que usted trata directamente con nuestro equipo local: le confirmamos por escrito el precio mensual, sus fechas y qué incluye, y somos su contacto 24/7 durante la estadía. Escriba a <a href="mailto:sales@medellinconcierge.net">sales@medellinconcierge.net</a> con su fecha de llegada y cuántos meses necesita.'),
                  ('¿Cuál es la estadía mínima de un arriendo por meses?',
                   '30 noches. ¿Se queda menos de un mes? Vea nuestros <a href="../apartamentos-por-dias-medellin/">apartamentos por días en Medellín</a>, amoblados y por noches.'),
                  ('¿En qué barrios están sus arriendos por meses?',
@@ -1063,6 +1073,12 @@ M = {
                  ('¿Cuánto tiempo puedo quedarme en Medellín como visitante?',
                   'Depende de su nacionalidad y su visa. Nuestra guía sobre <a href="../blog/colombia-digital-nomad-visa-medellin.html">cuánto tiempo puede quedarse en Medellín</a> explica las estadías de visitante, las prórrogas y la visa de nómada digital.')]),
 }
+
+# R14 (Nov 25 2026, office report mc-2026-11-25): prefilled long-term email for the 'direct from the manager' section
+LT_MAIL = {'en': ('Long-term furnished rental inquiry – Medellín',
+                  'Hi Medellín Concierge,\n\nI am looking for a long-term furnished rental in Medellín.\n\nMove-in date: \nHow many months: \nNumber of guests: \nBudget (COP per month): \nPreferred area (El Poblado, Laureles, Envigado, other): \n\nThank you,\n'),
+           'es': ('Consulta arriendo amoblado por meses – Medellín',
+                  'Hola, Medellín Concierge:\n\nEstoy buscando un apartamento amoblado en Medellín por meses.\n\nFecha de llegada: \nCuántos meses: \nNúmero de personas: \nPresupuesto (COP al mes): \nZona preferida (El Poblado, Laureles, Envigado, otra): \n\nGracias,\n')}
 
 for lang in LANGS:
     ui = M[lang]; st = rl_stats(lang)
@@ -1086,7 +1102,7 @@ for lang in LANGS:
   <div class="wrap">
     {rl_section(lang, st, only='long_term', h=ui['list_h'], intro=ui['list_intro'])}
     {mail_block(lang, 'monthly')}
-    <div class="prose">{fill(ui["prose"], st)}
+    <div class="prose">{fill(ui["prose"], st).replace("{LT_MAIL}", mailto(LT_MAIL[lang][0], LT_MAIL[lang][1]))}
       <h2>{L[lang]["faq_h"]}</h2>
       <div class="faq">
 {faq_html}      </div>
