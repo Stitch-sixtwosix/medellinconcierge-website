@@ -340,7 +340,7 @@ MAIL = {
             listing='Email us about this apartment', wa='Hi! I’m looking for a furnished apartment in Medellín.',
             body='Hi Medellín Concierge,\n\nI am looking for a furnished apartment in Medellín.\n\nDates (arrival – departure): \nNumber of guests: \nBudget (COP per month or per night): \nPreferred area (El Poblado, Laureles, Envigado, other): \n\nThank you,\n',
             body_item='Hi Medellín Concierge,\n\nI am interested in {t} ({ref}).\n\nDates (arrival – departure): \nNumber of guests: \n\nThank you,\n',
-            subj={'rentals': 'Furnished rental inquiry', 'monthly': 'Furnished rental inquiry – monthly', 'short': 'Furnished rental inquiry – short stay', 'blog': 'Furnished rental inquiry',
+            subj={'rentals': 'Furnished rental inquiry', 'monthly': 'Furnished rental inquiry – monthly', 'short': 'Furnished rental inquiry – short stay', 'vacation': 'Vacation rental inquiry – Medellín', 'blog': 'Furnished rental inquiry',
                   'item': 'Furnished rental inquiry – {ref} {t}'}),
  'es': dict(h='¿Prefiere el correo? Envíenos sus fechas, su presupuesto y cuántas personas son',
             p='Escríbanos y nuestro equipo en El Poblado le responde por correo, en español o en inglés, con los apartamentos que se ajustan a su estadía.',
@@ -348,7 +348,7 @@ MAIL = {
             listing='Escríbanos por este apartamento', wa='¡Hola! Estoy buscando un apartamento amoblado en Medellín.',
             body='Hola, Medellín Concierge:\n\nEstoy buscando un apartamento amoblado en Medellín.\n\nFechas (llegada – salida): \nNúmero de personas: \nPresupuesto (COP por mes o por noche): \nZona preferida (El Poblado, Laureles, Envigado, otra): \n\nGracias,\n',
             body_item='Hola, Medellín Concierge:\n\nMe interesa {t} ({ref}).\n\nFechas (llegada – salida): \nNúmero de personas: \n\nGracias,\n',
-            subj={'rentals': 'Consulta arriendo amoblado', 'monthly': 'Consulta arriendo amoblado – por meses', 'short': 'Consulta arriendo amoblado – por días', 'blog': 'Consulta arriendo amoblado',
+            subj={'rentals': 'Consulta arriendo amoblado', 'monthly': 'Consulta arriendo amoblado – por meses', 'short': 'Consulta arriendo amoblado – por días', 'vacation': 'Consulta alquiler vacacional – Medellín', 'blog': 'Consulta arriendo amoblado',
                   'item': 'Consulta arriendo amoblado – {ref} {t}'}),
 }
 
@@ -1531,10 +1531,11 @@ for area, cfg in RA.items():
 # feed, grouped by area, with an answer-first summary from the feed's own numbers, email + WhatsApp CTAs and FAQ.
 # Targets "short term rentals medellin", "vacation rentals medellin" / "apartamentos por días medellín". No minimum
 # nights, check-in times or payment methods are stated here: they are not confirmed (ask us).
+# R12 (Nov 25 2026, office report mc-2026-11-23/25): 'vacation rentals' / 'alquiler vacacional' in title, meta, H2 and FAQ.
 S = {
  'en': dict(slug='short-term-rentals-medellin', home='Home', rentals='Rentals', rentals_url='rentals/', crumb='Short-term rentals',
-            title='Short-Term Rentals Medellín | Furnished Apartments by Night',
-            desc='Short-term rentals in Medellín: {N_SHORT} furnished apartments by the night in {TOP_AREAS} and more, from {MIN_NIGHT} COP. Email us and book direct.',
+            title='Short-Term & Vacation Rentals in Medellín | Book Direct',
+            desc='Short-term and vacation rentals in Medellín: {N_SHORT} furnished apartments by the night, from {MIN_NIGHT} COP. Email us your dates and book direct.',
             h1='Short-term rentals in Medellín: furnished apartments by the night',
             lead='<strong>Looking for a short-term rental in Medellín for a few nights or a couple of weeks? We rent furnished apartments by the night, and you book directly with the local team that manages them.</strong> As of {AS_OF}, {N_SHORT} short-term rentals are listed with a price, from {MIN_NIGHT} COP a night plus a one-time cleaning fee, in {SHORT_AREAS}. Email us your dates or ask on WhatsApp, in English or Spanish, and we confirm availability and the total price in writing.',
             cta_wa='Ask about a short stay', wa_text='Hi! I’m looking for a furnished apartment in Medellín for a short stay.', cta_all='See all rentals with live availability',
@@ -1545,7 +1546,10 @@ S = {
             other_h='More short-term rentals in and around Medellín', other_p='Also by the night: {LIST}.',
             label={'Medellín': 'Medellín (other neighborhoods)'},
             prose="""
-      <h2>Short-term rentals in Medellín, booked direct</h2>
+      <h2>Vacation rentals in Medellín, booked direct</h2>
+      <p><strong>Every short-term rental on this page is also a vacation rental: a furnished apartment our own team manages, rented by the night, in {SHORT_AREAS}.</strong> You book directly with us, not through a platform, and you get one written quote with the total price for your dates, including the cleaning fee. Prices on this page come from our booking system and are dated {AS_OF}. <a href="{MAIL_VAC}">Email us your dates and number of guests</a> and we reply with the apartments that are free, in English or Spanish.</p>
+      <p>A vacation rental suits a holiday, a family visit or a group trip, when you want a kitchen, a living room and more space than a hotel room. For stays of 30 nights or more, our <a href="../monthly-rentals-medellin/">monthly rentals</a> are priced by the month.</p>
+      <h2>What is a short-term rental in Medellín?</h2>
       <p>A short-term rental is a furnished apartment you rent by the night, ready to live in from the day you arrive: a kitchen, your own space and a local team a message away. It suits a holiday, a business trip, a family visit, or a first week in the city while you look for a <a href="../monthly-rentals-medellin/">monthly rental</a>. Each listing on this page shows a “from” price per night and a one-time cleaning fee; as of {AS_OF}, cleaning fees on our short-term rentals run from {MIN_CLEAN_S} to {MAX_CLEAN_S} COP. The price for your exact dates comes in our written quote.</p>
       <h2>How to book a short-term rental with us</h2>
       <ol><li><strong>Choose an apartment</strong> from the list above, or tell us what you need: area, bedrooms, number of guests and dates.</li><li><strong>Email us or ask on WhatsApp.</strong> Write to <a href="mailto:sales@medellinconcierge.net?subject=Furnished%20rental%20inquiry%20%E2%80%93%20short%20stay">sales@medellinconcierge.net</a> or tap “Ask about” on a listing. We answer in English or Spanish.</li><li><strong>Get your quote in writing.</strong> We confirm availability, the total price for your dates including the cleaning fee, and the house rules.</li><li><strong>Arrive.</strong> Our local team, based in El Poblado, coordinates your check-in, and guests can reach us 24/7 during the stay.</li></ol>
@@ -1557,6 +1561,8 @@ S = {
       <ul><li><strong>Check the RNT</strong> on the public RNT system.</li><li><strong>Know the total price,</strong> including the cleaning fee and anything charged on top.</li><li><strong>Get the dates and rules in writing,</strong> including check-in and check-out times and the building’s rules.</li><li><strong>Know who to call.</strong> Make sure someone answers 24/7 if something goes wrong during your stay.</li></ul>""",
             faq=[('How much does a short-term rental in Medellín cost?',
                   'In our listings, as of {AS_OF}, furnished apartments by the night run from {MIN_NIGHT} to {MAX_NIGHT} COP a night, depending on the area, the size and the building, plus a one-time cleaning fee. Each listing on this page shows its current “from” price; we confirm the total for your dates in writing.'),
+                 ('Are these vacation rentals?',
+                  'Yes. In Colombia, renting a furnished apartment by the night to tourists is a tourist rental (vivienda turística), the same thing many sites call a vacation rental. Every apartment on this page is one we manage, rented by the night from {MIN_NIGHT} COP as of {AS_OF}, and booked directly with our team by email or WhatsApp.'),
                  ('Is there a cleaning fee for short stays?',
                   'Yes. Each listing shows a one-time cleaning fee, charged once per stay; as of {AS_OF}, cleaning fees on our short-term rentals run from {MIN_CLEAN_S} to {MAX_CLEAN_S} COP.'),
                  ('Can I ask about an apartment by email instead of WhatsApp?',
@@ -1572,8 +1578,8 @@ S = {
                  ('Which areas are your short-term rentals in?',
                   'As of {AS_OF}: {SHORT_AREA_COUNTS}. The list on this page shows the current ones.')]),
  'es': dict(slug='es/apartamentos-por-dias-medellin', home='Inicio', rentals='Arriendos', rentals_url='es/arriendos/', crumb='Apartamentos por días',
-            title='Apartamentos por días en Medellín | Amoblados',
-            desc='Apartamentos amoblados por días en Medellín: {N_SHORT} por noches en {TOP_AREAS} y más, desde {MIN_NIGHT} COP. Escríbanos y reserve directo.',
+            title='Apartamentos por días y alquiler vacacional en Medellín',
+            desc='Apartamentos por días y alquiler vacacional en Medellín: {N_SHORT} amoblados por noches, desde {MIN_NIGHT} COP. Escríbanos sus fechas y reserve directo.',
             h1='Apartamentos por días en Medellín: amoblados, por noches',
             lead='<strong>¿Busca un apartamento por días en Medellín para unas noches o un par de semanas? Arrendamos apartamentos amoblados por noches, y usted reserva directo con el equipo local que los administra.</strong> Al {AS_OF} hay {N_SHORT} apartamentos por días con precio, desde {MIN_NIGHT} COP la noche más una tarifa de aseo única, en {SHORT_AREAS}. Escríbanos sus fechas por correo o por WhatsApp, en español o en inglés, y le confirmamos por escrito la disponibilidad y el precio total.',
             cta_wa='Preguntar por una estadía corta', wa_text='¡Hola! Busco un apartamento amoblado en Medellín por días.', cta_all='Ver todos los arriendos con disponibilidad en vivo',
@@ -1584,7 +1590,10 @@ S = {
             other_h='Más apartamentos por días en Medellín y sus alrededores', other_p='También por noches: {LIST}.',
             label={'Medellín': 'Medellín (otros barrios)'},
             prose="""
-      <h2>Apartamentos por días en Medellín, con reserva directa</h2>
+      <h2>Alquiler vacacional en Medellín, con reserva directa</h2>
+      <p><strong>Todos los apartamentos por días de esta página son también apartamentos vacacionales: amoblados, administrados por nuestro propio equipo y arrendados por noches en {SHORT_AREAS}.</strong> Usted reserva directo con nosotros, sin plataforma de por medio, y recibe una sola cotización por escrito con el precio total de sus fechas, aseo incluido. Los precios de esta página salen de nuestro sistema de reservas y están fechados al {AS_OF}. <a href="{MAIL_VAC}">Escríbanos sus fechas y cuántas personas son</a> y le respondemos con los apartamentos libres, en español o en inglés.</p>
+      <p>Un apartamento vacacional sirve para unas vacaciones, la visita de la familia o un viaje en grupo, cuando quiere cocina, sala y más espacio que una habitación de hotel. Para 30 noches o más, nuestros <a href="../arriendos-por-meses-medellin/">arriendos por meses</a> tienen precio mensual.</p>
+      <h2>¿Qué es un apartamento por días en Medellín?</h2>
       <p>Un apartamento por días es un apartamento amoblado que se arrienda por noches, listo para vivir desde el día en que llega: cocina, su propio espacio y un equipo local a un mensaje de distancia. Sirve para unas vacaciones, un viaje de trabajo, una visita familiar o la primera semana en la ciudad mientras busca un <a href="../arriendos-por-meses-medellin/">arriendo por meses</a>. Cada propiedad de esta página muestra un precio «desde» por noche y una tarifa de aseo única; al {AS_OF}, el aseo en nuestros apartamentos por días va desde {MIN_CLEAN_S} hasta {MAX_CLEAN_S} COP. El precio para sus fechas exactas se lo enviamos por escrito.</p>
       <h2>Cómo reservar un apartamento por días con nosotros</h2>
       <ol><li><strong>Escoja un apartamento</strong> de la lista de arriba, o díganos qué necesita: zona, habitaciones, cuántas personas son y las fechas.</li><li><strong>Escríbanos por correo o por WhatsApp.</strong> Escriba a <a href="mailto:sales@medellinconcierge.net?subject=Consulta%20arriendo%20amoblado%20%E2%80%93%20por%20d%C3%ADas">sales@medellinconcierge.net</a> o toque «Preguntar por» en una propiedad. Respondemos en español o en inglés.</li><li><strong>Reciba la cotización por escrito.</strong> Le confirmamos la disponibilidad, el precio total de sus fechas con el aseo incluido y las normas de la casa.</li><li><strong>Llegue.</strong> Nuestro equipo local, con oficina en El Poblado, coordina su llegada, y durante la estadía nos encuentra 24/7.</li></ol>
@@ -1596,6 +1605,8 @@ S = {
       <ul><li><strong>Verifique el RNT</strong> en el sistema público del RNT.</li><li><strong>Tenga claro el precio total,</strong> con el aseo y cualquier cobro adicional.</li><li><strong>Deje por escrito fechas y reglas,</strong> incluidos los horarios de llegada y salida y las normas del edificio.</li><li><strong>Sepa a quién llamar.</strong> Asegúrese de que alguien responda 24/7 si algo pasa durante su estadía.</li></ul>""",
             faq=[('¿Cuánto cuesta un apartamento por días en Medellín?',
                   'En nuestras propiedades, al {AS_OF}, los apartamentos amoblados por noches van desde {MIN_NIGHT} hasta {MAX_NIGHT} COP la noche, según la zona, el tamaño y el edificio, más una tarifa de aseo única. Cada propiedad de esta página muestra su precio «desde» actual; el total de sus fechas se lo confirmamos por escrito.'),
+                 ('¿Son apartamentos de alquiler vacacional?',
+                  'Sí. En Colombia, arrendar un apartamento amoblado por noches a turistas es vivienda turística, lo que muchas páginas llaman alquiler vacacional. Todos los apartamentos de esta página los administramos nosotros, se arriendan por noches desde {MIN_NIGHT} COP al {AS_OF} y se reservan directo con nuestro equipo por correo o por WhatsApp.'),
                  ('¿Se cobra aseo en las estadías cortas?',
                   'Sí. Cada propiedad muestra una tarifa de aseo única, que se cobra una vez por estadía; al {AS_OF}, el aseo en nuestros apartamentos por días va desde {MIN_CLEAN_S} hasta {MAX_CLEAN_S} COP.'),
                  ('¿Puedo preguntar por un apartamento por correo en vez de WhatsApp?',
@@ -1624,7 +1635,8 @@ def short_stats(lang):
     st.update({'{MIN_NIGHT}': cop(min(night)) if night else '—', '{MAX_NIGHT}': cop(max(night)) if night else '—',
                '{MIN_CLEAN_S}': cop(min(clean)) if clean else '—', '{MAX_CLEAN_S}': cop(max(clean)) if clean else '—',
                '{SHORT_AREAS}': rl_join([lab(a) for a in areas], lang), '{TOP_AREAS}': ', '.join(areas[:3]),
-               '{SHORT_AREA_COUNTS}': rl_join([f'{a} ({n[a]})' for a in areas], lang)})
+               '{SHORT_AREA_COUNTS}': rl_join([f'{a} ({n[a]})' for a in areas], lang),
+               '{MAIL_VAC}': mail_href(lang, 'vacation')})
     return st, P, n, areas
 
 def short_list(lang, st, P, n, areas):
