@@ -1121,12 +1121,14 @@ RA = {
  'El Poblado': {
   'slug': 'el-poblado',
   'en': dict(title='Furnished Apartments for Rent in El Poblado, Medellín',
-             desc='Furnished apartments for rent in El Poblado, Medellín: {N} listed by the month or by the night, with live prices. Book direct by WhatsApp or email.',
+             desc='Furnished apartments for rent in El Poblado, Medellín: {N} listed by the month or by the night, with live prices. Book direct by email or WhatsApp.',
              h1='Furnished apartments for rent in El Poblado',
              crumb='El Poblado',
              lead='<strong>Looking for a furnished apartment for rent in El Poblado, Medellín? As of {AS_OF} we have {N} furnished apartments in El Poblado listed: {N_MONTH} by the month (30 nights or more), from {MIN_MONTH} COP a month, and {N_SHORT} by the night, from {MIN_NIGHT} COP a night.</strong> We manage them ourselves from our office in El Poblado, so you book directly with the local team that looks after them. Ask about any of them on WhatsApp or by email, in English or Spanish.',
              wa_text='Hi! I’m looking for a furnished apartment in El Poblado.',
              mail_subj='Furnished rental inquiry – El Poblado',
+             lt_h='Long-term rentals in El Poblado, Medellín (30+ nights)',
+             lt_p='{N_MONTH} of the apartments below can be rented long term, by the month (30 nights or more), from {MIN_MONTH} to {MAX_MONTH} COP a month, direct from the team that manages them. Email <a href="{MAIL}">sales@medellinconcierge.net</a> with your move-in date and how many months you need, and we confirm the monthly price in writing. More areas: <a href="../monthly-rentals-medellin/">long-term rentals in Medellín</a>.',
              cta_all='See all rentals in Medellín',
              list_h='Furnished apartments in El Poblado available now',
              list_intro='As of {AS_OF}: {N} furnished apartments in El Poblado. Prices are in Colombian pesos, plus a one-time cleaning fee. Tap “Ask about” and tell us your dates; for live availability and our other areas, see <a href="../rentals/">all our furnished rentals in Medellín</a>.',
@@ -1162,12 +1164,14 @@ RA = {
                   ('I own an apartment in El Poblado. Can you rent it out like these?',
                    'Yes. We manage apartments for their owners from 12% of rental income + IVA for stays of 30 nights or more and 17% + IVA for short stays, with no upfront fees. See <a href="../property-management-el-poblado/">property management in El Poblado</a>.')]),
   'es': dict(title='Apartamentos amoblados en arriendo en El Poblado, Medellín',
-             desc='Apartamentos amoblados en arriendo en El Poblado, Medellín: {N} por meses o por noches, con precios en vivo. Reserve directo por WhatsApp o correo.',
+             desc='Apartamentos amoblados en arriendo en El Poblado, Medellín: {N} por meses o por noches, con precios en vivo. Reserve directo por correo o WhatsApp.',
              h1='Apartamentos amoblados en arriendo en El Poblado',
              crumb='El Poblado',
              lead='<strong>¿Busca un apartamento amoblado en arriendo en El Poblado, Medellín? Al {AS_OF} tenemos {N} apartamentos amoblados disponibles en El Poblado: {N_MONTH} por meses (desde 30 noches), desde {MIN_MONTH} COP al mes, y {N_SHORT} por noches, desde {MIN_NIGHT} COP la noche.</strong> Los administramos nosotros mismos desde nuestra oficina en El Poblado, así que usted reserva directo con el equipo local que los cuida. Pregúntenos por cualquiera por WhatsApp o por correo, en español o en inglés.',
              wa_text='¡Hola! Estoy buscando un apartamento amoblado en El Poblado.',
              mail_subj='Consulta arriendo amoblado – El Poblado',
+             lt_h='Arriendo de apartamento amoblado en El Poblado, Medellín, por meses',
+             lt_p='{N_MONTH} de los apartamentos de esta lista se arriendan por meses (desde 30 noches), entre {MIN_MONTH} y {MAX_MONTH} COP al mes, directo con el equipo que los administra. Escriba a <a href="{MAIL}">sales@medellinconcierge.net</a> con su fecha de llegada y cuántos meses necesita, y le confirmamos el precio mensual por escrito. Otras zonas: <a href="../arriendos-por-meses-medellin/">arriendos amoblados por meses en Medellín</a>.',
              cta_all='Ver todos los arriendos en Medellín',
              list_h='Apartamentos amoblados en El Poblado disponibles hoy',
              list_intro='Al {AS_OF}: {N} apartamentos amoblados en El Poblado. Precios en pesos colombianos, más una tarifa de aseo única. Toque «Preguntar por» y díganos sus fechas; para la disponibilidad en vivo y nuestras otras zonas, vea <a href="../arriendos/">todos nuestros arriendos amoblados en Medellín</a>.',
@@ -1212,6 +1216,8 @@ RA = {
              lead='<strong>Looking for a furnished apartment for rent in Envigado, just south of Medellín? As of {AS_OF} we have {N} furnished properties in Envigado listed: {N_MONTH} by the month (30 nights or more), from {MIN_MONTH} COP a month, and {N_SHORT} by the night, from {MIN_NIGHT} COP a night.</strong> We manage them ourselves from our office in El Poblado, a short drive away, so you book directly with the local team that looks after them. Ask about any of them by email or on WhatsApp, in English or Spanish.',
              wa_text='Hi! I’m looking for a furnished apartment in Envigado.',
              mail_subj='Furnished rental inquiry – Envigado',
+             lt_h='Long-term rentals in Envigado (30+ nights)',
+             lt_p='{N_MONTH} of the properties below can be rented long term, by the month (30 nights or more), from {MIN_MONTH} to {MAX_MONTH} COP a month, direct from the team that manages them. Email <a href="{MAIL}">sales@medellinconcierge.net</a> with your move-in date and how many months you need, and we confirm the monthly price in writing. More areas: <a href="../monthly-rentals-medellin/">long-term rentals in Medellín</a>.',
              cta_all='See all rentals in Medellín',
              list_h='Furnished apartments in Envigado available now',
              list_intro='As of {AS_OF}: {N} furnished properties in Envigado. Prices are in Colombian pesos, plus a one-time cleaning fee. Tap “Ask about” and tell us your dates; for live availability and our other areas, see <a href="../rentals/">all our furnished rentals in Medellín</a>.',
@@ -1251,6 +1257,8 @@ RA = {
              lead='<strong>¿Busca un apartamento amoblado en arriendo en Envigado, al sur de Medellín? Al {AS_OF} tenemos {N} propiedades amobladas disponibles en Envigado: {N_MONTH} por meses (desde 30 noches), desde {MIN_MONTH} COP al mes, y {N_SHORT} por noches, desde {MIN_NIGHT} COP la noche.</strong> Las administramos nosotros mismos desde nuestra oficina en El Poblado, a pocos minutos, así que usted reserva directo con el equipo local que las cuida. Pregúntenos por cualquiera por correo o por WhatsApp, en español o en inglés.',
              wa_text='¡Hola! Estoy buscando un apartamento amoblado en Envigado.',
              mail_subj='Consulta arriendo amoblado – Envigado',
+             lt_h='Arriendo de apartamento amoblado en Envigado por meses',
+             lt_p='{N_MONTH} de las propiedades de esta lista se arriendan por meses (desde 30 noches), entre {MIN_MONTH} y {MAX_MONTH} COP al mes, directo con el equipo que las administra. Escriba a <a href="{MAIL}">sales@medellinconcierge.net</a> con su fecha de llegada y cuántos meses necesita, y le confirmamos el precio mensual por escrito. Otras zonas: <a href="../arriendos-por-meses-medellin/">arriendos amoblados por meses en Medellín</a>.',
              cta_all='Ver todos los arriendos en Medellín',
              list_h='Apartamentos amoblados en Envigado disponibles hoy',
              list_intro='Al {AS_OF}: {N} propiedades amobladas en Envigado. Precios en pesos colombianos, más una tarifa de aseo única. Toque «Preguntar por» y díganos sus fechas; para la disponibilidad en vivo y nuestras otras zonas, vea <a href="../arriendos/">todos nuestros arriendos amoblados en Medellín</a>.',
@@ -1294,6 +1302,8 @@ RA = {
              lead='<strong>Looking for a furnished apartment for rent in Laureles, Medellín? As of {AS_OF} we have {N} furnished apartments in Laureles listed by the month (30 nights or more), from {MIN_MONTH} to {MAX_MONTH} COP a month.</strong> We manage them ourselves from our office in El Poblado, so you deal directly with the local team that looks after them. Email us your dates, number of guests and budget, or ask on WhatsApp, in English or Spanish, and we confirm availability and the total price in writing.',
              wa_text='Hi! I’m looking for a furnished apartment in Laureles.',
              mail_subj='Furnished rental inquiry – Laureles',
+             lt_h='Long-term rentals in Laureles, Medellín (30+ nights)',
+             lt_p='Every apartment below is rented long term, by the month (30 nights or more), direct from the team that manages it. Email <a href="{MAIL}">sales@medellinconcierge.net</a> with your move-in date and how many months you need, and we confirm the monthly price in writing. More areas: <a href="../monthly-rentals-medellin/">long-term rentals in Medellín</a>.',
              cta_all='See all rentals in Medellín',
              list_h='Furnished apartments in Laureles available now',
              list_intro='As of {AS_OF}: {N} furnished apartments in Laureles, by the month. Prices are in Colombian pesos, plus a one-time cleaning fee. Email us or tap “Ask about” and tell us your dates; for live availability and our other areas, see <a href="../rentals/">all our furnished rentals in Medellín</a>.',
@@ -1334,6 +1344,8 @@ RA = {
              lead='<strong>¿Busca un apartamento amoblado en arriendo en Laureles, Medellín? Al {AS_OF} tenemos {N} apartamentos amoblados en Laureles por meses (desde 30 noches), entre {MIN_MONTH} y {MAX_MONTH} COP al mes.</strong> Los administramos nosotros mismos desde nuestra oficina en El Poblado, así que usted trata directo con el equipo local que los cuida. Escríbanos por correo con sus fechas, cuántas personas son y su presupuesto, o pregúntenos por WhatsApp, en español o en inglés, y le confirmamos por escrito la disponibilidad y el precio total.',
              wa_text='¡Hola! Estoy buscando un apartamento amoblado en Laureles.',
              mail_subj='Consulta arriendo amoblado – Laureles',
+             lt_h='Arriendo de apartamento amoblado en Laureles, Medellín, por meses',
+             lt_p='Todos los apartamentos de esta lista se arriendan por meses (desde 30 noches), directo con el equipo que los administra. Escriba a <a href="{MAIL}">sales@medellinconcierge.net</a> con su fecha de llegada y cuántos meses necesita, y le confirmamos el precio mensual por escrito. Otras zonas: <a href="../arriendos-por-meses-medellin/">arriendos amoblados por meses en Medellín</a>.',
              cta_all='Ver todos los arriendos en Medellín',
              list_h='Apartamentos amoblados en Laureles disponibles hoy',
              list_intro='Al {AS_OF}: {N} apartamentos amoblados en Laureles, por meses. Precios en pesos colombianos, más una tarifa de aseo única. Escríbanos o toque «Preguntar por» y díganos sus fechas; para la disponibilidad en vivo y nuestras otras zonas, vea <a href="../arriendos/">todos nuestros arriendos amoblados en Medellín</a>.',
@@ -1485,6 +1497,9 @@ for area, cfg in RA.items():
         wa = 'https://wa.me/573042773864?text=' + urllib.parse.quote(ui['wa_text'])
         body_txt = MAIL[lang]['body'].replace('El Poblado, Laureles, Envigado, other', area).replace('El Poblado, Laureles, Envigado, otra', area)
         mhref = mailto(ui['mail_subj'], body_txt)
+        # R13 (Nov 25 2026, office reports mc-2026-11-23/25): long-term H2 above the listings, only when the feed has monthly listings here
+        lt_html = (f'<div class="prose"><h2>{ui["lt_h"]}</h2><p>{fill(ui["lt_p"], st).replace("{MAIL}", mhref)}</p></div>'
+                   if ui.get('lt_h') and st['{N_MONTH}'] != '0' and only in (None, 'long_term') else '')
         desc = fill(ui['desc'], st)
         body = f'''<section class="page-top">
   <div class="wrap">
@@ -1497,6 +1512,7 @@ for area, cfg in RA.items():
 </section>
 <section class="rentals">
   <div class="wrap">
+    {lt_html}
     {rl_section(lang, st, only=only, h=ui['list_h'], intro=ui['list_intro'], area=area)}
     {mail_block(lang, 'rentals', href=mhref, wa_text=ui['wa_text'])}
     <div class="prose">{fill(ui["prose"], st)}
