@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "ArtifactData",
+      "mcp__Apollo_io__apollo_email_accounts_index",
+      "mcp__Apollo_io__apollo_contacts_bulk_create",
+      "mcp__Apollo_io__apollo_emailer_campaigns_search",
+      "mcp__Apollo_io__apollo_emailer_campaigns_show",
+      "mcp__Apollo_io__apollo_emailer_campaigns_add_contact_ids",
+      "mcp__Apollo_io__apollo_emailer_campaigns_approve",
+      "mcp__Apollo_io__apollo_emailer_messages_search",
+      "mcp__Apollo_io__apollo_emailer_campaigns_remove_or_stop_contact_ids",
+      "mcp__9086c8cc-fcae-4078-8505-ce20fc019d9a__apollo_email_accounts_index",
+      "mcp__9086c8cc-fcae-4078-8505-ce20fc019d9a__apollo_contacts_bulk_create",
+      "mcp__9086c8cc-fcae-4078-8505-ce20fc019d9a__apollo_emailer_campaigns_search",
+      "mcp__9086c8cc-fcae-4078-8505-ce20fc019d9a__apollo_emailer_campaigns_show",
+      "mcp__9086c8cc-fcae-4078-8505-ce20fc019d9a__apollo_emailer_campaigns_add_contact_ids",
+      "mcp__9086c8cc-fcae-4078-8505-ce20fc019d9a__apollo_emailer_campaigns_approve",
+      "mcp__9086c8cc-fcae-4078-8505-ce20fc019d9a__apollo_emailer_messages_search",
+      "mcp__9086c8cc-fcae-4078-8505-ce20fc019d9a__apollo_emailer_campaigns_remove_or_stop_contact_ids",
+      "mcp__Windsor_ai__get_data",
+      "mcp__Windsor_ai__execute_action",
+      "mcp__1110ed0b-abdf-48ac-93e5-1b4039daa670__get_data",
+      "mcp__1110ed0b-abdf-48ac-93e5-1b4039daa670__execute_action"
+    ]
+  }
+}
