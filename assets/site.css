@@ -405,6 +405,9 @@
 .prose table{width:100%;border-collapse:collapse;margin:0 0 1.4em;font-size:.98rem}
 .prose th,.prose td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line)}
 .prose thead th{color:var(--ink);font-weight:600}
+.table-scroll{overflow-x:auto;margin:0 0 1.4em}
+.table-scroll table{margin:0}
+@media (max-width:760px){.prose .price-table{font-size:.86rem}.prose .price-table th,.prose .price-table td{padding:10px 6px}}
 .article-cta{max-width:700px;margin:56px auto 0;background:var(--sand);border-radius:var(--radius-lg);padding:32px}
 .article-cta h2{font-size:1.4rem;margin:0 0 8px}
 .article-cta p{color:var(--ink-2)}

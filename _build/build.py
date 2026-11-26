@@ -1084,6 +1084,69 @@ LT_MAIL = {'en': ('Long-term furnished rental inquiry – Medellín',
            'es': ('Consulta arriendo amoblado por meses – Medellín',
                   'Hola, Medellín Concierge:\n\nEstoy buscando un apartamento amoblado en Medellín por meses.\n\nFecha de llegada: \nCuántos meses: \nNúmero de personas: \nPresupuesto (COP al mes): \nZona preferida (El Poblado, Laureles, Envigado, otra): \n\nGracias,\n')}
 
+# R16 (Nov 26 2026, office report mc-2026-11-26): price-by-area table on the monthly pages, built ONLY from our own live
+# monthly listings (lowest monthly price per area and bedroom count). Bing/Google answer boxes quote competitors' price
+# tables for 'monthly rentals medellín'; ours is dated and never a market survey.
+MT = {
+ 'en': dict(h='How much is a furnished monthly rental in Medellín?',
+            p='<strong>In our own listings, as of {AS_OF}, a furnished apartment by the month in Medellín starts at {MIN_MONTH} COP a month.</strong> The table shows the lowest monthly price we list in each area for each size, plus a one-time cleaning fee. The price depends on the building, the floor and the season, so each listing above shows its own.',
+            area='Area', cols=('1 bedroom', '2 bedrooms', '3+ bedrooms'), frm='from ', none='—', ask='ask us',
+            note='Prices in Colombian pesos per month from our own listings on {AS_OF}; they are not a market survey. “—” means we have no monthly listing of that size there right now: <a href="{MAIL}">email us</a> your area, size, dates and budget and we tell you what is coming up.',
+            faq_q='How much is a 1-, 2- or 3-bedroom furnished apartment per month in Medellín?',
+            faq_a='In our listings, as of {AS_OF}: {BY_SIZE} COP a month, plus a one-time cleaning fee. The price depends on the area, the building and the season; the table on this page shows the lowest price by area and size.',
+            by_size='{lbl} from {p}', lbl=('1-bedroom', '2-bedroom', '3-bedroom or larger'),
+            subj='Monthly rental price inquiry – Medellín',
+            body='Hi Medellín Concierge,\n\nI am looking for a furnished apartment by the month.\n\nArea: \nBedrooms: \nMove-in date: \nHow many months: \nBudget (COP per month): \n\nThank you,\n'),
+ 'es': dict(h='¿Cuánto cuesta un apartamento amoblado por meses en Medellín?',
+            p='<strong>En nuestras propiedades, al {AS_OF}, un apartamento amoblado por meses en Medellín arranca en {MIN_MONTH} COP al mes.</strong> La tabla muestra el precio mensual más bajo que publicamos en cada zona para cada tamaño, más una tarifa de aseo única. El precio depende del edificio, el piso y la temporada, por eso cada propiedad de arriba muestra el suyo.',
+            area='Zona', cols=('1 habitación', '2 habitaciones', '3 o más'), frm='desde ', none='—', ask='pregúntenos',
+            note='Precios en pesos colombianos al mes, tomados de nuestras propias propiedades el {AS_OF}; no es un estudio de mercado. «—» indica que hoy no tenemos un arriendo por meses de ese tamaño en esa zona: <a href="{MAIL}">escríbanos</a> la zona, el tamaño, sus fechas y su presupuesto y le contamos qué se libera pronto.',
+            faq_q='¿Cuánto cuesta al mes un apartamento amoblado de 1, 2 o 3 habitaciones en Medellín?',
+            faq_a='En nuestras propiedades, al {AS_OF}: {BY_SIZE} COP al mes, más una tarifa de aseo única. El precio depende de la zona, el edificio y la temporada; la tabla de esta página muestra el precio más bajo por zona y tamaño.',
+            by_size='{lbl} desde {p}', lbl=('1 habitación', '2 habitaciones', '3 habitaciones o más'),
+            subj='Consulta precio arriendo por meses – Medellín',
+            body='Hola, Medellín Concierge:\n\nBusco un apartamento amoblado por meses.\n\nZona: \nHabitaciones: \nFecha de llegada: \nCuántos meses: \nPresupuesto (COP al mes): \n\nGracias,\n'),
+}
+
+def mt_groups():
+    g = {}
+    for p in LISTINGS['properties']:
+        if p['stay_type'] != 'long_term' or not rl_price(p) or (p.get('price') or {}).get('per') != 'month' or not p.get('bedrooms'): continue
+        col = min(p['bedrooms'], 3) - 1
+        g.setdefault(rl_area(p), {}).setdefault(col, []).append(rl_price(p))
+    return g
+
+def mt_by_size(lang):
+    u = MT[lang]; g = mt_groups(); out = []
+    for c in range(3):
+        v = [x for a in g.values() for x in a.get(c, [])]
+        if v: out.append(u['by_size'].format(lbl=u['lbl'][c], p=cop(min(v))))
+    return rl_join(out, lang) if out else ''
+
+def mt_section(lang, st):
+    u = MT[lang]; g = mt_groups()
+    if len(g) < 2: return ''
+    n = lambda a: sum(len(v) for v in g[a].values())
+    rows = ''
+    for a in sorted(g, key=lambda a: (-n(a), a)):
+        cells = ''
+        for c in range(3):
+            v = g[a].get(c, [])
+            txt = u['none'] if not v else (cop(min(v)) if len(v) == 1 else u['frm'] + cop(min(v)))
+            cells += f'<td>{txt}</td>'
+        rows += f'          <tr><th>{a}</th>{cells}</tr>\n'
+    mail = mailto(u['subj'], u['body'])
+    head = ''.join(f'<th>{c}</th>' for c in u['cols'])
+    return f'''
+      <h2>{u["h"]}</h2>
+      <p>{fill(u["p"], st)}</p>
+      <div class="table-scroll"><table class="price-table">
+        <thead><tr><th>{u["area"]}</th>{head}</tr></thead>
+        <tbody>
+{rows}        </tbody>
+      </table></div>
+      <p><small>{fill(u["note"], st).replace("{MAIL}", mail)}</small></p>'''
+
 for lang in LANGS:
     ui = M[lang]; st = rl_stats(lang)
     en_url, es_url = SITE + M['en']['slug'] + '/', SITE + M['es']['slug'] + '/'
@@ -1091,6 +1154,7 @@ for lang in LANGS:
     home_url = SITE + ('es/' if lang == 'es' else '')
     pre = '../' if lang == 'en' else '../../'
     faq = [(fill(q, st), fill(a, st)) for q, a in ui['faq']]
+    if mt_by_size(lang): faq.insert(1, (MT[lang]['faq_q'], fill(MT[lang]['faq_a'].replace('{BY_SIZE}', mt_by_size(lang)), st)))
     faq_html = ''.join(f'        <details><summary>{html.escape(q, quote=False)}{PLUS}</summary><p>{a}</p></details>\n' for q, a in faq)
     wa = 'https://wa.me/573042773864?text=' + urllib.parse.quote(ui['wa_text'])
     body = f'''<section class="page-top">
@@ -1106,7 +1170,7 @@ for lang in LANGS:
   <div class="wrap">
     {rl_section(lang, st, only='long_term', h=ui['list_h'], intro=ui['list_intro'])}
     {mail_block(lang, 'monthly')}
-    <div class="prose">{fill(ui["prose"], st).replace("{LT_MAIL}", mailto(LT_MAIL[lang][0], LT_MAIL[lang][1]))}
+    <div class="prose">{fill(ui["prose"], st).replace("{LT_MAIL}", mailto(LT_MAIL[lang][0], LT_MAIL[lang][1]))}{mt_section(lang, st)}
       <h2>{L[lang]["faq_h"]}</h2>
       <div class="faq">
 {faq_html}      </div>
