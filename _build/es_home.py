@@ -79,6 +79,7 @@ HOME_ES = [
 
  ('>Airbnb management</a>', '>Administración de Airbnb</a>'),
  ('>Long-term management</a>', '>Rentas largas</a>'),
+ ('>Rental property management</a>', '>Administración de inmuebles</a>'),
  # ---- areas ----
  ('<h4>Areas</h4>', '<h4>Zonas</h4>'),
  ('>Foreign owners</a>', '>Propietarios extranjeros</a>'),
@@ -190,8 +191,8 @@ HOME_ES = [
  ('Do you manage Airbnb apartments in Medellín?', '¿Administran apartamentos en Airbnb en Medellín?'),
  ('Yes. We manage short stays on Airbnb, Booking.com, Expedia and VRBO for 17% of rental income + IVA on Basic or 20% + IVA on Premium: listing, dynamic pricing, 24/7 guest support, check-ins, cleaning, maintenance and RNT, SIRE and TRA compliance. See how our <a href="airbnb-management-medellin/">Airbnb management in Medellín</a> works.',
   'Sí. Administramos rentas cortas en Airbnb, Booking.com, Expedia y VRBO por el 17% de los ingresos por renta + IVA en el plan Básico o el 20% + IVA en el Premium: anuncio, precios dinámicos, atención al huésped 24/7, llegadas, aseo, mantenimiento y cumplimiento de RNT, SIRE y TRA. Vea cómo funciona nuestra <a href="airbnb-management-medellin/">administración de Airbnb en Medellín</a>.'),
- ('<p>Looking for rental property management in Medellín? We do that work for furnished apartments and houses, for short stays on Airbnb and Booking.com or stays of 30 nights or more: guests, cleaning, maintenance, RNT and a monthly payout to the owner.</p>',
-  '<p>Si busca administración de inmuebles en Medellín, hacemos ese trabajo para apartamentos y casas amoblados, en renta corta en Airbnb y Booking.com o en estancias de 30 noches o más: huéspedes, aseo, mantenimiento, RNT y un pago mensual al propietario.</p>'),
+ ('<p>Looking for rental property management in Medellín? We do that work for furnished apartments and houses, for short stays on Airbnb and Booking.com or stays of 30 nights or more: guests, cleaning, maintenance, RNT and a monthly payout to the owner. See <a href="rental-property-management-medellin/" data-landing="inmuebles">how our rental property management works</a>.</p>',
+  '<p>Si busca administración de inmuebles en Medellín, hacemos ese trabajo para apartamentos y casas amoblados, en renta corta en Airbnb y Booking.com o en estancias de 30 noches o más: huéspedes, aseo, mantenimiento, RNT y un pago mensual al propietario. Vea <a href="rental-property-management-medellin/" data-landing="inmuebles">cómo funciona nuestra administración de inmuebles</a>.</p>'),
  ('Do you offer rental property management in Medellín?', '¿Hacen administración de inmuebles en Medellín?'),
  ('Yes. We manage furnished properties in El Poblado, Laureles, Envigado and Sabaneta, for short stays or for stays of 30 nights or more. We handle the listing, guests, cleaning, maintenance, the RNT and the monthly payout. Fees start at 12% + IVA.',
   'Sí. Administramos inmuebles amoblados en El Poblado, Laureles, Envigado y Sabaneta, en renta corta o en estancias de 30 noches o más. Nos encargamos del anuncio, los huéspedes, el aseo, el mantenimiento, el RNT y el pago mensual. Las tarifas empiezan en 12% + IVA.'),
