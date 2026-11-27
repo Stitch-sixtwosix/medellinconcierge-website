@@ -617,6 +617,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/rentals/2-bedroom-apartments-medellin/"/>
   </url>
   <url>
+    <loc>https://www.medellinconcierge.net/rentals/3-bedroom-apartments-medellin/</loc>
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/rentals/3-bedroom-apartments-medellin/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/arriendos/apartamentos-3-habitaciones-medellin/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/rentals/3-bedroom-apartments-medellin/"/>
+  </url>
+  <url>
+    <loc>https://www.medellinconcierge.net/es/arriendos/apartamentos-3-habitaciones-medellin/</loc>
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/rentals/3-bedroom-apartments-medellin/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.medellinconcierge.net/es/arriendos/apartamentos-3-habitaciones-medellin/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.medellinconcierge.net/rentals/3-bedroom-apartments-medellin/"/>
+  </url>
+  <url>
     <loc>https://www.medellinconcierge.net/team/</loc>
     <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.medellinconcierge.net/team/"/>

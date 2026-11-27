@@ -943,7 +943,7 @@ def rs_section(lang, st):
                     ru['guests'].format(n=p['max_guests']) if p.get('max_guests') else '']
             items += (f'<li class="rl-item"><div class="rl-main"><h4><a href="#p-{(p["ref"] or "").lstrip("#")}">{html.escape(rl_title(p, lang))}</a></h4>'
                       f'<p class="rl-meta">{" · ".join(m for m in meta if m)}</p></div><div class="rl-side"><p class="rl-price">{price}</p></div></li>')
-        out += f'<h2 id="size-{n}">{h}</h2><p class="rl-intro">{intro}</p>' + (br2_line(lang, '') if n == BR2_N else '') + f'<ul class="rl-list">{items}</ul>'
+        out += f'<h2 id="size-{n}">{h}</h2><p class="rl-intro">{intro}</p>' + (br2_line(lang, '') if n == BR2_N else br3_line(lang, '') if n == BR3_N else '') + f'<ul class="rl-list">{items}</ul>'
     return out + '</section>'
 
 # 2-bedroom rentals page (office report mc-2026-11-27-build, '2 bedroom apartment for rent medellín'): built only while
@@ -959,6 +959,26 @@ BR2_LINK = {'en': 'Looking for two bedrooms? See all our <a href="{h}">2-bedroom
 def br2_line(lang, pre):
     if not BR2_LIVE: return ''
     return f'<p class="rl-intro">{BR2_LINK[lang].format(h=pre + BR2_SLUG[lang] + "/")}</p>'
+
+# 3-bedroom page (same template as 2-bedroom; office report mc-2026-11-27-build: "1-bedroom/studio and 3-bedroom pages
+# follow the same template"). 3-bedrooms include houses, so the copy says "apartments and houses" where it counts them.
+BR3_N = 3
+BR3_SLUG = {'en': '3-bedroom-apartments-medellin', 'es': 'apartamentos-3-habitaciones-medellin'}
+BR3_P = [p for p in LISTINGS['properties'] if p.get('bedrooms') == BR3_N]
+BR3_LIVE = len(BR3_P) >= 4
+BR3_LINK = {'en': 'Need three bedrooms? See all our <a href="{h}">3-bedroom apartments and houses for rent in Medellín</a>, by the month and by the night.',
+            'es': '¿Necesita tres habitaciones? Vea todos nuestros <a href="{h}">apartamentos y casas de 3 habitaciones en arriendo en Medellín</a>, por meses y por noches.'}
+SIZE_BOTH = {'en': 'Looking for more room? See our <a href="{h2}">2-bedroom apartments</a> and our <a href="{h3}">3-bedroom apartments and houses</a> for rent in Medellín, by the month and by the night.',
+             'es': '¿Busca más espacio? Vea nuestros <a href="{h2}">apartamentos de 2 habitaciones</a> y nuestros <a href="{h3}">apartamentos y casas de 3 habitaciones</a> en arriendo en Medellín, por meses y por noches.'}
+
+def br3_line(lang, pre):
+    if not BR3_LIVE: return ''
+    return f'<p class="rl-intro">{BR3_LINK[lang].format(h=pre + BR3_SLUG[lang] + "/")}</p>'
+
+def size_line(lang, pre):   # one inbound line to the size pages from the monthly, short-term and area rentals pages
+    if BR2_LIVE and BR3_LIVE:
+        return f'<p class="rl-intro">{SIZE_BOTH[lang].format(h2=pre + BR2_SLUG[lang] + "/", h3=pre + BR3_SLUG[lang] + "/")}</p>'
+    return br2_line(lang, pre) or br3_line(lang, pre)
 
 # Backlog R8: a listing with a live price becomes an Offer (lease out) whose itemOffered is the apartment, the pattern
 # schema.org uses for rooms and rentals (Accommodation has no `offers`). Price, currency and unit (month or night) come
@@ -1224,7 +1244,7 @@ for lang in LANGS:
 <section class="rentals rentals-month">
   <div class="wrap">
     {rl_section(lang, st, only='long_term', h=ui['list_h'], intro=ui['list_intro'])}
-    {br2_line(lang, '../rentals/' if lang == 'en' else '../arriendos/')}
+    {size_line(lang, '../rentals/' if lang == 'en' else '../arriendos/')}
     {mail_block(lang, 'monthly')}
     <div class="prose">{fill(ui["prose"], st).replace("{LT_MAIL}", mailto(LT_MAIL[lang][0], LT_MAIL[lang][1]))}{mt_section(lang, st)}
       <h2>{L[lang]["faq_h"]}</h2>
@@ -1654,7 +1674,7 @@ for area, cfg in RA.items():
   <div class="wrap">
     {lt_html}
     {rl_section(lang, st, only=only, h=ui['list_h'], intro=ui['list_intro'], area=area)}
-    {br2_line(lang, '../rentals/' if lang == 'en' else '../arriendos/')}
+    {size_line(lang, '../rentals/' if lang == 'en' else '../arriendos/')}
     {mail_block(lang, 'rentals', href=mhref, wa_text=ui['wa_text'])}
     <div class="prose">{fill(ui["prose"], st)}
       <h2>{L[lang]["faq_h"]}</h2>
@@ -1839,7 +1859,7 @@ if sum(p['stay_type'] == 'short_term' and bool(rl_price(p)) for p in LISTINGS['p
 <section class="rentals">
   <div class="wrap">
     {short_list(lang, st, P, n, areas)}
-    {br2_line(lang, '../rentals/' if lang == 'en' else '../arriendos/')}
+    {size_line(lang, '../rentals/' if lang == 'en' else '../arriendos/')}
     {mail_block(lang, 'short', wa_text=ui['wa_text'])}
     <div class="prose">{fill(ui["prose"], st)}
       <h2>{L[lang]["faq_h"]}</h2>
@@ -1945,6 +1965,85 @@ BR2 = {
                   'Sí. Escríbanos a <a href="{MAIL}">sales@medellinconcierge.net</a> con sus fechas, cuántas personas son y la zona que prefiere.')]),
 }
 
+# 3-bedroom twin of BR2. Counts, prices, areas, guests and baths come from the feed; nothing about deposits,
+# guarantors, utilities, pets, parking or minimum nights (not confirmed by James).
+BR3 = {
+ 'en': dict(title='3-Bedroom Apartments for Rent in Medellín | Furnished', crumb='3-bedroom apartments',
+            desc='Furnished 3-bedroom apartments and houses for rent in Medellín, by the month or by the night. Live prices in pesos; email us direct.',
+            h1='3-bedroom apartments for rent in Medellín',
+            lead='<strong>As of {AS_OF}, Medellín Concierge lists {N} furnished 3-bedroom homes in and around Medellín ({MIX}): {PARTS}.</strong> You rent direct from the company that manages them. Email <a href="{MAIL}">sales@medellinconcierge.net</a> with your dates and number of guests, and we tell you which ones are free and the total price.',
+            btn='Email us your dates', cta_all='All furnished rentals',
+            p_month='{m} by the month, {RANGE} a month', p_month_req=', plus {r} more by the month with price on request', p_night='{m} by the night, from {LOW} COP a night',
+            month_h='3-bedroom apartments and houses by the month (30 nights or more)',
+            month_p='These {m} homes rent for stays of 30 nights or more, cheapest first. Prices are per month in Colombian pesos, plus a one-time cleaning fee.',
+            night_h='3-bedroom apartments and houses by the night',
+            night_p='These {m} homes take shorter stays, cheapest first. Prices are “from” prices per night in Colombian pesos, plus a one-time cleaning fee; the exact price depends on your dates.',
+            where_h='Where are the 3-bedroom apartments?',
+            where_p='As of {AS_OF}, by area:',
+            where_area='<strong>{area}:</strong> {c} three-bedroom {apt}{PARTS}.',
+            where_see=' See our <a href="{h}">furnished apartments for rent in {area}</a>.',
+            where_none='<strong>{area}:</strong> no 3-bedroom available today; see our <a href="{h}">furnished apartments for rent in {area}</a>.',
+            other='Elsewhere in the Medellín metro area', other_l='elsewhere in the Medellín metro area', apt=('home', 'homes'),
+            wp_month='by the month from {p} COP', wp_night='by the night from {p} COP',
+            size_h='Who is a 3-bedroom right for?',
+            size_p='Our 3-bedroom homes sleep {GUESTS} guests, depending on the listing, and have {BATHS} bathrooms. Each listing shows its maximum number of guests. They suit a family, friends travelling together, or a team on a work trip where everyone wants their own room.{SMALLER}{LARGER}',
+            smaller=' For fewer people, see our <a href="{h}">2-bedroom apartments</a>.',
+            larger='',
+            how_h='How to rent a 3-bedroom apartment direct',
+            subj='3-bedroom apartment in Medellín – inquiry',
+            body='Hi Medellín Concierge,\n\nI am looking for a furnished 3-bedroom apartment or house in Medellín.\n\nDates (arrival – departure): \nBy the month or by the night: \nNumber of guests (adults and children): \nPreferred area (El Poblado, Laureles, Envigado, Sabaneta): \nBudget: \n\nThank you,\n',
+            wa='Hi! I’m looking for a furnished 3-bedroom apartment in Medellín.',
+            faq=[('How much is a 3-bedroom apartment for rent in Medellín?',
+                  'As of {AS_OF}, our furnished 3-bedroom homes cost {FAQ_PRICE}, plus a one-time cleaning fee. Prices are set in Colombian pesos.'),
+                 ('Do you have 3-bedroom houses as well as apartments?',
+                  'As of {AS_OF}, this page lists {MIX}. Each listing title says whether it is an apartment or a house.'),
+                 ('Are the 3-bedroom apartments furnished?', 'Yes. Every home on this page is furnished and ready to move into.'),
+                 ('Can I rent a 3-bedroom apartment in Medellín for one month?',
+                  'Yes. The homes listed by the month take stays of 30 nights or more. For a shorter stay, choose one listed by the night.'),
+                 ('Which neighborhoods have 3-bedroom apartments?', 'As of {AS_OF}, we have 3-bedroom homes in {AREA_COUNTS}.'),
+                 ('Do I rent from the owner or from an agency?',
+                  'You rent direct from Medellín Concierge, the company that manages the home for its owner. Each one belongs to a private owner who has hired us to manage it, and you book directly with our local team instead of through a booking platform. We confirm the price, your dates and what is included in writing.'),
+                 ('Can I ask by email instead of WhatsApp?',
+                  'Yes. Write to <a href="{MAIL}">sales@medellinconcierge.net</a> with your dates, the number of guests and the area you prefer.')]),
+ 'es': dict(title='Apartamentos de 3 habitaciones en arriendo en Medellín', crumb='Apartamentos de 3 habitaciones',
+            desc='Apartamentos y casas amoblados de 3 habitaciones en arriendo en Medellín, por meses o por noches. Precios al día en pesos; escríbanos.',
+            h1='Apartamentos de 3 habitaciones en arriendo en Medellín',
+            lead='<strong>Al {AS_OF}, Medellín Concierge tiene {N} inmuebles amoblados de 3 habitaciones en Medellín y sus alrededores ({MIX}): {PARTS}.</strong> Usted arrienda directo con la empresa que los administra. Escríbanos a <a href="{MAIL}">sales@medellinconcierge.net</a> con sus fechas y cuántas personas son, y le decimos cuáles están libres y el valor total.',
+            btn='Envíenos sus fechas', cta_all='Todos los arriendos amoblados',
+            p_month='{m} por meses, {RANGE} al mes', p_month_req=', más {r} por meses con precio a consultar', p_night='{m} por noches, desde {LOW} COP la noche',
+            month_h='Apartamentos y casas de 3 habitaciones por meses (30 noches o más)',
+            month_p='Estos {m} inmuebles se arriendan por estancias de 30 noches o más, del más económico al más costoso. Los precios son por mes, en pesos colombianos, más una tarifa de aseo que se paga una sola vez.',
+            night_h='Apartamentos y casas de 3 habitaciones por noches',
+            night_p='Estos {m} inmuebles reciben estancias cortas, del más económico al más costoso. Los precios son «desde», por noche, en pesos colombianos, más una tarifa de aseo única; el valor exacto depende de sus fechas.',
+            where_h='¿En qué zonas hay apartamentos de 3 habitaciones?',
+            where_p='Al {AS_OF}, por zona:',
+            where_area='<strong>{area}:</strong> {c} {apt} de 3 habitaciones{PARTS}.',
+            where_see=' Vea nuestros <a href="{h}">apartamentos amoblados en arriendo en {area}</a>.',
+            where_none='<strong>{area}:</strong> hoy no tenemos de 3 habitaciones; vea nuestros <a href="{h}">apartamentos amoblados en arriendo en {area}</a>.',
+            other='Otras zonas del área metropolitana', other_l='otras zonas del área metropolitana', apt=('inmueble', 'inmuebles'),
+            wp_month='por meses desde {p} COP', wp_night='por noches desde {p} COP',
+            size_h='¿Para quién es un apartamento de 3 habitaciones?',
+            size_p='Nuestros inmuebles de 3 habitaciones tienen capacidad para {GUESTS} personas, según el anuncio, y {BATHS} baños. Cada anuncio indica el número máximo de huéspedes. Le sirven a una familia, a un grupo de amigos que viaja junto o a un equipo de trabajo en el que cada uno quiere su propio cuarto.{SMALLER}{LARGER}',
+            smaller=' Si son menos, vea los <a href="{h}">apartamentos de 2 habitaciones</a>.',
+            larger='',
+            how_h='Cómo arrendar directo un apartamento de 3 habitaciones',
+            subj='Apartamento de 3 habitaciones en Medellín – consulta',
+            body='Hola, Medellín Concierge:\n\nBusco un apartamento o una casa amoblada de 3 habitaciones en Medellín.\n\nFechas (llegada – salida): \nPor meses o por noches: \nNúmero de personas (adultos y niños): \nZona preferida (El Poblado, Laureles, Envigado, Sabaneta): \nPresupuesto: \n\nGracias,\n',
+            wa='¡Hola! Busco un apartamento amoblado de 3 habitaciones en Medellín.',
+            faq=[('¿Cuánto cuesta el arriendo de un apartamento de 3 habitaciones en Medellín?',
+                  'Al {AS_OF}, nuestros inmuebles amoblados de 3 habitaciones cuestan {FAQ_PRICE}, más una tarifa de aseo única. Los precios están en pesos colombianos.'),
+                 ('¿También tienen casas de 3 habitaciones?',
+                  'Al {AS_OF}, en esta página hay {MIX}. El título de cada anuncio dice si es apartamento o casa.'),
+                 ('¿Los apartamentos de 3 habitaciones son amoblados?', 'Sí. Todos los inmuebles de esta página están amoblados y listos para llegar a vivir.'),
+                 ('¿Puedo arrendar un apartamento de 3 habitaciones por un solo mes?',
+                  'Sí. Los que se ofrecen por meses reciben estancias de 30 noches o más. Para menos tiempo, elija uno de los que se ofrecen por noches.'),
+                 ('¿En qué barrios tienen apartamentos de 3 habitaciones?', 'Al {AS_OF}, tenemos inmuebles de 3 habitaciones en {AREA_COUNTS}.'),
+                 ('¿Arriendo con el propietario o con una inmobiliaria?',
+                  'Usted arrienda directo con Medellín Concierge, la empresa que administra el inmueble para su propietario. Cada uno es de un propietario particular que nos contrató para administrarlo, y usted reserva directo con nuestro equipo local, sin plataforma de reservas de por medio. Le confirmamos por escrito el precio, las fechas y lo que incluye.'),
+                 ('¿Puedo escribir por correo en vez de WhatsApp?',
+                  'Sí. Escríbanos a <a href="{MAIL}">sales@medellinconcierge.net</a> con sus fechas, cuántas personas son y la zona que prefiere.')]),
+}
+
 def br2_range(lo, hi, lang):
     if lo == hi: return f'{cop(lo)} COP'
     return f'{cop(lo)} to {cop(hi)} COP' if lang == 'en' else f'entre {cop(lo)} y {cop(hi)} COP'
@@ -1955,8 +2054,8 @@ def br2_rng_word(lo, hi, lang):   # "from X to Y" / "entre X y Y" for running te
 
 def br2_sort(p): return (rl_price(p) is None, rl_price(p) or 0, rl_area(p))
 
-if BR2_LIVE:
-    P = BR2_P
+def size_page(N, CFG, SLUG, P, smaller, larger):
+    # smaller / larger: {lang: path after the rentals folder} for the size_p links, or None
     MON = sorted((p for p in P if p['stay_type'] == 'long_term'), key=br2_sort)
     NIG = sorted((p for p in P if p['stay_type'] == 'short_term'), key=br2_sort)
     mp = [rl_price(p) for p in MON if rl_price(p)]; npr = [rl_price(p) for p in NIG if rl_price(p)]
@@ -1966,10 +2065,10 @@ if BR2_LIVE:
     named = [a for a in ('El Poblado', 'Laureles', 'Envigado', 'Sabaneta') if a in area_live or a in acount]
     others = [p for p in P if rl_area(p) not in named]
     guests = sorted({p['max_guests'] for p in P if p.get('max_guests')}); baths = sorted({p['bathrooms'] for p in P if p.get('bathrooms')})
-    sizes = {n for n, _ in rs_groups()}
-    en_url, es_url = SITE + f'rentals/{BR2_SLUG["en"]}/', SITE + f'es/arriendos/{BR2_SLUG["es"]}/'
+    houses = sum(p['property_type'] == 'House' for p in P)
+    en_url, es_url = SITE + f'rentals/{SLUG["en"]}/', SITE + f'es/arriendos/{SLUG["es"]}/'
     for lang in LANGS:
-        u = BR2[lang]; ru = RL_UI[lang]
+        u = CFG[lang]; ru = RL_UI[lang]
         url = es_url if lang == 'es' else en_url
         rel = '../rentals/' if lang == 'en' else '../arriendos/'   # deeper() adds one level
         home_url = SITE + ('es/' if lang == 'es' else '')
@@ -1990,7 +2089,7 @@ if BR2_LIVE:
         areas_in = [a for a in named if a in acount]
         areas_in_txt = ((' in ' if lang == 'en' else ' en ') + rl_join(areas_in, lang)) if areas_in else ''
         st = {'{AS_OF}': as_of, '{N}': str(len(P)), '{PARTS}': rl_join(parts, lang), '{MAIL}': mhref,
-              '{FAQ_PRICE}': faq_price, '{AREA_COUNTS}': area_counts}
+              '{FAQ_PRICE}': faq_price, '{AREA_COUNTS}': area_counts, '{MIX}': size_mix(len(P) - houses, houses, lang)}
         desc = u['desc'].replace('{AREAS_IN}', areas_in_txt)
         if len(desc) > 160: desc = u['desc'].replace('{AREAS_IN}', '')
 
@@ -2025,8 +2124,8 @@ if BR2_LIVE:
         gtxt = f'{guests[0]}' if len(guests) == 1 else (f'{guests[0]} to {guests[-1]}' if lang == 'en' else f'{guests[0]} a {guests[-1]}')
         btxt = f'{baths[0]}' if len(baths) == 1 else rl_join([str(b) for b in baths], lang).replace(' and ', ' or ').replace(' y ', ' o ')
         size_html = (f'<h2>{u["size_h"]}</h2><p>' + u['size_p'].replace('{GUESTS}', gtxt).replace('{BATHS}', btxt)
-                     .replace('{SMALLER}', u['smaller'].format(h=rel + '#size-1') if 1 in sizes else '')
-                     .replace('{LARGER}', u['larger'].format(h=rel + '#size-3') if 3 in sizes else '') + '</p>')
+                     .replace('{SMALLER}', u['smaller'].format(h=rel + smaller[lang]) if smaller else '')
+                     .replace('{LARGER}', u['larger'].format(h=rel + larger[lang]) if larger else '') + '</p>')
         steps = re.search(r'<ol>.*?</ol>', R[lang]['prose'], flags=re.S).group(0)
         how_html = f'<h2>{u["how_h"]}</h2>{steps}'
         faq = [(fill(q, st), fill(a, st)) for q, a in u['faq']]
@@ -2060,7 +2159,7 @@ if BR2_LIVE:
   </div>
 </section>'''
         lst = rl_schema(lang, url, name=u['h1'])
-        keep = [i for i in lst['itemListElement'] if (i['item'].get('itemOffered') or i['item']).get('numberOfBedrooms') == BR2_N]
+        keep = [i for i in lst['itemListElement'] if (i['item'].get('itemOffered') or i['item']).get('numberOfBedrooms') == N]
         for i, x in enumerate(keep, 1): x['position'] = i
         lst = dict(lst, itemListElement=keep, numberOfItems=len(keep))
         schema = {'@context': 'https://schema.org', '@graph': [
@@ -2069,13 +2168,30 @@ if BR2_LIVE:
                 {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}} for q, a in faq]},
             breadcrumbs([(R[lang]['home'], home_url), (R[lang]['crumb'], SITE + ('rentals/' if lang == 'en' else 'es/arriendos/')), (u['crumb'], url)]),
             lst]}
-        en_href, es_href = (('./', f'../es/arriendos/{BR2_SLUG["es"]}/') if lang == 'en' else (f'../../rentals/{BR2_SLUG["en"]}/', './'))
-        folder = f'rentals/{BR2_SLUG["en"]}' if lang == 'en' else f'es/arriendos/{BR2_SLUG["es"]}'
+        en_href, es_href = (('./', f'../es/arriendos/{SLUG["es"]}/') if lang == 'en' else (f'../../rentals/{SLUG["en"]}/', './'))
+        folder = f'rentals/{SLUG["en"]}' if lang == 'en' else f'es/arriendos/{SLUG["es"]}'
         write(f'{folder}/index.html', deeper(page(lang, title=u['title'], desc=desc, en_url=en_url, es_url=es_url,
               en_href=en_href, es_href=es_href, body=body, schema=schema)))
     SITEMAP.append((en_url, es_url, TODAY))
+
+def size_mix(apts, houses, lang):
+    a = f'{apts} {("apartment", "apartments")[apts != 1] if lang == "en" else ("apartamento", "apartamentos")[apts != 1]}'
+    if not houses: return a
+    h = f'{houses} {("house", "houses")[houses != 1] if lang == "en" else ("casa", "casas")[houses != 1]}'
+    return f'{a} {"and" if lang == "en" else "y"} {h}'
+
+_sizes = {n for n, _ in rs_groups()}
+if BR2_LIVE:
+    size_page(BR2_N, BR2, BR2_SLUG, BR2_P, {'en': '#size-1', 'es': '#size-1'} if 1 in _sizes else None,
+              {k: v + '/' for k, v in BR3_SLUG.items()} if BR3_LIVE else ({'en': '#size-3', 'es': '#size-3'} if 3 in _sizes else None))
 else:
     print(f'  note: rentals/{BR2_SLUG["en"]}/ skipped ({len(BR2_P)} two-bedroom listings; needs 4+)')
+if BR3_LIVE:
+    size_page(BR3_N, BR3, BR3_SLUG, BR3_P, {k: v + '/' for k, v in BR2_SLUG.items()} if BR2_LIVE else ({'en': '#size-2', 'es': '#size-2'} if 2 in _sizes else None), None)
+else:
+    print(f'  note: rentals/{BR3_SLUG["en"]}/ skipped ({len(BR3_P)} three-bedroom listings; needs 4+)')
+
+
 
 
 # ======================= 4c5. Renter blog posts: "Furnished rentals by area" row (backlog R11) =======================
@@ -2776,7 +2892,7 @@ llms = [f"# {B['name']}", '',
         f"- Profiles: {', '.join(SAME_AS)}", '']
 # Renters get their own section (backlog R10): a dated summary from the HostFlow feed, then each rentals page with its
 # Spanish twin and one factual line (counts and prices as of the feed date), then the renter guides.
-RENT_TOP = {SITE + 'rentals/', SITE + 'monthly-rentals-medellin/', SITE + 'short-term-rentals-medellin/', SITE + f'rentals/{BR2_SLUG["en"]}/'}
+RENT_TOP = {SITE + 'rentals/', SITE + 'monthly-rentals-medellin/', SITE + 'short-term-rentals-medellin/', SITE + f'rentals/{BR2_SLUG["en"]}/', SITE + f'rentals/{BR3_SLUG["en"]}/'}
 RENT_AREA = {SITE + f'rentals/{slug}/': area for area, slug in RA_LIVE}
 def rent_fact(u):
     st = rl_stats('en'); a = st['{AS_OF}']
@@ -2795,6 +2911,12 @@ def rent_fact(u):
         n = sorted(rl_price(p) for p in BR2_P if p['stay_type'] == 'short_term' and rl_price(p))
         parts = ([f"by the month {cop(m[0])} to {cop(m[-1])} COP"] if m else []) + ([f"by the night from {cop(n[0])} COP"] if n else [])
         return f"As of {a}: {len(BR2_P)} furnished 2-bedroom apartments; {' and '.join(parts)}." if parts else ''
+    if BR3_LIVE and u == SITE + f'rentals/{BR3_SLUG["en"]}/':
+        m = sorted(rl_price(p) for p in BR3_P if p['stay_type'] == 'long_term' and rl_price(p))
+        n = sorted(rl_price(p) for p in BR3_P if p['stay_type'] == 'short_term' and rl_price(p))
+        h = sum(p['property_type'] == 'House' for p in BR3_P)
+        parts = ([f"by the month {cop(m[0])} to {cop(m[-1])} COP"] if m else []) + ([f"by the night from {cop(n[0])} COP"] if n else [])
+        return f"As of {a}: {len(BR3_P)} furnished 3-bedroom homes ({size_mix(len(BR3_P) - h, h, 'en')}); {' and '.join(parts)}." if parts else ''
     if u in RENT_AREA:
         area = RENT_AREA[u]; s0, P, month, night = area_stats('en', area)
         parts = ([f"{s0['{N_MONTH}']} by the month ({s0['{MIN_MONTH}']} to {s0['{MAX_MONTH}']} COP a month)"] if month else []) + \
