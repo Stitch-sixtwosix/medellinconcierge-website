@@ -509,7 +509,7 @@ for lang in LANGS:
 L = {
  'en': dict(home='Home', copy_note='Copy coming: Lupa is drafting this block (James’s office → Keywords). Edit <code>_build/landing.py</code> → <code>{key}</code> → <code>en</code> → <code>{field}</code>.',
             inc_h='What we handle for you', plans_h='Plans and fees', cta_h='Talk to us about your property',
-            cta_p='Get a free consultation, an income estimate and a management proposal.', cta_1='Request a free consultation',
+            cta_p='Get a free consultation, an income estimate and a management proposal. Prefer email? The button below opens a short message with the details we need; fill them in and our team answers in English or Spanish.', cta_1='Request a free consultation',
             more_h='More from Medellín Concierge', all_plans='Compare plans in detail', faq_h='Frequently asked questions',
             inc=['Listing on Airbnb, Booking.com, Expedia and VRBO, with dynamic pricing and synced calendars',
                  '24/7 guest support, check-ins and check-outs', 'Cleaning and maintenance, coordinated and supervised',
@@ -520,7 +520,7 @@ L = {
             service='Property management'),
  'es': dict(home='Inicio', copy_note='Texto pendiente: Lupa está redactando este bloque (oficina de James → Keywords). Edite <code>_build/landing.py</code> → <code>{key}</code> → <code>es</code> → <code>{field}</code>.',
             inc_h='Lo que gestionamos por usted', plans_h='Planes y tarifas', cta_h='Hablemos de su propiedad',
-            cta_p='Solicite una consulta gratuita, una estimación de ingresos y una propuesta de administración.', cta_1='Solicitar una consulta gratuita',
+            cta_p='Solicite una consulta gratuita, una estimación de ingresos y una propuesta de administración. ¿Prefiere el correo? El botón de abajo abre un mensaje corto con los datos que necesitamos; complételos y nuestro equipo le responde en español o en inglés.', cta_1='Solicitar una consulta gratuita',
             more_h='Más de Medellín Concierge', all_plans='Comparar los planes en detalle', faq_h='Preguntas frecuentes',
             inc=['Publicación en Airbnb, Booking.com, Expedia y VRBO, con precios dinámicos y calendarios sincronizados',
                  'Atención al huésped 24/7, llegadas y salidas', 'Limpieza y mantenimiento, coordinados y supervisados',
@@ -530,6 +530,27 @@ L = {
             plans_note='Comisiones sobre los ingresos por renta, más IVA. Sin costos iniciales. Premium además paga su impuesto predial, cuota de administración, servicios públicos e internet, con un reporte contable mensual.',
             service='Administración de propiedades'),
 }
+
+# Owner email path (office report mc-2026-11-27-build): every owner service page gets a prefilled email to sales@
+# naming the page's topic, with the details the team needs for a proposal. Renter pages already have theirs (MAIL).
+OWNER_MAIL = {
+ 'en': dict(btn='Email us about your property',
+            subj='Property management inquiry – {topic}',
+            body='Hi Medellín Concierge,\n\nI own a property in Medellín and would like a management proposal.\n\nNeighborhood and building: \nBedrooms: \nFurnished (yes / no): \nShort stays (Airbnb) or monthly (30+ nights): \nCountry where I live: \nBest day and time for a call: \n\nThank you,\n',
+            topic={'airbnb': 'Airbnb management', 'long-term': 'monthly rentals', 'el-poblado': 'El Poblado',
+                   'laureles': 'Laureles', 'envigado': 'Envigado', 'sabaneta': 'Sabaneta',
+                   'colombia': 'owner abroad', 'inmuebles': 'rental property'}),
+ 'es': dict(btn='Escríbanos sobre su propiedad',
+            subj='Consulta de administración de propiedades – {topic}',
+            body='Hola, Medellín Concierge:\n\nTengo una propiedad en Medellín y quisiera una propuesta de administración.\n\nBarrio y edificio: \nHabitaciones: \nAmoblada (sí / no): \nPor noches (Airbnb) o por meses (30 noches o más): \nPaís donde vivo: \nMejor día y hora para una llamada: \n\nGracias,\n',
+            topic={'airbnb': 'Airbnb', 'long-term': 'rentas largas', 'el-poblado': 'El Poblado',
+                   'laureles': 'Laureles', 'envigado': 'Envigado', 'sabaneta': 'Sabaneta',
+                   'colombia': 'propietario en el exterior', 'inmuebles': 'administración de inmuebles'}),
+}
+
+def owner_mail_href(lang, key):
+    m = OWNER_MAIL[lang]
+    return mailto(m['subj'].format(topic=m['topic'].get(key, 'Medellín')), m['body'])
 
 def placeholder(lang, key, field, dark=False):
     return f'<div class="placeholder{" on-dark" if dark else ""}">{L[lang]["copy_note"].format(key=key, field=field)}</div>'
@@ -568,6 +589,12 @@ for pg in PAGES:
         faq_html = (f'\n      <h2>{ui["faq_h"]}</h2>\n      <div class="faq">\n'
                     + ''.join(f'        <details><summary>{html.escape(q, quote=False)}{PLUS}</summary><p>{a}</p></details>\n' for q, a in faq)
                     + '      </div>') if faq else ''
+        # Owners abroad are in another time zone, so on the foreign-owner page email comes first.
+        mail_first = pg['key'] == 'colombia'
+        owner_ctas = (f'<a class="btn {"btn-primary" if mail_first else "btn-outline"}" href="{owner_mail_href(lang, pg["key"])}">{OWNER_MAIL[lang]["btn"]}</a>',
+                      f'<a class="btn {"btn-outline" if mail_first else "btn-primary"}" href="{home_href}#contact">{ui["cta_1"]}</a>',
+                      '<a class="btn btn-outline" href="https://wa.me/573042773864">WhatsApp</a>')
+        owner_ctas = ''.join(owner_ctas if mail_first else (owner_ctas[1], owner_ctas[0], owner_ctas[2]))
         body = f'''<section class="page-top">
   <div class="wrap">
     <p class="crumbs"><a href="{home_href}">{ui["home"]}</a> / {pg["label"][lang]}</p>
@@ -594,10 +621,8 @@ for pg in PAGES:
     <aside class="article-cta">
       <h2>{ui["cta_h"]}</h2>
       <p>{ui["cta_p"]}</p>
-      <div class="ref-ctas">
-        <a class="btn btn-primary" href="{home_href}#contact">{ui["cta_1"]}</a>
-        <a class="btn btn-outline" href="https://wa.me/573042773864">WhatsApp</a>
-      </div>
+      <div class="ref-ctas">{owner_ctas}</div>
+      {mail_note(lang)}
     </aside>
     <nav class="more-posts" aria-label="{ui["more_h"]}">
       <h2>{ui["more_h"]}</h2>
