@@ -26,6 +26,7 @@ from fees import FEES
 from calculator import CALC
 from diamond_card import VENUES, DIAMOND, SINMENTE_SIGNUP
 from rentals_feed import load_listings
+from trm import load_trm, usd, SOURCE_URL as TRM_SOURCE
 
 TODAY = datetime.date.today().isoformat()
 LANGS = ('en', 'es')
@@ -741,6 +742,21 @@ R = {
 # described in ItemList schema, so search engines see the actual apartments, areas and prices (the embed itself is
 # noindex on hostflow.in). Prices are dated "as of" the day the feed last changed.
 LISTINGS = load_listings()
+# English rental pages show an approximate US-dollar figure under each COP price (office report mc-2026-11-26: the
+# page-1 results English-speaking renters see quote dollars). Rate and date from trm.py; Spanish pages stay in pesos.
+TRM = load_trm()
+
+def usd_line(pr, lang):
+    if lang != 'en' or not TRM or not pr.get('amount'): return ''
+    per = {'month': ' a month', 'night': ' a night'}.get(pr.get('per'), '')
+    return f'<p class="rl-fee">about {usd(pr["amount"], TRM)}{per}</p>'
+
+def usd_note(lang):
+    if lang != 'en' or not TRM: return ''
+    return (f'<p class="rl-intro">US$ amounts are approximate, converted at Colombia’s official exchange rate (TRM) of '
+            f'{human_date(TRM["date"], "en")}, US$1 = {TRM["value"]:,.2f} COP, published by the '
+            f'<a href="{TRM_SOURCE}" target="_blank" rel="noopener">Superintendencia Financiera de Colombia</a>. '
+            f'Prices are set in Colombian pesos, so the dollar amount moves with the exchange rate.</p>')
 RL_UI = {
  'en': dict(h='Furnished rentals available now', month='Monthly rentals (30 nights or more)', short='Short stays (by the night)',
             intro='As of {AS_OF}: {N_AVAIL} furnished apartments and homes with a live price, out of {TOTAL} furnished properties we manage; the others are available on request. Prices are in Colombian pesos. For your dates, use the listings above or ask us about any of these on WhatsApp or by email.',
@@ -812,7 +828,7 @@ def rl_item(p, lang):
     return (f'<li class="rl-item" id="p-{ref.lstrip("#")}"><div class="rl-main"><h4>{html.escape(t)}</h4>'
             f'<p class="rl-meta">{" · ".join(m for m in meta if m)}</p>'
             + (f'<p class="rl-amen">{" · ".join(amen)}</p>' if amen else '') +
-            f'</div><div class="rl-side"><p class="rl-price">{price}</p>{clean}<p class="rl-avail">{avail}</p>'
+            f'</div><div class="rl-side"><p class="rl-price">{price}</p>{usd_line(pr, lang)}{clean}<p class="rl-avail">{avail}</p>'
             f'<a class="rl-ask" href="{wa}" target="_blank" rel="noopener">{u["ask"].format(ref=ref)}</a>'
             f'<a class="rl-mail" href="{mail_item_href(lang, ref, t)}">{MAIL[lang]["listing"]}</a></div></li>')
 
@@ -828,7 +844,7 @@ def rl_section(lang, st, only=None, h=None, intro=None, area=None, short_note=Tr
         grp = sorted((p for p in P if p['stay_type'] == st_type), key=rl_sort)
         if grp: out += (f'<h3>{u[key]}</h3>' if not only else '') + '<ul class="rl-list">' + ''.join(rl_item(p, lang) for p in grp) + '</ul>'
         if grp and st_type == 'short_term' and short_note: out += f'<p class="rl-intro">{u["short_more"]}</p>'
-    return out + '</section>'
+    return out + usd_note(lang) + '</section>'
 
 # Rentals by size (backlog R7): one H2 per bedroom count with at least 2 listings, each a compact list linking to the
 # full card in the list below (#p-ref), with the count and price range by month and by night, all from the feed.
@@ -1757,7 +1773,7 @@ def short_list(lang, st, P, n, areas):
         grp = sorted((p for p in P if rl_area(p) in small), key=rl_sort)
         out += (f'<h2 id="area-more">{ui["other_h"]}</h2><p class="rl-intro">{ui["other_p"].replace("{LIST}", rl_join([f"{a} ({n[a]})" for a in small], lang))}</p>'
                 + '<ul class="rl-list">' + ''.join(rl_item(p, lang) for p in grp) + '</ul>')
-    return out + '</section>'
+    return out + usd_note(lang) + '</section>'
 
 if sum(p['stay_type'] == 'short_term' and bool(rl_price(p)) for p in LISTINGS['properties']) >= 2:
     for lang in LANGS:
