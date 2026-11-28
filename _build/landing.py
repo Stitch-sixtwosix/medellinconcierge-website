@@ -133,7 +133,7 @@ PAGES = [
                 'Once a month, within the first 5 business days, for the previous month. Earnings are calculated using GAAP, net of our management fees and expenses.')]),
   es=dict(slug='administracion-de-rentas-largas-medellin',
           title='Administración de arriendos en Medellín | Rentas largas',
-          description='Administración de arriendos amoblados en Medellín por 30+ noches: huéspedes, mantenimiento, cuentas y pagos mensuales. Desde 12% + IVA, sin costos iniciales.',
+          description='Administración de arriendos amoblados en Medellín por 30+ noches: huéspedes, mantenimiento, cuentas y pagos mensuales. Desde 12% + IVA, sin costo inicial.',
           h1='Administración de arriendos y rentas largas en Medellín',
           intro='<p><strong>La administración de arriendos en Medellín con Medellín Concierge, para apartamentos amoblados en estancias de 30 noches o más, cuesta el 12% de los ingresos por renta + IVA en el plan Básico, o el 15% + IVA en el Premium, sin costos iniciales.</strong> Somos una empresa local con oficina en El Poblado y hacemos la administración de apartamentos para estancias por meses en El Poblado, Laureles, Envigado, Sabaneta y en todo Medellín, para propietarios que viven en Colombia o en el exterior: el anuncio y los precios, la atención a los huéspedes, las llegadas y salidas, el aseo, el mantenimiento y el trato con la administración del edificio. Usted recibe lo del mes anterior en los primeros 5 días hábiles, con estados financieros bajo GAAP en su portal de propietario.</p>',
           blocks=[('Administración para estancias de 30 noches o más',

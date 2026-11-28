@@ -539,13 +539,14 @@ OWNER_MAIL = {
             body='Hi Medellín Concierge,\n\nI own a property in Medellín and would like a management proposal.\n\nNeighborhood and building: \nBedrooms: \nFurnished (yes / no): \nShort stays (Airbnb) or monthly (30+ nights): \nCountry where I live: \nBest day and time for a call: \n\nThank you,\n',
             topic={'airbnb': 'Airbnb management', 'long-term': 'monthly rentals', 'el-poblado': 'El Poblado',
                    'laureles': 'Laureles', 'envigado': 'Envigado', 'sabaneta': 'Sabaneta',
-                   'colombia': 'owner abroad', 'inmuebles': 'rental property'}),
+                   'colombia': 'owner abroad', 'inmuebles': 'rental property', 'fees': 'fees and proposal'}),
  'es': dict(btn='Escríbanos sobre su propiedad',
             subj='Consulta de administración de propiedades – {topic}',
             body='Hola, Medellín Concierge:\n\nTengo una propiedad en Medellín y quisiera una propuesta de administración.\n\nBarrio y edificio: \nHabitaciones: \nAmoblada (sí / no): \nPor noches (Airbnb) o por meses (30 noches o más): \nPaís donde vivo: \nMejor día y hora para una llamada: \n\nGracias,\n',
             topic={'airbnb': 'Airbnb', 'long-term': 'rentas largas', 'el-poblado': 'El Poblado',
                    'laureles': 'Laureles', 'envigado': 'Envigado', 'sabaneta': 'Sabaneta',
-                   'colombia': 'propietario en el exterior', 'inmuebles': 'administración de inmuebles'}),
+                   'colombia': 'propietario en el exterior', 'inmuebles': 'administración de inmuebles',
+                   'fees': 'tarifas y propuesta'}),
 }
 
 def owner_mail_href(lang, key):
@@ -2666,7 +2667,8 @@ for lang in LANGS:
     <aside class="article-cta">
       <h2>{ui["cta_h"]}</h2>
       <p>{ui["cta_p"]}</p>
-      <div class="ref-ctas"><a class="btn btn-primary" href="../#contact">{L[lang]["cta_1"]}</a><a class="btn btn-outline" href="https://wa.me/573042773864">WhatsApp</a></div>
+      <div class="ref-ctas"><a class="btn btn-primary" href="{owner_mail_href(lang, 'fees')}">{OWNER_MAIL[lang]["btn"]}</a><a class="btn btn-outline" href="https://wa.me/573042773864">WhatsApp</a><a class="btn btn-outline" href="../#contact">{L[lang]["cta_1"]}</a></div>
+      <p>{ui["cta_mail"]} <a href="mailto:{BUSINESS['email']}">{BUSINESS['email']}</a></p>
     </aside>
     <nav class="more-posts" aria-label="{ui["more_h"]}">
       <h2>{ui["more_h"]}</h2>
