@@ -943,7 +943,7 @@ def rs_section(lang, st):
                     ru['guests'].format(n=p['max_guests']) if p.get('max_guests') else '']
             items += (f'<li class="rl-item"><div class="rl-main"><h4><a href="#p-{(p["ref"] or "").lstrip("#")}">{html.escape(rl_title(p, lang))}</a></h4>'
                       f'<p class="rl-meta">{" · ".join(m for m in meta if m)}</p></div><div class="rl-side"><p class="rl-price">{price}</p></div></li>')
-        out += f'<h2 id="size-{n}">{h}</h2><p class="rl-intro">{intro}</p>' + (br2_line(lang, '') if n == BR2_N else br3_line(lang, '') if n == BR3_N else '') + f'<ul class="rl-list">{items}</ul>'
+        out += f'<h2 id="size-{n}">{h}</h2><p class="rl-intro">{intro}</p>' + (br1_line(lang, '') if n == BR1_N else br2_line(lang, '') if n == BR2_N else br3_line(lang, '') if n == BR3_N else '') + f'<ul class="rl-list">{items}</ul>'
     return out + '</section>'
 
 # 2-bedroom rentals page (office report mc-2026-11-27-build, '2 bedroom apartment for rent medellín'): built only while
@@ -975,10 +975,23 @@ def br3_line(lang, pre):
     if not BR3_LIVE: return ''
     return f'<p class="rl-intro">{BR3_LINK[lang].format(h=pre + BR3_SLUG[lang] + "/")}</p>'
 
+# 1-bedroom / studio page (same template; office report mc-2026-11-27-build: "1-bedroom/studio and 3-bedroom pages follow
+# the same template"). The feed counts studios as 1 bedroom; the copy says "apartments and studios" / "apartaestudios".
+BR1_N = 1
+BR1_SLUG = {'en': '1-bedroom-apartments-medellin', 'es': 'apartaestudios-y-apartamentos-1-habitacion-medellin'}
+BR1_P = [p for p in LISTINGS['properties'] if p.get('bedrooms') == BR1_N]
+BR1_LIVE = len(BR1_P) >= 4
+BR1_LINK = {'en': 'Travelling alone or as a couple? See all our <a href="{h}">1-bedroom and studio apartments for rent in Medellín</a>, by the month and by the night.',
+            'es': '¿Viene solo o en pareja? Vea todos nuestros <a href="{h}">apartaestudios y apartamentos de 1 habitación en arriendo en Medellín</a>, por meses y por noches.'}
+
+def br1_line(lang, pre):
+    if not BR1_LIVE: return ''
+    return f'<p class="rl-intro">{BR1_LINK[lang].format(h=pre + BR1_SLUG[lang] + "/")}</p>'
+
 def size_line(lang, pre):   # one inbound line to the size pages from the monthly, short-term and area rentals pages
     if BR2_LIVE and BR3_LIVE:
-        return f'<p class="rl-intro">{SIZE_BOTH[lang].format(h2=pre + BR2_SLUG[lang] + "/", h3=pre + BR3_SLUG[lang] + "/")}</p>'
-    return br2_line(lang, pre) or br3_line(lang, pre)
+        return f'<p class="rl-intro">{SIZE_BOTH[lang].format(h2=pre + BR2_SLUG[lang] + "/", h3=pre + BR3_SLUG[lang] + "/")}</p>' + br1_line(lang, pre)
+    return (br2_line(lang, pre) or br3_line(lang, pre)) + br1_line(lang, pre)
 
 # Backlog R8: a listing with a live price becomes an Offer (lease out) whose itemOffered is the apartment, the pattern
 # schema.org uses for rooms and rentals (Accommodation has no `offers`). Price, currency and unit (month or night) come
@@ -2044,6 +2057,85 @@ BR3 = {
                   'Sí. Escríbanos a <a href="{MAIL}">sales@medellinconcierge.net</a> con sus fechas, cuántas personas son y la zona que prefiere.')]),
 }
 
+# 1-bedroom / studio twin of BR2. Counts, prices, areas, guests and baths come from the feed; nothing about deposits,
+# guarantors, utilities, pets, parking or minimum nights (not confirmed by James).
+BR1 = {
+ 'en': dict(alt_type='Studio', title='1-Bedroom & Studio Apartments for Rent in Medellín', crumb='1-bedroom & studio apartments',
+            desc='Furnished 1-bedroom and studio apartments for rent in Medellín, by the month or by the night. Live prices in pesos; email us direct.',
+            h1='1-bedroom and studio apartments for rent in Medellín',
+            lead='<strong>As of {AS_OF}, Medellín Concierge lists {N} furnished 1-bedroom and studio apartments in and around Medellín ({MIX}): {PARTS}.</strong> You rent direct from the company that manages them. Email <a href="{MAIL}">sales@medellinconcierge.net</a> with your dates and number of guests, and we tell you which ones are free and the total price.',
+            btn='Email us your dates', cta_all='All furnished rentals',
+            p_month='{m} by the month, {RANGE} a month', p_month_req=', plus {r} more by the month with price on request', p_night='{m} by the night, from {LOW} COP a night',
+            month_h='1-bedroom apartments by the month (30 nights or more)',
+            month_p='These {m} apartments rent for stays of 30 nights or more, cheapest first. Prices are per month in Colombian pesos, plus a one-time cleaning fee.',
+            night_h='1-bedroom and studio apartments by the night',
+            night_p='These {m} apartments take shorter stays, cheapest first. Prices are “from” prices per night in Colombian pesos, plus a one-time cleaning fee; the exact price depends on your dates.',
+            where_h='Where are the 1-bedroom and studio apartments?',
+            where_p='As of {AS_OF}, by area:',
+            where_area='<strong>{area}:</strong> {c} {apt}{PARTS}.',
+            where_see=' See our <a href="{h}">furnished apartments for rent in {area}</a>.',
+            where_none='<strong>{area}:</strong> no 1-bedroom or studio available today; see our <a href="{h}">furnished apartments for rent in {area}</a>.',
+            other='Other areas', other_l='other areas', apt=('apartment', 'apartments'),
+            wp_month='by the month from {p} COP', wp_night='by the night from {p} COP',
+            size_h='Who is a 1-bedroom or studio right for?',
+            size_p='Our 1-bedroom and studio apartments sleep {GUESTS} guests, depending on the listing, and have {BATHS} bathrooms. Each listing shows its maximum number of guests. A studio has one open space for living and sleeping; a 1-bedroom has a separate bedroom. They suit a solo traveller, a couple, or someone in Medellín for a few weeks of work.{SMALLER}{LARGER}',
+            smaller='',
+            larger=' Need a second bedroom? See our <a href="{h}">2-bedroom apartments</a>.',
+            how_h='How to rent a 1-bedroom apartment direct',
+            subj='1-bedroom or studio apartment in Medellín – inquiry',
+            body='Hi Medellín Concierge,\n\nI am looking for a furnished 1-bedroom or studio apartment in Medellín.\n\nDates (arrival – departure): \nBy the month or by the night: \nNumber of guests: \nPreferred area (El Poblado, Laureles, Envigado, Sabaneta): \nBudget: \n\nThank you,\n',
+            wa='Hi! I’m looking for a furnished 1-bedroom or studio apartment in Medellín.',
+            faq=[('How much is a 1-bedroom apartment for rent in Medellín?',
+                  'As of {AS_OF}, our furnished 1-bedroom and studio apartments cost {FAQ_PRICE}, plus a one-time cleaning fee. Prices are set in Colombian pesos.'),
+                 ('Do you have studio apartments?',
+                  'Yes. As of {AS_OF}, this page lists {MIX}. Each listing title says whether it is a studio or an apartment with a separate bedroom.'),
+                 ('Are the 1-bedroom apartments furnished?', 'Yes. Every apartment on this page is furnished and ready to move into.'),
+                 ('Can I rent a 1-bedroom apartment in Medellín for one month?',
+                  'Yes. The apartments listed by the month take stays of 30 nights or more. For a shorter stay, choose one listed by the night.'),
+                 ('Which neighborhoods have 1-bedroom apartments?', 'As of {AS_OF}, we have 1-bedroom and studio apartments in {AREA_COUNTS}.'),
+                 ('Do I rent from the owner or from an agency?',
+                  'You rent direct from Medellín Concierge, the company that manages the apartment for its owner. Each one belongs to a private owner who has hired us to manage it, and you book directly with our local team instead of through a booking platform. We confirm the price, your dates and what is included in writing.'),
+                 ('Can I ask by email instead of WhatsApp?',
+                  'Yes. Write to <a href="{MAIL}">sales@medellinconcierge.net</a> with your dates, the number of guests and the area you prefer.')]),
+ 'es': dict(alt_type='Studio', title='Apartaestudios y apartamentos de 1 habitación en Medellín', crumb='Apartaestudios y de 1 habitación',
+            desc='Apartaestudios y apartamentos amoblados de 1 habitación en arriendo en Medellín, por meses o por noches. Precios al día en pesos; escríbanos.',
+            h1='Apartaestudios y apartamentos de 1 habitación en arriendo en Medellín',
+            lead='<strong>Al {AS_OF}, Medellín Concierge tiene {N} apartaestudios y apartamentos amoblados de 1 habitación en Medellín y sus alrededores ({MIX}): {PARTS}.</strong> Usted arrienda directo con la empresa que los administra. Escríbanos a <a href="{MAIL}">sales@medellinconcierge.net</a> con sus fechas y cuántas personas son, y le decimos cuáles están libres y el valor total.',
+            btn='Envíenos sus fechas', cta_all='Todos los arriendos amoblados',
+            p_month='{m} por meses, {RANGE} al mes', p_month_req=', más {r} por meses con precio a consultar', p_night='{m} por noches, desde {LOW} COP la noche',
+            month_h='Apartamentos de 1 habitación por meses (30 noches o más)',
+            month_p='Estos {m} apartamentos se arriendan por estancias de 30 noches o más, del más económico al más costoso. Los precios son por mes, en pesos colombianos, más una tarifa de aseo que se paga una sola vez.',
+            night_h='Apartaestudios y apartamentos de 1 habitación por noches',
+            night_p='Estos {m} apartamentos reciben estancias cortas, del más económico al más costoso. Los precios son «desde», por noche, en pesos colombianos, más una tarifa de aseo única; el valor exacto depende de sus fechas.',
+            where_h='¿En qué zonas hay apartaestudios y apartamentos de 1 habitación?',
+            where_p='Al {AS_OF}, por zona:',
+            where_area='<strong>{area}:</strong> {c} {apt}{PARTS}.',
+            where_see=' Vea nuestros <a href="{h}">apartamentos amoblados en arriendo en {area}</a>.',
+            where_none='<strong>{area}:</strong> hoy no tenemos apartaestudios ni de 1 habitación; vea nuestros <a href="{h}">apartamentos amoblados en arriendo en {area}</a>.',
+            other='Otras zonas', other_l='otras zonas', apt=('apartamento', 'apartamentos'),
+            wp_month='por meses desde {p} COP', wp_night='por noches desde {p} COP',
+            size_h='¿Para quién es un apartaestudio o un apartamento de 1 habitación?',
+            size_p='Nuestros apartaestudios y apartamentos de 1 habitación tienen capacidad para {GUESTS} personas, según el anuncio, y {BATHS} baños. Cada anuncio indica el número máximo de huéspedes. El apartaestudio tiene un solo espacio para estar y dormir; el apartamento de 1 habitación tiene la alcoba aparte. Le sirven a quien viaja solo, a una pareja o a quien viene a Medellín unas semanas por trabajo.{SMALLER}{LARGER}',
+            smaller='',
+            larger=' ¿Necesita otra habitación? Vea los <a href="{h}">apartamentos de 2 habitaciones</a>.',
+            how_h='Cómo arrendar directo un apartaestudio o apartamento de 1 habitación',
+            subj='Apartaestudio o apartamento de 1 habitación en Medellín – consulta',
+            body='Hola, Medellín Concierge:\n\nBusco un apartaestudio o un apartamento amoblado de 1 habitación en Medellín.\n\nFechas (llegada – salida): \nPor meses o por noches: \nNúmero de personas: \nZona preferida (El Poblado, Laureles, Envigado, Sabaneta): \nPresupuesto: \n\nGracias,\n',
+            wa='¡Hola! Busco un apartaestudio o un apartamento amoblado de 1 habitación en Medellín.',
+            faq=[('¿Cuánto cuesta el arriendo de un apartamento de 1 habitación en Medellín?',
+                  'Al {AS_OF}, nuestros apartaestudios y apartamentos amoblados de 1 habitación cuestan {FAQ_PRICE}, más una tarifa de aseo única. Los precios están en pesos colombianos.'),
+                 ('¿Tienen apartaestudios amoblados?',
+                  'Sí. Al {AS_OF}, en esta página hay {MIX}. El título de cada anuncio dice si es apartaestudio o apartamento con alcoba aparte.'),
+                 ('¿Los apartamentos de 1 habitación son amoblados?', 'Sí. Todos los apartamentos de esta página están amoblados y listos para llegar a vivir.'),
+                 ('¿Puedo arrendar un apartamento de 1 habitación por un solo mes?',
+                  'Sí. Los que se ofrecen por meses reciben estancias de 30 noches o más. Para menos tiempo, elija uno de los que se ofrecen por noches.'),
+                 ('¿En qué barrios tienen apartaestudios y apartamentos de 1 habitación?', 'Al {AS_OF}, tenemos apartaestudios y apartamentos de 1 habitación en {AREA_COUNTS}.'),
+                 ('¿Arriendo con el propietario o con una inmobiliaria?',
+                  'Usted arrienda directo con Medellín Concierge, la empresa que administra el apartamento para su propietario. Cada apartamento es de un propietario particular que nos contrató para administrarlo, y usted reserva directo con nuestro equipo local, sin plataforma de reservas de por medio. Le confirmamos por escrito el precio, las fechas y lo que incluye.'),
+                 ('¿Puedo escribir por correo en vez de WhatsApp?',
+                  'Sí. Escríbanos a <a href="{MAIL}">sales@medellinconcierge.net</a> con sus fechas, cuántas personas son y la zona que prefiere.')]),
+}
+
 def br2_range(lo, hi, lang):
     if lo == hi: return f'{cop(lo)} COP'
     return f'{cop(lo)} to {cop(hi)} COP' if lang == 'en' else f'entre {cop(lo)} y {cop(hi)} COP'
@@ -2065,7 +2157,8 @@ def size_page(N, CFG, SLUG, P, smaller, larger):
     named = [a for a in ('El Poblado', 'Laureles', 'Envigado', 'Sabaneta') if a in area_live or a in acount]
     others = [p for p in P if rl_area(p) not in named]
     guests = sorted({p['max_guests'] for p in P if p.get('max_guests')}); baths = sorted({p['bathrooms'] for p in P if p.get('bathrooms')})
-    houses = sum(p['property_type'] == 'House' for p in P)
+    alt_t = CFG['en'].get('alt_type', 'House')   # the second kind counted in {MIX}: houses (3-bed) or studios (1-bed)
+    houses = sum(p['property_type'] == alt_t for p in P)
     en_url, es_url = SITE + f'rentals/{SLUG["en"]}/', SITE + f'es/arriendos/{SLUG["es"]}/'
     for lang in LANGS:
         u = CFG[lang]; ru = RL_UI[lang]
@@ -2089,7 +2182,7 @@ def size_page(N, CFG, SLUG, P, smaller, larger):
         areas_in = [a for a in named if a in acount]
         areas_in_txt = ((' in ' if lang == 'en' else ' en ') + rl_join(areas_in, lang)) if areas_in else ''
         st = {'{AS_OF}': as_of, '{N}': str(len(P)), '{PARTS}': rl_join(parts, lang), '{MAIL}': mhref,
-              '{FAQ_PRICE}': faq_price, '{AREA_COUNTS}': area_counts, '{MIX}': size_mix(len(P) - houses, houses, lang)}
+              '{FAQ_PRICE}': faq_price, '{AREA_COUNTS}': area_counts, '{MIX}': size_mix(len(P) - houses, houses, lang, alt_t)}
         desc = u['desc'].replace('{AREAS_IN}', areas_in_txt)
         if len(desc) > 160: desc = u['desc'].replace('{AREAS_IN}', '')
 
@@ -2174,15 +2267,18 @@ def size_page(N, CFG, SLUG, P, smaller, larger):
               en_href=en_href, es_href=es_href, body=body, schema=schema)))
     SITEMAP.append((en_url, es_url, TODAY))
 
-def size_mix(apts, houses, lang):
+SIZE_ALT = {'House': {'en': ('house', 'houses'), 'es': ('casa', 'casas')},
+            'Studio': {'en': ('studio', 'studios'), 'es': ('apartaestudio', 'apartaestudios')}}
+
+def size_mix(apts, houses, lang, alt='House'):
     a = f'{apts} {("apartment", "apartments")[apts != 1] if lang == "en" else ("apartamento", "apartamentos")[apts != 1]}'
     if not houses: return a
-    h = f'{houses} {("house", "houses")[houses != 1] if lang == "en" else ("casa", "casas")[houses != 1]}'
+    h = f'{houses} {SIZE_ALT[alt][lang][houses != 1]}'
     return f'{a} {"and" if lang == "en" else "y"} {h}'
 
 _sizes = {n for n, _ in rs_groups()}
 if BR2_LIVE:
-    size_page(BR2_N, BR2, BR2_SLUG, BR2_P, {'en': '#size-1', 'es': '#size-1'} if 1 in _sizes else None,
+    size_page(BR2_N, BR2, BR2_SLUG, BR2_P, {k: v + '/' for k, v in BR1_SLUG.items()} if BR1_LIVE else ({'en': '#size-1', 'es': '#size-1'} if 1 in _sizes else None),
               {k: v + '/' for k, v in BR3_SLUG.items()} if BR3_LIVE else ({'en': '#size-3', 'es': '#size-3'} if 3 in _sizes else None))
 else:
     print(f'  note: rentals/{BR2_SLUG["en"]}/ skipped ({len(BR2_P)} two-bedroom listings; needs 4+)')
@@ -2190,6 +2286,10 @@ if BR3_LIVE:
     size_page(BR3_N, BR3, BR3_SLUG, BR3_P, {k: v + '/' for k, v in BR2_SLUG.items()} if BR2_LIVE else ({'en': '#size-2', 'es': '#size-2'} if 2 in _sizes else None), None)
 else:
     print(f'  note: rentals/{BR3_SLUG["en"]}/ skipped ({len(BR3_P)} three-bedroom listings; needs 4+)')
+if BR1_LIVE:
+    size_page(BR1_N, BR1, BR1_SLUG, BR1_P, None, {k: v + '/' for k, v in BR2_SLUG.items()} if BR2_LIVE else ({'en': '#size-2', 'es': '#size-2'} if 2 in _sizes else None))
+else:
+    print(f'  note: rentals/{BR1_SLUG["en"]}/ skipped ({len(BR1_P)} one-bedroom listings; needs 4+)')
 
 
 
@@ -2892,7 +2992,7 @@ llms = [f"# {B['name']}", '',
         f"- Profiles: {', '.join(SAME_AS)}", '']
 # Renters get their own section (backlog R10): a dated summary from the HostFlow feed, then each rentals page with its
 # Spanish twin and one factual line (counts and prices as of the feed date), then the renter guides.
-RENT_TOP = {SITE + 'rentals/', SITE + 'monthly-rentals-medellin/', SITE + 'short-term-rentals-medellin/', SITE + f'rentals/{BR2_SLUG["en"]}/', SITE + f'rentals/{BR3_SLUG["en"]}/'}
+RENT_TOP = {SITE + 'rentals/', SITE + 'monthly-rentals-medellin/', SITE + 'short-term-rentals-medellin/', SITE + f'rentals/{BR2_SLUG["en"]}/', SITE + f'rentals/{BR3_SLUG["en"]}/', SITE + f'rentals/{BR1_SLUG["en"]}/'}
 RENT_AREA = {SITE + f'rentals/{slug}/': area for area, slug in RA_LIVE}
 def rent_fact(u):
     st = rl_stats('en'); a = st['{AS_OF}']
@@ -2917,6 +3017,12 @@ def rent_fact(u):
         h = sum(p['property_type'] == 'House' for p in BR3_P)
         parts = ([f"by the month {cop(m[0])} to {cop(m[-1])} COP"] if m else []) + ([f"by the night from {cop(n[0])} COP"] if n else [])
         return f"As of {a}: {len(BR3_P)} furnished 3-bedroom homes ({size_mix(len(BR3_P) - h, h, 'en')}); {' and '.join(parts)}." if parts else ''
+    if BR1_LIVE and u == SITE + f'rentals/{BR1_SLUG["en"]}/':
+        m = sorted(rl_price(p) for p in BR1_P if p['stay_type'] == 'long_term' and rl_price(p))
+        n = sorted(rl_price(p) for p in BR1_P if p['stay_type'] == 'short_term' and rl_price(p))
+        h = sum(p['property_type'] == 'Studio' for p in BR1_P)
+        parts = ([f"by the month {cop(m[0])} to {cop(m[-1])} COP"] if m else []) + ([f"by the night from {cop(n[0])} COP"] if n else [])
+        return f"As of {a}: {len(BR1_P)} furnished 1-bedroom and studio apartments ({size_mix(len(BR1_P) - h, h, 'en', 'Studio')}); {' and '.join(parts)}." if parts else ''
     if u in RENT_AREA:
         area = RENT_AREA[u]; s0, P, month, night = area_stats('en', area)
         parts = ([f"{s0['{N_MONTH}']} by the month ({s0['{MIN_MONTH}']} to {s0['{MAX_MONTH}']} COP a month)"] if month else []) + \
