@@ -944,7 +944,7 @@ def rs_section(lang, st):
             items += (f'<li class="rl-item"><div class="rl-main"><h4><a href="#p-{(p["ref"] or "").lstrip("#")}">{html.escape(rl_title(p, lang))}</a></h4>'
                       f'<p class="rl-meta">{" · ".join(m for m in meta if m)}</p></div><div class="rl-side"><p class="rl-price">{price}</p></div></li>')
         out += f'<h2 id="size-{n}">{h}</h2><p class="rl-intro">{intro}</p>' + (br1_line(lang, '') if n == BR1_N else br2_line(lang, '') if n == BR2_N else br3_line(lang, '') if n == BR3_N else '') + f'<ul class="rl-list">{items}</ul>'
-    return out + '</section>'
+    return out + amen_line(lang, '') + '</section>'
 
 # 2-bedroom rentals page (office report mc-2026-11-27-build, '2 bedroom apartment for rent medellín'): built only while
 # the feed has 4+ two-bedroom listings with a live price or on request. br2_line() is the inbound link the other
@@ -988,16 +988,209 @@ def br1_line(lang, pre):
     if not BR1_LIVE: return ''
     return f'<p class="rl-intro">{BR1_LINK[lang].format(h=pre + BR1_SLUG[lang] + "/")}</p>'
 
+# Amenity pages (office report mc-2026-11-28-build: Google suggests 'medellin apartment with air conditioning' and
+# 'apartamento amoblado medellin con parqueadero'; the feed marks 'ac' and 'parking'). Same builder as the size pages,
+# built only while 6+ listings carry the amenity. amen_line() is the inbound link the other rentals pages print.
+AMEN_MIN = 6
+AC_SLUG = {'en': 'apartments-with-air-conditioning-medellin', 'es': 'apartamentos-con-aire-acondicionado-medellin'}
+AC_P = [p for p in LISTINGS['properties'] if 'ac' in (p.get('amenities') or [])]
+AC_LIVE = len(AC_P) >= AMEN_MIN
+PK_SLUG = {'en': 'apartments-with-parking-medellin', 'es': 'apartamentos-amoblados-con-parqueadero-medellin'}
+PK_P = [p for p in LISTINGS['properties'] if 'parking' in (p.get('amenities') or [])]
+PK_LIVE = len(PK_P) >= AMEN_MIN
+AMEN_LINK = {'en': {'both': 'Need air conditioning or parking? See our <a href="{ac}">apartments with air conditioning</a> and our <a href="{pk}">apartments with parking</a> in Medellín.',
+                    'ac': 'Need air conditioning? See our <a href="{ac}">furnished apartments with air conditioning in Medellín</a>.',
+                    'pk': 'Bringing a car? See our <a href="{pk}">furnished apartments with parking in Medellín</a>.'},
+             'es': {'both': '¿Necesita aire acondicionado o parqueadero? Vea nuestros <a href="{ac}">apartamentos con aire acondicionado</a> y nuestros <a href="{pk}">apartamentos amoblados con parqueadero</a> en Medellín.',
+                    'ac': '¿Necesita aire acondicionado? Vea nuestros <a href="{ac}">apartamentos amoblados con aire acondicionado en Medellín</a>.',
+                    'pk': '¿Viene en carro? Vea nuestros <a href="{pk}">apartamentos amoblados con parqueadero en Medellín</a>.'}}
+
+def amen_line(lang, pre):
+    k = 'both' if AC_LIVE and PK_LIVE else 'ac' if AC_LIVE else 'pk' if PK_LIVE else None
+    if not k: return ''
+    return f'<p class="rl-intro">{AMEN_LINK[lang][k].format(ac=pre + AC_SLUG[lang] + "/", pk=pre + PK_SLUG[lang] + "/")}</p>'
+
 def size_line(lang, pre):   # one inbound line to the size pages from the monthly, short-term and area rentals pages
     if BR2_LIVE and BR3_LIVE:
-        return f'<p class="rl-intro">{SIZE_BOTH[lang].format(h2=pre + BR2_SLUG[lang] + "/", h3=pre + BR3_SLUG[lang] + "/")}</p>' + br1_line(lang, pre)
-    return (br2_line(lang, pre) or br3_line(lang, pre)) + br1_line(lang, pre)
+        return f'<p class="rl-intro">{SIZE_BOTH[lang].format(h2=pre + BR2_SLUG[lang] + "/", h3=pre + BR3_SLUG[lang] + "/")}</p>' + br1_line(lang, pre) + amen_line(lang, pre)
+    return (br2_line(lang, pre) or br3_line(lang, pre)) + br1_line(lang, pre) + amen_line(lang, pre)
 
 # Backlog R8: a listing with a live price becomes an Offer (lease out) whose itemOffered is the apartment, the pattern
 # schema.org uses for rooms and rentals (Accommodation has no `offers`). Price, currency and unit (month or night) come
 # from the feed; nightly prices are "from" prices, so they go in minPrice. Listings without a price stay a bare
 # Apartment/House. Never hard-code prices here.
 RL_UNIT = {'month': ('MONTH', 'MON'), 'night': ('NIGHT', 'DAY')}
+
+# Amenity pages: copy from office report mc-2026-11-28-build. Every number comes from the feed at build time.
+# Not stated on purpose (James has not confirmed): electricity included, deposits, pets, minimum nights, climate figures.
+_AMEN_OWN_EN = ('Do I rent from the owner or from an agency?',
+                'You rent direct from Medellín Concierge, the company that manages the apartment for its owner. Each one belongs to a private owner who has hired us to manage it, and you book directly with our local team instead of through a booking platform. We confirm the price, your dates and what is included in writing.')
+_AMEN_OWN_ES = ('¿Arriendo con el propietario o con una inmobiliaria?',
+                'Usted arrienda directo con Medellín Concierge, la empresa que administra el apartamento para su propietario. Cada apartamento es de un propietario particular que nos contrató para administrarlo, y usted reserva directo con nuestro equipo local, sin plataforma de reservas de por medio. Le confirmamos por escrito el precio, las fechas y lo que incluye.')
+AC = {
+ 'en': dict(title='Medellín Apartments with Air Conditioning | Furnished', crumb='Apartments with air conditioning',
+            desc='Furnished apartments with air conditioning in Medellín, by the month or by the night. See which ones have AC, with live prices; email us direct.',
+            h1='Furnished apartments with air conditioning in Medellín',
+            lead='<strong>Not every furnished apartment in Medellín has air conditioning, so check before you book. As of {AS_OF}, {N} of the {TOTAL} furnished homes Medellín Concierge lists have it: {PARTS}.</strong> Each one is marked “Air conditioning” in the lists below. Email <a href="{MAIL}">sales@medellinconcierge.net</a> with your dates and we confirm which rooms have a unit, and the total price, before you pay anything.',
+            btn='Email us your dates', cta_all='All furnished rentals',
+            p_month='{m} by the month, {RANGE} a month', p_month_req=', plus {r} more by the month with price on request', p_night='{m} by the night, from {LOW} COP a night',
+            month_h='Apartments with air conditioning by the month (30 nights or more)',
+            month_p='These {m} furnished homes with air conditioning rent for stays of 30 nights or more, cheapest first. Prices are per month in Colombian pesos, plus a one-time cleaning fee.',
+            night_h='Apartments with air conditioning by the night',
+            night_p='These {m} homes with air conditioning take shorter stays, cheapest first. Prices are “from” prices per night in Colombian pesos, plus a one-time cleaning fee; the exact price depends on your dates.',
+            where_h='Where are the apartments with air conditioning?',
+            where_p='As of {AS_OF}, by area:',
+            where_area='<strong>{area}:</strong> {c} {apt}{PARTS}.',
+            where_see=' See our <a href="{h}">furnished apartments for rent in {area}</a>.',
+            where_none='<strong>{area}:</strong> none with air conditioning today; see our <a href="{h}">furnished apartments for rent in {area}</a>.',
+            other='Other areas', other_l='other areas', apt=('home', 'homes'),
+            wp_month='by the month from {p} COP', wp_night='by the night from {p} COP',
+            size_h='Do you need air conditioning in Medellín?',
+            size_p='It depends on you more than on the apartment. Ask for it if you sleep better in a cool room, if you will work from the apartment in the afternoons, or if you are staying a month or more and want the choice. If you only want it for sleeping, tell us: what matters then is a unit in the bedroom. The other {OTHER} homes we list do not have air conditioning; they are on our <a href="../rentals/">main rentals page</a>.{SMALLER}{LARGER}',
+            smaller='', larger=' Also bringing a car? See our <a href="{h}">apartments with parking</a>.',
+            ask_h='What to ask before you book',
+            ask=['<strong>Which rooms have a unit:</strong> every bedroom, the living room, or only the main bedroom? Send us the reference and we tell you before you book.',
+                 '<strong>For a monthly stay, what the price includes:</strong> ask whether electricity and other utilities are included or billed apart for the apartment you like, and get the answer in writing.',
+                 '<strong>Other features you need:</strong> each listing also shows “Washer”, “Elevator” or “Parking” when the apartment has them.'],
+            how_h='How to rent an apartment with air conditioning direct',
+            subj='Apartment with air conditioning in Medellín – inquiry',
+            body='Hi Medellín Concierge,\n\nI am looking for a furnished apartment with air conditioning in Medellín.\n\nDates (arrival – departure): \nBy the month or by the night: \nNumber of guests: \nBedrooms: \nPreferred area (El Poblado, Laureles, Envigado, Sabaneta): \nBudget: \nAir conditioning needed in (bedroom / living room / both): \n\nThank you,\n',
+            wa='Hi! I’m looking for a furnished apartment with air conditioning in Medellín.',
+            faq=[('Do furnished apartments in Medellín have air conditioning?',
+                  'Some do and some don’t, so check each listing. As of {AS_OF}, {N} of the {TOTAL} furnished homes Medellín Concierge lists have air conditioning; they are all on this page.'),
+                 ('How much is a furnished apartment with air conditioning in Medellín?',
+                  'As of {AS_OF}, our furnished homes with air conditioning cost {FAQ_PRICE}, plus a one-time cleaning fee. Prices are set in Colombian pesos.'),
+                 ('Which areas have apartments with air conditioning?', 'As of {AS_OF}: {AREA_COUNTS}.'),
+                 ('Is the air conditioning in every room?',
+                  'It depends on the apartment. Send us the listing reference and we tell you which rooms have a unit before you book.'),
+                 ('Can I rent an apartment with air conditioning by the month?',
+                  'Yes. The homes in the monthly list take stays of 30 nights or more. See also our <a href="../monthly-rentals-medellin/">monthly rentals in Medellín</a>.'),
+                 _AMEN_OWN_EN,
+                 ('Can I ask by email instead of WhatsApp?',
+                  'Yes. Write to <a href="{MAIL}">sales@medellinconcierge.net</a> with your dates, the number of guests, your budget and where you need the air conditioning.')]),
+ 'es': dict(title='Apartamentos con aire acondicionado en Medellín', crumb='Apartamentos con aire acondicionado',
+            desc='Apartamentos amoblados con aire acondicionado en Medellín, por meses o por noches. Vea cuáles lo tienen, con precios al día en pesos; escríbanos directo.',
+            h1='Apartamentos amoblados con aire acondicionado en Medellín',
+            lead='<strong>No todos los apartamentos amoblados en Medellín tienen aire acondicionado, así que confírmelo antes de reservar. Al {AS_OF}, {N} de los {TOTAL} inmuebles amoblados que Medellín Concierge tiene publicados lo tienen: {PARTS}.</strong> Cada uno aparece marcado con «Aire acondicionado» en las listas. Escríbanos a <a href="{MAIL}">sales@medellinconcierge.net</a> con sus fechas y le confirmamos en qué habitaciones hay equipo, y el valor total, antes de que pague.',
+            btn='Envíenos sus fechas', cta_all='Todos los arriendos amoblados',
+            p_month='{m} por meses, {RANGE} al mes', p_month_req=', más {r} por meses con precio a consultar', p_night='{m} por noches, desde {LOW} COP la noche',
+            month_h='Apartamentos con aire acondicionado por meses (30 noches o más)',
+            month_p='Estos {m} inmuebles amoblados con aire acondicionado se arriendan por estancias de 30 noches o más, del más económico al más costoso. Los precios son por mes, en pesos colombianos, más una tarifa de aseo que se paga una sola vez.',
+            night_h='Apartamentos con aire acondicionado por noches',
+            night_p='Estos {m} inmuebles con aire acondicionado reciben estancias cortas, del más económico al más costoso. Los precios son «desde», por noche, en pesos colombianos, más una tarifa de aseo única; el valor exacto depende de sus fechas.',
+            where_h='¿En qué zonas hay apartamentos con aire acondicionado?',
+            where_p='Al {AS_OF}, por zona:',
+            where_area='<strong>{area}:</strong> {c} {apt}{PARTS}.',
+            where_see=' Vea nuestros <a href="{h}">apartamentos amoblados en arriendo en {area}</a>.',
+            where_none='<strong>{area}:</strong> hoy no tenemos ninguno con aire acondicionado; vea nuestros <a href="{h}">apartamentos amoblados en arriendo en {area}</a>.',
+            other='Otras zonas', other_l='otras zonas', apt=('inmueble', 'inmuebles'),
+            wp_month='por meses desde {p} COP', wp_night='por noches desde {p} COP',
+            size_h='¿Necesita aire acondicionado en Medellín?',
+            size_p='Depende más de usted que del apartamento. Pídalo si duerme mejor con el cuarto fresco, si va a trabajar desde el apartamento en las tardes o si se queda un mes o más y quiere tener la opción. Si solo lo quiere para dormir, díganoslo: en ese caso lo que importa es que haya equipo en la habitación. Los otros {OTHER} inmuebles que tenemos publicados no tienen aire; están en nuestra <a href="../arriendos/">página de arriendos</a>.{SMALLER}{LARGER}',
+            smaller='', larger=' ¿También viene en carro? Vea nuestros <a href="{h}">apartamentos con parqueadero</a>.',
+            ask_h='Qué preguntar antes de reservar',
+            ask=['<strong>En qué habitaciones hay equipo:</strong> ¿en todas, en la sala o solo en la principal? Envíenos la referencia y se lo decimos antes de reservar.',
+                 '<strong>Si es por meses, qué incluye el precio:</strong> pregunte si la energía y los demás servicios públicos están incluidos o se cobran aparte en el apartamento que le gusta, y pida la respuesta por escrito.',
+                 '<strong>Lo demás que necesita:</strong> cada anuncio también muestra «Lavadora», «Ascensor» o «Parqueadero» cuando el apartamento los tiene.'],
+            how_h='Cómo arrendar directo un apartamento con aire acondicionado',
+            subj='Apartamento con aire acondicionado en Medellín – consulta',
+            body='Hola, Medellín Concierge:\n\nBusco un apartamento amoblado con aire acondicionado en Medellín.\n\nFechas (llegada – salida): \nPor meses o por noches: \nNúmero de personas: \nHabitaciones: \nZona preferida (El Poblado, Laureles, Envigado, Sabaneta): \nPresupuesto: \nNecesito aire en (habitación / sala / ambas): \n\nGracias,\n',
+            wa='¡Hola! Busco un apartamento amoblado con aire acondicionado en Medellín.',
+            faq=[('¿Los apartamentos amoblados en Medellín tienen aire acondicionado?',
+                  'Unos sí y otros no, así que revise cada anuncio. Al {AS_OF}, {N} de los {TOTAL} inmuebles amoblados que Medellín Concierge tiene publicados tienen aire acondicionado; todos están en esta página.'),
+                 ('¿Cuánto cuesta un apartamento amoblado con aire acondicionado en Medellín?',
+                  'Al {AS_OF}, nuestros inmuebles amoblados con aire acondicionado cuestan {FAQ_PRICE}, más una tarifa de aseo única. Los precios están en pesos colombianos.'),
+                 ('¿En qué zonas hay apartamentos con aire acondicionado?', 'Al {AS_OF}: {AREA_COUNTS}.'),
+                 ('¿El aire acondicionado está en todas las habitaciones?',
+                  'Depende del apartamento. Envíenos la referencia del anuncio y le decimos en qué habitaciones hay equipo antes de reservar.'),
+                 ('¿Puedo arrendar por meses un apartamento con aire acondicionado?',
+                  'Sí. Los de la lista por meses reciben estancias de 30 noches o más. Vea también nuestros <a href="../arriendos-por-meses-medellin/">apartamentos amoblados por meses en Medellín</a>.'),
+                 _AMEN_OWN_ES,
+                 ('¿Puedo escribir por correo en vez de WhatsApp?',
+                  'Sí. Escríbanos a <a href="{MAIL}">sales@medellinconcierge.net</a> con sus fechas, cuántas personas son, su presupuesto y dónde necesita el aire.')]),
+}
+PK = {
+ 'en': dict(title='Medellín Apartments with Parking | Furnished Rentals', crumb='Apartments with parking',
+            desc='Furnished apartments with parking in Medellín, by the month or by the night. See which ones have a parking space, with live prices; email us direct.',
+            h1='Furnished apartments with parking in Medellín',
+            lead='<strong>Bringing or renting a car? As of {AS_OF}, {N} of the {TOTAL} furnished homes Medellín Concierge lists have parking: {PARTS}.</strong> Each one is marked “Parking” in the lists below. Email <a href="{MAIL}">sales@medellinconcierge.net</a> with your dates and your vehicle, and we confirm the parking space and the total price before you book.',
+            btn='Email us your dates', cta_all='All furnished rentals',
+            p_month='{m} by the month, {RANGE} a month', p_month_req=', plus {r} more by the month with price on request', p_night='{m} by the night, from {LOW} COP a night',
+            month_h='Apartments with parking by the month (30 nights or more)',
+            month_p='These {m} furnished homes with parking rent for stays of 30 nights or more, cheapest first. Prices are per month in Colombian pesos, plus a one-time cleaning fee.',
+            night_h='Apartments with parking by the night',
+            night_p='These {m} homes with parking take shorter stays, cheapest first. Prices are “from” prices per night in Colombian pesos, plus a one-time cleaning fee; the exact price depends on your dates.',
+            where_h='Where are the apartments with parking?',
+            where_p='As of {AS_OF}, by area:',
+            where_area='<strong>{area}:</strong> {c} {apt}{PARTS}.',
+            where_see=' See our <a href="{h}">furnished apartments for rent in {area}</a>.',
+            where_none='<strong>{area}:</strong> none with parking today; see our <a href="{h}">furnished apartments for rent in {area}</a>.',
+            other='Other areas', other_l='other areas', apt=('home', 'homes'),
+            wp_month='by the month from {p} COP', wp_night='by the night from {p} COP',
+            size_h='Do you need parking in Medellín?',
+            size_p='Only if you will have a car or motorcycle. Many people staying in El Poblado or Laureles get around on foot, by taxi or ride-hailing app, or on the Metro, and do not need a space. If you are driving in from another city or renting a car for trips out of Medellín, choose one of these. The other {OTHER} homes we list do not have parking; they are on our <a href="../rentals/">main rentals page</a>.{SMALLER}{LARGER}',
+            smaller='', larger=' Need air conditioning too? See our <a href="{h}">apartments with air conditioning</a>.',
+            ask_h='What to ask about the parking space',
+            ask=['<strong>Where it is:</strong> inside the building, and covered or not?',
+                 '<strong>How many vehicles, and what size:</strong> does it fit an SUV, or a motorcycle as well as a car?',
+                 '<strong>Whether it is included in the price shown.</strong> The listings only say the apartment has parking, so send us the reference and we confirm all of this in writing before you book.'],
+            how_h='How to rent an apartment with parking direct',
+            subj='Apartment with parking in Medellín – inquiry',
+            body='Hi Medellín Concierge,\n\nI am looking for a furnished apartment with parking in Medellín.\n\nDates (arrival – departure): \nBy the month or by the night: \nNumber of guests: \nBedrooms: \nPreferred area (El Poblado, Laureles, Envigado, Sabaneta): \nBudget: \nVehicle (car / SUV / motorcycle): \n\nThank you,\n',
+            wa='Hi! I’m looking for a furnished apartment with parking in Medellín.',
+            faq=[('Do furnished apartments in Medellín come with parking?',
+                  'Some do. As of {AS_OF}, {N} of the {TOTAL} furnished homes Medellín Concierge lists have parking; they are all on this page.'),
+                 ('How much is a furnished apartment with parking in Medellín?',
+                  'As of {AS_OF}, our furnished homes with parking cost {FAQ_PRICE}, plus a one-time cleaning fee. Prices are set in Colombian pesos.'),
+                 ('Which areas have apartments with parking?', 'As of {AS_OF}: {AREA_COUNTS}.'),
+                 ('Is the parking space included in the price?',
+                  'Ask us with the listing reference: we confirm in writing whether the space is included, where it is and what vehicle fits before you book.'),
+                 ('Can I rent an apartment with parking by the month?',
+                  'Yes. The homes in the monthly list take stays of 30 nights or more. See also our <a href="../monthly-rentals-medellin/">monthly rentals in Medellín</a>.'),
+                 _AMEN_OWN_EN,
+                 ('Can I ask by email instead of WhatsApp?',
+                  'Yes. Write to <a href="{MAIL}">sales@medellinconcierge.net</a> with your dates, the number of guests, your budget and your vehicle.')]),
+ 'es': dict(title='Apartamentos amoblados con parqueadero en Medellín', crumb='Apartamentos con parqueadero',
+            desc='Apartamentos amoblados con parqueadero en Medellín, por meses o por noches. Vea cuáles tienen parqueadero, con precios al día en pesos; escríbanos.',
+            h1='Apartamentos amoblados con parqueadero en Medellín',
+            lead='<strong>¿Viene en carro o va a alquilar uno? Al {AS_OF}, {N} de los {TOTAL} inmuebles amoblados que Medellín Concierge tiene publicados tienen parqueadero: {PARTS}.</strong> Cada uno aparece marcado con «Parqueadero» en las listas. Escríbanos a <a href="{MAIL}">sales@medellinconcierge.net</a> con sus fechas y su vehículo, y le confirmamos el parqueadero y el valor total antes de reservar.',
+            btn='Envíenos sus fechas', cta_all='Todos los arriendos amoblados',
+            p_month='{m} por meses, {RANGE} al mes', p_month_req=', más {r} por meses con precio a consultar', p_night='{m} por noches, desde {LOW} COP la noche',
+            month_h='Apartamentos con parqueadero por meses (30 noches o más)',
+            month_p='Estos {m} inmuebles amoblados con parqueadero se arriendan por estancias de 30 noches o más, del más económico al más costoso. Los precios son por mes, en pesos colombianos, más una tarifa de aseo que se paga una sola vez.',
+            night_h='Apartamentos con parqueadero por noches',
+            night_p='Estos {m} inmuebles con parqueadero reciben estancias cortas, del más económico al más costoso. Los precios son «desde», por noche, en pesos colombianos, más una tarifa de aseo única; el valor exacto depende de sus fechas.',
+            where_h='¿En qué zonas hay apartamentos con parqueadero?',
+            where_p='Al {AS_OF}, por zona:',
+            where_area='<strong>{area}:</strong> {c} {apt}{PARTS}.',
+            where_see=' Vea nuestros <a href="{h}">apartamentos amoblados en arriendo en {area}</a>.',
+            where_none='<strong>{area}:</strong> hoy no tenemos ninguno con parqueadero; vea nuestros <a href="{h}">apartamentos amoblados en arriendo en {area}</a>.',
+            other='Otras zonas', other_l='otras zonas', apt=('inmueble', 'inmuebles'),
+            wp_month='por meses desde {p} COP', wp_night='por noches desde {p} COP',
+            size_h='¿Necesita parqueadero en Medellín?',
+            size_p='Solo si va a tener carro o moto. Mucha gente que se queda en El Poblado o Laureles se mueve a pie, en taxi o por aplicación, o en el Metro, y no lo necesita. Si llega manejando desde otra ciudad o va a alquilar un carro para salir de Medellín, elija uno de estos. Los otros {OTHER} inmuebles que tenemos publicados no tienen parqueadero; están en nuestra <a href="../arriendos/">página de arriendos</a>.{SMALLER}{LARGER}',
+            smaller='', larger=' ¿También necesita aire acondicionado? Vea nuestros <a href="{h}">apartamentos con aire acondicionado</a>.',
+            ask_h='Qué preguntar sobre el parqueadero',
+            ask=['<strong>Dónde queda:</strong> ¿dentro del edificio, cubierto o descubierto?',
+                 '<strong>Para cuántos vehículos y de qué tamaño:</strong> ¿cabe una camioneta, o una moto además del carro?',
+                 '<strong>Si está incluido en el precio publicado.</strong> Los anuncios solo indican que el apartamento tiene parqueadero, así que envíenos la referencia y le confirmamos todo por escrito antes de reservar.'],
+            how_h='Cómo arrendar directo un apartamento con parqueadero',
+            subj='Apartamento amoblado con parqueadero en Medellín – consulta',
+            body='Hola, Medellín Concierge:\n\nBusco un apartamento amoblado con parqueadero en Medellín.\n\nFechas (llegada – salida): \nPor meses o por noches: \nNúmero de personas: \nHabitaciones: \nZona preferida (El Poblado, Laureles, Envigado, Sabaneta): \nPresupuesto: \nVehículo (carro / camioneta / moto): \n\nGracias,\n',
+            wa='¡Hola! Busco un apartamento amoblado con parqueadero en Medellín.',
+            faq=[('¿Los apartamentos amoblados en Medellín tienen parqueadero?',
+                  'Algunos sí. Al {AS_OF}, {N} de los {TOTAL} inmuebles amoblados que Medellín Concierge tiene publicados tienen parqueadero; todos están en esta página.'),
+                 ('¿Cuánto cuesta un apartamento amoblado con parqueadero en Medellín?',
+                  'Al {AS_OF}, nuestros inmuebles amoblados con parqueadero cuestan {FAQ_PRICE}, más una tarifa de aseo única. Los precios están en pesos colombianos.'),
+                 ('¿En qué zonas hay apartamentos con parqueadero?', 'Al {AS_OF}: {AREA_COUNTS}.'),
+                 ('¿El parqueadero está incluido en el precio?',
+                  'Pregúntenos con la referencia del anuncio: le confirmamos por escrito si está incluido, dónde queda y qué vehículo cabe antes de reservar.'),
+                 ('¿Puedo arrendar por meses un apartamento con parqueadero?',
+                  'Sí. Los de la lista por meses reciben estancias de 30 noches o más. Vea también nuestros <a href="../arriendos-por-meses-medellin/">apartamentos amoblados por meses en Medellín</a>.'),
+                 _AMEN_OWN_ES,
+                 ('¿Puedo escribir por correo en vez de WhatsApp?',
+                  'Sí. Escríbanos a <a href="{MAIL}">sales@medellinconcierge.net</a> con sus fechas, cuántas personas son, su presupuesto y su vehículo.')]),
+}
 
 def rl_offer(p, it):
     pr = p['price'] or {}
@@ -2182,6 +2375,7 @@ def size_page(N, CFG, SLUG, P, smaller, larger):
         areas_in = [a for a in named if a in acount]
         areas_in_txt = ((' in ' if lang == 'en' else ' en ') + rl_join(areas_in, lang)) if areas_in else ''
         st = {'{AS_OF}': as_of, '{N}': str(len(P)), '{PARTS}': rl_join(parts, lang), '{MAIL}': mhref,
+              '{TOTAL}': str(len(LISTINGS['properties'])), '{OTHER}': str(len(LISTINGS['properties']) - len(P)),
               '{FAQ_PRICE}': faq_price, '{AREA_COUNTS}': area_counts, '{MIX}': size_mix(len(P) - houses, houses, lang, alt_t)}
         desc = u['desc'].replace('{AREAS_IN}', areas_in_txt)
         if len(desc) > 160: desc = u['desc'].replace('{AREAS_IN}', '')
@@ -2219,6 +2413,9 @@ def size_page(N, CFG, SLUG, P, smaller, larger):
         size_html = (f'<h2>{u["size_h"]}</h2><p>' + u['size_p'].replace('{GUESTS}', gtxt).replace('{BATHS}', btxt)
                      .replace('{SMALLER}', u['smaller'].format(h=rel + smaller[lang]) if smaller else '')
                      .replace('{LARGER}', u['larger'].format(h=rel + larger[lang]) if larger else '') + '</p>')
+        size_html = fill(size_html, st)
+        if u.get('ask_h'):   # amenity pages: what to ask before booking
+            size_html += f'<h2>{u["ask_h"]}</h2><ul>' + ''.join(f'<li>{x}</li>' for x in u['ask']) + '</ul>'
         steps = re.search(r'<ol>.*?</ol>', R[lang]['prose'], flags=re.S).group(0)
         how_html = f'<h2>{u["how_h"]}</h2>{steps}'
         faq = [(fill(q, st), fill(a, st)) for q, a in u['faq']]
@@ -2252,7 +2449,8 @@ def size_page(N, CFG, SLUG, P, smaller, larger):
   </div>
 </section>'''
         lst = rl_schema(lang, url, name=u['h1'])
-        keep = [i for i in lst['itemListElement'] if (i['item'].get('itemOffered') or i['item']).get('numberOfBedrooms') == N]
+        refs = {'#p-' + (p['ref'] or '').lstrip('#') for p in P}
+        keep = [i for i in lst['itemListElement'] if (i['item'].get('itemOffered') or i['item'])['url'][len(url):] in refs]
         for i, x in enumerate(keep, 1): x['position'] = i
         lst = dict(lst, itemListElement=keep, numberOfItems=len(keep))
         schema = {'@context': 'https://schema.org', '@graph': [
@@ -2290,6 +2488,9 @@ if BR1_LIVE:
     size_page(BR1_N, BR1, BR1_SLUG, BR1_P, None, {k: v + '/' for k, v in BR2_SLUG.items()} if BR2_LIVE else ({'en': '#size-2', 'es': '#size-2'} if 2 in _sizes else None))
 else:
     print(f'  note: rentals/{BR1_SLUG["en"]}/ skipped ({len(BR1_P)} one-bedroom listings; needs 4+)')
+for _N, _CFG, _SLUG, _P, _LIVE, _OTHER, _OLIVE in ((None, AC, AC_SLUG, AC_P, AC_LIVE, PK_SLUG, PK_LIVE), (None, PK, PK_SLUG, PK_P, PK_LIVE, AC_SLUG, AC_LIVE)):
+    if _LIVE: size_page(_N, _CFG, _SLUG, _P, None, {k: v + '/' for k, v in _OTHER.items()} if _OLIVE else None)
+    else: print(f'  note: rentals/{_SLUG["en"]}/ skipped ({len(_P)} listings with the amenity; needs {AMEN_MIN}+)')
 
 
 
@@ -2992,7 +3193,7 @@ llms = [f"# {B['name']}", '',
         f"- Profiles: {', '.join(SAME_AS)}", '']
 # Renters get their own section (backlog R10): a dated summary from the HostFlow feed, then each rentals page with its
 # Spanish twin and one factual line (counts and prices as of the feed date), then the renter guides.
-RENT_TOP = {SITE + 'rentals/', SITE + 'monthly-rentals-medellin/', SITE + 'short-term-rentals-medellin/', SITE + f'rentals/{BR2_SLUG["en"]}/', SITE + f'rentals/{BR3_SLUG["en"]}/', SITE + f'rentals/{BR1_SLUG["en"]}/'}
+RENT_TOP = {SITE + 'rentals/', SITE + 'monthly-rentals-medellin/', SITE + 'short-term-rentals-medellin/', SITE + f'rentals/{BR2_SLUG["en"]}/', SITE + f'rentals/{BR3_SLUG["en"]}/', SITE + f'rentals/{BR1_SLUG["en"]}/', SITE + f'rentals/{AC_SLUG["en"]}/', SITE + f'rentals/{PK_SLUG["en"]}/'}
 RENT_AREA = {SITE + f'rentals/{slug}/': area for area, slug in RA_LIVE}
 def rent_fact(u):
     st = rl_stats('en'); a = st['{AS_OF}']
@@ -3023,6 +3224,12 @@ def rent_fact(u):
         h = sum(p['property_type'] == 'Studio' for p in BR1_P)
         parts = ([f"by the month {cop(m[0])} to {cop(m[-1])} COP"] if m else []) + ([f"by the night from {cop(n[0])} COP"] if n else [])
         return f"As of {a}: {len(BR1_P)} furnished 1-bedroom and studio apartments ({size_mix(len(BR1_P) - h, h, 'en', 'Studio')}); {' and '.join(parts)}." if parts else ''
+    for _ok, _slug, _P, _what in ((AC_LIVE, AC_SLUG, AC_P, 'with air conditioning'), (PK_LIVE, PK_SLUG, PK_P, 'with parking')):
+        if _ok and u == SITE + f'rentals/{_slug["en"]}/':
+            m = sorted(rl_price(p) for p in _P if p['stay_type'] == 'long_term' and rl_price(p))
+            n = sorted(rl_price(p) for p in _P if p['stay_type'] == 'short_term' and rl_price(p))
+            parts = ([f"by the month {cop(m[0])} to {cop(m[-1])} COP"] if m else []) + ([f"by the night from {cop(n[0])} COP"] if n else [])
+            return f"As of {a}: {len(_P)} of our {len(LISTINGS['properties'])} furnished homes {_what}; {' and '.join(parts)}." if parts else ''
     if u in RENT_AREA:
         area = RENT_AREA[u]; s0, P, month, night = area_stats('en', area)
         parts = ([f"{s0['{N_MONTH}']} by the month ({s0['{MIN_MONTH}']} to {s0['{MAX_MONTH}']} COP a month)"] if month else []) + \
